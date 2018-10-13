@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Mirror.cs" />
+    <Compile Include="Assets\Mirror3.cs" />
+    <None Include="Assets\Mirrror.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/gabriel/Desktop/Epita/Projet-S2/Projet-S2/ProjectS2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
