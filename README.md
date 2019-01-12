@@ -9,7 +9,6 @@
 * Downlaod Unity : [Unity Personal](https://store.unity.com/download?ref=personal)
 * Download Visual Studio Community : [On Microsoft website](https://visualstudio.microsoft.com/fr/thank-you-downloading-visual-studio-mac/?sku=communitymac&rel=15)
 * Download Visual Studio (Recomanded) : [On Epita Bocal](https://console.bocal.org/#/) > msdnaa > Choose Visual Studio
-* Download Latex : I'm kidding use Word
 
 ### Docs
 * Learn how to use Unity : [OpenClassrooms](https://openclassrooms.com/fr/courses/1946836-realisez-votre-premier-jeu-video-avec-unity), or built-in tutorials
