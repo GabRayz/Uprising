@@ -2,8 +2,9 @@
 
 ## Useful Links
 
-### Brainstorming
-* Game ideas : [GDoc](https://docs.google.com/document/d/15tq_00cwZ9kFro_jM3VUZYU1F3RFChf7ls_5PYR9X0U/edit)
+### Book of specifications
+* Google Doc : [Gdoc](https://docs.google.com/document/d/15tq_00cwZ9kFro_jM3VUZYU1F3RFChf7ls_5PYR9X0U/edit)
+* Latex : [Overleaf](https://www.overleaf.com/1156344498tscghpkyfqht)
 
 ### Ressources
 * Downlaod Unity : [Unity Personal](https://store.unity.com/download?ref=personal)
