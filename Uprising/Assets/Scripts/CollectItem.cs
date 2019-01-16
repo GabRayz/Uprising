@@ -20,7 +20,8 @@ public class CollectItem : MonoBehaviour {
     {
         if(other.gameObject.CompareTag("item"))
         {
-            other.gameObject.SetActive(false);
+            // other.gameObject.SetActive(false);
+            other.gameObject.SendMessage("Collect", player.gameObject);
         }
     }
 }
