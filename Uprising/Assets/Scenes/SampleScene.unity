@@ -370,30 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 688034874}
---- !u!1 &1772161706 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1910061147725418, guid: 0eac9b1ca493e479cb32f369e128fd3b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1801158006}
---- !u!114 &1772161713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1772161706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 11
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1001 &1801158006
 Prefab:
   m_ObjectHideFlags: 0
@@ -431,36 +407,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4367405774670456, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 2}
       propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 65320971980541222, guid: 0eac9b1ca493e479cb32f369e128fd3b,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65320971980541222, guid: 0eac9b1ca493e479cb32f369e128fd3b,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54268821049560722, guid: 0eac9b1ca493e479cb32f369e128fd3b,
-        type: 2}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54268821049560722, guid: 0eac9b1ca493e479cb32f369e128fd3b,
-        type: 2}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 23109641164240656, guid: 0eac9b1ca493e479cb32f369e128fd3b,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1910061147725418, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 2}
@@ -548,5 +495,5 @@ Transform:
   m_LocalScale: {x: 10, y: 0.3, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
