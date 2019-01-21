@@ -36,6 +36,7 @@ public class ItemController : MonoBehaviour
             if (this.durability <= 0)
             {
                 this.StopUsing();
+                this.player.SendMessage("ClearItem", this);
             }
         }
 
@@ -55,7 +56,7 @@ public class ItemController : MonoBehaviour
             if (!isCurrentlyUsed)
             {
                 this.isCurrentlyUsed = true;
-                this.player.SendMessage("ModifySpeed", 0.5);
+                this.player.SendMessage("ModifySpeed", 1);
             }
         }
 
@@ -64,7 +65,7 @@ public class ItemController : MonoBehaviour
             if (isCurrentlyUsed)
             {
                 this.isCurrentlyUsed = false;
-                this.player.SendMessage("ModifySpeed", -0.5);
+                this.player.SendMessage("ModifySpeed", -1);
             }
         }
     }

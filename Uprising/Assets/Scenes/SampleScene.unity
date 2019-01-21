@@ -200,7 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 1
+  speed: 2
+  speedModifier: 1
 --- !u!195 &237303330
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -455,6 +456,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92b31287a5c542f1bcb81ddee53580b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 688034874}
 --- !u!1001 &1409142435
 PrefabInstance:
@@ -536,6 +569,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1910061147725418, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 3}
+      propertyPath: m_Name
+      value: Collectible item
+      objectReference: {fileID: 0}
     - target: {fileID: 4367405774670456, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -568,11 +605,23 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 33361425933189166, guid: 0eac9b1ca493e479cb32f369e128fd3b,
+    - target: {fileID: 4367405774670456, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367405774670456, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367405774670456, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114629986214479614, guid: 0eac9b1ca493e479cb32f369e128fd3b,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+      propertyPath: name
+      value: SpeedBoost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eac9b1ca493e479cb32f369e128fd3b, type: 3}
 --- !u!1 &1860933792

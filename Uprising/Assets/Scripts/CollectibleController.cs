@@ -26,7 +26,14 @@ public class CollectibleController : MonoBehaviour {
     void Start () {
         collectible = GetComponent<Rigidbody>();
         rotation = new Vector3(60, 60, 60);
-	}
+
+        switch (name)
+        {
+            case "SpeedBoost":
+                item = new ItemController.SpeedBoost(3000, null);
+                break;
+        }
+    }
 	
     private void FixedUpdate()
     {

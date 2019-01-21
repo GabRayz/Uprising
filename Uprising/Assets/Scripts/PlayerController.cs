@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     public float speed = 2;
     public float speedModifier = 1;
 
+    // Inventory slots
+    private ItemController.Item Weapon1;
+    private ItemController.Item Weapon2;
+    private ItemController.Item Bonus1 = null;
+    private ItemController.Item Bonus2;
+
     public float GetSpeed()
     {
         return speed * speedModifier;
@@ -19,9 +25,10 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         model = rb.gameObject;
+        speed = 2;
+        speedModifier = 1;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         // Player's movement, to be improved
@@ -55,7 +62,12 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion deltaRot = Quaternion.Euler(new Vector3(0, -50, 0) * Time.deltaTime * GetSpeed());
             rb.MoveRotation(deltaRot * rb.rotation);
+        }
 
+        // Update all bonuses timer
+        if(Bonus1 != null)
+        {
+            (Bonus1 as ItemController.Effect).Update();
         }
     }
 
@@ -67,8 +79,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void GiveItem()
+    public void ModifySpeed(float modifier)
     {
+        speedModifier += modifier;
+    }
 
+    public void GiveItem(ItemController.Item item)
+    {
+        // Add item to inventory
+        this.Bonus1 = item;
+        item.player = this.gameObject;
+        item.Use();
+    }
+
+    public void ClearItem(ItemController.Item item)
+    {
+        // TODO
     }
 }
