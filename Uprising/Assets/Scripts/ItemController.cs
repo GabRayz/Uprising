@@ -51,14 +51,20 @@ public class ItemController : MonoBehaviour
 
         public override void Use()
         {
-            this.isCurrentlyUsed = true;
-            this.player.SendMessage("ModifySpeed", 0.5);
+            if(!isCurrentlyUsed)
+            {
+                this.isCurrentlyUsed = true;
+                this.player.SendMessage("ModifySpeed", 0.5);
+            }
         }
 
         protected override void StopUsing()
         {
-            this.isCurrentlyUsed = false;
-            this.player.SendMessage("ModifySpeed", -0.5);
+            if(isCurrentlyUsed)
+            {
+                this.isCurrentlyUsed = false;
+                this.player.SendMessage("ModifySpeed", -0.5);
+            }
         }
     }
 }
