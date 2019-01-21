@@ -49,6 +49,7 @@ public class ItemController : MonoBehaviour
             this.durability = time;
             this.player = player;
         }
+<<<<<<< HEAD
 
         public override void Use()
         {
@@ -67,6 +68,20 @@ public class ItemController : MonoBehaviour
                 this.player.SendMessage("ModifySpeed", -0.5);
             }
         }
+=======
+
+        public override void Use()
+        {
+            this.isCurrentlyUsed = true;
+            this.player.SendMessage("ModifySpeed", 0.5);
+        }
+
+        protected override void StopUsing()
+        {
+            this.isCurrentlyUsed = false;
+            this.player.SendMessage("ModifySpeed", -0.5);
+        }
+>>>>>>> 0b46bce1b310defd8dc6d536f1db385d3355acc2
     }
 
     private class Weapon : Item
