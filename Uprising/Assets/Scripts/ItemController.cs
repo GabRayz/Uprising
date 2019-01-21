@@ -69,7 +69,7 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    private class Weapon : Item
+    private abstract class Weapon : Item
     {
         //
         public Weapon()
@@ -86,7 +86,7 @@ public class ItemController : MonoBehaviour
             }
         }
 
-        public override void Use()
+        public override void Use() // shoot
         {
             if (!isCurrentlyUsed)
             {
@@ -99,6 +99,35 @@ public class ItemController : MonoBehaviour
         protected override void StopUsing()
         {
             this.isCurrentlyUsed = false;
+        }
+
+        public abstract void Aim();
+    }
+
+    private class DefaultGun : Weapon
+    {
+
+        public DefaultGun(int durability)
+        {
+            this.durability = durability;
+        }
+
+        public override void Aim()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    private class MiniGun : Weapon
+    {
+
+        public MiniGun(int durability)
+        {
+            this.durability = durability;
+        }
+
+        public override void Aim()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
