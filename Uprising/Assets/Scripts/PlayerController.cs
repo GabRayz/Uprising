@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // This script is to be attached to the player. It tests the collision with a item.
     public Rigidbody rb;
-    public float speed = 1;
+    public float speed = 2;
     private GameObject model;
 
     // Use this for initialization
@@ -26,31 +26,30 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            this.transform.position += Vector3.back * (speed/2) * Time.fixedDeltaTime;
+            this.transform.position += -1 * transform.forward * (speed/2) * Time.fixedDeltaTime;
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            this.transform.position += Vector3.left * (speed / 2) * Time.fixedDeltaTime;
+            this.transform.position += -1 * transform.right * (speed / 2) * Time.fixedDeltaTime;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.position += Vector3.right * (speed / 2) * Time.fixedDeltaTime;
+            this.transform.position += transform.right * (speed / 2) * Time.fixedDeltaTime;
         }
 
         if(Input.GetKey(KeyCode.A))
         {
-            Quaternion deltaRot = Quaternion.Euler(new Vector3(0, 50, 0) * Time.deltaTime);
+            Quaternion deltaRot = Quaternion.Euler(new Vector3(0, 50, 0) * Time.deltaTime * speed);
             rb.MoveRotation(deltaRot * rb.rotation);
-            //   this.transform.rotation += 
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            Quaternion deltaRot = Quaternion.Euler(new Vector3(0, -50, 0) * Time.deltaTime);
+            Quaternion deltaRot = Quaternion.Euler(new Vector3(0, -50, 0) * Time.deltaTime * speed);
             rb.MoveRotation(deltaRot * rb.rotation);
-            //   this.transform.rotation += 
+
         }
     }
 
