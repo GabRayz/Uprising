@@ -33,7 +33,7 @@ public class ItemController : MonoBehaviour
         {
             // Remove from durability the time passed since the last frame
             this.durability -= (int)(Time.deltaTime * 1000);
-            if(this.durability <= 0)
+            if (this.durability <= 0)
             {
                 this.StopUsing();
             }
@@ -52,7 +52,7 @@ public class ItemController : MonoBehaviour
 
         public override void Use()
         {
-            if(!isCurrentlyUsed)
+            if (!isCurrentlyUsed)
             {
                 this.isCurrentlyUsed = true;
                 this.player.SendMessage("ModifySpeed", 0.5);
@@ -61,7 +61,7 @@ public class ItemController : MonoBehaviour
 
         protected override void StopUsing()
         {
-            if(isCurrentlyUsed)
+            if (isCurrentlyUsed)
             {
                 this.isCurrentlyUsed = false;
                 this.player.SendMessage("ModifySpeed", -0.5);
@@ -72,10 +72,10 @@ public class ItemController : MonoBehaviour
     private class Weapon : Item
     {
         //
-        //public void Weapon()
-        //{
+        public Weapon()
+        {
 
-        //}
+        }
 
         // Called every frame
         public void Update()
@@ -90,7 +90,7 @@ public class ItemController : MonoBehaviour
         {
             if (!isCurrentlyUsed)
             {
-                this.durability --;
+                this.durability--;
                 // ici mettre le truc pour créer bullet
                 this.isCurrentlyUsed = true;
             }
@@ -101,5 +101,4 @@ public class ItemController : MonoBehaviour
             this.isCurrentlyUsed = false;
         }
     }
-
 }
