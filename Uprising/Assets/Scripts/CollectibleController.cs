@@ -49,6 +49,6 @@ public class CollectibleController : MonoBehaviour {
     public void Collect(GameObject player)
     {
         collectible.gameObject.SetActive(false);
-        player.SendMessage("GiveItem", new Collectible(item.type, item.name, item.durability));
+        // player.SendMessage("GiveItem", new Collectible(item.type, item.name, item.durability));
     }
 }

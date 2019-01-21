@@ -72,10 +72,10 @@ public class ItemController : MonoBehaviour
     private class Weapon : Item
     {
         //
-        public void Weapon()
-        {
+        //public void Weapon()
+        //{
 
-        }
+        //}
 
         // Called every frame
         public void Update()
