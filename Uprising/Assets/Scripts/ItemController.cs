@@ -72,7 +72,7 @@ public class ItemController : MonoBehaviour
     private class Weapon : Item
     {
         //
-        public void Weapon()
+        public Weapon()
         {
 
         }
