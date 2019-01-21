@@ -4,30 +4,23 @@ using UnityEngine;
 
 public class CollectibleController : MonoBehaviour {
 
-    private class Collectible
-    {
-        public Item type;
-        public string name;
-        public int durability;
-
-        public Collectible(Item itemType, string itemName, int durability)
-        {
-            this.type = itemType;
-            this.name = itemName;
-            this.durability = durability;
-        }
-    }
-
-    public enum Item
-    {
-        Weapon,
-        Effect,
-        Tool
-    }
-
-    private Collectible item;
+    //private Collectible item;
     public Rigidbody collectible;
     private Vector3 rotation;
+    public string name;
+    public ItemController.Item item;
+
+    public CollectibleController(string itemName, int durability)
+    {
+        switch (itemName)
+        {
+            case "SpeedBoost":
+                item = new ItemController.SpeedBoost(durability, null);
+                break;
+        }
+
+        this.name = itemName;
+    }
 
     // Use this for initialization
     void Start () {
@@ -41,14 +34,12 @@ public class CollectibleController : MonoBehaviour {
         collectible.MoveRotation(collectible.rotation * deltaRot);
     }
 
-    public void Init(Item itemType, string itemName, int durability)
-    {
-        item = new Collectible(itemType, itemName, durability);
-    }
-
     public void Collect(GameObject player)
     {
         collectible.gameObject.SetActive(false);
-        // player.SendMessage("GiveItem", new Collectible(item.type, item.name, item.durability));
+        player.SendMessage("GiveItem", item);
     }
+
+
+
 }

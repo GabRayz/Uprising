@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class ItemController : MonoBehaviour
 {
-    private abstract class Item
+    public abstract class Item
     {
         protected int durability;
         public bool isCurrentlyUsed = false;
@@ -26,7 +26,7 @@ public class ItemController : MonoBehaviour
         protected abstract void StopUsing();
     }
 
-    private abstract class Effect : Item
+    public abstract class Effect : Item
     {
         // Called every frame
         public void Update()
@@ -41,7 +41,7 @@ public class ItemController : MonoBehaviour
 
     }
 
-    private class SpeedBoost : Effect
+    public class SpeedBoost : Effect
     {
         public SpeedBoost(int time, GameObject player)
         {
@@ -69,7 +69,7 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    private abstract class Weapon : Item
+    public abstract class Weapon : Item
     {
         //
         public Weapon()
@@ -104,7 +104,7 @@ public class ItemController : MonoBehaviour
         public abstract void Aim();
     }
 
-    private class DefaultGun : Weapon
+    public class DefaultGun : Weapon
     {
 
         public DefaultGun(int durability)
@@ -117,7 +117,8 @@ public class ItemController : MonoBehaviour
             throw new System.NotImplementedException();
         }
     }
-    private class MiniGun : Weapon
+
+    public class MiniGun : Weapon
     {
 
         public MiniGun(int durability)
