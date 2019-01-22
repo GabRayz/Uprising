@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private GameObject model;
     public float speed = 2;
     public float speedModifier = 1;
+    public GameObject head;
 
     // Inventory slots
     private ItemController.Item Weapon1;
@@ -64,8 +65,21 @@ public class PlayerController : MonoBehaviour
             rb.MoveRotation(deltaRot * rb.rotation);
         }
 
+        float Vrot = Input.GetAxis("Vertical") * 10;
+        float Hrot = Input.GetAxis("Horizontal") * 10;
+        Hrot *= Time.deltaTime;
+        Vrot *= Time.deltaTime;
+
+        // Right / Left robot's rotation
+        this.transform.Rotate(transform.up * Hrot);
+        // Up / Down Head's rotation
+
+        head.transform.rotation.Set(head.transform.rotation.x + Vrot, head.transform.rotation.y, head.transform.rotation.z, head.transform.rotation.w);
+        // head.transform.Rotate(head.transform.rotation.x);
+        // transform.rotation += this.transform.right;
+
         // Update all bonuses timer
-        if(Bonus1 != null)
+        if (Bonus1 != null)
         {
             (Bonus1 as ItemController.Effect).Update();
         }
