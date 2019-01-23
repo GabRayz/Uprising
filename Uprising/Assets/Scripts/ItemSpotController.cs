@@ -23,7 +23,7 @@ public class ItemSpotController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // TODO
     }
 
     private int GetRaretyInt(Rarety rarety, int y)
@@ -61,7 +61,7 @@ public class ItemSpotController : MonoBehaviour
 
     private ItemType ChooseItem()
     {
-        // return ItemType.JumpBoost;
+        return ItemType.SpeedBoost;
         int total = 0; // Get the total value of all rarety int
         foreach(var item in itemRaretyPairs)
         {
