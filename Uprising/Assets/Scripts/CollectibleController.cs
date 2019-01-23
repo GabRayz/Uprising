@@ -2,24 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType
+{
+    DefaultGun,
+    SpeedBoost,
+    JumpBoost,
+    Shield,
+    ForceField,
+    Invisibility,
+    Minigun,
+    Rifle,
+    AssaultRifle,
+    Sniper,
+    MachineGun,
+    RocketLauncher
+}
+
 public class CollectibleController : MonoBehaviour {
 
     //private Collectible item;
     public Rigidbody collectible;
     private Vector3 rotation;
-    public string name;
+    public ItemType type;
     public ItemController.Item item;
 
-    public CollectibleController(string itemName, int durability)
+    public CollectibleController(ItemType type, int durability)
     {
-        switch (itemName)
+        switch (type)
         {
-            case "SpeedBoost":
+            case ItemType.SpeedBoost:
                 item = new ItemController.SpeedBoost(durability, null);
                 break;
         }
-
-        this.name = itemName;
     }
 
     // Use this for initialization
