@@ -137,4 +137,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedBoostPrefab: {fileID: 4285216452239954089, guid: 460a2f60038f14e528dc91bb307a289b,
     type: 3}
-  averageCoolDown: 0
+  averageCoolDown: 5000

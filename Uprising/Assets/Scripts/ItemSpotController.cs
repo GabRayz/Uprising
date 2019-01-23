@@ -9,7 +9,7 @@ public class ItemSpotController : MonoBehaviour
     public GameObject SpeedBoostPrefab;
     public int averageCoolDown;
     public Dictionary<ItemType, int> itemRaretyPairs;
-    // private Game
+    private int cooldown;
 
     private bool isPickedUp;
 
@@ -18,12 +18,21 @@ public class ItemSpotController : MonoBehaviour
     {
         this.itemRaretyPairs = InitItemRaretyPairs();
         CreateNewItem(ChooseItem());
+        cooldown = averageCoolDown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // TODO
+        if(isPickedUp)
+        {
+            cooldown -= (int)(Time.deltaTime * 1000);
+            if (cooldown <= 0)
+            {
+                CreateNewItem(ChooseItem());
+                cooldown = averageCoolDown;
+            }
+        }
     }
 
     private int GetRaretyInt(Rarety rarety, int y)
@@ -38,9 +47,9 @@ public class ItemSpotController : MonoBehaviour
         // Add here all game's items
         itemRaretyPairs = new Dictionary<ItemType, int>();
         itemRaretyPairs.Add(ItemType.SpeedBoost, GetRaretyInt(Rarety.Common, y));
-        itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y)); // Fusil, arme un peu naze
-        itemRaretyPairs.Add(ItemType.MachineGun, GetRaretyInt(Rarety.Rare, y)); // Mitraillette, arme bien
-        itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y)); // Fusil d'assaut, qu'elle est bien cette arme
+        //itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y)); // Fusil, arme un peu naze
+        //itemRaretyPairs.Add(ItemType.MachineGun, GetRaretyInt(Rarety.Rare, y)); // Mitraillette, arme bien
+        //itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y)); // Fusil d'assaut, qu'elle est bien cette arme
 
         return itemRaretyPairs;
     }
@@ -48,20 +57,17 @@ public class ItemSpotController : MonoBehaviour
     private void CreateNewItem(ItemType type)
     {
         ItemController.Item newItem = null;
-        GameObject newObject = null;
         switch (type)
         {
             case ItemType.SpeedBoost:
                 newItem = new ItemController.SpeedBoost(30000, null);
-                newObject = Instantiate(SpeedBoostPrefab, this.transform, false);
-                //newObject = Instantiate(SpeedBoostPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), this.transform);
+                Instantiate(SpeedBoostPrefab, this.transform, false);
                 break;
         }
     }
 
     private ItemType ChooseItem()
     {
-        return ItemType.SpeedBoost;
         int total = 0; // Get the total value of all rarety int
         foreach(var item in itemRaretyPairs)
         {
@@ -80,5 +86,10 @@ public class ItemSpotController : MonoBehaviour
             stack += item.Value;
         }
         return chosenType;
+    }
+
+    public void PickUp()
+    {
+        isPickedUp = true;
     }
 }

@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         // Add item to inventory
         this.Bonus1 = item;
         item.player = this.gameObject;
-        item.Use();
+        item.Use(); // This line is for testing
     }
 
     public void ClearItem(ItemController.Item item)

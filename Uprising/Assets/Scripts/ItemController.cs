@@ -15,7 +15,6 @@ public class ItemController : MonoBehaviour
         protected int durability;
         public bool isCurrentlyUsed = false;
         public GameObject player;
-        private Rarety raretyIndex;
 
         public int GetDurability()
         {

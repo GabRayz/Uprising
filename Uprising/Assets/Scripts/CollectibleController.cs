@@ -24,28 +24,20 @@ public class CollectibleController : MonoBehaviour {
     public Rigidbody collectible;
     private Vector3 rotation;
     public ItemType type;
-    public ItemController.Item item;
-
-    //public CollectibleController(ItemType type, int durability)
-    //{
-    //    switch (type)
-    //    {
-    //        case ItemType.SpeedBoost:
-    //            item = new ItemController.SpeedBoost(durability, null);
-    //            break;
-    //    }
-    //}
+    public ItemController.Item item = null;
+    GameObject spot = null;
 
     // Use this for initialization
     void Start () {
+        spot = this.transform.parent.gameObject.transform.parent.gameObject;
+
         collectible = GetComponent<Rigidbody>();
         rotation = new Vector3(60, 60, 60);
 
         switch (type)
         {
             case ItemType.SpeedBoost:
-                item = new ItemController.SpeedBoost(3000, null);
-                Debug.Log(item);
+                this.item = new ItemController.SpeedBoost(3000, null);
                 break;
             default:
                 Debug.LogError("This item type is not related to a class");
@@ -61,11 +53,11 @@ public class CollectibleController : MonoBehaviour {
 
     public void Collect(GameObject player)
     {
-        Debug.Log("Collecting");
         collectible.gameObject.SetActive(false);
-        player.SendMessage("GiveItem", item);
+        if (item != null)
+        {
+            spot.SendMessage("PickUp");
+            player.SendMessage("GiveItem", this.item);
+        }
     }
-
-
-
 }
