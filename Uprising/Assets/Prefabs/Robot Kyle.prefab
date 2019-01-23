@@ -26,7 +26,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.079593115, y: 0, z: -2.0962138e-17}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7196563470221534060}
   m_Father: {fileID: 1412179412}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -285,7 +286,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 2
   speedModifier: 1
-  head: {fileID: 0}
+  head: {fileID: 22296514}
 --- !u!195 &237303330
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1178,7 +1179,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22296515}
-  - {fileID: 7196563470221534060}
   m_Father: {fileID: 626551044}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1792,11 +1792,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842520069623078766}
   m_LocalRotation: {x: 0.5886507, y: -0.46719763, z: -0.51356995, w: -0.41408062}
-  m_LocalPosition: {x: -0.072, y: 0.001, z: 0}
+  m_LocalPosition: {x: 0.0075929463, y: 0.0009999414, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1412179412}
-  m_RootOrder: 1
+  m_Father: {fileID: 22296515}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -75.324005, y: -120.758, z: -150.511}
 --- !u!20 &5191914282808559304
 Camera:

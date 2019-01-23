@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq.Expressions;
 
 public class ItemSpotController : MonoBehaviour
 {
-    // public int raretyIndex;
+    public GameObject SpeedBoostPrefab;
     public int averageCoolDown;
     public Dictionary<ItemType, int> itemRaretyPairs;
     // private Game
@@ -15,6 +17,7 @@ public class ItemSpotController : MonoBehaviour
     void Start()
     {
         this.itemRaretyPairs = InitItemRaretyPairs();
+        CreateNewItem(ChooseItem());
     }
 
     // Update is called once per frame
@@ -23,54 +26,54 @@ public class ItemSpotController : MonoBehaviour
         
     }
 
+    private int GetRaretyInt(Rarety rarety, int y)
+    {
+        return (int)rarety + (int)rarety / 10 * y;
+    }
+
     private Dictionary<ItemType, int> InitItemRaretyPairs()
     {
-        itemRaretyPairs = new Dictionary<ItemType, int>();
-        itemRaretyPairs.Add(ItemType.SpeedBoost, (int)Rarety.Common);
-        itemRaretyPairs.Add(ItemType.Rifle, (int)Rarety.Common); // Fusil, arme un peu naze
-        itemRaretyPairs.Add(ItemType.MachineGun, (int)Rarety.Rare); // Mitraillette, arme bien
-        itemRaretyPairs.Add(ItemType.AssaultRifle, (int)Rarety.Special); // Fusil d'assaut, qu'elle est bien cette arme
-
         int y = (int)this.transform.position.y;
-        for(var i = 0; i < itemRaretyPairs.Count; i++) // A foreach doesnt work
-        {
-            itemRaretyPairs[(ItemType)i] += (itemRaretyPairs[(ItemType)i] / 10) * y;
-        }
+
+        // Add here all game's items
+        itemRaretyPairs = new Dictionary<ItemType, int>();
+        itemRaretyPairs.Add(ItemType.SpeedBoost, GetRaretyInt(Rarety.Common, y));
+        itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y)); // Fusil, arme un peu naze
+        itemRaretyPairs.Add(ItemType.MachineGun, GetRaretyInt(Rarety.Rare, y)); // Mitraillette, arme bien
+        itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y)); // Fusil d'assaut, qu'elle est bien cette arme
 
         return itemRaretyPairs;
     }
 
-    //private void CreateAndPlaceItem()
-    //{
-    //    ItemController.Item item = CreateNewItem(ChooseItem());
-
-    //}
-
-    private ItemController.Item CreateNewItem(ItemType type)
+    private void CreateNewItem(ItemType type)
     {
         ItemController.Item newItem = null;
+        GameObject newObject = null;
         switch (type)
         {
             case ItemType.SpeedBoost:
                 newItem = new ItemController.SpeedBoost(30000, null);
+                newObject = Instantiate(SpeedBoostPrefab, this.transform, false);
+                //newObject = Instantiate(SpeedBoostPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), this.transform);
                 break;
         }
-        return newItem;
     }
 
     private ItemType ChooseItem()
     {
-        int total = 0;
+        // return ItemType.JumpBoost;
+        int total = 0; // Get the total value of all rarety int
         foreach(var item in itemRaretyPairs)
         {
             total += item.Value;
         }
-        int score = Random.Range(1, total);
+        // Choose one
+        int score = UnityEngine.Random.Range(1, total);
         ItemType chosenType = ItemType.DefaultGun; // = null
         int stack = 0;
         foreach(var item in itemRaretyPairs)
         {
-            if (score <= item.Value && score > stack - item.Value)
+            if (score <= stack + item.Value && score > stack)
             {
                 chosenType = item.Key;
             }

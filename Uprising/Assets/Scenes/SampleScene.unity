@@ -181,6 +181,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &345238512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 22296514, guid: 3a1ab6f2483be4dcaa6dda1090a2b6c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 761928378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &390339879
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +536,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 237303329, guid: 3a1ab6f2483be4dcaa6dda1090a2b6c9, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 345238512}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a1ab6f2483be4dcaa6dda1090a2b6c9, type: 3}
 --- !u!1001 &1801158006
@@ -724,6 +734,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b256e579ce5341daa41ef09eb0a0bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpeedBoostPrefab: {fileID: 4285216452239954089, guid: 460a2f60038f14e528dc91bb307a289b,
+    type: 3}
   averageCoolDown: 0
 --- !u!1001 &3438774773224331736
 PrefabInstance:

@@ -10,22 +10,22 @@ PrefabInstance:
     - target: {fileID: 1495440023707448350, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
       propertyPath: m_Name
-      value: SpeedBoost
+      value: SpeedBoost Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5366960452372407172, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2677939
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5366960452372407172, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.02
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5366960452372407172, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5366960452372407172, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
