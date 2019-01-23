@@ -7,12 +7,12 @@ public class LoadSceneOnClick : MonoBehaviour {
 
     //public GameObject BonusPrefab;
 
-    public void LoadScene(int scene, GameObject BonusPrefab)
+    public void LoadScene(int scene)
     {
         // Application.LoadLevel(scene);
         SceneManager.LoadScene(scene);
 
-        GameObject newBonus = Instantiate(BonusPrefab, new Vector3(0, 5, 0), BonusPrefab.transform.rotation);
+        // GameObject newBonus = Instantiate(BonusPrefab, new Vector3(0, 5, 0), BonusPrefab.transform.rotation);
     }
 
     public void CreateObject(GameObject prefab)
