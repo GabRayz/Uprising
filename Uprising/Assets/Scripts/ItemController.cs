@@ -31,7 +31,7 @@ public class ItemController : MonoBehaviour
         // Called every frame
         public void Update()
         {
-            // Remove from durability the time passed since the last frame
+            // Remove from durability the time passed since the last frame.
             this.durability -= (int)(Time.deltaTime * 1000);
             if (this.durability <= 0)
             {
