@@ -7,6 +7,7 @@ public enum ItemType
     DefaultGun,
     SpeedBoost,
     JumpBoost,
+    DoubleJump,
     Shield,
     ForceField,
     Invisibility,
@@ -15,7 +16,16 @@ public enum ItemType
     AssaultRifle,
     Sniper,
     MachineGun,
-    RocketLauncher
+    RocketLauncher,
+    ShotGun,
+    Grapnel,
+    PortalGun,
+    GuidedMissile,
+    Drugs,
+    BearTrap,
+    SlimeGun,
+    Blackout,
+    Mine
 }
 
 public class CollectibleController : MonoBehaviour {

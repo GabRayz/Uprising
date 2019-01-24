@@ -37,7 +37,7 @@ public class ItemSpotController : MonoBehaviour
 
     private int GetRaretyInt(Rarety rarety, int y)
     {
-        return (int)rarety + (int)rarety / 10 * y;
+        return (int)rarety + (1 / (int)rarety) * y;
     }
 
     private Dictionary<ItemType, int> InitItemRaretyPairs()
@@ -47,9 +47,28 @@ public class ItemSpotController : MonoBehaviour
         // Add here all game's items
         itemRaretyPairs = new Dictionary<ItemType, int>();
         itemRaretyPairs.Add(ItemType.SpeedBoost, GetRaretyInt(Rarety.Common, y));
-        //itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y)); // Fusil, arme un peu naze
-        //itemRaretyPairs.Add(ItemType.MachineGun, GetRaretyInt(Rarety.Rare, y)); // Mitraillette, arme bien
-        //itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y)); // Fusil d'assaut, qu'elle est bien cette arme
+        //itemRaretyPairs.Add(ItemType.Drugs, GetRaretyInt(Rarety.Common, y));
+        //itemRaretyPairs.Add(ItemType.Grapnel, GetRaretyInt(Rarety.Common, y));
+        //itemRaretyPairs.Add(ItemType.RocketLauncher, GetRaretyInt(Rarety.Common, y));
+        //itemRaretyPairs.Add(ItemType.Shield, GetRaretyInt(Rarety.Common, y));
+        //itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y));
+        //itemRaretyPairs.Add(ItemType.BearTrap, GetRaretyInt(Rarety.Common, y));
+        //itemRaretyPairs.Add(ItemType.SlimeGun, GetRaretyInt(Rarety.Common, y));
+
+        //itemRaretyPairs.Add(ItemType.JumpBoost, GetRaretyInt(Rarety.Rare, y));
+        //itemRaretyPairs.Add(ItemType.ForceField, GetRaretyInt(Rarety.Rare, y));
+        //itemRaretyPairs.Add(ItemType.PortalGun, GetRaretyInt(Rarety.Rare, y));
+        //itemRaretyPairs.Add(ItemType.ShotGun, GetRaretyInt(Rarety.Rare, y));
+        //itemRaretyPairs.Add(ItemType.MachineGun, GetRaretyInt(Rarety.Rare, y));
+        //itemRaretyPairs.Add(ItemType.Mine, GetRaretyInt(Rarety.Rare, y));
+
+        //itemRaretyPairs.Add(ItemType.DoubleJump, GetRaretyInt(Rarety.Special, y));
+        //itemRaretyPairs.Add(ItemType.Invisibility, GetRaretyInt(Rarety.Special, y));
+        //itemRaretyPairs.Add(ItemType.GuidedMissile, GetRaretyInt(Rarety.Special, y));
+        //itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y));
+        //itemRaretyPairs.Add(ItemType.Blackout, GetRaretyInt(Rarety.Special, y));
+
+
 
         return itemRaretyPairs;
     }
