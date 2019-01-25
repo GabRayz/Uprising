@@ -49,7 +49,7 @@ public class CollectibleController : MonoBehaviour {
         switch (type)
         {
             case ItemType.SpeedBoost:
-                this.item = new ItemController.SpeedBoost(10000, null);
+                this.item = new ItemController.SpeedBoost(2000, null);
                 break;
             default:
                 Debug.LogError("This item type is not related to a class");
@@ -85,6 +85,7 @@ public class CollectibleController : MonoBehaviour {
                 spot.SendMessage("PickUp");
             }
             player.SendMessage("GiveItem", this.item);
+            Destroy(this.transform.parent.gameObject);
         }
     }
 }
