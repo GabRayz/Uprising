@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,7 +40,8 @@ public class CollectibleController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        spot = this.transform.parent.gameObject.transform.parent.gameObject;
+        // TODO
+        spot = GetSpot();
 
         collectible = GetComponent<Rigidbody>();
         rotation = new Vector3(60, 60, 60);
@@ -54,7 +56,19 @@ public class CollectibleController : MonoBehaviour {
                 break;
         }
     }
-	
+
+    private GameObject GetSpot()
+    {
+        try
+        {
+            GameObject spotGet = this.transform.parent.gameObject.transform.parent.gameObject;
+            return spotGet;
+        }catch(Exception e) {
+            Debug.LogError(e);
+            return null;
+        }
+    }
+
     private void FixedUpdate()
     {
         Quaternion deltaRot = Quaternion.Euler(rotation * Time.deltaTime);
@@ -66,7 +80,10 @@ public class CollectibleController : MonoBehaviour {
         collectible.gameObject.SetActive(false);
         if (item != null)
         {
-            spot.SendMessage("PickUp");
+            if (spot != null)
+            {
+                spot.SendMessage("PickUp");
+            }
             player.SendMessage("GiveItem", this.item);
         }
     }

@@ -31,6 +31,7 @@ public class ItemSpotController : MonoBehaviour
             {
                 CreateNewItem(ChooseItem());
                 cooldown = averageCoolDown;
+                isPickedUp = false;
             }
         }
     }
