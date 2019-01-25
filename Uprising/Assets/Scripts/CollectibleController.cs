@@ -49,7 +49,7 @@ public class CollectibleController : MonoBehaviour {
         switch (type)
         {
             case ItemType.SpeedBoost:
-                this.item = new ItemController.SpeedBoost(3000, null);
+                this.item = new ItemController.SpeedBoost(10000, null);
                 break;
             default:
                 Debug.LogError("This item type is not related to a class");

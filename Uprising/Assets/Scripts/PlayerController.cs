@@ -101,7 +101,18 @@ public class PlayerController : MonoBehaviour
     public void GiveItem(ItemController.Item item)
     {
         // Add item to inventory
-        this.Bonus1 = item;
+        if(this.Bonus1 == null)
+        {
+            this.Bonus1 = item;
+        }else if(this.Bonus2 == null)
+        {
+            this.Bonus2 = item;
+        }
+        else
+        {
+            return;
+        }
+
         item.player = this.gameObject;
         item.Use(); // This line is for testing
     }

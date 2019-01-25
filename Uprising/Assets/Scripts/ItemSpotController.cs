@@ -76,11 +76,11 @@ public class ItemSpotController : MonoBehaviour
 
     private void CreateNewItem(ItemType type)
     {
-        ItemController.Item newItem = null;
+        // ItemController.Item newItem = null;
         switch (type)
         {
             case ItemType.SpeedBoost:
-                newItem = new ItemController.SpeedBoost(30000, null);
+                // newItem = new ItemController.SpeedBoost(30000, null);
                 Instantiate(SpeedBoostPrefab, this.transform, false);
                 break;
         }
