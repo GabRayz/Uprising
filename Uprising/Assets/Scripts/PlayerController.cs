@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,11 +12,12 @@ public class PlayerController : MonoBehaviour
     public float speedModifier = 1;
     public GameObject head;
 
-    // Inventory slots
+    // Inventory slots, to be modified
     private ItemController.Item Weapon1;
     private ItemController.Item Weapon2;
     private ItemController.Item Bonus1 = null;
     private ItemController.Item Bonus2;
+    private List<ItemController.Item> appliedEffects;
 
     public float GetSpeed()
     {
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        appliedEffects = new List<ItemController.Item>();
         rb = GetComponent<Rigidbody>();
         model = rb.gameObject;
         speed = 2;
@@ -79,9 +82,9 @@ public class PlayerController : MonoBehaviour
         // transform.rotation += this.transform.right;
 
         // Update all bonuses timer
-        if (Bonus1 != null)
+        foreach(ItemController.Item effect in appliedEffects.ToList())
         {
-            (Bonus1 as ItemController.Effect).Update();
+            (effect as ItemController.Effect).Update();
         }
     }
 
@@ -101,9 +104,49 @@ public class PlayerController : MonoBehaviour
     public void GiveItem(ItemController.Item item)
     {
         // Add item to inventory
-        this.Bonus1 = item;
+
+
         item.player = this.gameObject;
-        item.Use();
+        item.Use(); // This line is for testing
+    }
+
+    public void ApplyEffect(ItemController.Item effectToApply)
+    {
+        ItemController.Item applied = appliedEffects.Find(x => x.type == effectToApply.type);
+        if(applied == null)
+        {
+            appliedEffects.Add(effectToApply);
+            switch(effectToApply.type)
+            {
+                case ItemType.SpeedBoost:
+                    ModifySpeed(1);
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            applied.durability += effectToApply.durability;
+            effectToApply = null;
+        }
+    }
+
+    public void UnApplyEffect(ItemController.Item effectToDisable)
+    {
+        ItemController.Item applied = appliedEffects.Find(x => x.type == effectToDisable.type);
+        if(applied != null)
+        {
+            appliedEffects.Remove(applied);
+            switch (effectToDisable.type)
+            {
+                case ItemType.SpeedBoost:
+                    ModifySpeed(-1);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public void ClearItem(ItemController.Item item)

@@ -12,7 +12,8 @@ public class ItemController : MonoBehaviour
 {
     public abstract class Item
     {
-        protected int durability;
+        public ItemType type;
+        public int durability;
         public bool isCurrentlyUsed = false;
         public GameObject player;
 
@@ -31,32 +32,20 @@ public class ItemController : MonoBehaviour
         // Called every frame
         public void Update()
         {
-            // Remove from durability the time passed since the last frame
+            // Remove from durability the time passed since the last frame.
             this.durability -= (int)(Time.deltaTime * 1000);
             if (this.durability <= 0)
             {
                 this.StopUsing();
-                this.player.SendMessage("ClearItem", this);
             }
-        }
-
-    }
-
-    public class SpeedBoost : Effect
-    {
-        public SpeedBoost(int time, GameObject player)
-        {
-            // time is in millisecond
-            this.durability = time;
-            this.player = player;
         }
 
         public override void Use()
         {
-            if (!isCurrentlyUsed)
+            if(!isCurrentlyUsed)
             {
                 this.isCurrentlyUsed = true;
-                this.player.SendMessage("ModifySpeed", 1);
+                this.player.SendMessage("ApplyEffect", this);
             }
         }
 
@@ -65,9 +54,38 @@ public class ItemController : MonoBehaviour
             if (isCurrentlyUsed)
             {
                 this.isCurrentlyUsed = false;
-                this.player.SendMessage("ModifySpeed", -1);
+                this.player.SendMessage("UnApplyEffect", this);
             }
         }
+    }
+
+    public class SpeedBoost : Effect
+    {
+        public SpeedBoost(int time, GameObject player)
+        {
+            this.type = ItemType.SpeedBoost;
+            // time is in millisecond
+            this.durability = time;
+            this.player = player;
+        }
+
+        //public override void Use()
+        //{
+        //    if (!isCurrentlyUsed)
+        //    {
+        //        this.isCurrentlyUsed = true;
+        //        this.player.SendMessage("ModifySpeed", 1);
+        //    }
+        //}
+
+        //protected override void StopUsing()
+        //{
+        //    if (isCurrentlyUsed)
+        //    {
+        //        this.isCurrentlyUsed = false;
+        //        this.player.SendMessage("ModifySpeed", -1);
+        //    }
+        //}
     }
 
     public abstract class Weapon : Item
