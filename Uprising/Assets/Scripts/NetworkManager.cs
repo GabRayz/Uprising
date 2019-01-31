@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -25,7 +27,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("No available room found. Creating a new one...");
-        PhotonNetwork.CreateRoom(null);
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 4;
+        PhotonNetwork.CreateRoom(null, roomOptions);
     }
 
     public override void OnJoinedRoom()
@@ -54,6 +58,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             Photon.Realtime.Room currentRoom = PhotonNetwork.CurrentRoom;
             if (currentRoom == null) return;
             matchMakingText.text = "Waiting for players... " + currentRoom.PlayerCount + "/4";
+
+            if(currentRoom.PlayerCount == 4)
+            {
+                LoadScene(1);
+            }
         }
+    }
+
+    public void LoadScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
