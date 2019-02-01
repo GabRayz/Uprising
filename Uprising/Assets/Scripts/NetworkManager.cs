@@ -41,7 +41,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         inMatchMaking = true;
         Debug.Log("Room joined");
-        Debug.Log(PhotonNetwork.MasterClient.UserId);
     }
 
     public void CancelPlay()
@@ -59,6 +58,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
+        // Check if all players are ready to start the game
         if (inMatchMaking)
         {
             Photon.Realtime.Room currentRoom = PhotonNetwork.CurrentRoom;
@@ -67,6 +67,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
             if(currentRoom.PlayerCount == MaxPlayer && PhotonNetwork.IsMasterClient)
             {
+                // All players ready, start the game
                 LoadScene(1);
             }
         }

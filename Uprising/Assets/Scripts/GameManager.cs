@@ -8,21 +8,18 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     SpawnPlayers[] spawnSpots;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Get all possible spawn points
         spawnSpots = FindObjectsOfType<SpawnPlayers>();
         SpawnPlayers();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SpawnPlayers()
     {
+        // Place the local player at the corresponding spawn point, according to his order in the list of room's players
         int i = 0;
         Player self = PhotonNetwork.LocalPlayer;
         foreach(var player in PhotonNetwork.CurrentRoom.Players)
