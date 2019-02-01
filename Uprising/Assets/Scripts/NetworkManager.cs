@@ -10,18 +10,23 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public bool inMatchMaking = false;
     public Text matchMakingText;
+    public int MaxPlayer = 4;
 
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public void PlayRandom()
     {
-        // Try to join a random room..
-        PhotonNetwork.JoinRandomRoom();
-        matchMakingText.text = "Joinning...";
+        if(PhotonNetwork.IsConnected)
+        {
+            // Try to join a random room..
+            PhotonNetwork.JoinRandomRoom();
+            matchMakingText.text = "Joinning...";
+        }
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -36,6 +41,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         inMatchMaking = true;
         Debug.Log("Room joined");
+        Debug.Log(PhotonNetwork.MasterClient.UserId);
     }
 
     public void CancelPlay()
@@ -57,9 +63,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             Photon.Realtime.Room currentRoom = PhotonNetwork.CurrentRoom;
             if (currentRoom == null) return;
-            matchMakingText.text = "Waiting for players... " + currentRoom.PlayerCount + "/4";
+            matchMakingText.text = "Waiting for players... " + currentRoom.PlayerCount + "/"+ MaxPlayer;
 
-            if(currentRoom.PlayerCount == 4)
+            if(currentRoom.PlayerCount == MaxPlayer && PhotonNetwork.IsMasterClient)
             {
                 LoadScene(1);
             }

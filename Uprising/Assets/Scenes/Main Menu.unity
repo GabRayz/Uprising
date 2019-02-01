@@ -3145,6 +3145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inMatchMaking: 0
   matchMakingText: {fileID: 1316355845}
+  MaxPlayer: 2
 --- !u!4 &1492427487
 Transform:
   m_ObjectHideFlags: 0
