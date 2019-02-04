@@ -25,6 +25,8 @@ public class ItemController : MonoBehaviour
         // Called by Player's behavior to use the item.
         public abstract void Use();
         protected abstract void StopUsing();
+        public abstract void Select(); // Display item, and apply passif effect
+        public abstract void Unselect();
     }
 
     public abstract class Effect : Item
@@ -57,6 +59,16 @@ public class ItemController : MonoBehaviour
                 this.player.SendMessage("UnApplyEffect", this);
             }
         }
+
+        public override void Select()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Unselect()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public class SpeedBoost : Effect
@@ -68,24 +80,6 @@ public class ItemController : MonoBehaviour
             this.durability = time;
             this.player = player;
         }
-
-        //public override void Use()
-        //{
-        //    if (!isCurrentlyUsed)
-        //    {
-        //        this.isCurrentlyUsed = true;
-        //        this.player.SendMessage("ModifySpeed", 1);
-        //    }
-        //}
-
-        //protected override void StopUsing()
-        //{
-        //    if (isCurrentlyUsed)
-        //    {
-        //        this.isCurrentlyUsed = false;
-        //        this.player.SendMessage("ModifySpeed", -1);
-        //    }
-        //}
     }
 
     public abstract class Weapon : Item
@@ -118,6 +112,16 @@ public class ItemController : MonoBehaviour
         protected override void StopUsing()
         {
             this.isCurrentlyUsed = false;
+        }
+
+        public override void Select()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Unselect()
+        {
+            throw new System.NotImplementedException();
         }
 
         public abstract void Aim();
