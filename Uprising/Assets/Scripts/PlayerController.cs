@@ -80,7 +80,8 @@ public class PlayerController : MonoBehaviour
 
     public void SelectItem(int index)
     {
-        if (index < 0 || index > 3) index = 0;
+        if (index < 0) index = 3;
+        if (index > 3) index = 0;
         selectedItem = index;
         Debug.Log("Select item " + index);
         if (items[index] == null) return;
@@ -95,12 +96,13 @@ public class PlayerController : MonoBehaviour
 
     private void GetInput()
     {
-        if (Input.GetButton("Select 1")) SelectItem(0);
-        if (Input.GetButton("Select 2")) SelectItem(1);
-        if (Input.GetButton("Select 3")) SelectItem(2);
-        if (Input.GetButton("Select 4")) SelectItem(3);
+        if (Input.GetButtonDown("Select 1")) SelectItem(0);
+        if (Input.GetButtonDown("Select 2")) SelectItem(1);
+        if (Input.GetButtonDown("Select 3")) SelectItem(2);
+        if (Input.GetButtonDown("Select 4")) SelectItem(3);
         if (Input.GetAxis("Mouse ScrollWheel") > 0) SelectItem((selectedItem + 1) % 4);
-        if (Input.GetAxis("Mouse ScrollWheel") < 0) SelectItem((selectedItem - 1) % 4);
+        if (Input.GetAxis("Mouse ScrollWheel") < 0) SelectItem((selectedItem - 1));
+        if(Input.inputString != "") Debug.Log(Input.inputString);
 
         // Player's movement, to be improved
         if (Input.GetKey(KeyCode.Z))
