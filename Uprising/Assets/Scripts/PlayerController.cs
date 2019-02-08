@@ -5,7 +5,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : SessionManager
 {
     // This script is to be attached to the player.
     public Rigidbody rb;
@@ -100,6 +100,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Select 2")) SelectItem(1);
         if (Input.GetButtonDown("Select 3")) SelectItem(2);
         if (Input.GetButtonDown("Select 4")) SelectItem(3);
+        //if (inputManager.GetButtonDown("select1")) SelectItem(0);
+        //if (inputManager.GetButtonDown("select2")) SelectItem(1);
+        //if (inputManager.GetButtonDown("select3")) SelectItem(2);
+        //if (inputManager.GetButtonDown("select4")) SelectItem(3);
+
         if (Input.GetAxis("Mouse ScrollWheel") > 0) SelectItem((selectedItem + 1) % 4);
         if (Input.GetAxis("Mouse ScrollWheel") < 0) SelectItem((selectedItem - 1));
         if(Input.inputString != "") Debug.Log(Input.inputString);

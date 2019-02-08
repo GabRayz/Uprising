@@ -23,29 +23,33 @@ public class InputManager
     public InputManager()
     {
         inputs = new Dictionary<string, string>();
+        LoadControlsFromConfig();
     }
 
     private void LoadControlsFromConfig()
     {
-        if(File.Exists("/Desktop/Uprising/controls.config"))
+        if (File.Exists("/Users/gabriel/Desktop/Uprising/controls.config"))
         {
-            using (StreamReader myReader = new StreamReader("/Desktop/Uprising/controls.config"))
+            using (StreamReader myReader = new StreamReader("/Users/gabriel/Desktop/Uprising/controls.config"))
             {
                 string line = myReader.ReadLine();
                 while (line != null)
                 {
                     string[] PairCommandeInput = line.Split('=');
                     inputs.Add(PairCommandeInput[0], PairCommandeInput[1]);
+                    Debug.Log("Added control : " + PairCommandeInput[0]);
                     try
                     {
                         line = myReader.ReadLine();
-                    }catch(Exception e)
+                    }
+                    catch (Exception e)
                     {
                         line = null;
                     }
                 }
             }
         }
+        else Debug.LogError("File not found");
     }
 
     public void SetControlFromString(string control, string input)
@@ -55,7 +59,7 @@ public class InputManager
 
     public void SaveControls()
     {
-        using (StreamWriter myWriter = new StreamWriter("/Desktop/Uprising/controls.config"))
+        using (StreamWriter myWriter = new StreamWriter("/Users/gabriel/Desktop/Uprising/controls.config"))
         {
             foreach(var input in inputs)
             {
