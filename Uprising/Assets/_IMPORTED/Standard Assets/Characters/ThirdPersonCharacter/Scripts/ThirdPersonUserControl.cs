@@ -19,21 +19,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // This script is to be attached to the player.
         public Rigidbody rb;
         private GameObject model;
-        public float speed = 2;
         public float speedModifier = 1;
         public PhotonView photonView;
-
-        public float GetSpeed()
-        {
-            return speed * speedModifier;
-        }
+        private InventoryManager inventory;
 
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
             photonView = GetComponent<PhotonView>();
             model = rb.gameObject;
-            speed = 2;
             speedModifier = 1;
 
             // get the transform of the main camera
@@ -50,6 +44,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
+            inventory = GetComponent<InventoryManager>();
         }
 
 
@@ -65,6 +60,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
+            GetInventoryInput();
+            GetMovement();
+        }
+
+        private void GetInventoryInput()
+        {
+            if (Input.GetButtonDown("Select 1")) inventory.SelectItem(0);
+            if (Input.GetButtonDown("Select 2")) inventory.SelectItem(1);
+            if (Input.GetButtonDown("Select 3")) inventory.SelectItem(2);
+            if (Input.GetButtonDown("Select 4")) inventory.SelectItem(3);
+
+            if (Input.GetAxis("Mouse ScrollWheel") > 0) inventory.SelectItem((inventory.GetSelectedItem() + 1) % 4);
+            if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItem() - 1));
+        }
+
+        private void GetMovement()
+        {
             // read inputs
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
@@ -78,20 +90,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 // calculate camera relative direction to move:
                 m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
-                m_Move = v*m_CamForward + h*m_Cam.right;
+                m_Move = v * m_CamForward + h * m_Cam.right;
             }
             else
             {
                 // we use world-relative directions in the case of no main camera
-                m_Move = v*Vector3.forward + h*Vector3.right;
+                m_Move = v * Vector3.forward + h * Vector3.right;
             }
 #if !MOBILE_INPUT
-			// walk speed multiplier
-	        if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
+            // walk speed multiplier
+            if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
 #endif
 
             // pass all parameters to the character control script
-            m_Character.Move(m_Move, crouch, m_Jump);
+            m_Character.Move(m_Move, crouch, m_Jump, speedModifier);
             m_Jump = false;
         }
 

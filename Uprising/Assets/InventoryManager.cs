@@ -41,6 +41,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
         }
 
+        public int GetSelectedItem()
+        {
+            return selectedItem;
+        }
+
         // Inventory Management
         public void GiveItem(ItemController.Item item)
         {
