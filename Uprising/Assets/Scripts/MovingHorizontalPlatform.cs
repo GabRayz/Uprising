@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+public class MovingHorizontalPlatform : MonoBehaviour
 {
     public float speed = 2f;
     private bool b = true;
     public Vector3 pos;
+    public Vector3 mouvement;
     private float x;
     public int distance = 10;
 
