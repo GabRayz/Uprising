@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DestroyingPlatform : MonoBehaviour
 {
-    public float speed = 5f;
+    private Rigidbody rigid;
 
     void Start()
     {
     }
-    void OnTriggerEnter (collided other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.transform.tag == "Player")
         {
