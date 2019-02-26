@@ -15,8 +15,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
         public GameObject head;
+        public float mouseSensitivity = 2;
 
-        // This script is to be attached to the player.
         public Rigidbody rb;
         private GameObject model;
         public float speedModifier = 1;
@@ -82,8 +82,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float v = Input.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
 
+            //Rotate body
+            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * mouseSensitivity, 0));
+
             // Move head
             float rotationX = head.transform.eulerAngles.x - Input.GetAxis("Mouse Y");
+
+            if(v < 0)
+            {
+                this.transform.Translate(new Vector3(0, 0, v));
+                v = 0;
+            }
 
             // calculate move direction to pass to character
             if (m_Cam != null)
