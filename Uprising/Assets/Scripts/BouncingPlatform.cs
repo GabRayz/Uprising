@@ -9,7 +9,7 @@ public class BouncingPlatform : MonoBehaviour
     void Start()
     {
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
          other.GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Acceleration);
     }

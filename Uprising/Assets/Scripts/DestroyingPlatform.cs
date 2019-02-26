@@ -11,9 +11,9 @@ public class DestroyingPlatform : MonoBehaviour
     }
     void OnCollisionEnter(Collision other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "player")
         {
-            Destroy(this, 2);
+            Destroy(this.transform.gameObject, 2);
         }
     }
 }
