@@ -81,7 +81,7 @@ public class ItemController : MonoBehaviour
             this.player = player;
         }
     }
-
+    /*
     public abstract class Weapon : Item
     {
         //
@@ -99,7 +99,7 @@ public class ItemController : MonoBehaviour
             }
         }
 
-        public override void Use() // shoot
+        public override void Use() //shoot
         {
             if (!isCurrentlyUsed)
             {
@@ -153,5 +153,5 @@ public class ItemController : MonoBehaviour
         {
             throw new System.NotImplementedException();
         }
-    }
+    }*/
 }
