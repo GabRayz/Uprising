@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BouncingPlatform : MonoBehaviour
 {
-    public float speed = 5f;
-    private Rigidbody rigid;
+    public float speed = 15f;
+
     void Start()
     {
     }
-    void OnTriggerEnter(Collider other)
+
+    void OnCollisionEnter(Collision other)
     {
-         other.GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Acceleration);
+        other.rigidbody.AddForce(Vector3.up * speed, ForceMode.Impulse);
     }
 }
