@@ -54,6 +54,24 @@ public class MovingHorizontalPlatform : MonoBehaviour
             }
         }
 
+        if (X < 0)
+        {
+            if (b)
+            {
+                transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
+                x -= Math.Abs(speed) * Time.deltaTime;
+                if (x <= X)
+                    b = false;
+            }
+            else
+            {
+                transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+                x += Math.Abs(speed) * Time.deltaTime;
+                if (x >= 0)
+                    b = true;
+            }
+        }
+
         if (Y > 0)
         {
             if (a)
@@ -68,6 +86,24 @@ public class MovingHorizontalPlatform : MonoBehaviour
                 transform.position += new Vector3(0, 0, -speed * Time.deltaTime);
                 y -= Math.Abs(speed) * Time.deltaTime;
                 if (y <= 0)
+                    a = true;
+            }
+        }
+
+        if (Y < 0)
+        {
+            if (a)
+            {
+                transform.position += new Vector3(0, 0, -speed * Time.deltaTime);
+                y -= Math.Abs(speed) * Time.deltaTime;
+                if (y <= Y)
+                    a = false;
+            }
+            else
+            {
+                transform.position += new Vector3(0, 0, speed * Time.deltaTime);
+                y += Math.Abs(speed) * Time.deltaTime;
+                if (y >= 0)
                     a = true;
             }
         }
