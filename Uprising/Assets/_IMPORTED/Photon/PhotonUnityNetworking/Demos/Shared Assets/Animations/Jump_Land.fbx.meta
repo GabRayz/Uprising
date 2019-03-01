@@ -157,7 +157,7 @@ ModelImporter:
     400148: Spine
     400150: TongueBack
     400152: TongueTip
-    7400000: Jump_Land
+    7400000: Idle_JumpDownLow_Idle
     9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
@@ -191,10 +191,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jump_Land
+      name: Idle_JumpDownLow_Idle
       takeName: _197_Idle_JumpDownLow_Idle
-      firstFrame: 187
-      lastFrame: 218
+      firstFrame: 75
+      lastFrame: 260
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -215,7 +215,7 @@ ModelImporter:
       curves: []
       events: []
       transformMask: []
-      maskType: 0
+      maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1

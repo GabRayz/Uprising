@@ -88,11 +88,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // Move head
             float rotationX = head.transform.eulerAngles.x - Input.GetAxis("Mouse Y");
 
-            if(v < 0)
-            {
-                this.transform.Translate(new Vector3(0, 0, v));
-                v = 0;
-            }
+            //if(v < 0)
+            //{
+            //    this.transform.Translate(new Vector3(0, 0, v));
+            //    v = 0;
+            //}
 
             // calculate move direction to pass to character
             if (m_Cam != null)
