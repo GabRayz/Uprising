@@ -1,14 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Item controller.
-/// Declares classes for collected item, currently in tha player's inventory.
-/// </summary>
-
-public class ItemController : MonoBehaviour
+namespace Uprising.Item
 {
     public abstract class Item
     {
@@ -44,7 +37,7 @@ public class ItemController : MonoBehaviour
 
         public override void Use()
         {
-            if(!isCurrentlyUsed)
+            if (!isCurrentlyUsed)
             {
                 this.isCurrentlyUsed = true;
                 this.player.SendMessage("ApplyEffect", this);
@@ -71,17 +64,6 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    public class SpeedBoost : Effect
-    {
-        public SpeedBoost(int time, GameObject player)
-        {
-            this.type = ItemType.SpeedBoost;
-            // time is in millisecond
-            this.durability = time;
-            this.player = player;
-        }
-    }
-    /*
     public abstract class Weapon : Item
     {
         //
@@ -126,32 +108,4 @@ public class ItemController : MonoBehaviour
 
         public abstract void Aim();
     }
-
-    public class DefaultGun : Weapon
-    {
-
-        public DefaultGun(int durability)
-        {
-            this.durability = durability;
-        }
-
-        public override void Aim()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-
-    public class MiniGun : Weapon
-    {
-
-        public MiniGun(int durability)
-        {
-            this.durability = durability;
-        }
-
-        public override void Aim()
-        {
-            throw new System.NotImplementedException();
-        }
-    }*/
 }

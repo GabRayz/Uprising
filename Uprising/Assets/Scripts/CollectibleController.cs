@@ -2,32 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum ItemType
-{
-    DefaultGun,
-    SpeedBoost,
-    JumpBoost,
-    DoubleJump,
-    Shield,
-    ForceField,
-    Invisibility,
-    Minigun,
-    Rifle,
-    AssaultRifle,
-    Sniper,
-    MachineGun,
-    RocketLauncher,
-    ShotGun,
-    Grapnel,
-    PortalGun,
-    GuidedMissile,
-    Drugs,
-    BearTrap,
-    SlimeGun,
-    Blackout,
-    Mine
-}
+using Uprising.Item;
 
 public class CollectibleController : MonoBehaviour {
 
@@ -35,7 +10,7 @@ public class CollectibleController : MonoBehaviour {
     public Rigidbody collectible;
     private Vector3 rotation;
     public ItemType type;
-    public ItemController.Item item = null;
+    public Item item = null;
     GameObject spot = null;
 
     // Use this for initialization
@@ -49,7 +24,7 @@ public class CollectibleController : MonoBehaviour {
         switch (type)
         {
             case ItemType.SpeedBoost:
-                this.item = new ItemController.SpeedBoost(2000, null);
+                this.item = new SpeedBoost(2000, null);
                 break;
             default:
                 Debug.LogError("This item type is not related to a class");
