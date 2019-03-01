@@ -60,7 +60,7 @@ public class PlayerController : SessionManager
     public void GiveItem(ItemController.Item item)
     {
         // Add item to inventory
-        if(item is ItemController.Weapon)
+        if(item is Weapon)
         {
             if (items[0] == null) items[0] = item;
             else if (items[1] == null) items[1] = item;
