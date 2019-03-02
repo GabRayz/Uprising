@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
+using Uprising.Item;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -10,20 +11,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
     [RequireComponent(typeof(PlayerController))]
     public class InventoryManager : MonoBehaviour
     {
-        private ItemController.Item Weapon1;
-        private ItemController.Item Weapon2;
-        private ItemController.Item Bonus1 = null;
-        private ItemController.Item Bonus2;
-        private ItemController.Item[] items; // 0: Primary Weapon, 1: Secondary Weapon, 2: Bonus 1, 3: Bonus 2
+        private Item Weapon1;
+        private Item Weapon2;
+        private Item Bonus1 = null;
+        private Item Bonus2;
+        private Item[] items; // 0: Primary Weapon, 1: Secondary Weapon, 2: Bonus 1, 3: Bonus 2
         private int selectedItem;
-        private List<ItemController.Item> appliedEffects;
+        private List<Item> appliedEffects;
         private ThirdPersonUserControl UserControl;
 
         // Start is called before the first frame update
         void Start()
         {
-            appliedEffects = new List<ItemController.Item>();
-            items = new ItemController.Item[4];
+            appliedEffects = new List<Item>();
+            items = new Item[4];
             UserControl = GetComponent<ThirdPersonUserControl>();
         }
 
@@ -35,9 +36,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
 
             // Update all bonuses timer
-            foreach (ItemController.Item effect in appliedEffects.ToList())
+            foreach (Item effect in appliedEffects.ToList())
             {
-                (effect as ItemController.Effect).Update();
+                (effect as Effect).Update();
             }
         }
 
@@ -47,7 +48,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
         // Inventory Management
-        public void GiveItem(ItemController.Item item)
+        public void GiveItem(Item item)
         {
             // Add item to inventory
             if (item is Weapon)
@@ -84,9 +85,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             items[selectedItem].Use();
         }
 
-        public void ApplyEffect(ItemController.Item effectToApply)
+        public void ApplyEffect(Item effectToApply)
         {
-            ItemController.Item applied = appliedEffects.Find(x => x.type == effectToApply.type);
+            Item applied = appliedEffects.Find(x => x.type == effectToApply.type);
             if (applied == null)
             {
                 appliedEffects.Add(effectToApply);
@@ -106,9 +107,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
         }
 
-        public void UnApplyEffect(ItemController.Item effectToDisable)
+        public void UnApplyEffect(Item effectToDisable)
         {
-            ItemController.Item applied = appliedEffects.Find(x => x.type == effectToDisable.type);
+            Item applied = appliedEffects.Find(x => x.type == effectToDisable.type);
             if (applied != null)
             {
                 appliedEffects.Remove(applied);
@@ -123,7 +124,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
         }
 
-        public void ClearItem(ItemController.Item item)
+        public void ClearItem(Item item)
         {
             for (var i = 0; i < items.Length; i++)
             {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Uprising.Item
 {
-    public abstract class Item
+    public abstract class Item : MonoBehaviour
     {
         public ItemType type;
         public int durability;
@@ -64,48 +64,48 @@ namespace Uprising.Item
         }
     }
 
-    public abstract class Weapon : Item
-    {
-        //
-        public Weapon()
-        {
+    //public abstract class Weapon : Item
+    //{
+    //    //
+    //    public Weapon()
+    //    {
 
-        }
+    //    }
 
-        // Called every frame
-        public void Update()
-        {
-            if (this.durability <= 0)
-            {
-                this.StopUsing();
-            }
-        }
+    //    // Called every frame
+    //    public void Update()
+    //    {
+    //        if (this.durability <= 0)
+    //        {
+    //            this.StopUsing();
+    //        }
+    //    }
 
-        public override void Use() //shoot
-        {
-            if (!isCurrentlyUsed)
-            {
-                this.durability--;
-                // ici mettre le truc pour créer bullet
-                this.isCurrentlyUsed = true;
-            }
-        }
+    //    public override void Use() //shoot
+    //    {
+    //        if (!isCurrentlyUsed)
+    //        {
+    //            this.durability--;
+    //            // ici mettre le truc pour créer bullet
+    //            this.isCurrentlyUsed = true;
+    //        }
+    //    }
 
-        protected override void StopUsing()
-        {
-            this.isCurrentlyUsed = false;
-        }
+    //    protected override void StopUsing()
+    //    {
+    //        this.isCurrentlyUsed = false;
+    //    }
 
-        public override void Select()
-        {
-            throw new System.NotImplementedException();
-        }
+    //    public override void Select()
+    //    {
+    //        throw new System.NotImplementedException();
+    //    }
 
-        public override void Unselect()
-        {
-            throw new System.NotImplementedException();
-        }
+    //    public override void Unselect()
+    //    {
+    //        throw new System.NotImplementedException();
+    //    }
 
-        public abstract void Aim();
-    }
+    //    public abstract void Aim();
+    //}
 }
