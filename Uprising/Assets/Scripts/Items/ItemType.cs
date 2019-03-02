@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Uprising.Item
+namespace Uprising.Items
 {
     public enum ItemType
     {

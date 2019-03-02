@@ -1,6 +1,6 @@
 ﻿
 using UnityEngine;
-namespace Uprising.Item
+namespace Uprising.Items
 {
     public abstract class Weapon : Item
     {

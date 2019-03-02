@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Uprising.Item
+namespace Uprising.Items
 {
     public class SpeedBoost : Effect
     {

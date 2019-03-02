@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq.Expressions;
-using Uprising.Item;
+using Uprising.Items;
 
 public class ItemSpotController : MonoBehaviour
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Uprising.Item;
+using Uprising.Items;
 
 public class Belette : MonoBehaviour
 {

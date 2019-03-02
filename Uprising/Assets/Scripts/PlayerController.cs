@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-using Uprising.Item;
+using Uprising.Items;
 
 public class PlayerController : SessionManager
 {

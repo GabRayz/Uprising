@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Uprising.Item
+namespace Uprising.Items
 {
     public class DefaultGun : Weapon
     {
