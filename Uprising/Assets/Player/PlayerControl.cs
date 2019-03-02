@@ -6,7 +6,6 @@ public class PlayerControl : MonoBehaviour
     private bool isGrounded = true;
     public int jumpsLeft = 1;
 
-
     void Start()
     {
         // The animator will just contain the forward movement for the 1st presentation
@@ -18,18 +17,18 @@ public class PlayerControl : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
-        bool forward = Input.GetKey(KeyCode.Z);
-        bool backward = Input.GetKey(KeyCode.S);
-        bool right = Input.GetKey(KeyCode.D);
-        bool left = Input.GetKey(KeyCode.Q);
+        
+        //bool forward = Input.GetKey(KeyCode.Z);
+        //bool backward = Input.GetKey(KeyCode.S);
+        //bool right = Input.GetKey(KeyCode.D);
+        //bool left = Input.GetKey(KeyCode.Q);
         bool jump = Input.GetKeyDown(KeyCode.Space);
 
         CheckGroundStatus();
 
         if (isGrounded)
         {
-            HandleGroundedMovement(forward, backward, right, left);
+            HandleGroundedMovement(moveVertical, moveHorizontal);
             //animator.SetBool("Jumping", false);
             //animator.applyRootMotion = true;
 
@@ -38,10 +37,13 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            HandleMidAirMovement(forward, backward, right, left);
+            HandleMidAirMovement(moveVertical, moveHorizontal);
             //animator.SetBool("Jumping", true);
             //animator.applyRootMotion = false;
         }
+
+        // Player rotation
+        transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
 
         if (jump && jumpsLeft > 0)
         {
@@ -52,31 +54,31 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    void HandleGroundedMovement(bool forward, bool backward, bool right, bool left)
+    void HandleGroundedMovement(float moveVertical, float moveHorizontal)
     {
         // Animator
-        if (forward) // Handle forward movement
+        if (moveVertical > 0) // Handle forward movement
         {
             animator.SetFloat("Forward", 1);
-            if (right) this.transform.Translate(this.transform.right * 2 * Time.deltaTime);
-            else if (left) this.transform.Translate(this.transform.right * -2 * Time.deltaTime);
+            if (moveHorizontal > 0) this.transform.Translate(Vector3.right * 2 * Time.deltaTime);
+            else if (moveHorizontal < 0) this.transform.Translate(Vector3.right * -2 * Time.deltaTime);
         }
 
-        else if (backward)
+        else if (moveVertical < 0)
         {
             animator.SetFloat("Forward", 0); // Set to -1 when the backward movement is added to the animator
-            if (right) this.transform.Translate(this.transform.right * 2 * Time.deltaTime);
-            else if (left) this.transform.Translate(this.transform.right * -2 * Time.deltaTime);
+            if (moveHorizontal > 0) this.transform.Translate(Vector3.right * 2 * Time.deltaTime);
+            else if (moveHorizontal < 0) this.transform.Translate(Vector3.right * -2 * Time.deltaTime);
 
-            this.transform.Translate(this.transform.forward * -5 * Time.deltaTime); // Temporary
+            this.transform.Translate(Vector3.forward * -5 * Time.deltaTime); // Temporary
         }
         else
         {
             animator.SetFloat("Forward", 0);
-            if (right) // To be replaced by Animator
-                transform.Translate(transform.right * 5 * Time.deltaTime);
-            if (left)
-                transform.Translate(transform.right * -5 * Time.deltaTime);
+            if (moveHorizontal > 0) // To be replaced by Animator
+                transform.Translate(Vector3.right * 5 * Time.deltaTime);
+            if (moveHorizontal < 0)
+                transform.Translate(Vector3.right * -5 * Time.deltaTime, Space.Self);
         }
 
         //if (right && !(forward || backward))
@@ -87,12 +89,12 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    void HandleMidAirMovement(bool forward, bool backward, bool right, bool left)
+    void HandleMidAirMovement(float moveVertical, float moveHorizontal)
     {
-        if (forward) transform.Translate(transform.forward * 5 * Time.deltaTime);
-        if (backward) transform.Translate(transform.forward * -5 * Time.deltaTime);
-        if (right) transform.Translate(transform.right * 5 * Time.deltaTime);
-        if (left) transform.Translate(transform.right * -5 * Time.deltaTime);
+        if (moveVertical > 0) transform.Translate(Vector3.forward * 5 * Time.deltaTime);
+        if (moveVertical < 0) transform.Translate(transform.forward * -5 * Time.deltaTime);
+        if (moveHorizontal > 0) transform.Translate(Vector3.right * 5 * Time.deltaTime);
+        if (moveHorizontal < 0) transform.Translate(Vector3.right * -5 * Time.deltaTime);
     }
 
     void CheckGroundStatus()
