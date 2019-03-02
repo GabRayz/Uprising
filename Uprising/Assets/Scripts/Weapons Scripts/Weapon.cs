@@ -1,7 +1,8 @@
 ﻿
 using UnityEngine;
+using Uprising.Item;
 
-public abstract class Weapon : ItemController
+public abstract class Weapon : Item
 {
     public GameObject belette;
     public GameObject weapon;
@@ -19,7 +20,7 @@ public abstract class Weapon : ItemController
     public abstract void Select(); // Display item, and apply passif effect
     public abstract void Unselect();
 
-    // Update is called once per frame
+
     public Weapon()
     {
 
@@ -51,6 +52,6 @@ public abstract class Weapon : ItemController
 
     protected void StopUsing()
     {
-        Destroy(this);
+        // Destroy(this);
     }
 }
