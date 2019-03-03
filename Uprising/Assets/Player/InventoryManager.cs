@@ -90,7 +90,7 @@ namespace Uprising.Players
         {
             Debug.Log("Apply Effect : " + effectToApply.type);
             Item applied = appliedEffects.Find(x => x.type == effectToApply.type);
-            if (applied == null)
+            if (applied == null) // If the effect is not already applied
             {
                 appliedEffects.Add(effectToApply);
                 switch (effectToApply.type)

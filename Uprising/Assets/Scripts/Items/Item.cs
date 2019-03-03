@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace Uprising.Items
 {
-    public abstract class Item : MonoBehaviour
+    public abstract class Item
     {
         public ItemType type;
         public int durability;
         public bool isCurrentlyUsed = false;
         public GameObject player;
+        public GameObject gameObject;
 
         public int GetDurability()
         {

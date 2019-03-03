@@ -52,6 +52,8 @@ namespace Uprising.Players
                 //animator.SetBool("Jumping", true);
                 //animator.applyRootMotion = false;
             }
+            // Apply current speed
+            animator.SetFloat("SpeedModifier", speedModifier / 5);
 
             // Player rotation
             transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);

@@ -17,8 +17,8 @@ public class Belette : MonoBehaviour
         this.weapon = weapon;
         this.range = range;
 
-        belette = Instantiate(belette, weapon.transform);
-        belette.GetComponent<Rigidbody>().AddForce(weapon.transform.forward * 100);
+        belette = Instantiate(belette, weapon.gameObject.transform);
+        belette.GetComponent<Rigidbody>().AddForce(weapon.gameObject.transform.forward * 100);
         distance = 0f;
         Debug.Log("Distance 0");
     }

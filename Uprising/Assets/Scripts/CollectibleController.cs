@@ -26,7 +26,7 @@ public class CollectibleController : MonoBehaviour {
         switch (type)
         {
             case ItemType.SpeedBoost:
-                //this.item = new SpeedBoost(2000, null);
+                this.item = new SpeedBoost(2000, null);
                 break;
             default:
                 Debug.LogError("This item type is not related to a class");
@@ -56,26 +56,18 @@ public class CollectibleController : MonoBehaviour {
     {
         collectible.gameObject.SetActive(false);
 
-        // Instantiate prefab of held item
-        GameObject heldItem = Instantiate(heldItemPrefab, player.GetComponent<PlayerControl>().hand.transform);
-
-        if (spot != null) spot.SendMessage("PickUp");
-        Debug.Log(heldItem.GetComponent<SpeedBoost>());
-        player.SendMessage("GiveItem", heldItem.GetComponent<SpeedBoost>() as Item);
-        Destroy(this.transform.parent.gameObject);
-
-        //if (item != null)
-        //{
-        //    if (spot != null)
-        //    {
-        //        spot.SendMessage("PickUp");
-        //    }
-        //    player.SendMessage("GiveItem", this.item);
-        //    Destroy(this.transform.parent.gameObject);
-        //}
-        //else
-        //{
-        //    Debug.LogError("Item is not defined for this CollectibleController");
-        //}
+        if (item != null)
+        {
+            if (spot != null)
+            {
+                spot.SendMessage("PickUp");
+            }
+            player.SendMessage("GiveItem", this.item);
+            Destroy(this.transform.parent.gameObject);
+        }
+        else
+        {
+            Debug.LogError("Item is not defined for this CollectibleController");
+        }
     }
 }
