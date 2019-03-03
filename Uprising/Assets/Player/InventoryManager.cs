@@ -50,6 +50,7 @@ namespace Uprising.Players
         // Inventory Management
         public void GiveItem(Item item)
         {
+            Debug.Log("Give item : " + item.type);
             // Add item to inventory
             if (item is Weapon)
             {
@@ -87,6 +88,7 @@ namespace Uprising.Players
 
         public void ApplyEffect(Item effectToApply)
         {
+            Debug.Log("Apply Effect : " + effectToApply.type);
             Item applied = appliedEffects.Find(x => x.type == effectToApply.type);
             if (applied == null)
             {
