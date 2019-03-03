@@ -8,6 +8,7 @@ namespace Uprising.Players
     {
         public Animator animator;
         public GameObject camera;
+        public GameObject hand;
         private bool isGrounded = true;
         public int jumpsLeft = 1;
         InventoryManager inventory;
@@ -55,9 +56,16 @@ namespace Uprising.Players
             // Player rotation
             transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
             // Camera rotation
-            camera.transform.parent.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * -2);
+            float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
 
+            //Limit head rotation (up and bottom)
+            if (rotationX > 180)
+                rotationX -= 360;
+            rotationX = Mathf.Clamp(rotationX, -90, 90);
+            // Apply rotation
+            camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
 
+            // Jump
             if (jump && jumpsLeft > 0)
             {
                 animator.SetFloat("Forward", 0);
@@ -65,7 +73,7 @@ namespace Uprising.Players
                 jumpsLeft--;
             }
 
-
+            // Inventory inputs
             if (Input.GetButtonDown("Select 1")) inventory.SelectItem(0);
             if (Input.GetButtonDown("Select 2")) inventory.SelectItem(1);
             if (Input.GetButtonDown("Select 3")) inventory.SelectItem(2);
