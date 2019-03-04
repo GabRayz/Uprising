@@ -11,10 +11,6 @@ namespace Uprising.Players
     [RequireComponent(typeof(PlayerControl))]
     public class InventoryManager : MonoBehaviour
     {
-        private Item Weapon1;
-        private Item Weapon2;
-        private Item Bonus1 = null;
-        private Item Bonus2;
         private Item[] items; // 0: Primary Weapon, 1: Secondary Weapon, 2: Bonus 1, 3: Bonus 2
         private int selectedItem;
         private List<Item> appliedEffects;
@@ -67,18 +63,28 @@ namespace Uprising.Players
             item.player = this.gameObject;
 
             // To delete
-            item.Use(); // This line is for testing
+            // item.Use(); // This line is for testing
         }
 
         public void SelectItem(int index)
         {
+            // Limit selecting range
             if (index < 0) index = 3;
             if (index > 3) index = 0;
+
+            Debug.Log("Select item : " + items[index]);
+
+            Debug.Log("Index: " + index);
+            Debug.Log("Previous : " + selectedItem);
+
+            // Unselect previous item, then select new one
+            if (items[selectedItem] != null)
+            {
+                Debug.Log("Unselect previous item");
+                items[selectedItem].Unselect();
+            }
             selectedItem = index;
-            Debug.Log("Select item " + index);
-            if (items[index] == null) return;
-            items[selectedItem].Unselect();
-            items[index].Select();
+            if(items[index] != null) items[index].Select();
         }
 
         public void UseSelectedItem()

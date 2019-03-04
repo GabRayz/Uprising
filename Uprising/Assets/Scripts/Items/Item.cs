@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Uprising.Players;
 
 namespace Uprising.Items
 {
@@ -8,7 +9,7 @@ namespace Uprising.Items
         public ItemType type;
         public int durability;
         public bool isCurrentlyUsed = false;
-        public GameObject player;
+        public GameObject player; // TODO : Set player as a PlayerControl instead of GameObject
         public GameObject gameObject;
 
         public int GetDurability()
@@ -19,8 +20,15 @@ namespace Uprising.Items
         // Called by Player's behavior to use the item.
         public abstract void Use();
         protected abstract void StopUsing();
-        public abstract void Select(); // Display item, and apply passif effect
-        public abstract void Unselect();
+        // Display item, and apply passif effect
+        public virtual void Select()
+        {
+            player.GetComponent<PlayerControl>().hand.transform.Find("h_"+type.ToString()).gameObject.SetActive(true);
+        }
+        public virtual void Unselect()
+        {
+            player.GetComponent<PlayerControl>().hand.transform.Find("h_" + type.ToString()).gameObject.SetActive(false);
+        }
     }
 
     public abstract class Effect : Item
@@ -42,6 +50,7 @@ namespace Uprising.Items
             {
                 this.isCurrentlyUsed = true;
                 this.player.SendMessage("ApplyEffect", this);
+                player.SendMessage("ClearItem", this as Item);
             }
         }
 
@@ -52,16 +61,6 @@ namespace Uprising.Items
                 this.isCurrentlyUsed = false;
                 this.player.SendMessage("UnApplyEffect", this);
             }
-        }
-
-        public override void Select()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Unselect()
-        {
-            throw new System.NotImplementedException();
         }
     }
 

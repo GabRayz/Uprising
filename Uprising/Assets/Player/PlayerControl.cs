@@ -75,7 +75,12 @@ namespace Uprising.Players
                 jumpsLeft--;
             }
 
-            // Inventory inputs
+            ReadInventoryInputs();
+        }
+
+        void ReadInventoryInputs()
+        {
+            // Selection
             if (Input.GetButtonDown("Select 1")) inventory.SelectItem(0);
             if (Input.GetButtonDown("Select 2")) inventory.SelectItem(1);
             if (Input.GetButtonDown("Select 3")) inventory.SelectItem(2);
@@ -83,6 +88,9 @@ namespace Uprising.Players
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0) inventory.SelectItem((inventory.GetSelectedItem() + 1) % 4);
             if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItem() - 1));
+
+            // Use an item
+            if (Input.GetButtonDown("Use Item")) inventory.UseSelectedItem();
         }
 
         void HandleGroundedMovement(float moveVertical, float moveHorizontal)
