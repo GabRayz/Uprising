@@ -7,7 +7,8 @@ namespace Uprising.Players
     public class PlayerControl : MonoBehaviour
     {
         public Animator animator;
-        public GameObject camera;
+        public new GameObject camera;
+        public Camera cam;
         public GameObject hand;
         private bool isGrounded = true;
         public int jumpsLeft = 1;
@@ -21,61 +22,68 @@ namespace Uprising.Players
             // The animator will just contain the forward movement for the 1st presentation
             animator = GetComponent<Animator>();
             inventory = GetComponent<InventoryManager>();
+            photonView = GetComponent<PhotonView>();
+            cam = camera.GetComponent<Camera>();
+            cam.enabled = false;
+            if (photonView.IsMine) cam.enabled = true;
         }
 
 
         void Update()
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            //bool forward = Input.GetKey(KeyCode.Z);
-            //bool backward = Input.GetKey(KeyCode.S);
-            //bool right = Input.GetKey(KeyCode.D);
-            //bool left = Input.GetKey(KeyCode.Q);
-            bool jump = Input.GetKeyDown(KeyCode.Space);
-
-            CheckGroundStatus();
-
-            if (isGrounded)
+            if (photonView.IsMine)
             {
-                HandleGroundedMovement(moveVertical, moveHorizontal);
-                //animator.SetBool("Jumping", false);
-                //animator.applyRootMotion = true;
+                float moveHorizontal = Input.GetAxis("Horizontal");
+                float moveVertical = Input.GetAxis("Vertical");
 
-                // Recharge the jump if needed
-                jumpsLeft = (jumpsLeft > 1) ? jumpsLeft : 1;
+                //bool forward = Input.GetKey(KeyCode.Z);
+                //bool backward = Input.GetKey(KeyCode.S);
+                //bool right = Input.GetKey(KeyCode.D);
+                //bool left = Input.GetKey(KeyCode.Q);
+                bool jump = Input.GetKeyDown(KeyCode.Space);
+
+                CheckGroundStatus();
+
+                if (isGrounded)
+                {
+                    HandleGroundedMovement(moveVertical, moveHorizontal);
+                    //animator.SetBool("Jumping", false);
+                    //animator.applyRootMotion = true;
+
+                    // Recharge the jump if needed
+                    jumpsLeft = (jumpsLeft > 1) ? jumpsLeft : 1;
+                }
+                else
+                {
+                    HandleMidAirMovement(moveVertical, moveHorizontal);
+                    //animator.SetBool("Jumping", true);
+                    //animator.applyRootMotion = false;
+                }
+                // Apply current speed
+                animator.SetFloat("SpeedModifier", speedModifier / 5);
+
+                // Player rotation
+                transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
+                // Camera rotation
+                float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
+
+                //Limit head rotation (up and bottom)
+                if (rotationX > 180)
+                    rotationX -= 360;
+                rotationX = Mathf.Clamp(rotationX, -90, 90);
+                // Apply rotation
+                camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
+
+                // Jump
+                if (jump && jumpsLeft > 0)
+                {
+                    animator.SetFloat("Forward", 0);
+                    this.GetComponent<Rigidbody>().AddForce(transform.up * 10, ForceMode.VelocityChange);
+                    jumpsLeft--;
+                }
+
+                ReadInventoryInputs();
             }
-            else
-            {
-                HandleMidAirMovement(moveVertical, moveHorizontal);
-                //animator.SetBool("Jumping", true);
-                //animator.applyRootMotion = false;
-            }
-            // Apply current speed
-            animator.SetFloat("SpeedModifier", speedModifier / 5);
-
-            // Player rotation
-            transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
-            // Camera rotation
-            float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
-
-            //Limit head rotation (up and bottom)
-            if (rotationX > 180)
-                rotationX -= 360;
-            rotationX = Mathf.Clamp(rotationX, -90, 90);
-            // Apply rotation
-            camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
-
-            // Jump
-            if (jump && jumpsLeft > 0)
-            {
-                animator.SetFloat("Forward", 0);
-                this.GetComponent<Rigidbody>().AddForce(transform.up * 10, ForceMode.VelocityChange);
-                jumpsLeft--;
-            }
-
-            ReadInventoryInputs();
         }
 
         void ReadInventoryInputs()

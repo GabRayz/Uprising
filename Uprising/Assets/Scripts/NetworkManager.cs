@@ -34,6 +34,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("No available room found. Creating a new one...");
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 4;
+        roomOptions.PublishUserId = true;
         PhotonNetwork.CreateRoom(null, roomOptions);
     }
 
