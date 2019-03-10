@@ -13,6 +13,7 @@ namespace Uprising.Players
         private bool isGrounded = true;
         public int jumpsLeft = 1;
         InventoryManager inventory;
+        public bool debugMode = false;
 
         public float speedModifier = 5;
         public PhotonView photonView;
@@ -24,14 +25,17 @@ namespace Uprising.Players
             inventory = GetComponent<InventoryManager>();
             photonView = GetComponent<PhotonView>();
             cam = camera.GetComponent<Camera>();
-            cam.enabled = false;
-            if (photonView.IsMine) cam.enabled = true;
+            if(!debugMode)
+            {
+                cam.enabled = false;
+                if (photonView.IsMine) cam.enabled = true;
+            }
         }
 
 
         void Update()
         {
-            if (photonView.IsMine)
+            if (debugMode || photonView.IsMine)
             {
                 float moveHorizontal = Input.GetAxis("Horizontal");
                 float moveVertical = Input.GetAxis("Vertical");
@@ -43,6 +47,9 @@ namespace Uprising.Players
                 bool jump = Input.GetKeyDown(KeyCode.Space);
 
                 CheckGroundStatus();
+                animator.SetBool("Grounded", isGrounded);
+                if (!isGrounded) animator.applyRootMotion = false;
+                else animator.applyRootMotion = true;
 
                 if (isGrounded)
                 {
@@ -139,7 +146,7 @@ namespace Uprising.Players
         void HandleMidAirMovement(float moveVertical, float moveHorizontal)
         {
             if (moveVertical > 0) transform.Translate(Vector3.forward * speedModifier * Time.deltaTime);
-            if (moveVertical < 0) transform.Translate(transform.forward * -speedModifier * Time.deltaTime);
+            if (moveVertical < 0) transform.Translate(Vector3.forward * -speedModifier * Time.deltaTime);
             if (moveHorizontal > 0) transform.Translate(Vector3.right * speedModifier * Time.deltaTime);
             if (moveHorizontal < 0) transform.Translate(Vector3.right * -speedModifier * Time.deltaTime);
         }
