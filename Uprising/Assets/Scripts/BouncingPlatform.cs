@@ -13,5 +13,10 @@ public class BouncingPlatform : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         other.rigidbody.AddForce(Vector3.up * speed, ForceMode.Impulse);
+
+    }
+
+    private void Update()
+    {
     }
 }

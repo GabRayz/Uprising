@@ -14,4 +14,8 @@ public class DestroyingPlatform : MonoBehaviour
         if (other.transform.tag == "player")
             Destroy(this.transform.gameObject, 2);
     }
+
+    private void Update()
+    {
+    }
 }
