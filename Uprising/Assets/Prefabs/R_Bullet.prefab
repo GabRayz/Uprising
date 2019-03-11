@@ -96,7 +96,6 @@ MonoBehaviour:
   range: 200
   belette: {fileID: 2524543093918101731}
   player: {fileID: 0}
-  weapon: {fileID: 0}
 --- !u!54 &5021347601365847555
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,7 +120,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2524543093918101731}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.014029884, y: 0.014029905, z: 0.055794902}

@@ -7,6 +7,7 @@ namespace Uprising.Players
     [RequireComponent(typeof(InventoryManager))]
     public class PlayerControl : MonoBehaviour
     {
+        public GameObject hud;
         public GameObject menu;
         public Animator animator;
         public new GameObject camera;
@@ -36,6 +37,8 @@ namespace Uprising.Players
             menu = Instantiate(menu);
             menu.SetActive(false);
             menu.GetComponent<InGameMenuController>().SetOwner(this);
+
+            hud = Instantiate(hud);
         }
 
 
