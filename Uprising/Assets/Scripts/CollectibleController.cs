@@ -29,7 +29,7 @@ public class CollectibleController : MonoBehaviour {
                 this.item = new SpeedBoost(2000, null);
                 break;
             case ItemType.DefaultGun:
-                this.item = new DefaultGun(100,100,1000,100,1000);
+                this.item = new DefaultGun(100,100,1000,100,1000, null);
                 break;
             default:
                 Debug.LogError("This item type is not related to a class");
