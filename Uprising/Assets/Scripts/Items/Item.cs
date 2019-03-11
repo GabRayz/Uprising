@@ -4,7 +4,7 @@ using Uprising.Players;
 
 namespace Uprising.Items
 {
-    public abstract class Item
+    public abstract class Item 
     {
         public ItemType type;
         public int durability;
