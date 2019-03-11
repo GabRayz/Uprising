@@ -35,7 +35,6 @@ namespace Uprising.Items
             //NewBelette.GetComponent<Rigidbody>().AddForce(this.transform.forward * 100);
 
             player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").GetComponent<belettegen>().shoot(range, durability);
-            Debug.Log("message");
 
         }
     }

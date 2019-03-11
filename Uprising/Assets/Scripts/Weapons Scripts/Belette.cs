@@ -28,6 +28,7 @@ public class Belette : MonoBehaviour
     void Update()
     {
         distance++;
+        
         if (distance > range)
         {
             Destroy(belette);
@@ -39,9 +40,8 @@ public class Belette : MonoBehaviour
     {
         if (other.transform.tag == "player")
         {
-            Debug.Log("touché");
-            other.SendMessage("Hit", this); //We also need to send the direction and the force for the propel.
-            Destroy(this);
+            //other.SendMessage("Hit", this); //We also need to send the direction and the force for the propel.
+            //Destroy(this);
         }
     }
 }

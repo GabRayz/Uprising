@@ -32,7 +32,7 @@ public class Waves : MonoBehaviour {
 		for(int i=0; i < baseHeight.Length; i++) {
 			perVertexRandoms.Add(Random.value * randomHeight);
 		}
-		if (UseSprites == true)
+		if (UseSprites)
 		{
 			StartCoroutine (SpriteAnimation ());
 		}
