@@ -1137,8 +1137,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   hand: {fileID: 246}
   jumpsLeft: 1
+  jump: 15
   debugMode: 0
-  speedModifier: 5
+  speedModifier: 6
   photonView: {fileID: 0}
 --- !u!114 &664
 MonoBehaviour:

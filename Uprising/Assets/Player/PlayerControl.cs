@@ -15,11 +15,13 @@ namespace Uprising.Players
         public GameObject hand;
         private bool isGrounded = true;
         public int jumpsLeft = 1;
+        public int jump = 700;
         InventoryManager inventory;
         public bool debugMode = false;
 
         public float speedModifier = 5;
         public PhotonView photonView;
+        Rigidbody rb;
 
         void Start()
         {
@@ -39,6 +41,7 @@ namespace Uprising.Players
             menu.GetComponent<InGameMenuController>().SetOwner(this);
 
             hud = Instantiate(hud);
+            rb = GetComponent<Rigidbody>();
         }
 
 
@@ -50,7 +53,34 @@ namespace Uprising.Players
 
                 if (!menu.activeSelf)
                 {
-                    HandleMovement();
+                    float moveHorizontal = Input.GetAxis("Horizontal");
+                    float moveVertical = Input.GetAxis("Vertical");
+
+                    this.transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
+                    this.transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
+
+                    // Player rotation
+                    transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
+                    // Camera rotation
+                    float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
+
+                    //Limit head rotation (up and bottom)
+                    if (rotationX > 180)
+                        rotationX -= 360;
+                    rotationX = Mathf.Clamp(rotationX, -90, 90);
+                    // Apply rotation
+                    camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
+
+                    // Handle jump
+                    CheckGroundStatus();
+                    if (Input.GetKeyDown(KeyCode.Space)) Debug.Log(isGrounded);
+                    if (isGrounded && jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space))
+                    {
+                        Debug.Log("Jumping");
+                        rb.AddForce(Vector3.up * jump);
+                    }
+
+                    // HandleMovement();
                     ReadInventoryInputs();
                 }
             }
