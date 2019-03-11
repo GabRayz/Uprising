@@ -24,9 +24,11 @@ public class GameManager : MonoBehaviour
         Player self = PhotonNetwork.LocalPlayer;
         foreach(var player in PhotonNetwork.CurrentRoom.Players)
         {
-            if(self.UserId == player.Value.UserId)
+            Debug.Log("Spawn player " + player.Value.UserId);
+            if (self.UserId == player.Value.UserId)
             {
-                spawnSpots[i].SendMessage("SpawnPlayer");
+                if(player.Key <= spawnSpots.Length)
+                    spawnSpots[player.Key - 1].SendMessage("SpawnPlayer");
             }
             i++;
         }

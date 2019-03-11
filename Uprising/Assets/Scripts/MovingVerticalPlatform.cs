@@ -6,7 +6,7 @@ public class MovingVerticalPlatform : MonoBehaviour
 {
     public float speed = 2f;
     private bool b = true;
-    public Vector3 pos;
+    
     private float y;
     public int height = 10;
 
@@ -32,7 +32,7 @@ public class MovingVerticalPlatform : MonoBehaviour
         if (b)
         {
             transform.position += new Vector3(0,speed * Time.deltaTime, 0);
-            if (transform.position.y >= height)
+            if (transform.position.y >= height + y)
                 b = false;
         }
         else

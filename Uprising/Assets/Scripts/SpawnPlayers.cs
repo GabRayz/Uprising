@@ -11,5 +11,6 @@ public class SpawnPlayers : MonoBehaviour
     {
         PhotonNetwork.Instantiate("Player", new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         available = false;
+        Debug.Log("Player " + PhotonNetwork.LocalPlayer.ActorNumber + " spawned");
     }
 }
