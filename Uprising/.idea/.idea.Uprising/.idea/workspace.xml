@@ -1,46 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a75f7fc-7611-459c-9906-4603cc025168" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Animations.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidCrouch.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidCrouch.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidIdle.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidIdle.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidIdleJumpUp.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidIdleJumpUp.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidJumpAndFall.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidJumpAndFall.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidMidAir.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidMidAir.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidRun.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidRun.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidRunTurn.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidRunTurn.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidRunTurnSharp.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidRunTurnSharp.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidStandTurn.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidStandTurn.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidWalk.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidWalk.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidWalkTurn.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidWalkTurn.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidWalkTurnSharp.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/HumanoidWalkTurnSharp.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Projectile.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Projectile.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Projectile_01.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Projectile_01.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Projectile_01.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Projectile_01.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BouncyDestroyablePlatform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BouncyDestroyablePlatform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DestructiblePlatform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DestructiblePlatform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MovingHorizontalDestroyablePlatform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MovingHorizontalDestroyablePlatform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MovingVerticalDestroyablePlatform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MovingVerticalDestroyablePlatform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Platform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DestroyabePlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DestroyabePlatform.cs" afterDir="false" />
-    </list>
+    <list default="true" id="7a75f7fc-7611-459c-9906-4603cc025168" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +22,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Player/PlayerControl.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-673">
-              <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="63" />
+            <state relative-caret-position="795">
+              <caret line="95" column="34" lean-forward="true" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
               <folding>
                 <marker date="1552311096461" expanded="false" signature="6:36" ph="..." />
                 <marker date="1552311096461" expanded="true" signature="64:7594" ph="{...}" />
@@ -94,22 +55,6 @@
                 <marker date="1552311096461" expanded="true" signature="7303:7478" ph="{...}" />
                 <marker date="1552311096461" expanded="true" signature="7366:7468" ph="{...}" />
                 <marker date="1552311096461" expanded="true" signature="7527:7586" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/playerMovement.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-              <folding>
-                <marker date="1552313711580" expanded="false" signature="6:78" ph="..." />
-                <marker date="1552313711580" expanded="true" signature="123:677" ph="{...}" />
-                <marker date="1552313711580" expanded="true" signature="274:295" ph="{...}" />
-                <marker date="1552313711580" expanded="true" signature="353:675" ph="{...}" />
-                <marker date="1552313711580" expanded="true" signature="623:656" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -197,7 +142,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollectibleController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/InventoryManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/playerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DestroyabePlatform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayAnimOnKeyUp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/PlayerControl.cs" root0="FORCE_HIGHLIGHTING" />
@@ -299,12 +243,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552309637116</updated>
-      <workItem from="1552309640465" duration="3443000" />
+      <workItem from="1552309640465" duration="4077000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3443000" />
+    <option name="totallyTimeSpent" value="4077000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -441,10 +385,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/playerMovement.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Player/PlayerControl.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-673">
-          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="63" />
+        <state relative-caret-position="795">
+          <caret line="95" column="34" lean-forward="true" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
           <folding>
             <marker date="1552311096461" expanded="false" signature="6:36" ph="..." />
             <marker date="1552311096461" expanded="true" signature="64:7594" ph="{...}" />
@@ -473,20 +424,6 @@
             <marker date="1552311096461" expanded="true" signature="7303:7478" ph="{...}" />
             <marker date="1552311096461" expanded="true" signature="7366:7468" ph="{...}" />
             <marker date="1552311096461" expanded="true" signature="7527:7586" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/playerMovement.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-          <folding>
-            <marker date="1552313711580" expanded="false" signature="6:78" ph="..." />
-            <marker date="1552313711580" expanded="true" signature="123:677" ph="{...}" />
-            <marker date="1552313711580" expanded="true" signature="274:295" ph="{...}" />
-            <marker date="1552313711580" expanded="true" signature="353:675" ph="{...}" />
-            <marker date="1552313711580" expanded="true" signature="623:656" ph="{...}" />
           </folding>
         </state>
       </provider>

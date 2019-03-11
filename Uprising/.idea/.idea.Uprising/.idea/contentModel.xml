@@ -413,6 +413,7 @@
           <e p="DestroyabePlatform.cs" t="Include" />
           <e p="DestroyingPlatform.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="InGameMenuController.cs" t="Include" />
           <e p="Items" t="Include">
             <e p="Item.cs" t="Include" />
             <e p="ItemType.cs" t="Include" />
@@ -424,7 +425,6 @@
           <e p="MovingVerticalPlatform.cs" t="Include" />
           <e p="NetworkManager.cs" t="Include" />
           <e p="PlayAnimOnKeyUp.cs" t="Include" />
-          <e p="playerMovement.cs" t="Include" />
           <e p="RaretyEnum.cs" t="Include" />
           <e p="SpawnPlayers.cs" t="Include" />
           <e p="Weapons Scripts" t="Include">
