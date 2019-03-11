@@ -96,7 +96,7 @@ MonoBehaviour:
   range: 200
   belette: {fileID: 2524543093918101731}
   player: {fileID: 0}
-  weapon: {fileID: 0}
+  weapon: {fileID: 2809629034713504612, guid: 119551172e2002344983c075ab97ef79, type: 3}
 --- !u!54 &5021347601365847555
 Rigidbody:
   m_ObjectHideFlags: 0

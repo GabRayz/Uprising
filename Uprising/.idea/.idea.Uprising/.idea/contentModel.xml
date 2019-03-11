@@ -344,6 +344,7 @@
             </e>
           </e>
         </e>
+        <e p="belettegen.cs" t="Include" />
         <e p="Editor Default Resources" t="Include">
           <e p="UMotionEditor" t="Include">
             <e p="Plugins" t="Include">
