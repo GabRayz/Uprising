@@ -1966,6 +1966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: h_SpeedBoost
       objectReference: {fileID: 0}
+    - target: {fileID: 1514481022, guid: 39d5e9805bdd943c09ff978d113dc291, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1514481023, guid: 39d5e9805bdd943c09ff978d113dc291, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
