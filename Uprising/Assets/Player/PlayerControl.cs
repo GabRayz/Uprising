@@ -9,7 +9,7 @@ namespace Uprising.Players
     {
         public GameObject hud;
         public GameObject menu;
-        public Animator animator;
+        // public Animator animator;
         public new GameObject camera;
         public Camera cam;
         public GameObject hand;
@@ -26,7 +26,7 @@ namespace Uprising.Players
         void Start()
         {
             // The animator will just contain the forward movement for the 1st presentation
-            animator = GetComponent<Animator>();
+            // animator = GetComponent<Animator>();
             inventory = GetComponent<InventoryManager>();
             photonView = GetComponent<PhotonView>();
             cam = camera.GetComponent<Camera>();
@@ -46,6 +46,11 @@ namespace Uprising.Players
 
 
         void Update()
+        {
+
+        }
+
+        void FixedUpdate()
         {
             if (debugMode || photonView.IsMine)
             {
@@ -73,11 +78,19 @@ namespace Uprising.Players
 
                     // Handle jump
                     CheckGroundStatus();
-                    if (Input.GetKeyDown(KeyCode.Space)) Debug.Log(isGrounded);
+
                     if (isGrounded && jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space))
                     {
                         Debug.Log("Jumping");
                         rb.AddForce(Vector3.up * jump);
+                    }
+
+                    int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
+                    if (Input.GetKeyDown(KeyCode.Space) && jumpsLeft > 0 && !isGrounded)
+                    {
+                        Debug.Log("Dashing");
+                        //rb.AddForce(400, 0, 0);
+                        rb.AddForce(Vector3.forward * jump);
                     }
 
                     // HandleMovement();
@@ -101,60 +114,60 @@ namespace Uprising.Players
             SceneManager.LoadScene(0);
         }
 
-        void HandleMovement()
-        {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
+        //void HandleMovement()
+        //{
+        //    float moveHorizontal = Input.GetAxis("Horizontal");
+        //    float moveVertical = Input.GetAxis("Vertical");
 
-            //bool forward = Input.GetKey(KeyCode.Z);
-            //bool backward = Input.GetKey(KeyCode.S);
-            //bool right = Input.GetKey(KeyCode.D);
-            //bool left = Input.GetKey(KeyCode.Q);
-            bool jump = Input.GetKeyDown(KeyCode.Space);
+        //    //bool forward = Input.GetKey(KeyCode.Z);
+        //    //bool backward = Input.GetKey(KeyCode.S);
+        //    //bool right = Input.GetKey(KeyCode.D);
+        //    //bool left = Input.GetKey(KeyCode.Q);
+        //    bool jump = Input.GetKeyDown(KeyCode.Space);
 
-            CheckGroundStatus();
-            animator.SetBool("Grounded", isGrounded);
-            if (!isGrounded) animator.applyRootMotion = false;
-            else animator.applyRootMotion = true;
+        //    CheckGroundStatus();
+        //    animator.SetBool("Grounded", isGrounded);
+        //    if (!isGrounded) animator.applyRootMotion = false;
+        //    else animator.applyRootMotion = true;
 
-            if (isGrounded)
-            {
-                HandleGroundedMovement(moveVertical, moveHorizontal);
-                //animator.SetBool("Jumping", false);
-                //animator.applyRootMotion = true;
+        //    if (isGrounded)
+        //    {
+        //        HandleGroundedMovement(moveVertical, moveHorizontal);
+        //        //animator.SetBool("Jumping", false);
+        //        //animator.applyRootMotion = true;
 
-                // Recharge the jump if needed
-                jumpsLeft = (jumpsLeft > 1) ? jumpsLeft : 1;
-            }
-            else
-            {
-                HandleMidAirMovement(moveVertical, moveHorizontal);
-                //animator.SetBool("Jumping", true);
-                //animator.applyRootMotion = false;
-            }
-            // Apply current speed
-            animator.SetFloat("SpeedModifier", speedModifier / 5);
+        //        // Recharge the jump if needed
+        //        jumpsLeft = (jumpsLeft > 1) ? jumpsLeft : 1;
+        //    }
+        //    else
+        //    {
+        //        HandleMidAirMovement(moveVertical, moveHorizontal);
+        //        //animator.SetBool("Jumping", true);
+        //        //animator.applyRootMotion = false;
+        //    }
+        //    // Apply current speed
+        //    animator.SetFloat("SpeedModifier", speedModifier / 5);
 
-            // Player rotation
-            transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
-            // Camera rotation
-            float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
+        //    // Player rotation
+        //    transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
+        //    // Camera rotation
+        //    float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
 
-            //Limit head rotation (up and bottom)
-            if (rotationX > 180)
-                rotationX -= 360;
-            rotationX = Mathf.Clamp(rotationX, -90, 90);
-            // Apply rotation
-            camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
+        //    //Limit head rotation (up and bottom)
+        //    if (rotationX > 180)
+        //        rotationX -= 360;
+        //    rotationX = Mathf.Clamp(rotationX, -90, 90);
+        //    // Apply rotation
+        //    camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
 
-            // Jump
-            if (jump && jumpsLeft > 0)
-            {
-                animator.SetFloat("Forward", 0);
-                this.GetComponent<Rigidbody>().AddForce(transform.up * 10, ForceMode.VelocityChange);
-                jumpsLeft--;
-            }
-        }
+        //    // Jump
+        //    if (jump && jumpsLeft > 0)
+        //    {
+        //        animator.SetFloat("Forward", 0);
+        //        this.GetComponent<Rigidbody>().AddForce(transform.up * 10, ForceMode.VelocityChange);
+        //        jumpsLeft--;
+        //    }
+        //}
 
         void ReadInventoryInputs()
         {
@@ -171,48 +184,48 @@ namespace Uprising.Players
             if (Input.GetButtonDown("Use Item")) inventory.UseSelectedItem();
         }
 
-        void HandleGroundedMovement(float moveVertical, float moveHorizontal)
-        {
-            // Animator
-            if (moveVertical > 0) // Handle forward movement
-            {
-                animator.SetFloat("Forward", 1);
-                if (moveHorizontal > 0) this.transform.Translate(Vector3.right * speedModifier /2 * Time.deltaTime);
-                else if (moveHorizontal < 0) this.transform.Translate(Vector3.right * -speedModifier /2 * Time.deltaTime);
-            }
+        //void HandleGroundedMovement(float moveVertical, float moveHorizontal)
+        //{
+        //    // Animator
+        //    if (moveVertical > 0) // Handle forward movement
+        //    {
+        //        animator.SetFloat("Forward", 1);
+        //        if (moveHorizontal > 0) this.transform.Translate(Vector3.right * speedModifier /2 * Time.deltaTime);
+        //        else if (moveHorizontal < 0) this.transform.Translate(Vector3.right * -speedModifier /2 * Time.deltaTime);
+        //    }
 
-            else if (moveVertical < 0)
-            {
-                animator.SetFloat("Forward", 0); // Set to -1 when the backward movement is added to the animator
-                if (moveHorizontal > 0) this.transform.Translate(Vector3.right * speedModifier /2 * Time.deltaTime);
-                else if (moveHorizontal < 0) this.transform.Translate(Vector3.right * -speedModifier /2 * Time.deltaTime);
+        //    else if (moveVertical < 0)
+        //    {
+        //        animator.SetFloat("Forward", 0); // Set to -1 when the backward movement is added to the animator
+        //        if (moveHorizontal > 0) this.transform.Translate(Vector3.right * speedModifier /2 * Time.deltaTime);
+        //        else if (moveHorizontal < 0) this.transform.Translate(Vector3.right * -speedModifier /2 * Time.deltaTime);
 
-                this.transform.Translate(Vector3.forward * -5 * Time.deltaTime); // Temporary
-            }
-            else
-            {
-                animator.SetFloat("Forward", 0);
-                if (moveHorizontal > 0) // To be replaced by Animator
-                    transform.Translate(Vector3.right * speedModifier * Time.deltaTime);
-                if (moveHorizontal < 0)
-                    transform.Translate(Vector3.right * -speedModifier * Time.deltaTime, Space.Self);
-            }
+        //        this.transform.Translate(Vector3.forward * -5 * Time.deltaTime); // Temporary
+        //    }
+        //    else
+        //    {
+        //        animator.SetFloat("Forward", 0);
+        //        if (moveHorizontal > 0) // To be replaced by Animator
+        //            transform.Translate(Vector3.right * speedModifier * Time.deltaTime);
+        //        if (moveHorizontal < 0)
+        //            transform.Translate(Vector3.right * -speedModifier * Time.deltaTime, Space.Self);
+        //    }
 
-            //if (right && !(forward || backward))
-            //    animator.SetFloat("Strafe", 1);
-            //else if (left && !(forward || backward))
-            //    animator.SetFloat("Strafe", -1);
-            //else animator.SetFloat("Strafe", 0);
+        //    //if (right && !(forward || backward))
+        //    //    animator.SetFloat("Strafe", 1);
+        //    //else if (left && !(forward || backward))
+        //    //    animator.SetFloat("Strafe", -1);
+        //    //else animator.SetFloat("Strafe", 0);
 
-        }
+        //}
 
-        void HandleMidAirMovement(float moveVertical, float moveHorizontal)
-        {
-            if (moveVertical > 0) transform.Translate(Vector3.forward * speedModifier * Time.deltaTime);
-            if (moveVertical < 0) transform.Translate(Vector3.forward * -speedModifier * Time.deltaTime);
-            if (moveHorizontal > 0) transform.Translate(Vector3.right * speedModifier * Time.deltaTime);
-            if (moveHorizontal < 0) transform.Translate(Vector3.right * -speedModifier * Time.deltaTime);
-        }
+        //void HandleMidAirMovement(float moveVertical, float moveHorizontal)
+        //{
+        //    if (moveVertical > 0) transform.Translate(Vector3.forward * speedModifier * Time.deltaTime);
+        //    if (moveVertical < 0) transform.Translate(Vector3.forward * -speedModifier * Time.deltaTime);
+        //    if (moveHorizontal > 0) transform.Translate(Vector3.right * speedModifier * Time.deltaTime);
+        //    if (moveHorizontal < 0) transform.Translate(Vector3.right * -speedModifier * Time.deltaTime);
+        //}
 
         void CheckGroundStatus()
         {
