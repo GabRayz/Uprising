@@ -1,12 +1,149 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Uprising</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <h1>It works!</h1>
-</body>
+    <head>
+        <title>Uprising</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <!-- Bandeau en haut de page, avec liens de navigations -->
+        <header id="mainHeader">
+            <div id="header_align">
+                <div id="header_leftBlock">
+                    <!-- Uprising img -->
+                    <a href="#" id="title_link"><img src="/assets/img/uprising.png"/></a>
+                </div>
+                <div id="header_rightBlock">
+                    <ul id="navBar">
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#aboutFrame">About</a></li>
+                        <li><a href="#teamFrame">Team</a></li>
+                        <li><a href="#contactFrame">Contact us</a></li>
+                    </ul>
+                    <!-- Nav bar -->
+                </div>
+            </div>
+        </header>
+        <section id="mainFrame">
+            <div id="mainFrame_centerBlock">
+                <div id="mainFrame_topBlock">
+                    <img src="/assets/img/uprising.png" />
+                </div>
+                <div id="mainFrame_bottomBlock">
+                    <div id="playButton_bg"><a href="#" id="playButton"></a></div>
+
+                    <!-- <a><img src="/assets/img/play.png"></a> -->
+                </div>
+            </div>
+        </section>
+        <section id="aboutFrame">
+            <div class="section_center">
+                <header class="section_header">
+                    <h2 class="section_title">ABOUT</h2>
+                </header>
+                <article>
+                    <strong>Uprising</strong> is a first person shooter game, which goals is to jump
+                    from platforms to platforms to get to the top of the map, and to shoot the other
+                    players to make them fall. The last player remaining wins. This game aims to be
+                    <strong>simple</strong> and <strong>easy</strong> to play.
+                </article>
+            </div>
+        </section>
+        <section id="teamFrame">
+            <div class="section_center">
+                <header class="section_header">
+                    <h3 class="section_subtitle">LES CROISILLONS</h3>
+                    <h2 class="section_title">OUR TEAM</h2>
+                </header>
+                <div id="membersList">
+                    <div class="member_box">
+                        <img src="/assets/img/profil_empty.png" />
+                        <h4>Tony</h4>
+                        <article>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ante
+                            erat, elementum vel ante et, eleifend aliquet augue. Sed eget nisi ex.
+                            Etiam sollicitudin faucibus velit, pulvinar mattis ipsum tempus ac.
+                            Quisque varius viverra sapien, nec scelerisque orci sodales eget.
+                        </article>
+                    </div>
+                    <div class="member_box">
+                        <img src="/assets/img/profil_empty.png" />
+                        <h4>Gabriel</h4>
+                        <article>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ante
+                            erat, elementum vel ante et, eleifend aliquet augue. Sed eget nisi ex.
+                            Etiam sollicitudin faucibus velit, pulvinar mattis ipsum tempus ac.
+                            Quisque varius viverra sapien, nec scelerisque orci sodales eget.
+                        </article>
+                    </div>
+                    <div class="member_box">
+                        <img src="/assets/img/profil_empty.png" />
+                        <h4>Marius</h4>
+                        <article>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ante
+                            erat, elementum vel ante et, eleifend aliquet augue. Sed eget nisi ex.
+                            Etiam sollicitudin faucibus velit, pulvinar mattis ipsum tempus ac.
+                            Quisque varius viverra sapien, nec scelerisque orci sodales eget.
+                        </article>
+                    </div>
+                    <div class="member_box">
+                        <img src="/assets/img/profil_empty.png" />
+                        <h4>Nathan</h4>
+                        <article>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ante
+                            erat, elementum vel ante et, eleifend aliquet augue. Sed eget nisi ex.
+                            Etiam sollicitudin faucibus velit, pulvinar mattis ipsum tempus ac.
+                            Quisque varius viverra sapien, nec scelerisque orci sodales eget.
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contactFrame">
+            <div class="section_center">
+                <header class="section_header">
+                    <h2 class="section_title">CONTACT US</h2>
+                </header>
+            </div>
+        </section>
+        <footer id="mainFooter">
+            <div id="mainFooter_leftBlock">
+                2019 - Uprising - Les Croisillons
+            </div>
+            <div id="mainFooter_rightBlock">
+                <ul id="mainFooter_shareLinks">
+                    <li>
+                        <a><img src="/assets/img/twitter.png"/></a>
+                    </li>
+                    <li>
+                        <a><img src="/assets/img/instagram.png"/></a>
+                    </li>
+                    <li>
+                        <a><img src="/assets/img/facebook.png"/></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        <script type="text/javascript">
+            let header = document.getElementById('mainHeader');
+
+            document.body.onscroll = e => {
+                let range = document.body.scrollTop / 400;
+                header.style.backgroundColor = 'rgba(40, 40, 40, ' + range + ')';
+            };
+
+            let playButton = document.getElementById('playButton');
+            playButton.addEventListener('mouseenter', function(e) {
+                document.getElementById('playButton_bg').style.backgroundImage =
+                    'url(/assets/img/play_hover.png)';
+            });
+            playButton.addEventListener('mouseleave', function(e) {
+                document.getElementById('playButton_bg').style.backgroundImage =
+                    'url(/assets/img/play.png)';
+            });
+            playButton.addEventListener('click', function(e) {
+                document.getElementById('playButton_bg').style.backgroundImage =
+                    'url(/assets/img/play_clic.png)';
+            });
+        </script>
+    </body>
 </html>
