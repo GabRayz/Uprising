@@ -1,0 +1,23 @@
+{
+  "name": "uprising",
+  "version": "1.0.0",
+  "description": "A game where you shoot belettes to make others fall in the péridotite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GabRayz/Projet-S2.git"
+  },
+  "author": "Crosillons Gang",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/GabRayz/Projet-S2/issues"
+  },
+  "homepage": "https://github.com/GabRayz/Projet-S2#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}
