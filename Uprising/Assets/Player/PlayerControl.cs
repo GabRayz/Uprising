@@ -11,7 +11,7 @@ namespace Uprising.Players
         public Camera cam;
         public GameObject hand;
         private bool isGrounded = true;
-        public int jumpsLeft = 1;
+        public int jumpsLeft = 2;
         InventoryManager inventory;
         public bool debugMode = false;
 
@@ -58,7 +58,7 @@ namespace Uprising.Players
                     //animator.applyRootMotion = true;
 
                     // Recharge the jump if needed
-                    jumpsLeft = (jumpsLeft > 1) ? jumpsLeft : 1;
+                    jumpsLeft = (jumpsLeft > 2) ? jumpsLeft : 2;
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace Uprising.Players
                 if (jump && jumpsLeft > 0)
                 {
                     animator.SetFloat("Forward", 0);
-                    this.GetComponent<Rigidbody>().AddForce(transform.up * 10, ForceMode.VelocityChange);
+                    this.GetComponent<Rigidbody>().AddForce(transform.up * 8, ForceMode.VelocityChange);
                     jumpsLeft--;
                 }
 
