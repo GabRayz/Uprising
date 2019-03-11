@@ -32,7 +32,6 @@ public class Belette : MonoBehaviour
         {
             Destroy(belette);
         }
-        Debug.Log("Disance" + distance);
 
     }
 

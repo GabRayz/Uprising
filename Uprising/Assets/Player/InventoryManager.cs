@@ -51,25 +51,24 @@ namespace Uprising.Players
             if (item is Weapon)
             {
                 items[1] = item;
-                playerControl.hud.transform.Find("Slot2 Weapon").Find(item.type.ToString()).gameObject.SetActive(true);
+                // playerControl.hud.transform.Find("Slot2 Weapon").Find(item.type.ToString()).gameObject.SetActive(true);
             }
             else
             {
                 if (items[2] == null)
                 {
                     items[2] = item;
-                    playerControl.hud.transform.Find("Slot3 Item").Find(item.type.ToString()).gameObject.SetActive(true);
+                    //playerControl.hud.transform.Find("Slot3 Item").Find(item.type.ToString()).gameObject.SetActive(true);
                     Debug.Log(playerControl.hud.transform.Find("Slot3 Item"));
                 }
                 else if (items[3] == null)
                 {
                     items[3] = item;
-                    playerControl.hud.transform.Find("Slot4 Item").Find(item.type.ToString()).gameObject.SetActive(true);
+                    // playerControl.hud.transform.Find("Slot4 Item").Find(item.type.ToString()).gameObject.SetActive(true);
                 }
                 else items[(selectedItem < 2) ? 2 : selectedItem] = item;
             }
-            item.player = this.gameObject;
-
+            item.player = playerControl.gameObject;
 
         }
 
@@ -81,17 +80,14 @@ namespace Uprising.Players
 
             Debug.Log("Select item : " + items[index]);
 
-            Debug.Log("Index: " + index);
-            Debug.Log("Previous : " + selectedItem);
-
             // Unselect previous item, then select new one
             if (items[selectedItem] != null)
             {
-                Debug.Log("Unselect previous item");
                 items[selectedItem].Unselect();
             }
             selectedItem = index;
             if(items[index] != null) items[index].Select();
+            Debug.Log(items[index] != null);
         }
 
         public void UseSelectedItem()
