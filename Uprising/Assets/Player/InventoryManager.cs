@@ -50,20 +50,26 @@ namespace Uprising.Players
             // Add item to inventory
             if (item is Weapon)
             {
-                if (items[0] == null) items[0] = item;
-                else if (items[1] == null) items[1] = item;
-                else items[(selectedItem > 1) ? 0 : selectedItem] = item;
+                items[1] = item;
+                playerControl.hud.transform.Find("Slot2 Weapon").Find(item.type.ToString()).gameObject.SetActive(true);
             }
             else
             {
-                if (items[2] == null) items[2] = item;
-                else if (items[3] == null) items[3] = item;
+                if (items[2] == null)
+                {
+                    items[2] = item;
+                    playerControl.hud.transform.Find("Slot1 Item").Find(item.type.ToString()).gameObject.SetActive(true);
+                }
+                else if (items[3] == null)
+                {
+                    items[3] = item;
+                    playerControl.hud.transform.Find("Slot2 Item").Find(item.type.ToString()).gameObject.SetActive(true);
+                }
                 else items[(selectedItem < 2) ? 2 : selectedItem] = item;
             }
             item.player = this.gameObject;
 
-            // To delete
-            // item.Use(); // This line is for testing
+
         }
 
         public void SelectItem(int index)
