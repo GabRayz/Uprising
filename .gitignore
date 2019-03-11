@@ -98,3 +98,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Website
+node_modules
+Web/client/dist
