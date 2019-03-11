@@ -1,12 +1,10 @@
 ﻿using Photon.Pun;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Uprising.Players
 {
     [RequireComponent(typeof(InventoryManager))]
-    public class PlayerControl : MonoBehaviour
-    {
+    public class PlayerControl : MonoBehaviour {
         public GameObject menu;
         public GameObject hud;
         public Animator animator;
@@ -46,83 +44,59 @@ namespace Uprising.Players
         {
             if (debugMode || photonView.IsMine)
             {
-                if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
+                float moveHorizontal = Input.GetAxis("Horizontal");
+                float moveVertical = Input.GetAxis("Vertical");
 
-                if (!menu.activeSelf)
+                //bool forward = Input.GetKey(KeyCode.Z);
+                //bool backward = Input.GetKey(KeyCode.S);
+                //bool right = Input.GetKey(KeyCode.D);
+                //bool left = Input.GetKey(KeyCode.Q);
+                bool jump = Input.GetKeyDown(KeyCode.Space);
+
+                CheckGroundStatus();
+                animator.SetBool("Grounded", isGrounded);
+                if (!isGrounded) animator.applyRootMotion = false;
+                else animator.applyRootMotion = true;
+
+                if (isGrounded)
                 {
-                    HandleMovement();
-                    ReadInventoryInputs();
+                    HandleGroundedMovement(moveVertical, moveHorizontal);
+                    //animator.SetBool("Jumping", false);
+                    //animator.applyRootMotion = true;
+
+                    // Recharge the jump if needed
+                    jumpsLeft = (jumpsLeft > 1) ? jumpsLeft : 1;
                 }
-            }
-        }
+                else
+                {
+                    HandleMidAirMovement(moveVertical, moveHorizontal);
+                    //animator.SetBool("Jumping", true);
+                    //animator.applyRootMotion = false;
+                }
+                // Apply current speed
+                animator.SetFloat("SpeedModifier", speedModifier / 5);
 
-        void ToggleMenu()
-        {
-            Debug.Log(menu);
-            menu.SetActive(!menu.activeSelf);
-        }
+                // Player rotation
+                transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
+                // Camera rotation
+                float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
 
-        public void Quit()
-        {
-            if (!debugMode)
-            {
-                PhotonNetwork.LeaveRoom();
-            }
-            SceneManager.LoadScene(0);
-        }
+                //Limit head rotation (up and bottom)
+                if (rotationX > 180)
+                    rotationX -= 360;
+                rotationX = Mathf.Clamp(rotationX, -90, 90);
+                // Apply rotation
+                camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
 
-        void HandleMovement()
-        {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
+                // Jump
+                if (jump && jumpsLeft > 0)
+                {
+                    animator.SetFloat("Forward", 0);
+                    this.GetComponent<Rigidbody>().AddForce(transform.up * 10, ForceMode.VelocityChange);
+                    jumpsLeft--;
+                }
 
-            //bool forward = Input.GetKey(KeyCode.Z);
-            //bool backward = Input.GetKey(KeyCode.S);
-            //bool right = Input.GetKey(KeyCode.D);
-            //bool left = Input.GetKey(KeyCode.Q);
-            bool jump = Input.GetKeyDown(KeyCode.Space);
-
-            CheckGroundStatus();
-            animator.SetBool("Grounded", isGrounded);
-            if (!isGrounded) animator.applyRootMotion = false;
-            else animator.applyRootMotion = true;
-
-            if (isGrounded)
-            {
-                HandleGroundedMovement(moveVertical, moveHorizontal);
-                //animator.SetBool("Jumping", false);
-                //animator.applyRootMotion = true;
-
-                // Recharge the jump if needed
-                jumpsLeft = (jumpsLeft > 1) ? jumpsLeft : 1;
-            }
-            else
-            {
-                HandleMidAirMovement(moveVertical, moveHorizontal);
-                //animator.SetBool("Jumping", true);
-                //animator.applyRootMotion = false;
-            }
-            // Apply current speed
-            animator.SetFloat("SpeedModifier", speedModifier / 5);
-
-            // Player rotation
-            transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
-            // Camera rotation
-            float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
-
-            //Limit head rotation (up and bottom)
-            if (rotationX > 180)
-                rotationX -= 360;
-            rotationX = Mathf.Clamp(rotationX, -90, 90);
-            // Apply rotation
-            camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
-
-            // Jump
-            if (jump && jumpsLeft > 0)
-            {
-                animator.SetFloat("Forward", 0);
-                this.GetComponent<Rigidbody>().AddForce(transform.up * 10, ForceMode.VelocityChange);
-                jumpsLeft--;
+                ReadInventoryInputs();
             }
         }
 
