@@ -344,6 +344,7 @@
             </e>
           </e>
         </e>
+        <e p="belettegen.cs" t="Include" />
         <e p="Editor Default Resources" t="Include">
           <e p="UMotionEditor" t="Include">
             <e p="Plugins" t="Include">
@@ -398,10 +399,6 @@
         <e p="NathanTest" t="Include">
           <e p="TestPlayerController.cs" t="Include" />
         </e>
-        <e p="Player" t="Include">
-          <e p="InventoryManager.cs" t="Include" />
-          <e p="PlayerControl.cs" t="Include" />
-        </e>
         <e p="Raw Mocap Data" t="Include">
           <e p="Animations" t="Include">
             <e p="_CompleteAnimationList.txt" t="Include" />
@@ -409,15 +406,11 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="BouncingPlatform.cs" t="Include" />
-          <e p="CollectibleController.cs" t="Include" />
           <e p="DestroyabePlatform.cs" t="Include" />
           <e p="DestroyingPlatform.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
-          <e p="InGameMenuController.cs" t="Include" />
           <e p="Items" t="Include">
-            <e p="Item.cs" t="Include" />
             <e p="ItemType.cs" t="Include" />
-            <e p="SpeedBoost.cs" t="Include" />
           </e>
           <e p="ItemSpotController.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
@@ -425,6 +418,7 @@
           <e p="MovingVerticalPlatform.cs" t="Include" />
           <e p="NetworkManager.cs" t="Include" />
           <e p="PlayAnimOnKeyUp.cs" t="Include" />
+          <e p="PlayerControl.cs" t="Include" />
           <e p="RaretyEnum.cs" t="Include" />
           <e p="SpawnPlayers.cs" t="Include" />
           <e p="Weapons Scripts" t="Include">
