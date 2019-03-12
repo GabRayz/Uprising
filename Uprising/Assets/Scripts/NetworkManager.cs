@@ -10,7 +10,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public bool inMatchMaking = false;
     public Text matchMakingText;
-    public int MaxPlayer = 4;
+    public int MaxPlayer = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("No available room found. Creating a new one...");
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 4;
+        roomOptions.MaxPlayers = (byte)MaxPlayer;
         roomOptions.PublishUserId = true;
         PhotonNetwork.CreateRoom(null, roomOptions);
     }

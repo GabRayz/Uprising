@@ -8,6 +8,7 @@ using Uprising.Items;
 public class ItemSpotController : MonoBehaviour
 {
     public GameObject SpeedBoostPrefab;
+    public GameObject DefaultGunPrefab;
     public int averageCoolDown;
     public Dictionary<ItemType, int> itemRaretyPairs;
     private int cooldown;
@@ -49,6 +50,7 @@ public class ItemSpotController : MonoBehaviour
         // Add here all game's items
         itemRaretyPairs = new Dictionary<ItemType, int>();
         itemRaretyPairs.Add(ItemType.SpeedBoost, GetRaretyInt(Rarety.Common, y));
+        itemRaretyPairs.Add(ItemType.DefaultGun, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.Drugs, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.Grapnel, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.RocketLauncher, GetRaretyInt(Rarety.Common, y));
@@ -81,8 +83,10 @@ public class ItemSpotController : MonoBehaviour
         switch (type)
         {
             case ItemType.SpeedBoost:
-                // newItem = new ItemController.SpeedBoost(30000, null);
                 Instantiate(SpeedBoostPrefab, this.transform, false);
+                break;
+            case ItemType.DefaultGun:
+                Instantiate(DefaultGunPrefab, this.transform, false);
                 break;
         }
     }

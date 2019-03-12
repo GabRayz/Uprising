@@ -137,4 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedBoostPrefab: {fileID: 4285216452239954089, guid: 460a2f60038f14e528dc91bb307a289b,
     type: 3}
+  DefaultGunPrefab: {fileID: 2377627481622142320, guid: d04b9ebfb218b4e66b3ce2db1cc16462,
+    type: 3}
   averageCoolDown: 5000
