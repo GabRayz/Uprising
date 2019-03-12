@@ -347,7 +347,6 @@
             </e>
           </e>
         </e>
-        <e p="belettegen.cs" t="Include" />
         <e p="Editor Default Resources" t="Include">
           <e p="UMotionEditor" t="Include">
             <e p="Plugins" t="Include">
@@ -434,6 +433,7 @@
           <e p="SpawnPlayers.cs" t="Include" />
           <e p="Weapons Scripts" t="Include">
             <e p="Belette.cs" t="Include" />
+            <e p="belettegen.cs" t="Include" />
             <e p="DefaultGun.cs" t="Include" />
             <e p="hit.cs" t="Include" />
             <e p="Weapon.cs" t="Include" />
