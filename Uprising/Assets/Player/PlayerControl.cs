@@ -15,7 +15,7 @@ namespace Uprising.Players
         public GameObject hand;
         private bool isGrounded = true;
         public int jumpsLeft = 2;
-        public int jump = 1200;
+        public int jump = 900;
         public float dash = 1200f;
         private bool isDashing = false;
         public float dashTime = 0.2f;
