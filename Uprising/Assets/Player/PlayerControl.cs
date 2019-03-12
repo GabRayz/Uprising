@@ -23,6 +23,10 @@ namespace Uprising.Players
         public PhotonView photonView;
         Rigidbody rb;
 
+        // Dash variables
+        int dashTime = 100;
+        bool dashing = false;
+
         void Start()
         {
             // The animator will just contain the forward movement for the 1st presentation
@@ -86,11 +90,25 @@ namespace Uprising.Players
                     }
 
                     int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
-                    if (Input.GetKeyDown(KeyCode.Space) && jumpsLeft > 0 && !isGrounded)
+                    if (Input.GetKeyDown(KeyCode.Space) && jumpsLeft > 0 && !isGrounded && !dashing)
                     {
                         Debug.Log("Dashing");
                         //rb.AddForce(400, 0, 0);
-                        rb.AddForce(Vector3.forward * jump);
+                        dashing = true;
+                        dashTime = 50;
+                    }
+                    if(dashing)
+                    {
+                        rb.AddForce(transform.forward * jump, ForceMode.Acceleration);
+                        dashTime--;
+                        if(dashTime <= 0)
+                        {
+                            dashing = false;
+                        }
+                    }
+                    if(dashing && isGrounded)
+                    {
+                        dashing = false;
                     }
 
                     // HandleMovement();
