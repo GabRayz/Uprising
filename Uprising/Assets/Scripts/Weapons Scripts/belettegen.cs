@@ -8,6 +8,6 @@ public class belettegen : MonoBehaviour
     public void shoot(float range, int durability)
     {
         GameObject NewBelette = Instantiate(belette, this.gameObject.transform.position, this.gameObject.transform.rotation);
-        NewBelette.GetComponent<Rigidbody>().AddForce(this.gameObject.transform.forward * 1000);
+        NewBelette.GetComponent<Rigidbody>().AddForce(this.gameObject.transform.forward * 10000);
     }
 }
