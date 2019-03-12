@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
     <head>
         <title>Uprising</title>
         <meta charset="utf-8" />
+        <script src="/assets/game/TemplateData/UnityProgress.js"></script>
+        <script src="/assets/game/Build/UnityLoader.js"></script>
     </head>
     <body>
         <!-- Bandeau en haut de page, avec liens de navigations -->
@@ -123,28 +125,5 @@
                 </ul>
             </div>
         </footer>
-        <script type="text/javascript">
-            let header = document.getElementById('mainHeader');
-
-            document.body.onscroll = e => {
-                let range = document.scrollingElement.scrollTop / 400;
-
-                header.style.backgroundColor = 'rgba(40, 40, 40, ' + range + ')';
-            };
-
-            let playButton = document.getElementById('playButton');
-            playButton.addEventListener('mouseenter', e => {
-                document.getElementById('playButton_bg').style.backgroundImage =
-                    'url(/assets/img/play_hover.png)';
-            });
-            playButton.addEventListener('mouseleave', e => {
-                document.getElementById('playButton_bg').style.backgroundImage =
-                    'url(/assets/img/play.png)';
-            });
-            playButton.addEventListener('click', e => {
-                document.getElementById('playButton_bg').style.backgroundImage =
-                    'url(/assets/img/play_clic.png)';
-            });
-        </script>
     </body>
 </html>
