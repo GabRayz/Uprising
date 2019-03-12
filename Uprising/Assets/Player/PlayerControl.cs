@@ -20,7 +20,7 @@ namespace Uprising.Players
         private bool isGrounded = true;
         public int jumpsLeft = 2;
         public int jump = 900;
-        public float dash = 1200f;
+        public float dash = 800f;
         private bool isDashing = false;
         public float dashTime = 0.3f;
         InventoryManager inventory;
@@ -133,7 +133,7 @@ namespace Uprising.Players
                         {
                             dashTime = 0.3f;
                             isDashing = false;
-                            dash = 1200f;
+                            dash = 800f;
                         }
                         rb.AddForce(transform.forward*dash);
                         dashTime -= Time.deltaTime;
