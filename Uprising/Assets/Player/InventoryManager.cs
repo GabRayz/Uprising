@@ -50,8 +50,22 @@ namespace Uprising.Players
             // Add item to inventory
             if (item is Weapon)
             {
-                items[1] = item;
-                // playerControl.hud.transform.Find("Slot2 Weapon").Find(item.type.ToString()).gameObject.SetActive(true);
+                Debug.Log(items[0]);
+                if(items[0] == null)
+                {
+                    items[0] = item;
+                    playerControl.hudWeapon1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                }
+                else if(items[1] == null)
+                {
+                    items[1] = item;
+                    playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                }
+                else
+                {
+                    items[1] = item;
+                    playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                }
             }
             else
             {
@@ -65,7 +79,21 @@ namespace Uprising.Players
                     items[3] = item;
                     playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
-                else items[(selectedItem < 2) ? 2 : selectedItem] = item;
+                else if (selectedItem == 2)
+                {
+                    items[2] = item;
+                    playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                }
+                else if (selectedItem == 3)
+                {
+                    items[3] = item;
+                    playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                }
+                else
+                {
+                    items[2] = item;
+                    playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                }
             }
             item.player = playerControl.gameObject;
 
