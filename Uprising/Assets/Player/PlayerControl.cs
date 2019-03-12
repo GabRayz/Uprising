@@ -67,6 +67,12 @@ namespace Uprising.Players
         {
             if (debugMode || photonView.IsMine)
             {
+                if(this.transform.position.y < -10)
+                {
+                    this.transform.SetPositionAndRotation(new Vector3(0, 20f, 0), Quaternion.identity);
+                }
+
+
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
 
                 if (!menu.activeSelf)
@@ -99,18 +105,18 @@ namespace Uprising.Players
 
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        if (jumpsLeft == 2)
+                        if(jumpsLeft == 2 && isGrounded)
                         {
                             Debug.Log("Jumping");
                             rb.AddForce(Vector3.up * jump);
                             jumpsLeft--;
                         }
-                        else if (jumpsLeft == 1)
+                        else if(jumpsLeft >= 1 && !isGrounded)
                         {
                             Debug.Log("Dashing");
                             //rb.AddForce(400, 0, 0);
                             jumpsLeft--;
-                            isDashing = true; 
+                            isDashing = true;
                         }
                     }
 
@@ -267,11 +273,11 @@ namespace Uprising.Players
             RaycastHit hitInfo;
 #if UNITY_EDITOR
             // helper to visualise the ground check ray in the scene view
-            Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.1f));
+            Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.15f), Color.white);
 #endif
             // 0.1f is a small offset to start the ray from inside the character
             // it is also good to note that the transform position in the sample assets is at the base of the character
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.1f))
+            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.15f))
             {
                 // m_GroundNormal = hitInfo.normal;
                 isGrounded = true;

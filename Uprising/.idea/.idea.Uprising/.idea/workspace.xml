@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a75f7fc-7611-459c-9906-4603cc025168" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Uprising/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Uprising/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Resources/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,38 +36,39 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Player/PlayerControl.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="124" column="36" selection-start-line="124" selection-start-column="36" selection-end-line="124" selection-end-column="36" />
+            <state relative-caret-position="-60">
+              <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
               <folding>
-                <marker date="1552403520422" expanded="false" signature="6:71" ph="..." />
-                <marker date="1552403520422" expanded="true" signature="99:11785" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="197:11783" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="1039:2153" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="1062:1193" ph="/* The animator will just contain the forward movement for the 1st presentation ... */" />
-                <marker date="1552403520422" expanded="true" signature="1380:1504" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="2177:2198" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="2226:5020" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="2284:5010" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="2405:4996" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="3591:3674" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="3732:4316" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="3798:4001" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="4050:4294" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="4489:4874" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="4554:4739" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="5047:5142" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="5170:5328" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="5208:5279" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="5338:7588" ph="/* void HandleMovement() ... */" />
-                <marker date="1552403520422" expanded="true" signature="7624:8302" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="8312:10568" ph="/* void HandleGroundedMovement(float moveVertical, float moveHorizontal) ... */" />
-                <marker date="1552403520422" expanded="true" signature="10602:11441" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="10891:11079" ph="/* 0.1f is a small offset to start the ray from inside the character ... */" />
-                <marker date="1552403520422" expanded="true" signature="11187:11302" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="11319:11431" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="11494:11669" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="11557:11659" ph="{...}" />
-                <marker date="1552403520422" expanded="true" signature="11718:11777" ph="{...}" />
+                <marker date="1552424271934" expanded="false" signature="6:71" ph="..." />
+                <marker date="1552424271934" expanded="true" signature="99:12020" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="197:12018" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="1039:2153" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="1062:1193" ph="/* The animator will just contain the forward movement for the 1st presentation ... */" />
+                <marker date="1552424271934" expanded="true" signature="1380:1504" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="2177:2198" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="2226:5240" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="2284:5230" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="2350:2490" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="2599:5216" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="3785:3868" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="3926:4536" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="4005:4208" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="4271:4514" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="4709:5094" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="4774:4959" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="5267:5362" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="5390:5548" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="5428:5499" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="5558:7808" ph="/* void HandleMovement() ... */" />
+                <marker date="1552424271934" expanded="true" signature="7844:8522" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="8532:10788" ph="/* void HandleGroundedMovement(float moveVertical, float moveHorizontal) ... */" />
+                <marker date="1552424271934" expanded="true" signature="10822:11676" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="11125:11313" ph="/* 0.1f is a small offset to start the ray from inside the character ... */" />
+                <marker date="1552424271934" expanded="true" signature="11422:11537" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="11554:11666" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="11729:11904" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="11792:11894" ph="{...}" />
+                <marker date="1552424271934" expanded="true" signature="11953:12012" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -380,12 +385,12 @@
       <updated>1552309637116</updated>
       <workItem from="1552309640465" duration="4077000" />
       <workItem from="1552346482571" duration="2736000" />
-      <workItem from="1552381393806" duration="11442000" />
+      <workItem from="1552381393806" duration="11508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18255000" />
+    <option name="totallyTimeSpent" value="18321000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -659,38 +664,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Player/PlayerControl.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="124" column="36" selection-start-line="124" selection-start-column="36" selection-end-line="124" selection-end-column="36" />
+        <state relative-caret-position="-60">
+          <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
           <folding>
-            <marker date="1552403520422" expanded="false" signature="6:71" ph="..." />
-            <marker date="1552403520422" expanded="true" signature="99:11785" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="197:11783" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="1039:2153" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="1062:1193" ph="/* The animator will just contain the forward movement for the 1st presentation ... */" />
-            <marker date="1552403520422" expanded="true" signature="1380:1504" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="2177:2198" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="2226:5020" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="2284:5010" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="2405:4996" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="3591:3674" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="3732:4316" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="3798:4001" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="4050:4294" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="4489:4874" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="4554:4739" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="5047:5142" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="5170:5328" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="5208:5279" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="5338:7588" ph="/* void HandleMovement() ... */" />
-            <marker date="1552403520422" expanded="true" signature="7624:8302" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="8312:10568" ph="/* void HandleGroundedMovement(float moveVertical, float moveHorizontal) ... */" />
-            <marker date="1552403520422" expanded="true" signature="10602:11441" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="10891:11079" ph="/* 0.1f is a small offset to start the ray from inside the character ... */" />
-            <marker date="1552403520422" expanded="true" signature="11187:11302" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="11319:11431" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="11494:11669" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="11557:11659" ph="{...}" />
-            <marker date="1552403520422" expanded="true" signature="11718:11777" ph="{...}" />
+            <marker date="1552424271934" expanded="false" signature="6:71" ph="..." />
+            <marker date="1552424271934" expanded="true" signature="99:12020" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="197:12018" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="1039:2153" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="1062:1193" ph="/* The animator will just contain the forward movement for the 1st presentation ... */" />
+            <marker date="1552424271934" expanded="true" signature="1380:1504" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="2177:2198" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="2226:5240" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="2284:5230" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="2350:2490" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="2599:5216" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="3785:3868" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="3926:4536" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="4005:4208" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="4271:4514" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="4709:5094" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="4774:4959" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="5267:5362" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="5390:5548" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="5428:5499" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="5558:7808" ph="/* void HandleMovement() ... */" />
+            <marker date="1552424271934" expanded="true" signature="7844:8522" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="8532:10788" ph="/* void HandleGroundedMovement(float moveVertical, float moveHorizontal) ... */" />
+            <marker date="1552424271934" expanded="true" signature="10822:11676" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="11125:11313" ph="/* 0.1f is a small offset to start the ray from inside the character ... */" />
+            <marker date="1552424271934" expanded="true" signature="11422:11537" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="11554:11666" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="11729:11904" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="11792:11894" ph="{...}" />
+            <marker date="1552424271934" expanded="true" signature="11953:12012" ph="{...}" />
           </folding>
         </state>
       </provider>
