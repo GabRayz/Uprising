@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BouncingPlatform : MonoBehaviour
 {
-    public float speed = 45f;
+    public float speed = 30f;
 
     void Start()
     {
