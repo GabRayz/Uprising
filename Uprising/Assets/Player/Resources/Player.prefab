@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 462}
   - component: {fileID: 612}
   - component: {fileID: 606}
-  - component: {fileID: 608}
+  - component: {fileID: 8603862665969008574}
   - component: {fileID: 663}
   - component: {fileID: 664}
   - component: {fileID: 666}
@@ -1105,8 +1105,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &608
-BoxCollider:
+--- !u!136 &8603862665969008574
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1115,9 +1115,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Radius: 0.26
+  m_Height: 1.73
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.88, z: 0}
 --- !u!114 &663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1132,7 +1133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hud: {fileID: 108471466543664036, guid: f7fb7b837a78d7443976ee5334ecc642, type: 3}
   menu: {fileID: 76131320254727907, guid: 3c0a4d7734119446b8df8164ab5cbc1b, type: 3}
-  animator: {fileID: 0}
   camera: {fileID: 280}
   cam: {fileID: 0}
   hand: {fileID: 246}

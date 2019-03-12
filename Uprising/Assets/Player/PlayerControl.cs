@@ -8,17 +8,26 @@ namespace Uprising.Players
     public class PlayerControl : MonoBehaviour
     {
         public GameObject hud;
+        public GameObject hudWeapon1;
+        public GameObject hudWeapon2;
+        public GameObject hudBonus1;
+        public GameObject hudBonus2;
         public GameObject menu;
         // public Animator animator;
         public new GameObject camera;
         public Camera cam;
         public GameObject hand;
         private bool isGrounded = true;
-        public int jumpsLeft = 1;
-        public int jump = 700;
+        public int jumpsLeft = 2;
+        public int jump = 900;
+        public float dash = 1200f;
+        private bool isDashing = false;
+        public float dashTime = 0.2f;
         InventoryManager inventory;
         public bool debugMode = false;
 
+        private Vector3 dashvector;
+        
         public float speedModifier = 5;
         public PhotonView photonView;
         Rigidbody rb;
@@ -41,6 +50,10 @@ namespace Uprising.Players
             menu.GetComponent<InGameMenuController>().SetOwner(this);
 
             hud = Instantiate(hud);
+            hudWeapon1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot1 Weapon").gameObject;
+            hudWeapon2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot2 Weapon").gameObject;
+            hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
+            hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
             rb = GetComponent<Rigidbody>();
         }
 
@@ -58,6 +71,7 @@ namespace Uprising.Players
 
                 if (!menu.activeSelf)
                 {
+                    CheckGroundStatus();
                     float moveHorizontal = Input.GetAxis("Horizontal");
                     float moveVertical = Input.GetAxis("Vertical");
 
@@ -77,22 +91,42 @@ namespace Uprising.Players
                     camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
 
                     // Handle jump
-                    CheckGroundStatus();
-
-                    if (isGrounded && jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space))
+                    
+                    if (isGrounded)
                     {
-                        Debug.Log("Jumping");
-                        rb.AddForce(Vector3.up * jump);
+                        jumpsLeft = 2;
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        if (jumpsLeft == 2)
+                        {
+                            Debug.Log("Jumping");
+                            rb.AddForce(Vector3.up * jump);
+                            jumpsLeft--;
+                        }
+                        else if (jumpsLeft == 1)
+                        {
+                            Debug.Log("Dashing");
+                            //rb.AddForce(400, 0, 0);
+                            jumpsLeft--;
+                            isDashing = true; 
+                        }
                     }
 
                     int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
-                    if (Input.GetKeyDown(KeyCode.Space) && jumpsLeft > 0 && !isGrounded)
+                    
+                    if (isDashing)
                     {
-                        Debug.Log("Dashing");
-                        //rb.AddForce(400, 0, 0);
-                        rb.AddForce(Vector3.forward * jump);
+                        if (dashTime < 0)
+                        {
+                            dashTime = 0.2f;
+                            isDashing = false;
+                        }
+                        rb.AddForce(transform.forward*dash);
+                        dashTime -= Time.deltaTime;
                     }
-
+                   
                     // HandleMovement();
                     ReadInventoryInputs();
                 }

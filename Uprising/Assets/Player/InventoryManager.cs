@@ -58,13 +58,12 @@ namespace Uprising.Players
                 if (items[2] == null)
                 {
                     items[2] = item;
-                    //playerControl.hud.transform.Find("Slot3 Item").Find(item.type.ToString()).gameObject.SetActive(true);
-                    Debug.Log(playerControl.hud.transform.Find("Slot3 Item"));
+                    playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
                 else if (items[3] == null)
                 {
                     items[3] = item;
-                    // playerControl.hud.transform.Find("Slot4 Item").Find(item.type.ToString()).gameObject.SetActive(true);
+                    playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
                 else items[(selectedItem < 2) ? 2 : selectedItem] = item;
             }

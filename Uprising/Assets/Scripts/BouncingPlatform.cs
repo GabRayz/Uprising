@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BouncingPlatform : MonoBehaviour
 {
-    public float speed = 15f;
+    public float speed = 30f;
 
     void Start()
     {
@@ -13,7 +13,6 @@ public class BouncingPlatform : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         other.rigidbody.AddForce(Vector3.up * speed, ForceMode.Impulse);
-
     }
 
     private void Update()
