@@ -8,6 +8,10 @@ namespace Uprising.Players
     public class PlayerControl : MonoBehaviour
     {
         public GameObject hud;
+        public GameObject hudWeapon1;
+        public GameObject hudWeapon2;
+        public GameObject hudBonus1;
+        public GameObject hudBonus2;
         public GameObject menu;
         // public Animator animator;
         public new GameObject camera;
@@ -46,6 +50,10 @@ namespace Uprising.Players
             menu.GetComponent<InGameMenuController>().SetOwner(this);
 
             hud = Instantiate(hud);
+            hudWeapon1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot1 Weapon").gameObject;
+            hudWeapon2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot2 Weapon").gameObject;
+            hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
+            hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
             rb = GetComponent<Rigidbody>();
         }
 
