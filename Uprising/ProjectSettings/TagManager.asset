@@ -8,6 +8,7 @@ TagManager:
   - player
   - Bullet
   - Spawn
+  - belette
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ namespace Uprising.Players
         public int jump = 900;
         public float dash = 1200f;
         private bool isDashing = false;
-        public float dashTime = 0.2f;
+        public float dashTime = 0.3f;
         InventoryManager inventory;
         public bool debugMode = false;
         private Vector3 move;
@@ -117,11 +117,12 @@ namespace Uprising.Players
                     int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
                     
                     if (isDashing)
-                    {
+                    { 
                         if (dashTime < 0)
                         {
-                            dashTime = 0.2f;
+                            dashTime = 0.3f;
                             isDashing = false;
+                            dash = 1200f;
                         }
                         rb.AddForce(transform.forward*dash);
                         dashTime -= Time.deltaTime;

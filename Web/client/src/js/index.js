@@ -23,7 +23,6 @@ playButton.addEventListener('click', e => {
 });
 
 playButton.onclick = e => {
-    console.log('click');
     while (document.body.firstChild) {
         document.body.removeChild(document.body.firstChild);
     }
