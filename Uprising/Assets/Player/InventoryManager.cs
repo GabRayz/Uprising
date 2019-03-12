@@ -141,6 +141,9 @@ namespace Uprising.Players
             {
                 if (items[i] == item)
                 {
+                    if (i == 1) playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(false);
+                    if (i == 2) playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(false);
+                    if (i == 3) playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(false);
                     if (i == selectedItem) items[i].Unselect();
                     items[i] = null;
                     return;

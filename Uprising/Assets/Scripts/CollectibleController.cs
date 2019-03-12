@@ -21,7 +21,7 @@ public class CollectibleController : MonoBehaviour {
         spot = GetSpot();
 
         collectible = GetComponent<Rigidbody>();
-        rotation = new Vector3(60, 60, 60);
+
 
         switch (type)
         {
@@ -34,6 +34,15 @@ public class CollectibleController : MonoBehaviour {
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;
+        }
+
+        if(item is Weapon)
+        {
+            rotation = new Vector3(0, 60, 0);
+        }
+        else
+        {
+            rotation = new Vector3(60, 60, 60);
         }
     }
 
