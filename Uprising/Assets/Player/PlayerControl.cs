@@ -16,9 +16,12 @@ namespace Uprising.Players
         private bool isGrounded = true;
         public int jumpsLeft = 1;
         public int jump = 700;
+        public float dash = 0f;
         InventoryManager inventory;
         public bool debugMode = false;
 
+        private Vector3 dashvector;
+        
         public float speedModifier = 5;
         public PhotonView photonView;
         Rigidbody rb;
@@ -90,7 +93,8 @@ namespace Uprising.Players
                     {
                         Debug.Log("Dashing");
                         //rb.AddForce(400, 0, 0);
-                        rb.AddForce(Vector3.forward * jump);
+                        dashvector = new Vector3(Mathf.Sin(transform.rotation.y), 0f, Mathf.Cos(transform.rotation.y));
+                        rb.AddForce(dashvector*dash, ForceMode.Impulse);
                     }
 
                     // HandleMovement();
