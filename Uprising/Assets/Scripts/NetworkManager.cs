@@ -11,12 +11,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public bool inMatchMaking = false;
     public Text matchMakingText;
     public int MaxPlayer = 2;
+    public GameObject playButton;
+
 
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.AutomaticallySyncScene = true;
+        matchMakingText.text = "Connecting to server...";
+    }
+
+    public override void OnConnected()
+    {
+        matchMakingText.text = "";
+        playButton.SetActive(true);
     }
 
     public void PlayRandom()
@@ -26,6 +35,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             // Try to join a random room..
             PhotonNetwork.JoinRandomRoom();
             matchMakingText.text = "Joinning...";
+        }
+        else
+        {
+            matchMakingText.text = "Connecting to server...";
+            PlayRandom();
         }
     }
 

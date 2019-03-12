@@ -1037,7 +1037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &503794000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1415,7 +1415,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 849998033}
-  - {fileID: 1316355844}
   m_Father: {fileID: 2064753349}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2799,13 +2798,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 638649615}
-  m_RootOrder: 1
+  m_Father: {fileID: 2064753349}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -252, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -252, y: 52.000004}
+  m_SizeDelta: {x: -80, y: -340}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1316355845
 MonoBehaviour:
@@ -2840,7 +2839,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Loading...
+  m_Text: 
 --- !u!222 &1316355846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3381,6 +3380,7 @@ MonoBehaviour:
   inMatchMaking: 0
   matchMakingText: {fileID: 1316355845}
   MaxPlayer: 2
+  playButton: {fileID: 503793999}
 --- !u!4 &1492427487
 Transform:
   m_ObjectHideFlags: 0
@@ -4563,6 +4563,7 @@ RectTransform:
   - {fileID: 2069449313}
   - {fileID: 638649615}
   - {fileID: 375941594}
+  - {fileID: 1316355844}
   m_Father: {fileID: 1114065351}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
