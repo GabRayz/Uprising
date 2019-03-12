@@ -99,18 +99,18 @@ namespace Uprising.Players
 
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        if (jumpsLeft == 2)
+                        if(isGrounded && jumpsLeft > 0)
                         {
                             Debug.Log("Jumping");
                             rb.AddForce(Vector3.up * jump);
                             jumpsLeft--;
                         }
-                        else if (jumpsLeft == 1)
+                        else if(!isGrounded && jumpsLeft > 0)
                         {
                             Debug.Log("Dashing");
                             //rb.AddForce(400, 0, 0);
                             jumpsLeft--;
-                            isDashing = true; 
+                            isDashing = true;
                         }
                     }
 
