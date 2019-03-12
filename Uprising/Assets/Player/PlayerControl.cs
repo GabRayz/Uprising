@@ -16,16 +16,15 @@ namespace Uprising.Players
         private bool isGrounded = true;
         public int jumpsLeft = 1;
         public int jump = 700;
+        public float dash = 0f;
         InventoryManager inventory;
         public bool debugMode = false;
 
+        private Vector3 dashvector;
+        
         public float speedModifier = 5;
         public PhotonView photonView;
         Rigidbody rb;
-
-        // Dash variables
-        int dashTime = 100;
-        bool dashing = false;
 
         void Start()
         {
@@ -82,38 +81,21 @@ namespace Uprising.Players
 
                     // Handle jump
                     CheckGroundStatus();
-                    if (isGrounded) jumpsLeft = (jumpsLeft > 2) ? jumpsLeft : 2;
+
                     if (isGrounded && jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space))
                     {
                         Debug.Log("Jumping");
                         rb.AddForce(Vector3.up * jump);
-                        jumpsLeft--;
                     }
 
                     int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
-                    if (Input.GetKeyDown(KeyCode.Space) && jumpsLeft > 0 && !isGrounded && !dashing)
+                    if (Input.GetKeyDown(KeyCode.Space) && jumpsLeft > 0 && !isGrounded)
                     {
                         Debug.Log("Dashing");
                         //rb.AddForce(400, 0, 0);
-                        dashing = true;
-                        dashTime = 50;
-                        jumpsLeft--;
+                        dashvector = new Vector3(Mathf.Sin(transform.rotation.y), 0f, Mathf.Cos(transform.rotation.y));
+                        rb.AddForce(dashvector*dash, ForceMode.Impulse);
                     }
-                    if(dashing)
-                    {
-                        rb.AddForce(transform.forward * jump, ForceMode.Acceleration);
-                        dashTime--;
-                        if(dashTime <= 0)
-                        {
-                            dashing = false;
-                        }
-                    }
-                    if(dashing && isGrounded)
-                    {
-                        dashing = false;
-                    }
-
-
 
                     // HandleMovement();
                     ReadInventoryInputs();
