@@ -25,7 +25,7 @@ namespace Uprising.Players
         public float dashTime = 0.2f;
         InventoryManager inventory;
         public bool debugMode = false;
-
+        private Vector3 move;
         private Vector3 dashvector;
         
         public float speedModifier = 5;
