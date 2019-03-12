@@ -14,9 +14,11 @@ namespace Uprising.Players
         public Camera cam;
         public GameObject hand;
         private bool isGrounded = true;
-        public int jumpsLeft = 1;
+        public int jumpsLeft = 2;
         public int jump = 700;
-        public float dash = 0f;
+        public float dash = 1200f;
+        private bool isDashing = false;
+        public float dashTime = 0.2f;
         InventoryManager inventory;
         public bool debugMode = false;
 
@@ -61,6 +63,7 @@ namespace Uprising.Players
 
                 if (!menu.activeSelf)
                 {
+                    CheckGroundStatus();
                     float moveHorizontal = Input.GetAxis("Horizontal");
                     float moveVertical = Input.GetAxis("Vertical");
 
@@ -80,23 +83,42 @@ namespace Uprising.Players
                     camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
 
                     // Handle jump
-                    CheckGroundStatus();
-
-                    if (isGrounded && jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space))
+                    
+                    if (isGrounded)
                     {
-                        Debug.Log("Jumping");
-                        rb.AddForce(Vector3.up * jump);
+                        jumpsLeft = 2;
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        if (jumpsLeft == 2)
+                        {
+                            Debug.Log("Jumping");
+                            rb.AddForce(Vector3.up * jump);
+                            jumpsLeft--;
+                        }
+                        else if (jumpsLeft == 1)
+                        {
+                            Debug.Log("Dashing");
+                            //rb.AddForce(400, 0, 0);
+                            jumpsLeft--;
+                            isDashing = true; 
+                        }
                     }
 
                     int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
-                    if (Input.GetKeyDown(KeyCode.Space) && jumpsLeft > 0 && !isGrounded)
+                    
+                    if (isDashing)
                     {
-                        Debug.Log("Dashing");
-                        //rb.AddForce(400, 0, 0);
-                        dashvector = new Vector3(Mathf.Sin(transform.rotation.y), 0f, Mathf.Cos(transform.rotation.y));
-                        rb.AddForce(dashvector*dash, ForceMode.Impulse);
+                        if (dashTime < 0)
+                        {
+                            dashTime = 0.2f;
+                            isDashing = false;
+                        }
+                        rb.AddForce(transform.forward*dash);
+                        dashTime -= Time.deltaTime;
                     }
-
+                   
                     // HandleMovement();
                     ReadInventoryInputs();
                 }
