@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a75f7fc-7611-459c-9906-4603cc025168" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Resources/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map 1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Uprising/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Uprising/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/DestroyabePlatform.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
                 <marker date="1552338248370" expanded="false" signature="6:78" ph="..." />
                 <marker date="1552338248370" expanded="true" signature="127:510" ph="{...}" />
@@ -36,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Player/PlayerControl.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-60">
-              <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
+            <state relative-caret-position="300">
+              <caret line="122" column="115" lean-forward="true" selection-start-line="122" selection-start-column="115" selection-end-line="122" selection-end-column="115" />
               <folding>
                 <marker date="1552424271934" expanded="false" signature="6:71" ph="..." />
                 <marker date="1552424271934" expanded="true" signature="99:12020" ph="{...}" />
@@ -78,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/MovingHorizontalPlatform.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-569">
-              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding>
                 <marker date="1551444918031" expanded="false" signature="6:92" ph="..." />
                 <marker date="1551444918031" expanded="true" signature="147:2828" ph="{...}" />
@@ -385,12 +380,12 @@
       <updated>1552309637116</updated>
       <workItem from="1552309640465" duration="4077000" />
       <workItem from="1552346482571" duration="2736000" />
-      <workItem from="1552381393806" duration="11508000" />
+      <workItem from="1552381393806" duration="12285000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18321000" />
+    <option name="totallyTimeSpent" value="19098000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -607,7 +602,7 @@
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/MovingHorizontalPlatform.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-569">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding>
             <marker date="1551444918031" expanded="false" signature="6:92" ph="..." />
             <marker date="1551444918031" expanded="true" signature="147:2828" ph="{...}" />
@@ -651,7 +646,7 @@
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/DestroyabePlatform.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <marker date="1552338248370" expanded="false" signature="6:78" ph="..." />
             <marker date="1552338248370" expanded="true" signature="127:510" ph="{...}" />
@@ -664,8 +659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Player/PlayerControl.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
+        <state relative-caret-position="300">
+          <caret line="122" column="115" lean-forward="true" selection-start-line="122" selection-start-column="115" selection-end-line="122" selection-end-column="115" />
           <folding>
             <marker date="1552424271934" expanded="false" signature="6:71" ph="..." />
             <marker date="1552424271934" expanded="true" signature="99:12020" ph="{...}" />
