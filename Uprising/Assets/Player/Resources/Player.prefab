@@ -1041,6 +1041,7 @@ GameObject:
   - component: {fileID: 612}
   - component: {fileID: 606}
   - component: {fileID: 8603862665969008574}
+  - component: {fileID: 2239601156584063417}
   - component: {fileID: 663}
   - component: {fileID: 664}
   - component: {fileID: 666}
@@ -1119,6 +1120,20 @@ CapsuleCollider:
   m_Height: 1.73
   m_Direction: 1
   m_Center: {x: 0, y: 0.88, z: 0}
+--- !u!136 &2239601156584063417
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.26
+  m_Height: 1.73
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.88, z: 0}
 --- !u!114 &663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1132,12 +1147,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 108471466543664036, guid: f7fb7b837a78d7443976ee5334ecc642, type: 3}
+  hudWeapon1: {fileID: 0}
+  hudWeapon2: {fileID: 0}
+  hudBonus1: {fileID: 0}
+  hudBonus2: {fileID: 0}
   menu: {fileID: 76131320254727907, guid: 3c0a4d7734119446b8df8164ab5cbc1b, type: 3}
   camera: {fileID: 280}
   cam: {fileID: 0}
   hand: {fileID: 246}
   jumpsLeft: 1
   jump: 700
+  dash: 1200
+  dashTime: 0.2
   debugMode: 0
   speedModifier: 6
   photonView: {fileID: 0}
