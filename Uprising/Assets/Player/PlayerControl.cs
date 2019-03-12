@@ -82,11 +82,12 @@ namespace Uprising.Players
 
                     // Handle jump
                     CheckGroundStatus();
-
+                    if (isGrounded) jumpsLeft = (jumpsLeft > 2) ? jumpsLeft : 2;
                     if (isGrounded && jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space))
                     {
                         Debug.Log("Jumping");
                         rb.AddForce(Vector3.up * jump);
+                        jumpsLeft--;
                     }
 
                     int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
@@ -96,6 +97,7 @@ namespace Uprising.Players
                         //rb.AddForce(400, 0, 0);
                         dashing = true;
                         dashTime = 50;
+                        jumpsLeft--;
                     }
                     if(dashing)
                     {
@@ -110,6 +112,8 @@ namespace Uprising.Players
                     {
                         dashing = false;
                     }
+
+
 
                     // HandleMovement();
                     ReadInventoryInputs();
