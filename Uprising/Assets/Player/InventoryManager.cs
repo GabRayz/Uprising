@@ -50,7 +50,7 @@ namespace Uprising.Players
             // Add item to inventory
             if (item is Weapon)
             {
-                Debug.Log(items[0]);
+                // Search for an available slot
                 if(items[0] == null)
                 {
                     items[0] = item;
@@ -63,6 +63,7 @@ namespace Uprising.Players
                 }
                 else
                 {
+                    ClearItem(items[1]); // Clear a slot
                     items[1] = item;
                     playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
@@ -81,16 +82,19 @@ namespace Uprising.Players
                 }
                 else if (selectedItem == 2)
                 {
+                    ClearItem(items[2]);
                     items[2] = item;
                     playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
                 else if (selectedItem == 3)
                 {
+                    ClearItem(items[3]);
                     items[3] = item;
                     playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
                 else
                 {
+                    ClearItem(items[2]);
                     items[2] = item;
                     playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
