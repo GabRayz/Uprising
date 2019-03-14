@@ -13,15 +13,10 @@ public class CollectibleController : MonoBehaviour {
     public ItemType type;
     public Item item = null;
     GameObject spot = null;
-    public GameObject heldItemPrefab;
 
     // Use this for initialization
     void Start () {
-        // TODO
-        spot = GetSpot();
-
         collectible = GetComponent<Rigidbody>();
-
 
         switch (type)
         {
@@ -30,6 +25,9 @@ public class CollectibleController : MonoBehaviour {
                 break;
             case ItemType.DefaultGun:
                 this.item = new DefaultGun(100,100,1000,100,1000, null);
+                break;
+            case ItemType.Invisibility:
+                this.item = new Invisibility(2000, null);
                 break;
             default:
                 Debug.LogError("This item type is not related to a class");
@@ -43,18 +41,6 @@ public class CollectibleController : MonoBehaviour {
         else
         {
             rotation = new Vector3(60, 60, 60);
-        }
-    }
-
-    private GameObject GetSpot()
-    {
-        try
-        {
-            GameObject spotGet = this.transform.parent.gameObject.transform.parent.gameObject;
-            return spotGet;
-        }catch(Exception e) {
-            Debug.LogError(e);
-            return null;
         }
     }
 
@@ -81,5 +67,10 @@ public class CollectibleController : MonoBehaviour {
         {
             Debug.LogError("Item is not defined for this CollectibleController");
         }
+    }
+
+    public void SetSpot(GameObject spot)
+    {
+        this.spot = spot;
     }
 }

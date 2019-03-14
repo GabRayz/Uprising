@@ -8,8 +8,6 @@ using Photon.Pun;
 
 public class ItemSpotController : MonoBehaviour
 {
-    public GameObject SpeedBoostPrefab;
-    public GameObject DefaultGunPrefab;
     public int averageCoolDown;
     public Dictionary<ItemType, int> itemRaretyPairs;
     private int cooldown;
@@ -68,7 +66,7 @@ public class ItemSpotController : MonoBehaviour
         //itemRaretyPairs.Add(ItemType.Mine, GetRaretyInt(Rarety.Rare, y));
 
         //itemRaretyPairs.Add(ItemType.DoubleJump, GetRaretyInt(Rarety.Special, y));
-        //itemRaretyPairs.Add(ItemType.Invisibility, GetRaretyInt(Rarety.Special, y));
+        itemRaretyPairs.Add(ItemType.Invisibility, GetRaretyInt(Rarety.Special, y));
         //itemRaretyPairs.Add(ItemType.GuidedMissile, GetRaretyInt(Rarety.Special, y));
         //itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y));
         //itemRaretyPairs.Add(ItemType.Blackout, GetRaretyInt(Rarety.Special, y));
@@ -81,15 +79,23 @@ public class ItemSpotController : MonoBehaviour
     private void CreateNewItem(ItemType type)
     {
         // ItemController.Item newItem = null;
+        GameObject newItem;
         switch (type)
         {
             case ItemType.SpeedBoost:
-                PhotonNetwork.Instantiate("SpeedBoost", this.transform.position, this.transform.rotation);
+                newItem = PhotonNetwork.Instantiate("SpeedBoost", this.transform.position, this.transform.rotation);
                 break;
             case ItemType.DefaultGun:
-                PhotonNetwork.Instantiate("DefaultGun", this.transform.position, this.transform.rotation);
+                newItem = PhotonNetwork.Instantiate("DefaultGun", this.transform.position, this.transform.rotation);
+                break;
+            case ItemType.Invisibility:
+                newItem = PhotonNetwork.Instantiate("Invisibility", this.transform.position, this.transform.rotation);
+                break;
+            default:
+                newItem = PhotonNetwork.Instantiate("DefaultGun", this.transform.position, this.transform.rotation);
                 break;
         }
+        newItem.SendMessage("SetSpot", this.gameObject);
     }
 
     private ItemType ChooseItem()

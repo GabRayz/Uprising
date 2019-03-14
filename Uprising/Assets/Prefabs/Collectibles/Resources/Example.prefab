@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectible: {fileID: 8942620735143291768}
   type: 0
+  heldItemPrefab: {fileID: 0}
 --- !u!1 &1495440023707448350
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ GameObject:
   - component: {fileID: 5366960452372407172}
   m_Layer: 0
   m_Name: Example
-  m_TagString: item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
