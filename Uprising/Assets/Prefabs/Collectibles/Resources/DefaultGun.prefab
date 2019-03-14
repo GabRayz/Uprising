@@ -11,9 +11,13 @@ GameObject:
   - component: {fileID: 9098572275536005866}
   - component: {fileID: 3081858650554418998}
   - component: {fileID: 7077731498834684903}
+  - component: {fileID: 2416914476077139823}
+  - component: {fileID: 6376374631117173454}
+  - component: {fileID: 4488464533224088515}
+  - component: {fileID: 6208949603175552245}
   m_Layer: 0
   m_Name: DefaultGun
-  m_TagString: Untagged
+  m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +56,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 7077731498834684903}
+  - {fileID: 6208949603175552245}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -70,6 +75,66 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!54 &2416914476077139823
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377627481622142320}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &6376374631117173454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377627481622142320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54dcf7945b17c422ab1ef3f841dd0de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  model: {fileID: 6354548940631968336}
+  modelRB: {fileID: 0}
+--- !u!65 &4488464533224088515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377627481622142320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.57, z: 0.57}
+  m_Center: {x: 0, y: 0.09, z: 0}
+--- !u!114 &6208949603175552245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377627481622142320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &6234183712460033019
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,9 +829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6351590086517943790}
-  - component: {fileID: 6354548940631968341}
-  - component: {fileID: 6354548940631968338}
-  - component: {fileID: 6354548940631968339}
+  - component: {fileID: 2886998040013126318}
   m_Layer: 0
   m_Name: Pistol_01
   m_TagString: item
@@ -797,20 +860,7 @@ Transform:
   m_Father: {fileID: 9098572275536005866}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6354548940631968341
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6354548940631968336}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6354548940631968338
+--- !u!54 &2886998040013126318
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -821,22 +871,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6354548940631968339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6354548940631968336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54dcf7945b17c422ab1ef3f841dd0de4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectible: {fileID: 0}
-  type: 0

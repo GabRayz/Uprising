@@ -8,15 +8,15 @@ using Uprising.Players;
 public class CollectibleController : MonoBehaviour {
 
     //private Collectible item;
-    public Rigidbody collectible;
     private Vector3 rotation;
     public ItemType type;
     public Item item = null;
     GameObject spot = null;
+    public GameObject model;
+    public Rigidbody modelRB;
 
     // Use this for initialization
     void Start () {
-        collectible = GetComponent<Rigidbody>();
 
         switch (type)
         {
@@ -42,17 +42,18 @@ public class CollectibleController : MonoBehaviour {
         {
             rotation = new Vector3(60, 60, 60);
         }
+        modelRB = model.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
         Quaternion deltaRot = Quaternion.Euler(rotation * Time.deltaTime);
-        collectible.MoveRotation(collectible.rotation * deltaRot);
+        modelRB.MoveRotation(modelRB.rotation * deltaRot);
     }
 
     public void Collect(GameObject player)
     {
-        collectible.gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
         if (item != null)
         {
@@ -61,7 +62,7 @@ public class CollectibleController : MonoBehaviour {
                 spot.SendMessage("PickUp");
             }
             player.SendMessage("GiveItem", this.item);
-            Destroy(this.transform.parent.gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
