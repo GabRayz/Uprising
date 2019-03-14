@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq.Expressions;
 using Uprising.Items;
+using Photon.Pun;
 
 public class ItemSpotController : MonoBehaviour
 {
@@ -83,10 +84,10 @@ public class ItemSpotController : MonoBehaviour
         switch (type)
         {
             case ItemType.SpeedBoost:
-                Instantiate(SpeedBoostPrefab, this.transform, false);
+                PhotonNetwork.Instantiate("SpeedBoost", this.transform.position, this.transform.rotation);
                 break;
             case ItemType.DefaultGun:
-                Instantiate(DefaultGunPrefab, this.transform, false);
+                PhotonNetwork.Instantiate("DefaultGun", this.transform.position, this.transform.rotation);
                 break;
         }
     }
