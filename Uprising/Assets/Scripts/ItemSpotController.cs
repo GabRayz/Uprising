@@ -17,15 +17,18 @@ public class ItemSpotController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.itemRaretyPairs = InitItemRaretyPairs();
-        CreateNewItem(ChooseItem());
-        cooldown = averageCoolDown;
+        if(PhotonNetwork.IsMasterClient) // Only the master client instatiates the items
+        {
+            this.itemRaretyPairs = InitItemRaretyPairs();
+            CreateNewItem(ChooseItem());
+            cooldown = averageCoolDown;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isPickedUp)
+        if(isPickedUp && PhotonNetwork.IsMasterClient)
         {
             cooldown -= (int)(Time.deltaTime * 1000);
             if (cooldown <= 0)
@@ -78,7 +81,6 @@ public class ItemSpotController : MonoBehaviour
 
     private void CreateNewItem(ItemType type)
     {
-        // ItemController.Item newItem = null;
         GameObject newItem;
         switch (type)
         {
