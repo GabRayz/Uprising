@@ -1,4 +1,6 @@
-﻿using Photon.Pun;
+﻿using ExitGames.Client.Photon;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,8 +34,13 @@ namespace Uprising.Players
         public PhotonView photonView;
         Rigidbody rb;
 
+        private byte PlayerEliminationEvent = 0;
+
+        GameManager gameManager;
+
         void Start()
         {
+            gameManager = GameObject.Find("Game").GetComponent<GameManager>();
             // The animator will just contain the forward movement for the 1st presentation
             // animator = GetComponent<Animator>();
             inventory = GetComponent<InventoryManager>();
@@ -160,6 +167,54 @@ namespace Uprising.Players
             SceneManager.LoadScene(0);
         }
 
+        void CheckGroundStatus()
+        {
+            RaycastHit hitInfo;
+#if UNITY_EDITOR
+            // helper to visualise the ground check ray in the scene view
+            Debug.DrawLine(transform.position + (Vector3.up * 0.2f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.15f), Color.white);
+#endif
+            // 0.1f is a small offset to start the ray from inside the character
+            // it is also good to note that the transform position in the sample assets is at the base of the character
+            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.15f))
+            {
+                // m_GroundNormal = hitInfo.normal;
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+                // m_GroundNormal = Vector3.up;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("item"))
+            {
+                other.gameObject.SendMessage("Collect", this.gameObject);
+            }
+            if (other.gameObject.CompareTag("lava"))
+            {
+                // Send the elimination event to everyone
+                Debug.Log("Send Event: Player Elimination");
+                this.photonView.RPC("Eliminate", RpcTarget.All, "Tried to swim into lava");
+            }
+        }
+
+        public void ModifySpeed(float modifier)
+        {
+            speedModifier += modifier;
+        }
+
+        [PunRPC]
+        public void Eliminate(string deathMessage)
+        {
+            gameManager.EliminatePlayer(GetComponent<PhotonView>().Owner);
+            Debug.Log(deathMessage);
+            Destroy(this.gameObject);
+        }
+
         //void HandleMovement()
         //{
         //    float moveHorizontal = Input.GetAxis("Horizontal");
@@ -273,38 +328,6 @@ namespace Uprising.Players
         //    if (moveHorizontal < 0) transform.Translate(Vector3.right * -speedModifier * Time.deltaTime);
         //}
 
-        void CheckGroundStatus()
-        {
-            RaycastHit hitInfo;
-#if UNITY_EDITOR
-            // helper to visualise the ground check ray in the scene view
-            Debug.DrawLine(transform.position + (Vector3.up * 0.2f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.15f), Color.white);
-#endif
-            // 0.1f is a small offset to start the ray from inside the character
-            // it is also good to note that the transform position in the sample assets is at the base of the character
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.15f))
-            {
-                // m_GroundNormal = hitInfo.normal;
-                isGrounded = true;
-            }
-            else
-            {
-                isGrounded = false;
-                // m_GroundNormal = Vector3.up;
-            }
-        }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("item"))
-            {
-                other.gameObject.SendMessage("Collect", this.gameObject);
-            }
-        }
-
-        public void ModifySpeed(float modifier)
-        {
-            speedModifier += modifier;
-        }
     }
 }

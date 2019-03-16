@@ -12,6 +12,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Text matchMakingText;
     public int MaxPlayer = 2;
     public GameObject playButton;
+    public GameObject cancelButton;
+    private bool isInGame = false;
 
 
     // Start is called before the first frame update
@@ -69,6 +71,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Lobby joined");
+        isInGame = false;
     }
 
     private void Update()
@@ -80,16 +83,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             if (currentRoom == null) return;
             matchMakingText.text = "Waiting for players... " + currentRoom.PlayerCount + "/"+ MaxPlayer;
 
-            if(currentRoom.PlayerCount == MaxPlayer && PhotonNetwork.IsMasterClient)
+            if(currentRoom.PlayerCount == MaxPlayer && PhotonNetwork.IsMasterClient && !isInGame)
             {
                 // All players ready, start the game
-                LoadScene(1);
+                SceneManager.LoadScene(1, LoadSceneMode.Additive);
+                Debug.Log("Load map 1 scene");
+                isInGame = true;
+                playButton.SetActive(true);
+                cancelButton.SetActive(false);
             }
         }
     }
 
-    public void LoadScene(int scene)
+    public override void OnLeftRoom()
     {
-        SceneManager.LoadScene(scene);
+        isInGame = false;
+        Debug.Log("Room left");
     }
 }

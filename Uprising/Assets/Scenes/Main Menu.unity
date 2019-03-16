@@ -2691,7 +2691,7 @@ GameObject:
   - component: {fileID: 1300321426}
   m_Layer: 0
   m_Name: Lava
-  m_TagString: Untagged
+  m_TagString: lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3379,8 +3379,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inMatchMaking: 0
   matchMakingText: {fileID: 1316355845}
-  MaxPlayer: 2
+  MaxPlayer: 1
   playButton: {fileID: 503793999}
+  cancelButton: {fileID: 638649614}
 --- !u!4 &1492427487
 Transform:
   m_ObjectHideFlags: 0
@@ -4975,7 +4976,7 @@ GameObject:
   - component: {fileID: 2564908915954118681}
   m_Layer: 0
   m_Name: Lava
-  m_TagString: Untagged
+  m_TagString: lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1

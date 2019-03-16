@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Spawn
   - belette
+  - lava
   layers:
   - Default
   - TransparentFX
