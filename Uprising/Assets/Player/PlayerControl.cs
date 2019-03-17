@@ -87,6 +87,7 @@ namespace Uprising.Players
                 }
 
                 ReadInventoryInputs();
+                if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
             }
         }
 
@@ -94,14 +95,6 @@ namespace Uprising.Players
         {
             if (debugMode || photonView.IsMine)
             {
-                //if(this.transform.position.y < -10)
-                //{
-                //    this.transform.SetPositionAndRotation(new Vector3(0, 20f, 0), Quaternion.identity);
-                //}
-
-
-                if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
-
                 if (!menu.activeSelf)
                 {
                     CheckGroundStatus();
