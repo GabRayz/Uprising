@@ -11,23 +11,37 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public bool inMatchMaking = false;
     public Text matchMakingText;
     public int MaxPlayer = 2;
-    public GameObject playButton;
-    public GameObject cancelButton;
     private bool isInGame = false;
+    public Text StartingText;
+    public MainMenu mainMenu;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        StartingText.text = "Connection...";
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.AutomaticallySyncScene = true;
-        matchMakingText.text = "Connecting to server...";
     }
 
     public override void OnConnected()
     {
-        matchMakingText.text = "";
-        playButton.SetActive(true);
+        Debug.Log("Connected!");
+        StartingText.text = "";
+        JoinMainMenu();
+    }
+
+    public void JoinMainMenu()
+    {
+        Debug.Log("Loading Main Menu");
+        // Load the main menu scene. SetMainMenu() will then be called to get the Main Menu
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+    }
+
+    public void SetMainMenu(MainMenu mainMenu)
+    {
+        Debug.Log("Main menu loaded!");
+        this.mainMenu = mainMenu;
     }
 
     public void PlayRandom()
@@ -36,11 +50,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             // Try to join a random room..
             PhotonNetwork.JoinRandomRoom();
-            matchMakingText.text = "Joinning...";
+            mainMenu.matchMakingText.text = "Joinning...";
         }
         else
         {
-            matchMakingText.text = "Connecting to server...";
+            mainMenu.matchMakingText.text = "Connecting to server...";
             PlayRandom();
         }
     }
@@ -81,18 +95,31 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             Photon.Realtime.Room currentRoom = PhotonNetwork.CurrentRoom;
             if (currentRoom == null) return;
-            matchMakingText.text = "Waiting for players... " + currentRoom.PlayerCount + "/"+ MaxPlayer;
+            mainMenu.matchMakingText.text = "Waiting for players... " + currentRoom.PlayerCount + "/"+ MaxPlayer;
 
-            if(currentRoom.PlayerCount == MaxPlayer && PhotonNetwork.IsMasterClient && !isInGame)
+            if(currentRoom.PlayerCount == MaxPlayer && !isInGame)
             {
                 // All players ready, start the game
-                SceneManager.LoadScene(1, LoadSceneMode.Additive);
-                Debug.Log("Load map 1 scene");
-                isInGame = true;
-                playButton.SetActive(true);
-                cancelButton.SetActive(false);
+                StartGame();
             }
         }
+    }
+
+    private void StartGame()
+    {
+        // Unload main menu, display loading time
+        SceneManager.UnloadSceneAsync("Main Menu");
+        StartingText.text = "Loading world...";
+
+        // Add map 1 to loaded scene
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
+        Debug.Log("Load map 1 scene");
+        isInGame = true;
+    }
+
+    public void OnGameStarted()
+    {
+        //
     }
 
     public override void OnLeftRoom()

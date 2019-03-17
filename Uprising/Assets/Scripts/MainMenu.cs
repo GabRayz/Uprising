@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using Photon.Pun;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public Text matchMakingText;
+    private NetworkManager networkManager;
 
-    public AudioMixer audioMixer; 
-
-    public void LoadScene(int scene)
+    public void Start()
     {
-        // Application.LoadLevel(scene);
-        SceneManager.LoadScene(scene);
-
-        // GameObject newBonus = Instantiate(BonusPrefab, new Vector3(0, 5, 0), BonusPrefab.transform.rotation);
+        networkManager = GameObject.Find("_network").GetComponent<NetworkManager>();
+        networkManager.SetMainMenu(this);
     }
 
-    public void CreateObject(GameObject prefab)
+    public void PlayRandom()
     {
-        GameObject newBonus = Instantiate(prefab, new Vector3(0, 5, 0), prefab.transform.rotation);
+        networkManager.PlayRandom();
     }
 
-    public void SetMasterVolume(float volume)
+    public void CancelPlay()
     {
-        audioMixer.SetFloat("Master", volume);
+        networkManager.CancelPlay();
     }
 }

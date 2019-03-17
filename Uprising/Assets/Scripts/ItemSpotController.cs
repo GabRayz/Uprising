@@ -12,7 +12,7 @@ public class ItemSpotController : MonoBehaviour
     public Dictionary<ItemType, int> itemRaretyPairs;
     private int cooldown;
 
-    private bool isPickedUp;
+    private bool isPickedUp = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class ItemSpotController : MonoBehaviour
         if(PhotonNetwork.IsMasterClient) // Only the master client instatiates the items
         {
             this.itemRaretyPairs = InitItemRaretyPairs();
-            CreateNewItem(ChooseItem());
+            // CreateNewItem(ChooseItem());
             cooldown = averageCoolDown;
         }
     }

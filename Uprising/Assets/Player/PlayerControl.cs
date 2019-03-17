@@ -40,7 +40,7 @@ namespace Uprising.Players
 
         void Start()
         {
-            gameManager = GameObject.Find("Game").GetComponent<GameManager>();
+            gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
             // The animator will just contain the forward movement for the 1st presentation
             // animator = GetComponent<Animator>();
             inventory = GetComponent<InventoryManager>();
@@ -94,10 +94,10 @@ namespace Uprising.Players
         {
             if (debugMode || photonView.IsMine)
             {
-                if(this.transform.position.y < -10)
-                {
-                    this.transform.SetPositionAndRotation(new Vector3(0, 20f, 0), Quaternion.identity);
-                }
+                //if(this.transform.position.y < -10)
+                //{
+                //    this.transform.SetPositionAndRotation(new Vector3(0, 20f, 0), Quaternion.identity);
+                //}
 
 
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
@@ -198,7 +198,9 @@ namespace Uprising.Players
             {
                 // Send the elimination event to everyone
                 Debug.Log("Send Event: Player Elimination");
-                this.photonView.RPC("Eliminate", RpcTarget.All, "Tried to swim into lava");
+                //this.photonView.RPC("Eliminate", RpcTarget.All, "Tried to swim into lava");
+                if(photonView.IsMine)
+                    Eliminate("Tried to swim into lava");
             }
         }
 
@@ -207,10 +209,11 @@ namespace Uprising.Players
             speedModifier += modifier;
         }
 
-        [PunRPC]
+        //[PunRPC]
         public void Eliminate(string deathMessage)
         {
-            gameManager.EliminatePlayer(GetComponent<PhotonView>().Owner);
+            // gameManager.EliminatePlayer(GetComponent<PhotonView>().Owner);
+            gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
             Debug.Log(deathMessage);
             Destroy(this.gameObject);
         }

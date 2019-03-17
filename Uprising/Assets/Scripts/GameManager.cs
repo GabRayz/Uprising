@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     SpawnPlayers[] spawnSpots;
     GameObject lava;
+    public PhotonView photonView;
     float lavaRisingSpeed = 0.5f;
     public bool OfflineMode = false;
     private byte PlayerEliminationEvent = 0;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
         Debug.Log("Map 1 scene loaded !");
         players = new Dictionary<Player, bool>();
         // Get all possible spawn points
@@ -34,8 +36,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game over");
             PhotonNetwork.LeaveRoom();
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(1));
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(0));
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
+            SceneManager.LoadScene("Main Menu", LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
         }
     }
 
@@ -58,12 +61,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public int EliminatePlayer(Player player)
     {
         if(players[player])
         {
             players[player] = false;
             playersCount--;
+            Debug.LogFormat("Player {0} eliminated", player.ActorNumber);
         }
         return playersCount;
     }
