@@ -11,12 +11,14 @@ public class ItemSpotController : MonoBehaviour
     public int averageCoolDown;
     public Dictionary<ItemType, int> itemRaretyPairs;
     private int cooldown;
+    private System.Random random;
 
     private bool isPickedUp = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        random = new System.Random();
         if(PhotonNetwork.IsMasterClient) // Only the master client instatiates the items
         {
             this.itemRaretyPairs = InitItemRaretyPairs();
@@ -34,7 +36,8 @@ public class ItemSpotController : MonoBehaviour
             if (cooldown <= 0)
             {
                 CreateNewItem(ChooseItem());
-                cooldown = averageCoolDown;
+                int randomRange = random.Next((int)-0.2 * averageCoolDown, (int)0.2 * averageCoolDown);
+                cooldown = averageCoolDown + randomRange;
                 isPickedUp = false;
             }
         }
