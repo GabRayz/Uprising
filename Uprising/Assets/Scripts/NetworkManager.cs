@@ -120,7 +120,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void OnGameStarted()
     {
-        //
+        StartingText.text = "";
     }
 
     public override void OnLeftRoom()
