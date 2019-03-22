@@ -19,9 +19,9 @@ public class ItemSpotController : MonoBehaviour
     void Start()
     {
         random = new System.Random();
-        if(PhotonNetwork.IsMasterClient) // Only the master client instatiates the items
+        this.itemRaretyPairs = InitItemRaretyPairs();
+        if (PhotonNetwork.IsMasterClient) // Only the master client instatiates the items
         {
-            this.itemRaretyPairs = InitItemRaretyPairs();
             // CreateNewItem(ChooseItem());
             cooldown = averageCoolDown;
         }
@@ -106,6 +106,7 @@ public class ItemSpotController : MonoBehaviour
     private ItemType ChooseItem()
     {
         int total = 0; // Get the total value of all rarety int
+        Debug.Log(itemRaretyPairs);
         foreach(var item in itemRaretyPairs)
         {
             total += item.Value;

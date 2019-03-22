@@ -114,6 +114,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // Add map 1 to loaded scene
         SceneManager.LoadScene(2, LoadSceneMode.Additive);
         Debug.Log("Load map 1 scene");
+        inMatchMaking = false;
         isInGame = true;
     }
 

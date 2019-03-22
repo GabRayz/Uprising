@@ -35,7 +35,18 @@ public class GameManager : MonoBehaviour
         if(playersCount <= 1 && !OfflineMode)
         {
             Debug.Log("Game over");
-            PhotonNetwork.LeaveRoom();
+            if(PhotonNetwork.CurrentRoom.PlayerCount > 1 && PhotonNetwork.IsMasterClient)
+            {
+                foreach (var player in PhotonNetwork.CurrentRoom.Players)
+                {
+                    if (player.Value != PhotonNetwork.LocalPlayer) {
+                        this.photonView.TransferOwnership(player.Value);
+                        break;
+                    }
+                }
+            }
+            PhotonNetwork.LeaveRoom(); 
+            // DontDestroyOnLoad(gameObject);
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
             SceneManager.LoadScene("Main Menu", LoadSceneMode.Additive);
             SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));

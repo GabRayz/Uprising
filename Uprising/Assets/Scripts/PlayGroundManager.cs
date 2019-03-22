@@ -16,7 +16,7 @@ public class PlayGroundManager : MonoBehaviour
         networkManager = GameObject.Find("_network").GetComponent<NetworkManager>();
         if (PhotonNetwork.IsMasterClient)
         {
-            GameObject newGame = PhotonNetwork.Instantiate("Game", Vector3.zero, Quaternion.identity);
+            GameObject newGame = PhotonNetwork.InstantiateSceneObject("Game", Vector3.zero, Quaternion.identity);
         }
         networkManager.OnGameStarted();
     }
