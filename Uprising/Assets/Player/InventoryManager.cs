@@ -139,6 +139,9 @@ namespace Uprising.Players
                     case ItemType.SpeedBoost:
                         playerControl.ModifySpeed(5);
                         break;
+                    case ItemType.Invisibility:
+                        this.playerControl.photonView.RPC("ToggleInvisibility", RpcTarget.Others);
+                        break;
                     default:
                         break;
                 }
@@ -160,6 +163,9 @@ namespace Uprising.Players
                 {
                     case ItemType.SpeedBoost:
                         playerControl.ModifySpeed(-5);
+                        break;
+                    case ItemType.Invisibility:
+                        this.playerControl.photonView.RPC("ToggleInvisibility", RpcTarget.Others);
                         break;
                     default:
                         break;

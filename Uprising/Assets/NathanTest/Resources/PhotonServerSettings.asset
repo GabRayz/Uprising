@@ -34,5 +34,6 @@ MonoBehaviour:
   - RespawnSpaceship
   - Eliminate
   - EliminatePlayer
+  - ToggleInvisibility
   DisableAutoOpenWizard: 1
   ShowSettings: 0

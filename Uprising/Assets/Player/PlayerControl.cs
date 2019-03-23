@@ -40,7 +40,8 @@ namespace Uprising.Players
 
         void Start()
         {
-            gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
+            if (!debugMode)
+                gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
             // The animator will just contain the forward movement for the 1st presentation
             // animator = GetComponent<Animator>();
             inventory = GetComponent<InventoryManager>();
@@ -209,6 +210,12 @@ namespace Uprising.Players
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
             Debug.Log(deathMessage);
             Destroy(this.gameObject);
+        }
+
+        [PunRPC]
+        public void ToggleInvisibility()
+        {
+            this.gameObject.SetActive(!this.gameObject.activeSelf);
         }
 
         //void HandleMovement()
