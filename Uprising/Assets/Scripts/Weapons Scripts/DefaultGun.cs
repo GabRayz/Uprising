@@ -22,6 +22,8 @@ namespace Uprising.Items
         public override void Aim()
         {
             Debug.Log("Aimed.");
+
+
         }
 
         public override void Use()

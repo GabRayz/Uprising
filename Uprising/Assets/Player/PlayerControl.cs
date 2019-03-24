@@ -9,6 +9,15 @@ namespace Uprising.Players
     [RequireComponent(typeof(InventoryManager))]
     public class PlayerControl : MonoBehaviour
     {
+        [System.Serializable]
+        public class CameraRig
+        {
+            public Vector3 CameraOffSet;
+            public float damping;
+        }
+        [SerializeField] CameraRig defaultCamera;
+        [SerializeField] CameraRig aimCamera;
+
         public GameObject hud;
         public GameObject hudWeapon1;
         public GameObject hudWeapon2;
@@ -88,6 +97,20 @@ namespace Uprising.Players
 
                 ReadInventoryInputs();
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
+
+
+                CameraRig cameraRig = defaultCamera;
+
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    cameraRig = aimCamera;
+                }
+                Vector3 CameraPosition = camera.transform.position + this.transform.forward * cameraRig.CameraOffSet.z +
+                        this.transform.up * cameraRig.CameraOffSet.y +
+                        this.transform.right * cameraRig.CameraOffSet.x;
+                Quaternion rotation = Quaternion.LookRotation(camera.transform.position - CameraPosition, Vector3.up);
+                transform.position = Vector3.Lerp(transform.position, CameraPosition, cameraRig.damping * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, cameraRig.damping * Time.deltaTime);
             }
         }
 

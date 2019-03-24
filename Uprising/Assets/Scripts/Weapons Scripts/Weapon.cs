@@ -21,7 +21,7 @@ namespace Uprising.Items
                 this.StopUsing();
             }
 
-            /*
+            
             if (Input.GetKeyDown(KeyCode.Mouse0)) //Left-Click
             {
                 Use();
@@ -31,7 +31,7 @@ namespace Uprising.Items
             if (Input.GetKeyDown(KeyCode.Mouse1)) //Right-Click
             {
                 Aim();
-            } */
+            } 
         }
 
         protected override void StopUsing()
