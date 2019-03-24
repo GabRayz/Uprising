@@ -36,6 +36,8 @@ namespace Uprising.Players
 
         private byte PlayerEliminationEvent = 0;
 
+        private bool aim = false;
+
         GameManager gameManager;
 
         void Start()
@@ -88,6 +90,19 @@ namespace Uprising.Players
 
                 ReadInventoryInputs();
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    if (!aim)
+                    {
+                        camera.transform.Translate(new Vector3(0.5f, 0f, 2f));
+                        aim = true;
+                    }
+                    else
+                    {
+                        camera.transform.Translate(new Vector3(-0.5f, 0f, -2f));
+                        aim = false;
+                    }
+                }
             }
         }
 

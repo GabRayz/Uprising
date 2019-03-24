@@ -67,7 +67,7 @@ public class ItemSpotController : MonoBehaviour
         //itemRaretyPairs.Add(ItemType.JumpBoost, GetRaretyInt(Rarety.Rare, y));
         //itemRaretyPairs.Add(ItemType.ForceField, GetRaretyInt(Rarety.Rare, y));
         //itemRaretyPairs.Add(ItemType.PortalGun, GetRaretyInt(Rarety.Rare, y));
-        //itemRaretyPairs.Add(ItemType.ShotGun, GetRaretyInt(Rarety.Rare, y));
+        itemRaretyPairs.Add(ItemType.ShotGun, GetRaretyInt(Rarety.Rare, y));
         //itemRaretyPairs.Add(ItemType.MachineGun, GetRaretyInt(Rarety.Rare, y));
         //itemRaretyPairs.Add(ItemType.Mine, GetRaretyInt(Rarety.Rare, y));
 
@@ -92,6 +92,9 @@ public class ItemSpotController : MonoBehaviour
                 break;
             case ItemType.DefaultGun:
                 newItem = PhotonNetwork.Instantiate("DefaultGun", this.transform.position, this.transform.rotation);
+                break;
+            case ItemType.ShotGun:
+                newItem = PhotonNetwork.Instantiate("ShotGun", this.transform.position, this.transform.rotation);
                 break;
             case ItemType.Invisibility:
                 newItem = PhotonNetwork.Instantiate("Invisibility", this.transform.position, this.transform.rotation);
