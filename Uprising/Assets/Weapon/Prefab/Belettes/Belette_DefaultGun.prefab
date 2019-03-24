@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 0
-  range: 200
+  range: 100
   belette: {fileID: 2524543093918101731}
   player: {fileID: 0}
 --- !u!54 &5021347601365847555

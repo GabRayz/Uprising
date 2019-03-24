@@ -27,7 +27,7 @@ namespace Uprising.Items
         }
         public virtual void Unselect()
         {
-            player.GetComponent<PlayerControl>().hand.transform.Find("h_" + type.ToString()).gameObject.SetActive(false);
+            player.GetComponent<PlayerControl>().hand.transform.Find("h_"+type.ToString()).gameObject.SetActive(false);
         }
     }
 
