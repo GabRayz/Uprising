@@ -3,6 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Uprising.Items;
 
 namespace Uprising.Players
 {
@@ -45,9 +46,9 @@ namespace Uprising.Players
         {
             if (!debugMode)
                 gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
-            // The animator will just contain the forward movement for the 1st presentation
-            // animator = GetComponent<Animator>();
+
             inventory = GetComponent<InventoryManager>();
+
             photonView = GetComponent<PhotonView>();
             cam = camera.GetComponent<Camera>();
             if(!debugMode)
@@ -65,6 +66,11 @@ namespace Uprising.Players
             hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
             hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
             rb = GetComponent<Rigidbody>();
+
+            // Give the default weapon
+            Item defaultGun = new DefaultGun(999, 100, 100, 1000, this.gameObject);
+            inventory.GiveItem(defaultGun);
+            inventory.SelectItem(0);
         }
 
 

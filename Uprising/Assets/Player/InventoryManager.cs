@@ -50,53 +50,33 @@ namespace Uprising.Players
             // Add item to inventory
             if (item is Weapon)
             {
-                // Search for an available slot
-                if(items[0] == null)
+                if(item.type == ItemType.DefaultGun)
                 {
+                    if (items[0] != null)
+                        ClearItem(items[0]); // Clear a slot
                     items[0] = item;
                     playerControl.hudWeapon1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
-                else if(items[1] == null)
-                {
-                    items[1] = item;
-                    playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
-                }
                 else
                 {
-                    ClearItem(items[1]); // Clear a slot
+                    if (items[1] != null)
+                        ClearItem(items[1]); // Clear a slot
                     items[1] = item;
                     playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
+
             }
             else
             {
-                if (items[2] == null)
+                if(items[3] != null && selectedItem != 3)
                 {
                     items[2] = item;
                     playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
-                }
-                else if (items[3] == null)
-                {
-                    items[3] = item;
-                    playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
-                }
-                else if (selectedItem == 2)
-                {
-                    ClearItem(items[2]);
-                    items[2] = item;
-                    playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
-                }
-                else if (selectedItem == 3)
-                {
-                    ClearItem(items[3]);
-                    items[3] = item;
-                    playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
                 else
                 {
-                    ClearItem(items[2]);
-                    items[2] = item;
-                    playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    items[3] = item;
+                    playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                 }
             }
             item.player = playerControl.gameObject;
