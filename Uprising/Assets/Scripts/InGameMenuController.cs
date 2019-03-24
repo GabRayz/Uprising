@@ -10,7 +10,6 @@ public class InGameMenuController : MonoBehaviour
     public void SetOwner(PlayerControl player)
     {
         this.player = player;
-        Debug.Log("new owner set");
     }
 
     public void Quit()

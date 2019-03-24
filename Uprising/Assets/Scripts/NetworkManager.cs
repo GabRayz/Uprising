@@ -107,8 +107,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void StartGame()
     {
+        // Lock the room
+        // if (PhotonNetwork.LocalPlayer.IsMasterClient)
+           // PhotonNetwork.CurrentRoom.IsVisible = false;
+
         // Unload main menu, display loading time
-        SceneManager.UnloadSceneAsync("Main Menu");
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Main Menu"));
         StartingText.text = "Loading world...";
 
         // Add map 1 to loaded scene
@@ -123,9 +127,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         StartingText.text = "";
     }
 
-    public override void OnLeftRoom()
+    public void QuitGame(bool isLastInRoom = false)
     {
+        if (isLastInRoom)
+            PhotonNetwork.CurrentRoom.IsOpen = true;
         isInGame = false;
-        Debug.Log("Room left");
+        PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
+
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
     }
 }

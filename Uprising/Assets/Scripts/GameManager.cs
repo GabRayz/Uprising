@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     SpawnPlayers[] spawnSpots;
     GameObject lava;
     public PhotonView photonView;
-    float lavaRisingSpeed = 0.5f;
+    float lavaRisingSpeed = 0f;
     public bool OfflineMode = false;
     private byte PlayerEliminationEvent = 0;
     private int playersCount;
@@ -44,12 +44,16 @@ public class GameManager : MonoBehaviour
                         break;
                     }
                 }
+                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
             }
-            PhotonNetwork.LeaveRoom(); 
-            // DontDestroyOnLoad(gameObject);
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
-            SceneManager.LoadScene("Main Menu", LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
+            else if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            {
+                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(true);
+            }
+            else
+            {
+                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
+            }
         }
     }
 

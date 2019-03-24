@@ -49,8 +49,7 @@ namespace Uprising.Players
             cam = camera.GetComponent<Camera>();
             if(!debugMode)
             {
-                cam.enabled = false;
-                if (photonView.IsMine) cam.enabled = true;
+                cam.enabled = photonView.IsMine;
             }
 
             menu = Instantiate(menu);
@@ -148,7 +147,6 @@ namespace Uprising.Players
 
         void ToggleMenu()
         {
-            Debug.Log(menu);
             menu.SetActive(!menu.activeSelf);
         }
 
@@ -156,9 +154,10 @@ namespace Uprising.Players
         {
             if (!debugMode)
             {
-                PhotonNetwork.LeaveRoom();
+                // PhotonNetwork.LeaveRoom();
+                Eliminate("Client left the battle");
+                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
             }
-            SceneManager.LoadScene(0);
         }
 
         void CheckGroundStatus()
