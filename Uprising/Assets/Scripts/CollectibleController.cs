@@ -32,6 +32,9 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.Invisibility:
                 this.item = new Invisibility(2000, null);
                 break;
+            case ItemType.Dash:
+                this.item = new Dash(5, null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;

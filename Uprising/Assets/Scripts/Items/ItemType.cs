@@ -6,7 +6,7 @@ namespace Uprising.Items
         DefaultGun,
         SpeedBoost,
         JumpBoost,
-        DoubleJump,
+        Dash,
         Shield,
         ForceField,
         Invisibility,

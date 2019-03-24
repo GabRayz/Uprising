@@ -20,7 +20,8 @@ namespace Uprising.Players
         public Camera cam;
         public GameObject hand;
         private bool isGrounded = true;
-        public int jumpsLeft = 2;
+        public int jumpsLeft = 1;
+        public int dashLeft;
         public int jump = 900;
         public float dash = 800f;
         private bool isDashing = false;
@@ -79,11 +80,11 @@ namespace Uprising.Players
                         rb.AddForce(Vector3.up * jump);
                         jumpsLeft--;
                     }
-                    else if (jumpsLeft > 0 && !isGrounded)
+                    else if (dashLeft > 0 && !isGrounded && !isDashing)
                     {
                         Debug.Log("Dashing");
                         //rb.AddForce(400, 0, 0);
-                        jumpsLeft--;
+                        dashLeft--;
                         isDashing = true;
                     }
                 }
@@ -131,11 +132,10 @@ namespace Uprising.Players
                     // Apply rotation
                     camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
 
-                    // Handle jump
-                    
+
                     if (isGrounded)
                     {
-                        jumpsLeft = 2;
+                        jumpsLeft = 1;
                     }
 
 

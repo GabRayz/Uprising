@@ -71,7 +71,7 @@ public class ItemSpotController : MonoBehaviour
         //itemRaretyPairs.Add(ItemType.MachineGun, GetRaretyInt(Rarety.Rare, y));
         //itemRaretyPairs.Add(ItemType.Mine, GetRaretyInt(Rarety.Rare, y));
 
-        //itemRaretyPairs.Add(ItemType.DoubleJump, GetRaretyInt(Rarety.Special, y));
+        itemRaretyPairs.Add(ItemType.Dash, GetRaretyInt(Rarety.Special, y));
         itemRaretyPairs.Add(ItemType.Invisibility, GetRaretyInt(Rarety.Special, y));
         //itemRaretyPairs.Add(ItemType.GuidedMissile, GetRaretyInt(Rarety.Special, y));
         //itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y));
@@ -85,24 +85,8 @@ public class ItemSpotController : MonoBehaviour
     private void CreateNewItem(ItemType type)
     {
         GameObject newItem;
-        switch (type)
-        {
-            case ItemType.SpeedBoost:
-                newItem = PhotonNetwork.Instantiate("SpeedBoost", this.transform.position, this.transform.rotation);
-                break;
-            case ItemType.DefaultGun:
-                newItem = PhotonNetwork.Instantiate("DefaultGun", this.transform.position, this.transform.rotation);
-                break;
-            case ItemType.ShotGun:
-                newItem = PhotonNetwork.Instantiate("ShotGun", this.transform.position, this.transform.rotation);
-                break;
-            case ItemType.Invisibility:
-                newItem = PhotonNetwork.Instantiate("Invisibility", this.transform.position, this.transform.rotation);
-                break;
-            default:
-                newItem = PhotonNetwork.Instantiate("DefaultGun", this.transform.position, this.transform.rotation);
-                break;
-        }
+        newItem = PhotonNetwork.InstantiateSceneObject(type.ToString(), this.transform.position, this.transform.rotation);
+
         newItem.SendMessage("SetSpot", this.gameObject);
     }
 
