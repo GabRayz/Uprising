@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using System.Linq;
 using Uprising.Items;
+using UnityEngine.UI;
 
 namespace Uprising.Players
 {
@@ -96,9 +97,32 @@ namespace Uprising.Players
             {
                 items[selectedItem].Unselect();
             }
+            ChangeSlotColor(selectedItem, Color.white);
+
             selectedItem = index;
-            if(items[index] != null) items[index].Select();
+            ChangeSlotColor(selectedItem, Color.blue);
+
+            if (items[index] != null) items[index].Select();
             Debug.Log(items[index] != null);
+        }
+
+        public void ChangeSlotColor(int slot, Color color)
+        {
+            switch (slot)
+            {
+                case 0:
+                    playerControl.hudWeapon1.GetComponent<RawImage>().color = color;
+                    break;
+                case 1:
+                    playerControl.hudWeapon2.GetComponent<RawImage>().color = color;
+                    break;
+                case 2:
+                    playerControl.hudBonus1.GetComponent<RawImage>().color = color;
+                    break;
+                case 3:
+                    playerControl.hudBonus2.GetComponent<RawImage>().color = color;
+                    break;
+            }
         }
 
         public void UseSelectedItem()
