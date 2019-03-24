@@ -21,7 +21,7 @@ public class CollectibleController : MonoBehaviour {
         switch (type)
         {
             case ItemType.SpeedBoost:
-                this.item = new SpeedBoost(2000, null);
+                this.item = new SpeedBoost(5000, null);
                 break;
             case ItemType.ShotGun:
                 this.item = new ShotGun(100, 100, 100, 1000, null);
@@ -30,10 +30,13 @@ public class CollectibleController : MonoBehaviour {
                 this.item = new DefaultGun(100,100,100,1000, null);
                 break;
             case ItemType.Invisibility:
-                this.item = new Invisibility(2000, null);
+                this.item = new Invisibility(10000, null);
                 break;
             case ItemType.Dash:
                 this.item = new Dash(5, null);
+                break;
+            case ItemType.JumpBoost:
+                this.item = new JumpBoost(10000, null);
                 break;
             default:
                 Debug.LogError("This item type is not related to a class");

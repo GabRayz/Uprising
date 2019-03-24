@@ -146,6 +146,9 @@ namespace Uprising.Players
                     case ItemType.Invisibility:
                         this.playerControl.photonView.RPC("ToggleInvisibility", RpcTarget.Others);
                         break;
+                    case ItemType.JumpBoost:
+                        this.playerControl.ModifyJumpHeight(900);
+                        break;
                     default:
                         break;
                 }
@@ -170,6 +173,9 @@ namespace Uprising.Players
                         break;
                     case ItemType.Invisibility:
                         this.playerControl.photonView.RPC("ToggleInvisibility", RpcTarget.Others);
+                        break;
+                    case ItemType.JumpBoost:
+                        this.playerControl.ModifyJumpHeight(-900);
                         break;
                     default:
                         break;

@@ -23,8 +23,8 @@ namespace Uprising.Players
         private bool isGrounded = true;
         public int jumpsLeft = 1;
         public int dashLeft;
-        public int jump = 900;
-        public float dash = 800f;
+        public int jump = 700;
+        public float dash = 1200;
         private bool isDashing = false;
         public float dashTime = 0.3f;
         InventoryManager inventory;
@@ -221,6 +221,11 @@ namespace Uprising.Players
         public void ModifySpeed(float modifier)
         {
             speedModifier += modifier;
+        }
+
+        public void ModifyJumpHeight(int modifier)
+        {
+            jump += modifier;
         }
 
         //[PunRPC]
