@@ -27,6 +27,11 @@ namespace Uprising.Players
 
         void FixedUpdate()
         {
+            //if (true || PlayerControl.photonView.IsMine)
+            //{
+            //    // GetInput();
+            //}
+
             // Update all bonuses timer
             foreach (Item effect in appliedEffects.ToList())
             {
@@ -42,7 +47,6 @@ namespace Uprising.Players
         // Inventory Management
         public void GiveItem(Item item)
         {
-            Debug.Log(items);
             Debug.Log("Give item : " + item.type);
             // Add item to inventory
             if (item is Weapon)
