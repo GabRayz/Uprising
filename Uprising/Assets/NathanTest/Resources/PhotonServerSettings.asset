@@ -35,5 +35,6 @@ MonoBehaviour:
   - Eliminate
   - EliminatePlayer
   - ToggleInvisibility
+  - SetReady
   DisableAutoOpenWizard: 1
   ShowSettings: 0

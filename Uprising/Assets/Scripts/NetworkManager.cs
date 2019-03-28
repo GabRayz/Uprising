@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public bool inMatchMaking = false;
+    public bool inMainMenu = false;
     public Text matchMakingText;
     public int MaxPlayer = 2;
     private bool isInGame = false;
@@ -24,15 +25,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
-    public override void OnConnected()
+    public override void OnConnectedToMaster()
     {
         Debug.Log("Connected!");
+        PhotonNetwork.JoinLobby();
         StartingText.text = "";
-        JoinMainMenu();
+        if(!inMainMenu)
+            JoinMainMenu();
     }
 
     public void JoinMainMenu()
     {
+        inMainMenu = true;
         Debug.Log("Loading Main Menu");
         // Load the main menu scene. SetMainMenu() will then be called to get the Main Menu
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
@@ -65,7 +69,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = (byte)MaxPlayer;
         roomOptions.PublishUserId = true;
-        PhotonNetwork.CreateRoom(null, roomOptions);
+        bool success = PhotonNetwork.CreateRoom(null, roomOptions);
+        if(!success)
+        {
+            PhotonNetwork.Disconnect();
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(1));
+        }
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        if (cause == DisconnectCause.DisconnectByClientLogic)
+        {
+            StartingText.text = "Connection...";
+            PhotonNetwork.ConnectUsingSettings();
+            PhotonNetwork.AutomaticallySyncScene = true;
+        }
     }
 
     public override void OnJoinedRoom()
@@ -77,6 +96,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void CancelPlay()
     {
         inMatchMaking = false;
+        mainMenu.matchMakingText.text = "";
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.JoinLobby();
         Debug.Log("Room left");
@@ -120,9 +140,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Load map 1 scene");
         inMatchMaking = false;
         isInGame = true;
+        inMainMenu = false;
     }
 
-    public void OnGameStarted()
+    public void OnGameLoaded()
     {
         StartingText.text = "";
     }
