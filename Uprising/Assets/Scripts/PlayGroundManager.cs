@@ -18,6 +18,6 @@ public class PlayGroundManager : MonoBehaviour
         {
             GameObject newGame = PhotonNetwork.InstantiateSceneObject("Game", Vector3.zero, Quaternion.identity);
         }
-        networkManager.OnGameStarted();
+        networkManager.OnGameLoaded();
     }
 }

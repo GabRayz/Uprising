@@ -5,17 +5,22 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using ExitGames.Client.Photon;
+using Uprising.Players;
 
 public class GameManager : MonoBehaviour
 {
     SpawnPlayers[] spawnSpots;
     GameObject lava;
     public PhotonView photonView;
-    float lavaRisingSpeed = 0f;
+    float lavaRisingSpeed = 0.1f;
     public bool OfflineMode = false;
     private byte PlayerEliminationEvent = 0;
     private int playersCount;
     Dictionary<Player, bool> players;
+
+    public bool isStarted;
+    public float startCooldown = 5;
+    public bool isCooldownStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +36,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
+        if(isStarted) // Raise lava
+            lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
+        // Finish game
         if(playersCount <= 1 && !OfflineMode)
         {
             Debug.Log("Game over");
@@ -55,6 +62,37 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
             }
         }
+
+        if(!isStarted)
+        {
+            // Check if players are ready to start
+            if(!players.ContainsValue(false))
+            {
+                isCooldownStarted = true;
+            }
+        }
+
+        // Cooldown
+        if (isCooldownStarted && startCooldown > 0)
+        {
+            startCooldown = startCooldown - Time.deltaTime;
+            if(startCooldown <= 0)
+            {
+                isCooldownStarted = false;
+                isStarted = true;
+            }
+        }
+    }
+
+    [PunRPC]
+    public void SetReady(PlayerControl player)
+    {
+        int actNb = player.photonView.OwnerActorNr;
+        foreach(var key in players.Keys)
+        {
+            if (key.ActorNumber == actNb)
+                players[key] = true;
+        }
     }
 
     public void SpawnPlayers()
@@ -66,7 +104,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Spawn player " + player.Value.UserId);
             playersCount++;
-            players.Add(player.Value, true);
+            players.Add(player.Value, false);
             if (self.UserId == player.Value.UserId)
             {
                 if(player.Key <= spawnSpots.Length)

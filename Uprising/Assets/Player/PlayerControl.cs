@@ -71,12 +71,16 @@ namespace Uprising.Players
             Item defaultGun = new DefaultGun(999, 100, 100, 1000, this.gameObject);
             inventory.GiveItem(defaultGun);
             inventory.SelectItem(0);
+
+            // Player is ready
+            if (photonView.IsMine)
+                gameObject.GetPhotonView().RPC("SetReady", RpcTarget.All, this);
         }
 
 
         void Update()
         {
-            if(debugMode || photonView.IsMine)
+            if((debugMode || photonView.IsMine) && gameManager.isStarted)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -115,7 +119,7 @@ namespace Uprising.Players
 
         void FixedUpdate()
         {
-            if (debugMode || photonView.IsMine)
+            if ((debugMode || photonView.IsMine) && gameManager.isStarted)
             {
                 if (!menu.activeSelf)
                 {
