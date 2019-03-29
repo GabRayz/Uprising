@@ -38,12 +38,15 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.JumpBoost:
                 this.item = new JumpBoost(10000, null);
                 break;
+            case ItemType.BearTrap:
+                this.item = new BearTrap(null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;
         }
 
-        if(item is Weapon)
+        if(!(item is Effect))
         {
             rotation = new Vector3(0, 60, 0);
         }

@@ -80,9 +80,9 @@ namespace Uprising.Players
 
         void Update()
         {
-            if((debugMode || photonView.IsMine) && gameManager.isStarted)
+            if(debugMode || (photonView.IsMine && gameManager.isStarted))
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && jump > 0)
                 {
                     if (jumpsLeft > 0 && isGrounded)
                     {
@@ -119,7 +119,7 @@ namespace Uprising.Players
 
         void FixedUpdate()
         {
-            if ((debugMode || photonView.IsMine) && gameManager.isStarted)
+            if (debugMode || (photonView.IsMine && gameManager.isStarted))
             {
                 if (!menu.activeSelf)
                 {
@@ -127,8 +127,12 @@ namespace Uprising.Players
                     float moveHorizontal = Input.GetAxis("Horizontal");
                     float moveVertical = Input.GetAxis("Vertical");
 
-                    this.transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
-                    this.transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
+                    if(speedModifier > 0)
+                    {
+                        this.transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
+                        this.transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
+                    }
+
 
                     // Player rotation
                     transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
@@ -163,9 +167,6 @@ namespace Uprising.Players
                         rb.AddForce(transform.forward*dash);
                         dashTime -= Time.deltaTime;
                     }
-                   
-                    // HandleMovement();
-
                 }
             }
         }
@@ -224,6 +225,7 @@ namespace Uprising.Players
 
         public void ModifySpeed(float modifier)
         {
+            Debug.Log("Speed set to " + (speedModifier + modifier));
             speedModifier += modifier;
         }
 

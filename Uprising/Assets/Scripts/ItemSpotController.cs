@@ -61,7 +61,7 @@ public class ItemSpotController : MonoBehaviour
         //itemRaretyPairs.Add(ItemType.RocketLauncher, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.Shield, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y));
-        //itemRaretyPairs.Add(ItemType.BearTrap, GetRaretyInt(Rarety.Common, y));
+        itemRaretyPairs.Add(ItemType.BearTrap, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.SlimeGun, GetRaretyInt(Rarety.Common, y));
 
         itemRaretyPairs.Add(ItemType.JumpBoost, GetRaretyInt(Rarety.Rare, y));
