@@ -1168,6 +1168,8 @@ MonoBehaviour:
   debugMode: 0
   speedModifier: 6
   photonView: {fileID: 0}
+  spectatorPrefab: {fileID: 5721345232081563820, guid: ef66eee305f2842e9af031b57d3ff6b8,
+    type: 3}
 --- !u!114 &664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2324,6 +2326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: h_BearTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648193275102145601, guid: 07303ea76b6444baaa7a28b675865cc5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5097995879338815471, guid: 07303ea76b6444baaa7a28b675865cc5,
         type: 3}

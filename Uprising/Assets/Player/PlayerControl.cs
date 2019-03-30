@@ -38,13 +38,16 @@ namespace Uprising.Players
         Rigidbody rb;
 
         private byte PlayerEliminationEvent = 0;
-
+        public GameObject spectatorPrefab;
         private bool aim = false;
+
+        private PlayerStats playerStats;
 
         GameManager gameManager;
 
         void Start()
         {
+            playerStats = new PlayerStats(this);
             if (!debugMode)
                 gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
 
@@ -231,14 +234,29 @@ namespace Uprising.Players
             jump += modifier;
         }
 
-        //[PunRPC]
         public void Eliminate(string deathMessage)
         {
-            // gameManager.EliminatePlayer(GetComponent<PhotonView>().Owner);
+            GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
+            spec.SendMessage("SetPlayerStats", playerStats);
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
             Debug.Log(deathMessage);
             Destroy(this.gameObject);
         }
+
+        //public void ToggleSpectateMode()
+        //{
+        //    // Deactivate renderer, colliders and rigidbody
+        //    GameObject.Find("Robot2").SetActive(false);
+        //    Collider[] colliders = GetComponents<Collider>();
+        //    foreach(Collider collider in colliders)
+        //    {
+        //        Destroy(collider);
+        //    }
+        //    Destroy(GetComponent<Rigidbody>());
+        //    isActive = false;
+        //    GetComponent<SpectatorController>().isActive = true; 
+
+        //}
 
         [PunRPC]
         public void ToggleInvisibility()

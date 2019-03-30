@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     float lavaRisingSpeed = 0.1f;
     public bool OfflineMode = false;
     private byte PlayerEliminationEvent = 0;
-    private int playersCount;
-    Dictionary<Player, bool> players;
+    public int playersCount;
+    public Dictionary<Player, bool> players;
 
     public bool isStarted;
     public float startCooldown = 5;
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         if(isStarted) // Raise lava
             lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
         // Finish game
-        if(playersCount <= 1 && !OfflineMode)
+        if(playersCount <= 1 && !OfflineMode && false)
         {
             Debug.Log("Game over");
             if(PhotonNetwork.CurrentRoom.PlayerCount > 1 && PhotonNetwork.IsMasterClient)
