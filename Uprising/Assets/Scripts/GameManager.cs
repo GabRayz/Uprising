@@ -85,14 +85,9 @@ public class GameManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void SetReady(PlayerControl player)
+    public void SetReady(Player player)
     {
-        int actNb = player.photonView.OwnerActorNr;
-        foreach(var key in players.Keys)
-        {
-            if (key.ActorNumber == actNb)
-                players[key] = true;
-        }
+        players[player] = true;
     }
 
     public void SpawnPlayers()

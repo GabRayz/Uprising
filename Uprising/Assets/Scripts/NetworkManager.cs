@@ -106,6 +106,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Lobby joined");
         isInGame = false;
+        Debug.Log("Lobby's name : " + PhotonNetwork.CurrentLobby.Name);
     }
 
     private void Update()

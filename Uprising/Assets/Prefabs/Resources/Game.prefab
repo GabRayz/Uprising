@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 0}
   OfflineMode: 0
+  isStarted: 0
+  startCooldown: 5
+  isCooldownStarted: 0
 --- !u!114 &315856234683174442
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -100,7 +100,6 @@ public class ItemSpotController : MonoBehaviour
     private ItemType ChooseItem()
     {
         int total = 0; // Get the total value of all rarety int
-        Debug.Log(itemRaretyPairs);
         foreach(var item in itemRaretyPairs)
         {
             total += item.Value;

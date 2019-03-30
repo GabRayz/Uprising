@@ -67,14 +67,9 @@ namespace Uprising.Players
             hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
             rb = GetComponent<Rigidbody>();
 
-            // Give the default weapon
-            Item defaultGun = new DefaultGun(999, 100, 100, 1000, this.gameObject);
-            inventory.GiveItem(defaultGun);
-            inventory.SelectItem(0);
-
             // Player is ready
             if (photonView.IsMine)
-                gameObject.GetPhotonView().RPC("SetReady", RpcTarget.All, this);
+                gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.All, this.photonView.Owner );
         }
 
 

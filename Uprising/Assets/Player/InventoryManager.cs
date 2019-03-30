@@ -23,6 +23,11 @@ namespace Uprising.Players
             appliedEffects = new List<Item>();
             items = new Item[4];
             playerControl = GetComponent<PlayerControl>();
+
+            // Give the default weapon
+            Item defaultGun = new DefaultGun(999, 100, 100, 1000, this.gameObject);
+            GiveItem(defaultGun);
+            SelectItem(0);
         }
 
         void FixedUpdate()
@@ -42,7 +47,6 @@ namespace Uprising.Players
         // Inventory Management
         public void GiveItem(Item item)
         {
-            Debug.Log(items);
             Debug.Log("Give item : " + item.type);
             // Add item to inventory
             if (item is Weapon)
