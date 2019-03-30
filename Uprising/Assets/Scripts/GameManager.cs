@@ -6,12 +6,14 @@ using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using ExitGames.Client.Photon;
 using Uprising.Players;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     SpawnPlayers[] spawnSpots;
     GameObject lava;
     public PhotonView photonView;
+    public Text topText;
     float lavaRisingSpeed = 0.1f;
     public bool OfflineMode = false;
     private byte PlayerEliminationEvent = 0;
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour
         spawnSpots = FindObjectsOfType<SpawnPlayers>();
         if(!OfflineMode) SpawnPlayers();
         lava = GameObject.Find("Lava");
+
+        topText.text = "Waiting for players";
     }
 
     private void Update()
@@ -63,21 +67,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(!isStarted)
-        {
-            // Check if players are ready to start
-            if(!players.ContainsValue(false))
-            {
-                isCooldownStarted = true;
-            }
-        }
-
         // Cooldown
         if (isCooldownStarted && startCooldown > 0)
         {
             startCooldown = startCooldown - Time.deltaTime;
+            topText.text = "Start in " + Mathf.Floor(startCooldown);
             if(startCooldown <= 0)
             {
+                Debug.Log("Begin!");
+                topText.text = "";
                 isCooldownStarted = false;
                 isStarted = true;
             }
@@ -88,6 +86,27 @@ public class GameManager : MonoBehaviour
     public void SetReady(Player player)
     {
         players[player] = true;
+        int readyCount = 0;
+        foreach(var playerReady in players)
+        {
+            if (playerReady.Value) readyCount++;
+        }
+
+        Debug.Log("Players ready : " + readyCount + "/" + playersCount);
+        if (readyCount == playersCount)
+            photonView.RPC("OnAllPlayersReady", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void OnAllPlayersReady()
+    {
+        isCooldownStarted = true;
+        Debug.Log("All players ready, starting cooldown");
+        foreach(var player in PhotonNetwork.CurrentRoom.Players)
+        {
+            players[player.Value] = true;
+        }
+        topText.text = "";
     }
 
     public void SpawnPlayers()

@@ -3,6 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Uprising.Items;
 
 namespace Uprising.Players
@@ -65,11 +66,12 @@ namespace Uprising.Players
             hudWeapon2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot2 Weapon").gameObject;
             hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
             hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
+
             rb = GetComponent<Rigidbody>();
 
             // Player is ready
             if (photonView.IsMine)
-                gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.All, this.photonView.Owner );
+                gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner );
         }
 
 
