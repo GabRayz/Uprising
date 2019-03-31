@@ -26,7 +26,7 @@ namespace Uprising.Players
             playersRemainingText.text = "Players remaining : " + gameManager.playersCount + "/" + gameManager.players.Count;
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount > 1);
+                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1);
             }
 
             Move();

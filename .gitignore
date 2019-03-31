@@ -8,7 +8,8 @@
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*
 
-Uprising/.idea/
+.idea
+*.dll
 
 ExportedObj/
 .consulo/
@@ -119,3 +120,4 @@ $RECYCLE.BIN/
 node_modules
 Web/client/dist
 *.xml
+Uprising/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll

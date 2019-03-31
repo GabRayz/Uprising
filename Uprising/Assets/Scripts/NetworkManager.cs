@@ -5,6 +5,7 @@ using Photon.Pun;
 using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using Uprising.Players;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -15,6 +16,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private bool isInGame = false;
     public Text StartingText;
     public MainMenu mainMenu;
+    PlayerStats localPlayerGameStats;
+    Stack<Player> scoreboard;
 
 
     // Start is called before the first frame update
@@ -149,6 +152,28 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         StartingText.text = "";
     }
 
+    public void LeaveToScoreBoard(Stack<Player> scoreboard, PlayerStats stats)
+    {
+        Debug.Log("Leaving to scoreBoard...");
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
+        this.scoreboard = scoreboard;
+        this.localPlayerGameStats = stats;
+        StartCoroutine("LoadScoreBoardScene");
+    }
+
+    IEnumerator LoadScoreBoardScene()
+    {
+        AsyncOperation loadScene = SceneManager.LoadSceneAsync("Scoreboard", LoadSceneMode.Additive);
+        while(!loadScene.isDone)
+        {
+            // Wait until loading is completed
+            yield return null;
+        }
+
+        ScoreBoardManager scoreBoardManager = GameObject.Find("ScoreBoard").GetComponent<ScoreBoardManager>();
+        scoreBoardManager.SetStats(this.scoreboard, this.localPlayerGameStats);
+    }
+
     public void QuitGame(bool isLastInRoom = false)
     {
         if (isLastInRoom)
@@ -156,6 +181,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         isInGame = false;
         PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
 
-        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(3));
     }
 }
