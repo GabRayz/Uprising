@@ -24,10 +24,10 @@ public class CollectibleController : MonoBehaviour {
                 this.item = new SpeedBoost(5000, null);
                 break;
             case ItemType.ShotGun:
-                this.item = new ShotGun(100, 100, 100, 1000, null);
+                this.item = new ShotGun(20, 100, 50, 1000, null);
                 break;
             case ItemType.DefaultGun:
-                this.item = new DefaultGun(100,100,100,1000, null);
+                this.item = new DefaultGun(100,100,10,1000, null);
                 break;
             case ItemType.Invisibility:
                 this.item = new Invisibility(10000, null);
