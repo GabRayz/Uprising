@@ -75,7 +75,11 @@ namespace Uprising.Players
 
             // Player is ready
             if (photonView.IsMine)
-                gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner );
+            {
+                gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
+                gameManager.SetLocalPlayer(this.playerStats);
+            }
+
         }
 
 

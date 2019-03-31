@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
     private byte PlayerEliminationEvent = 0;
     public int playersCount;
     public Dictionary<Player, bool> players;
+    Stack<Player> scoreBoard;
+    PlayerStats localPlayer;
 
+    // Cooldown before starting the game
     public bool isStarted;
     public float startCooldown = 5;
     public bool isCooldownStarted;
@@ -34,7 +37,7 @@ public class GameManager : MonoBehaviour
         spawnSpots = FindObjectsOfType<SpawnPlayers>();
         if(!OfflineMode) SpawnPlayers();
         lava = GameObject.Find("Lava");
-
+        scoreBoard = new Stack<Player>();
         topText.text = "Waiting for players";
     }
 
@@ -43,28 +46,33 @@ public class GameManager : MonoBehaviour
         if(isStarted) // Raise lava
             lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
         // Finish game
-        if(playersCount <= 1 && !OfflineMode && false)
+        if(playersCount <= 1 && !OfflineMode)
         {
-            Debug.Log("Game over");
-            if(PhotonNetwork.CurrentRoom.PlayerCount > 1 && PhotonNetwork.IsMasterClient)
-            {
-                foreach (var player in PhotonNetwork.CurrentRoom.Players)
-                {
-                    if (player.Value != PhotonNetwork.LocalPlayer) {
-                        this.photonView.TransferOwnership(player.Value);
-                        break;
-                    }
-                }
-                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
-            }
-            else if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
-            {
-                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(true);
-            }
-            else
-            {
-                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
-            }
+
+
+            FinishGame();
+            // GameObject.Find("_network").GetComponent<NetworkManager>().LeaveToScoreBoard(scoreBoard, localPlayer);
+            // GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1);
+
+            //if (PhotonNetwork.CurrentRoom.PlayerCount > 1 && PhotonNetwork.IsMasterClient)
+            //{
+            //    foreach (var player in PhotonNetwork.CurrentRoom.Players)
+            //    {
+            //        if (player.Value != PhotonNetwork.LocalPlayer) {
+            //            this.photonView.TransferOwnership(player.Value);
+            //            break;
+            //        }
+            //    }
+            //    GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
+            //}
+            //else if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            //{
+            //    GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(true);
+            //}
+            //else
+            //{
+            //    GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
+            //}
         }
 
         // Cooldown
@@ -80,6 +88,23 @@ public class GameManager : MonoBehaviour
                 isStarted = true;
             }
         }
+    }
+
+    void FinishGame()
+    {
+        Debug.Log("Game over");
+        foreach (var playerStatus in players)
+        {
+            if (playerStatus.Value)
+                scoreBoard.Push(playerStatus.Key);
+        }
+
+        GameObject.Find("_network").GetComponent<NetworkManager>().LeaveToScoreBoard(scoreBoard, localPlayer);
+    }
+
+    public void SetLocalPlayer(PlayerStats currentPlayer)
+    {
+        this.localPlayer = currentPlayer;
     }
 
     [PunRPC]
@@ -135,6 +160,7 @@ public class GameManager : MonoBehaviour
         {
             players[player] = false;
             playersCount--;
+            scoreBoard.Push(player);
             Debug.LogFormat("Player {0} eliminated", player.ActorNumber);
         }
         return playersCount;

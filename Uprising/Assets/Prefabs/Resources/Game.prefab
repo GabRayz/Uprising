@@ -48,6 +48,7 @@ MonoBehaviour:
   photonView: {fileID: 0}
   topText: {fileID: 4086289502973967722}
   OfflineMode: 0
+  playersCount: 0
   isStarted: 0
   startCooldown: 5
   isCooldownStarted: 0
