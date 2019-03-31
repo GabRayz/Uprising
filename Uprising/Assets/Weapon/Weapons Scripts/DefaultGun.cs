@@ -16,6 +16,8 @@ namespace Uprising.Items
             this.firerate = firerate;
             this.knockback = knockback;
             this.player = player;
+
+            fireratetime = firerate;
         }
 
         public override void Aim()
@@ -33,8 +35,16 @@ namespace Uprising.Items
 
             //GameObject NewBelette = Instantiate(belette, this.transform);
             //NewBelette.GetComponent<Rigidbody>().AddForce(this.transform.forward * 100);
-
-            player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").GetComponent<belettegen>().shoot( durability, this.player.transform.forward);
+            
+            if (fireratetime >= firerate)
+            {
+                player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").GetComponent<belettegen>().shoot(durability, this.player.transform.forward);
+                fireratetime = 0;
+            }
+            if(durability < 0)
+            {
+                StopUsing();
+            }
         }
     }
 }

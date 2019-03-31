@@ -29,6 +29,10 @@ namespace Uprising.Items
         {
             player.GetComponent<PlayerControl>().hand.transform.Find("h_"+type.ToString()).gameObject.SetActive(false);
         }
+        public virtual void Reload()
+        {
+            Debug.Log("reload");
+        }
     }
 
     public abstract class Effect : Item

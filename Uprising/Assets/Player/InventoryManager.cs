@@ -37,6 +37,11 @@ namespace Uprising.Players
             {
                 (effect as Effect).Update();
             }
+
+            if(items[selectedItem] is Weapon)
+            {
+                items[selectedItem].Reload();
+            }
         }
 
         public int GetSelectedItem()

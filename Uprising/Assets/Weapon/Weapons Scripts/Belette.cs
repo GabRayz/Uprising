@@ -7,21 +7,16 @@ public class Belette : MonoBehaviour
 {
     public float distance;
     public float range;
+    public float firerate;
+    public float fireratetime;
 
     public GameObject belette;
     public GameObject player;
     public Weapon weapon;
 
-    public void InitBelette(float range, GameObject belette, Weapon weapon)
+    public void InitBelette(Weapon weapon)
     {
         this.weapon = weapon;
-        this.range = range;
-
-        //GameObject NewBelette = Instantiate(belette, weapon.gameObject.transform);
-        //NewBelette.GetComponent<Rigidbody>().AddForce(weapon.gameObject.transform.forward * 100);
-
-        distance = 0f;
-        Debug.Log("Distance 0");
     }
 
     // Update is called once per frame
@@ -34,6 +29,10 @@ public class Belette : MonoBehaviour
             Destroy(belette);
         }
 
+        if (fireratetime < firerate)
+        {
+            fireratetime++;
+        }
     }
 
     void OnTriggerEnter(Collider other)
