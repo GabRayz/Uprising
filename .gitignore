@@ -118,3 +118,4 @@ $RECYCLE.BIN/
 # Website
 node_modules
 Web/client/dist
+*.xml
