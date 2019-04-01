@@ -174,13 +174,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         scoreBoardManager.SetStats(this.scoreboard, this.localPlayerGameStats);
     }
 
-    public void QuitGame(bool isLastInRoom = false)
+    public void QuitGame(bool isLastInRoom = false, bool isInScoreBoardScene = true)
     {
         if (isLastInRoom)
             PhotonNetwork.CurrentRoom.IsOpen = true;
         isInGame = false;
         PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
 
-        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(3));
+        if(isInScoreBoardScene)
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(3));
+        else
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
     }
 }

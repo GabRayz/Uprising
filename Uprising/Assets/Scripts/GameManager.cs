@@ -8,7 +8,7 @@ using ExitGames.Client.Photon;
 using Uprising.Players;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     SpawnPlayers[] spawnSpots;
     GameObject lava;
@@ -48,31 +48,7 @@ public class GameManager : MonoBehaviour
         // Finish game
         if(playersCount <= 1 && !OfflineMode)
         {
-
-
             FinishGame();
-            // GameObject.Find("_network").GetComponent<NetworkManager>().LeaveToScoreBoard(scoreBoard, localPlayer);
-            // GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1);
-
-            //if (PhotonNetwork.CurrentRoom.PlayerCount > 1 && PhotonNetwork.IsMasterClient)
-            //{
-            //    foreach (var player in PhotonNetwork.CurrentRoom.Players)
-            //    {
-            //        if (player.Value != PhotonNetwork.LocalPlayer) {
-            //            this.photonView.TransferOwnership(player.Value);
-            //            break;
-            //        }
-            //    }
-            //    GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
-            //}
-            //else if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
-            //{
-            //    GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(true);
-            //}
-            //else
-            //{
-            //    GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
-            //}
         }
 
         // Cooldown
@@ -95,7 +71,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game over");
         foreach (var playerStatus in players)
         {
-            if (playerStatus.Value)
+            if (playerStatus.Value && !playerStatus.Key.IsInactive)
                 scoreBoard.Push(playerStatus.Key);
         }
 
@@ -164,5 +140,10 @@ public class GameManager : MonoBehaviour
             Debug.LogFormat("Player {0} eliminated", player.ActorNumber);
         }
         return playersCount;
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        EliminatePlayer(otherPlayer);
     }
 }

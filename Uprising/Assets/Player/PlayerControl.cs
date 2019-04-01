@@ -185,8 +185,8 @@ namespace Uprising.Players
             if (!debugMode)
             {
                 // PhotonNetwork.LeaveRoom();
-                Eliminate("Client left the battle");
-                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame();
+                Eliminate("Client left the battle", false);
+                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1, false);
             }
         }
 
@@ -238,10 +238,13 @@ namespace Uprising.Players
             jump += modifier;
         }
 
-        public void Eliminate(string deathMessage)
+        public void Eliminate(string deathMessage, bool stayAsASpectator = true)
         {
-            GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
-            spec.SendMessage("SetPlayerStats", playerStats);
+            if(stayAsASpectator)
+            {
+                GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
+                spec.SendMessage("SetPlayerStats", playerStats);
+            }
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
             Debug.Log(deathMessage);
             Destroy(this.gameObject);
