@@ -40,6 +40,7 @@ namespace Uprising.Players
         private byte PlayerEliminationEvent = 0;
         public GameObject spectatorPrefab;
         private bool aim = false;
+        private int counter = 0;
 
         private PlayerStats playerStats;
 
@@ -109,15 +110,38 @@ namespace Uprising.Players
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
+                    aim = !aim;
+                    counter = 6;
+                    /*
+                    Vector3 pos = camera.transform.position;
                     if (!aim)
                     {
-                        camera.transform.Translate(new Vector3(0.5f, 0f, 2f));
+                        //camera.transform.Translate(new Vector3(0.5f, 0f, 2f));
+                        pos = Vector3.Lerp(pos,pos + new Vector3(0.5f, 0f, 2f),20f );
                         aim = true;
                     }
                     else
                     {
-                        camera.transform.Translate(new Vector3(-0.5f, 0f, -2f));
+                        //camera.transform.Translate(new Vector3(-0.5f, 0f, -2f));
+                        pos= Vector3.Lerp(camera.transform.position, camera.transform.position+ new Vector3(-0.5f, 0f, -2f), 20f);
                         aim = false;
+                    }
+                    camera.transform.position = pos;*/
+                }
+                if (aim)
+                {
+                    if (counter > 0)
+                    {
+                        camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(0.5f, -0.3f, 2f), Time.deltaTime * 10f);
+                        counter--;
+                    }
+                }
+                else
+                {
+                    if (counter > 0)
+                    {
+                        camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(-0.5f, 0.3f,- 2f), Time.deltaTime * 10f);
+                        counter--;
                     }
                 }
             }
