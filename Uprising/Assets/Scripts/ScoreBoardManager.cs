@@ -15,6 +15,8 @@ public class ScoreBoardManager : MonoBehaviour
     void Start()
     {
         Debug.Log("ScoreBoard scene loaded");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void SetStats(Stack<Player> scoreboard, PlayerStats stats)

@@ -79,6 +79,8 @@ namespace Uprising.Players
                 gameManager.SetLocalPlayer(this.playerStats);
             }
 
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
 
@@ -175,18 +177,27 @@ namespace Uprising.Players
             }
         }
 
-        void ToggleMenu()
+        public void ToggleMenu()
         {
             menu.SetActive(!menu.activeSelf);
+            Cursor.lockState = (menu.activeSelf) ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = menu.activeSelf;
         }
 
         public void Quit()
         {
             if (!debugMode)
             {
-                // PhotonNetwork.LeaveRoom();
-                Eliminate("Client left the battle", false);
-                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1, false);
+                if(gameManager.playersCount <= 2)
+                {
+                    Eliminate("Client left the battle", false);
+                }
+                else
+                {
+                    Eliminate("Client left the battle", false);
+                    GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1, false);
+                }
+
             }
         }
 

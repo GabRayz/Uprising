@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
     {
         networkManager = GameObject.Find("_network").GetComponent<NetworkManager>();
         networkManager.SetMainMenu(this);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void PlayRandom()

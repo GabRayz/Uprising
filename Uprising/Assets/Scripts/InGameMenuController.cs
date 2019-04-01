@@ -12,6 +12,11 @@ public class InGameMenuController : MonoBehaviour
         this.player = player;
     }
 
+    public void Resume()
+    {
+        player.ToggleMenu();
+    }
+
     public void Quit()
     {
         player.Quit();
