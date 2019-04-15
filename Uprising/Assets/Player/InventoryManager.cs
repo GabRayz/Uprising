@@ -12,8 +12,8 @@ namespace Uprising.Players
     [RequireComponent(typeof(PlayerControl))]
     public class InventoryManager : MonoBehaviour
     {
-        private Item[] items; // 0: Primary Weapon, 1: Secondary Weapon, 2: Bonus 1, 3: Bonus 2
-        private int selectedItem;
+        public Item[] items; // 0: Primary Weapon, 1: Secondary Weapon, 2: Bonus 1, 3: Bonus 2
+        public int selectedItem;
         private List<Item> appliedEffects;
         private PlayerControl playerControl;
 

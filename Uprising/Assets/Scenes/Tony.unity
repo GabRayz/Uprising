@@ -276,7 +276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1259874461
 PrefabInstance:
@@ -360,6 +360,22 @@ PrefabInstance:
       propertyPath: type
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 743, guid: d04b9ebfb218b4e66b3ce2db1cc16462, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156, guid: d04b9ebfb218b4e66b3ce2db1cc16462, type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156, guid: d04b9ebfb218b4e66b3ce2db1cc16462, type: 3}
+      propertyPath: InstantiationId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183, guid: d04b9ebfb218b4e66b3ce2db1cc16462, type: 3}
+      propertyPath: type
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04b9ebfb218b4e66b3ce2db1cc16462, type: 3}
 --- !u!1001 &1423026321
@@ -417,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 5366960452372407172, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5366960452372407172, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
@@ -463,10 +479,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 270, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 4261242301758617080, guid: 5af47774f77b7473fa819bdaa775055f,
         type: 3}
       propertyPath: m_IsActive
@@ -476,6 +488,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: h_DefaultGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 270, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 535573201999879863, guid: 5af47774f77b7473fa819bdaa775055f,
         type: 3}
@@ -573,6 +589,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 462, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079976427897720696, guid: 5af47774f77b7473fa819bdaa775055f,
+        type: 3}
+      propertyPath: m_Name
+      value: h_Minigun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079976427897720696, guid: 5af47774f77b7473fa819bdaa775055f,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
