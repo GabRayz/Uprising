@@ -39,7 +39,7 @@ namespace Uprising.Players
         public PhotonView photonView;
         Rigidbody rb;
 
-        private byte PlayerEliminationEvent = 0;
+        private readonly byte PlayerEliminationEvent = 0;
         public GameObject spectatorPrefab;
         private bool aim = false;
         private int counter = 0;
@@ -79,7 +79,8 @@ namespace Uprising.Players
             if (photonView.IsMine)
             {
                 gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
-                gameManager.SetLocalPlayer(this.playerStats);
+                gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
+                // gameManager.SetLocalPlayer(this.playerStats);
             }
 
             Cursor.lockState = CursorLockMode.Locked;
@@ -183,10 +184,6 @@ namespace Uprising.Players
                         jumpsLeft = 1;
                     }
 
-
-
-                    int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
-                    
                     if (isDashing)
                     { 
                         if (dashTime < 0)
@@ -207,8 +204,13 @@ namespace Uprising.Players
         {
             Vector3 dir = belette.transform.forward;
             rb.AddForce(dir * belette.weapon.knockback / 2, ForceMode.Impulse);
-            // lastHitter = belette.player.GetComponent<PlayerControl>();
+            lastHitter = belette.player.GetComponent<PlayerControl>();
             Destroy(belette.gameObject);
+        }
+
+        public void OnTargetHit()
+        {
+            playerStats.hits += 1;
         }
 
         public void ToggleMenu()
@@ -285,6 +287,7 @@ namespace Uprising.Players
 
         public void Eliminate(string deathMessage, bool stayAsASpectator = true)
         {
+            playerStats.killer = lastHitter.photonView.Owner;
             if(stayAsASpectator)
             {
                 GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);

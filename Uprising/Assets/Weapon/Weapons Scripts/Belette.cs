@@ -41,16 +41,15 @@ namespace Uprising.Items
 
         void OnTriggerEnter(Collider other)
         {
-            Debug.Log("enter");
             if (other.CompareTag("player") && GetComponent<PhotonView>().IsMine)
             {
-                Debug.Log("Hit a player");
                 other.GetComponent<PlayerControl>().photonView.RPC("Hit", RpcTarget.All, this);
+                player.GetComponent<PlayerControl>().OnTargetHit();
             }
-            if(other.CompareTag("player"))
+            else if(other.CompareTag("player"))
             {
-                Debug.Log("Hit a player");
                 other.GetComponent<PlayerControl>().Hit(this);
+                player.GetComponent<PlayerControl>().OnTargetHit();
             }
         }
     }

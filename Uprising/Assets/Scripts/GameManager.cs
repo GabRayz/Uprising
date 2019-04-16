@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     SpawnPlayers[] spawnSpots;
     GameObject lava;
-    public PhotonView photonView;
+    public new PhotonView photonView;
     public Text topText;
     float lavaRisingSpeed = 0.1f;
     public bool OfflineMode = false;
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Dictionary<Player, bool> players;
     Stack<Player> scoreBoard;
     PlayerStats localPlayer;
+    List<PlayerStats> playerStats = new List<PlayerStats>();
 
     // Cooldown before starting the game
     public bool isStarted;
@@ -75,12 +76,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 scoreBoard.Push(playerStatus.Key);
         }
 
-        GameObject.Find("_network").GetComponent<NetworkManager>().LeaveToScoreBoard(scoreBoard, localPlayer);
+        GameObject.Find("_network").GetComponent<NetworkManager>().LeaveToScoreBoard(scoreBoard, playerStats);
     }
 
-    public void SetLocalPlayer(PlayerStats currentPlayer)
+    [PunRPC]
+    public void SetPlayerStat(PlayerStats playerStats)
     {
-        this.localPlayer = currentPlayer;
+        this.playerStats.Add(playerStats);
     }
 
     [PunRPC]

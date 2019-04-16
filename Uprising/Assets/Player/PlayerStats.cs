@@ -9,6 +9,11 @@ namespace Uprising.Players
     {
         public PlayerControl playerControl;
         public Player owner;
+        public Player killer;
+        public int belettesShot;
+        public int hits;
+        public int kills;
+        public int time;
 
         public PlayerStats(PlayerControl playerControl)
         {
