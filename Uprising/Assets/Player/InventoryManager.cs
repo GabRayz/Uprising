@@ -24,10 +24,7 @@ namespace Uprising.Players
             items = new Item[4];
             playerControl = GetComponent<PlayerControl>();
 
-            // Give the default weapon
-            Item defaultGun = new DefaultGun(999, 100, 100, 1000, this.gameObject);
-            GiveItem(defaultGun);
-            SelectItem(0);
+
         }
 
         void FixedUpdate()
