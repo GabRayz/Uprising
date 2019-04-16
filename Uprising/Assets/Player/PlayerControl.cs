@@ -33,6 +33,7 @@ namespace Uprising.Players
         public bool debugMode = false;
         private Vector3 move;
         private Vector3 dashvector;
+        public bool contrallable = true;
         
         public float speedModifier = 5;
         public PhotonView photonView;
@@ -83,12 +84,17 @@ namespace Uprising.Players
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+            // Give the default weapon
+            Item defaultGun = new DefaultGun(999, 100, 10, 20, this.gameObject);
+            inventory.GiveItem(defaultGun);
+            inventory.SelectItem(0);
         }
 
 
         void Update()
         {
-            if(debugMode || (photonView.IsMine && gameManager.isStarted))
+            if(debugMode && contrallable || (photonView.IsMine && gameManager.isStarted))
             {
                 if (Input.GetKeyDown(KeyCode.Space) && jump > 0)
                 {
@@ -144,7 +150,7 @@ namespace Uprising.Players
 
         void FixedUpdate()
         {
-            if (debugMode || (photonView.IsMine && gameManager.isStarted))
+            if (debugMode && contrallable || (photonView.IsMine && gameManager.isStarted))
             {
                 if (!menu.activeSelf)
                 {
@@ -199,8 +205,9 @@ namespace Uprising.Players
         [PunRPC]
         public void Hit(Belette belette)
         {
-            rb.AddForce(belette.transform.rotation.eulerAngles * belette.weapon.knockback, ForceMode.Impulse);
-            lastHitter = belette.player.GetComponent<PlayerControl>();
+            Vector3 dir = belette.transform.forward;
+            rb.AddForce(dir * belette.weapon.knockback / 2, ForceMode.Impulse);
+            // lastHitter = belette.player.GetComponent<PlayerControl>();
             Destroy(belette.gameObject);
         }
 

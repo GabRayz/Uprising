@@ -20,6 +20,7 @@ namespace Uprising.Items
         public void InitBelette(Weapon weapon)
         {
             this.weapon = weapon;
+            // this.player = player;
         }
 
         // Update is called once per frame
@@ -40,9 +41,16 @@ namespace Uprising.Items
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.transform.tag == "player" && GetComponent<PhotonView>().IsMine)
+            Debug.Log("enter");
+            if (other.CompareTag("player") && GetComponent<PhotonView>().IsMine)
             {
+                Debug.Log("Hit a player");
                 other.GetComponent<PlayerControl>().photonView.RPC("Hit", RpcTarget.All, this);
+            }
+            if(other.CompareTag("player"))
+            {
+                Debug.Log("Hit a player");
+                other.GetComponent<PlayerControl>().Hit(this);
             }
         }
     }
