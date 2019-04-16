@@ -29,10 +29,10 @@ namespace Uprising.Items
             if (fireratetime >= firerate)
             {
                 player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, this.player.transform.forward, this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(-0.1f, 0.1f, 0.3f), this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0.1f, 0.1f, 0.2f), this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0.1f, 0.1f, 0.3f), this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(-0.1f, 0f, 0.2f), this);
+                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(-0.3f, 0.2f, 0.4f), this);
+                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0.3f, 0.1f, 0.4f), this);
+                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0.3f, 0.2f, 0.4f), this);
+                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(-0.3f, 0f, 0.3f), this);
                 player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0f, 0f, 0.2f), this);
                 durability--;
                 fireratetime = 0;
