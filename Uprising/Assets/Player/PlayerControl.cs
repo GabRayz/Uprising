@@ -17,6 +17,7 @@ namespace Uprising.Players
         public GameObject hudBonus1;
         public GameObject hudBonus2;
         public GameObject menu;
+        public PlayerControl lastHitter;
         // public Animator animator;
         public new GameObject camera;
         public Camera cam;
@@ -193,6 +194,14 @@ namespace Uprising.Players
                     }
                 }
             }
+        }
+
+        [PunRPC]
+        public void Hit(Belette belette)
+        {
+            rb.AddForce(belette.transform.rotation.eulerAngles * belette.weapon.knockback, ForceMode.Impulse);
+            lastHitter = belette.player.GetComponent<PlayerControl>();
+            Destroy(belette.gameObject);
         }
 
         public void ToggleMenu()

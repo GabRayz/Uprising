@@ -1,46 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Uprising.Items;
+using Uprising.Players;
+using Photon.Pun;
 
-public class Belette : MonoBehaviour
+namespace Uprising.Items
 {
-    public float distance;
-    public float range;
-    public float firerate;
-    public float fireratetime;
-
-    public GameObject belette;
-    public GameObject player;
-    public Weapon weapon;
-
-    public void InitBelette(Weapon weapon)
+    public class Belette : MonoBehaviour
     {
-        this.weapon = weapon;
-    }
+        public float distance;
+        public float range;
+        public float firerate;
+        public float fireratetime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        distance++;
-        
-        if (distance > range)
+        public GameObject belette;
+        public GameObject player;
+        public Weapon weapon;
+
+        public void InitBelette(Weapon weapon)
         {
-            Destroy(belette);
+            this.weapon = weapon;
         }
 
-        if (fireratetime < firerate)
+        // Update is called once per frame
+        void Update()
         {
-            fireratetime++;
+            distance++;
+
+            if (distance > range)
+            {
+                Destroy(belette);
+            }
+
+            if (fireratetime < firerate)
+            {
+                fireratetime++;
+            }
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.tag == "player" && GetComponent<PhotonView>().IsMine)
+            {
+                other.GetComponent<PlayerControl>().photonView.RPC("Hit", RpcTarget.All, this);
+            }
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "player")
-        {
-            //other.SendMessage("Hit", this); //We also need to send the direction and the force for the propel.
-            //Destroy(this);
-        }
-    }
 }
