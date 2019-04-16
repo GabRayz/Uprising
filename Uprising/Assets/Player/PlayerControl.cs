@@ -86,7 +86,7 @@ namespace Uprising.Players
             Cursor.visible = false;
 
             // Give the default weapon
-            Item defaultGun = new DefaultGun(999, 100, 10, 1000, this.gameObject);
+            Item defaultGun = new DefaultGun(999, 100, 10, 20, this.gameObject);
             inventory.GiveItem(defaultGun);
             inventory.SelectItem(0);
         }
@@ -206,7 +206,7 @@ namespace Uprising.Players
         public void Hit(Belette belette)
         {
             Vector3 dir = belette.transform.forward;
-            rb.AddForce(dir * belette.weapon.knockback / 100, ForceMode.Impulse);
+            rb.AddForce(dir * belette.weapon.knockback / 2, ForceMode.Impulse);
             // lastHitter = belette.player.GetComponent<PlayerControl>();
             Destroy(belette.gameObject);
         }
