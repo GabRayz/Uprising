@@ -39,5 +39,6 @@ MonoBehaviour:
   - OnAllPlayersReady
   - Hit
   - SetPlayerStat
+  - OnTargetKilled
   DisableAutoOpenWizard: 1
   ShowSettings: 1

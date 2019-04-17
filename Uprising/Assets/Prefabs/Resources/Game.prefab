@@ -49,6 +49,7 @@ MonoBehaviour:
   topText: {fileID: 1163}
   OfflineMode: 0
   playersCount: 0
+  lavaLevel: 0
   isStarted: 0
   startCooldown: 5
   isCooldownStarted: 0
