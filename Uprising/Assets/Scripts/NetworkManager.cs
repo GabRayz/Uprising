@@ -25,8 +25,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     void Start()
     {
         StartingText.text = "Connection...";
-        // PhotonNetwork.ConnectUsingSettings();
-        PhotonNetwork.ConnectToRegion("eu");
+        PhotonNetwork.ConnectUsingSettings();
+        // PhotonNetwork.ConnectToRegion("eu");
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 

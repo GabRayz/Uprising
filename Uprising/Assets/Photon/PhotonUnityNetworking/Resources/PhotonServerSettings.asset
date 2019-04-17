@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 
-    AppIdChat: 
+    AppIdRealtime: 34006489-8799-49d5-9ebe-1b066ce36604
+    AppIdChat: d0c938b6-fa19-4402-b35d-d69e0d031cf0
     AppIdVoice: 
-    AppVersion: 
+    AppVersion: 1.0
     UseNameServer: 1
     FixedRegion: 
     Server: 
@@ -32,11 +32,10 @@ MonoBehaviour:
   - DestroySpaceship
   - EliminatePlayer
   - Fire
-  - Hit
   - OnAllPlayersReady
+  - OnTargetKilled
   - RespawnSpaceship
-  - SetPlayerStat
   - SetReady
   - ToggleInvisibility
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
