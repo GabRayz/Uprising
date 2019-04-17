@@ -198,7 +198,7 @@ namespace Uprising.Players
                 }
             }
         }
-        [PunRPC]
+
         public void Hit(Belette belette)
         {
             Vector3 dir = belette.transform.forward;
