@@ -292,8 +292,12 @@ namespace Uprising.Players
 
         public void Eliminate(string deathMessage, bool stayAsASpectator = true)
         {
-            playerStats.killer = lastHitter.photonView.Owner;
-            lastHitter.photonView.RPC("OnTargetKilled", RpcTarget.All);
+            if(lastHitter != null)
+            {
+                playerStats.killer = lastHitter.photonView.Owner;
+                lastHitter.photonView.RPC("OnTargetKilled", RpcTarget.All);
+            }
+
             if(stayAsASpectator)
             {
                 GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
