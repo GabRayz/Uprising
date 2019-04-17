@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: debe92d6197cd1149ae919c2aa5e90ab
+guid: b33e456ae548c4d4ca6c71bd1d2c203d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -157,7 +157,7 @@ ModelImporter:
     400148: Spine
     400150: TongueBack
     400152: TongueTip
-    7400000: Idle_JumpUpMedium_NoHands1Step_Idle
+    7400000: Jump_Land
     9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
@@ -191,10 +191,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle_JumpUpMedium_NoHands1Step_Idle
-      takeName: _207_Idle_JumpUpMedium_NoHands1Step_Idle
-      firstFrame: 56
-      lastFrame: 233
+      name: Jump_Land
+      takeName: _197_Idle_JumpDownLow_Idle
+      firstFrame: 187
+      lastFrame: 218
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -207,15 +207,15 @@ ModelImporter:
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
       transformMask: []
-      maskType: 3
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1

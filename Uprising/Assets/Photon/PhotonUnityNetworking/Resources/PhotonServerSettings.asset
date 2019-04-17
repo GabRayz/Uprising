@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AppSettings:
     AppIdRealtime: 34006489-8799-49d5-9ebe-1b066ce36604
-    AppIdChat: d0c938b6-fa19-4402-b35d-d69e0d031cf0
+    AppIdChat: 
     AppIdVoice: 
-    AppVersion: 1.0
+    AppVersion: 
     UseNameServer: 1
     FixedRegion: 
     Server: 
@@ -28,14 +28,6 @@ MonoBehaviour:
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
-  RpcList:
-  - DestroySpaceship
-  - EliminatePlayer
-  - Fire
-  - OnAllPlayersReady
-  - OnTargetKilled
-  - RespawnSpaceship
-  - SetReady
-  - ToggleInvisibility
+  RpcList: []
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
+  ShowSettings: 0
