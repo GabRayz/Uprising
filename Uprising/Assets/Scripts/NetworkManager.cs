@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using UnityEngine.UI;
-using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using Uprising.Players;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -25,8 +25,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     void Start()
     {
         StartingText.text = "Connection...";
-        // PhotonNetwork.ConnectUsingSettings();
-        PhotonNetwork.ConnectToRegion("eu");
+        PhotonNetwork.ConnectUsingSettings();
+        // PhotonNetwork.ConnectToRegion("eu");
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 

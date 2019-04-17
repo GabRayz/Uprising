@@ -1,0 +1,20 @@
+{
+    "port": 8080,
+    "database": {
+        "name": "uprising",
+        "user": "uprising",
+        "password": "*****",
+        "config": {
+            "dialect": "postgres",
+            "host": "uprising-game.com",
+            "port": 5432,
+            "logging": true,
+            "sync": true,
+            "pool": {
+                "max": 5,
+                "idle": 30000,
+                "acquire": 60000
+            }
+        }
+    }
+}
