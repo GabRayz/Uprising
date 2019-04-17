@@ -122,27 +122,7 @@ namespace Uprising.Players
                         aim = !aim;
                         counter = 6;
                     }
-<<<<<<< HEAD
-                    if (aim)
-                    {
-                        if (counter > 0)
-                        {
-                            camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(0.5f, -0.3f, 2f), Time.deltaTime * 10f);
-                            counter--;
-                            
-                        }
-                    }
-                    else
-                    {
-                        if (counter > 0)
-                        {
-                            camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(-0.5f, 0.3f, -2f), Time.deltaTime * 10f);
-                            counter--;
-                        }
-                    }
-=======
                     toggleaim();
->>>>>>> 512c084d69d29d4c86ac97e5f387204df3ebbbca
                 }
                 else
                 {
