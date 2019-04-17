@@ -32,6 +32,9 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.Minigun:
                 this.item = new Minigun(100, 100, 5, 5, null);
                 break;
+            case ItemType.Sniper:
+                this.item = new Sniper(200, 100, 50, 95, null);
+                break;
             case ItemType.Invisibility:
                 this.item = new Invisibility(10000, null);
                 break;
