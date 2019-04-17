@@ -11,7 +11,7 @@ namespace Uprising.Items
         public float range;
         public float firerate;
         public float fireratetime;
-        public float knockback;
+        public float knockback = 1;
 
         public abstract void Aim(); //Aim
 

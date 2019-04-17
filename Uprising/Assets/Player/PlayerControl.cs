@@ -33,12 +33,13 @@ namespace Uprising.Players
         public bool debugMode = false;
         private Vector3 move;
         private Vector3 dashvector;
+        public bool contrallable = true;
         
         public float speedModifier = 5;
         public PhotonView photonView;
         Rigidbody rb;
 
-        private byte PlayerEliminationEvent = 0;
+        private readonly byte PlayerEliminationEvent = 0;
         public GameObject spectatorPrefab;
         private bool aim = false;
         private int counter = 0;
@@ -78,7 +79,8 @@ namespace Uprising.Players
             if (photonView.IsMine)
             {
                 gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
-                gameManager.SetLocalPlayer(this.playerStats);
+                gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
+                // gameManager.SetLocalPlayer(this.playerStats);
             }
 
             Cursor.lockState = CursorLockMode.Locked;
@@ -88,7 +90,7 @@ namespace Uprising.Players
 
         void Update()
         {
-            if(debugMode || (photonView.IsMine && gameManager.isStarted))
+            if(debugMode && contrallable || (photonView.IsMine && gameManager.isStarted))
             {
                 if (Input.GetKeyDown(KeyCode.Space) && jump > 0)
                 {
@@ -144,7 +146,7 @@ namespace Uprising.Players
 
         void FixedUpdate()
         {
-            if (debugMode || (photonView.IsMine && gameManager.isStarted))
+            if (debugMode && contrallable || (photonView.IsMine && gameManager.isStarted))
             {
                 if (!menu.activeSelf)
                 {
@@ -178,10 +180,6 @@ namespace Uprising.Players
                         jumpsLeft = 1;
                     }
 
-
-
-                    int camRotation = (int)(cam.transform.parent.transform.rotation.eulerAngles.x + 90) % 360 - 90;
-                    
                     if (isDashing)
                     { 
                         if (dashTime < 0)
@@ -200,9 +198,15 @@ namespace Uprising.Players
         [PunRPC]
         public void Hit(Belette belette)
         {
-            rb.AddForce(belette.transform.rotation.eulerAngles * belette.weapon.knockback, ForceMode.Impulse);
+            Vector3 dir = belette.transform.forward;
+            rb.AddForce(dir * belette.weapon.knockback / 2, ForceMode.Impulse);
             lastHitter = belette.player.GetComponent<PlayerControl>();
             Destroy(belette.gameObject);
+        }
+
+        public void OnTargetHit()
+        {
+            playerStats.hits += 1;
         }
 
         public void ToggleMenu()
@@ -279,6 +283,7 @@ namespace Uprising.Players
 
         public void Eliminate(string deathMessage, bool stayAsASpectator = true)
         {
+            playerStats.killer = lastHitter.photonView.Owner;
             if(stayAsASpectator)
             {
                 GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);

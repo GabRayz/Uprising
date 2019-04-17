@@ -128,10 +128,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2524543093918101731}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.014029884, y: 0.014029905, z: 0.055794902}
+  m_Size: {x: 0.03, y: 0.04, z: 0.055794902}
   m_Center: {x: 0.0000005722977, y: 0.0000000044237822, z: 0.003227353}
 --- !u!114 &3037845077756716666
 MonoBehaviour:
@@ -4826,7 +4826,7 @@ ParticleSystem:
 --- !u!199 &4124976604257112992
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9524,7 +9524,7 @@ ParticleSystem:
 --- !u!199 &6049175039526402755
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

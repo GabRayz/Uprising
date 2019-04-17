@@ -393,6 +393,7 @@
             </e>
           </e>
         </e>
+        <e p="HUD.cs" t="Include" />
         <e p="Main menu" t="Include">
           <e p="Lava" t="Include">
             <e p="Waves.cs" t="Include" />
