@@ -156,6 +156,7 @@ namespace Uprising.Players
                     {
                         this.transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
                         this.transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
+                        
                     }
 
 
