@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     Stack<Player> scoreBoard;
     PlayerStats localPlayer;
     List<PlayerStats> playerStats = new List<PlayerStats>();
+    public float lavaLevel;
 
     // Cooldown before starting the game
     public bool isStarted;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if(isStarted) // Raise lava
             lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
+        lavaLevel = lava.transform.position.y;
         // Finish game
         if(playersCount <= 1 && !OfflineMode)
         {

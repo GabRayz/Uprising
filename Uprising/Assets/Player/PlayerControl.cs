@@ -85,11 +85,6 @@ namespace Uprising.Players
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
-            // Give the default weapon
-            Item defaultGun = new DefaultGun(999, 100, 10, 20, this.gameObject);
-            inventory.GiveItem(defaultGun);
-            inventory.SelectItem(0);
         }
 
 

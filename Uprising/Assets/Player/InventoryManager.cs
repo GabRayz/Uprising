@@ -24,7 +24,10 @@ namespace Uprising.Players
             items = new Item[4];
             playerControl = GetComponent<PlayerControl>();
 
-
+            // Give the default weapon
+            Item defaultGun = new DefaultGun(999, 100, 10, 20, this.gameObject);
+            GiveItem(defaultGun);
+            SelectItem(0);
         }
 
         void FixedUpdate()
@@ -51,6 +54,7 @@ namespace Uprising.Players
         {
             Debug.Log("Give item : " + item.type);
             // Add item to inventory
+            int index = 0;
             if (item is Weapon)
             {
                 if(item.type == ItemType.DefaultGun)
@@ -59,6 +63,7 @@ namespace Uprising.Players
                         ClearItem(items[0]); // Clear a slot
                     items[0] = item;
                     playerControl.hudWeapon1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    index = 0;
                 }
                 else
                 {
@@ -66,6 +71,7 @@ namespace Uprising.Players
                         ClearItem(items[1]); // Clear a slot
                     items[1] = item;
                     playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    index = 1;
                 }
 
             }
@@ -75,15 +81,17 @@ namespace Uprising.Players
                 {
                     items[2] = item;
                     playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    index = 2;
                 }
                 else
                 {
                     items[3] = item;
                     playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    index = 3;
                 }
             }
             item.player = playerControl.gameObject;
-
+            if (index == selectedItem) SelectItem(index);
         }
 
         public void SelectItem(int index)
