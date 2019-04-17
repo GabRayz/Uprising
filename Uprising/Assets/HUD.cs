@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public Text remain;
+    public Text Ammo;
+
+    public void ChangeAmmo(int durability)
+    {
+        Ammo.text = durability.ToString();
+    }
     
 }

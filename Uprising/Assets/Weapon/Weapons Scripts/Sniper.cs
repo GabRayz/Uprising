@@ -35,7 +35,7 @@ namespace Uprising.Items
             }
             if (durability < 0)
             {
-                StopUsing();
+                player.SendMessage("ClearItem", this as Item);
             }
         }
     }

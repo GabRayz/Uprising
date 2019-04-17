@@ -384,7 +384,7 @@ namespace Uprising.Players
             if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItem() - 1));
 
             // Use an item
-            if (Input.GetButtonDown("Use Item")) inventory.UseSelectedItem();
+            if (Input.GetButton("Use Item")) inventory.UseSelectedItem();
         }
 
         //void HandleGroundedMovement(float moveVertical, float moveHorizontal)

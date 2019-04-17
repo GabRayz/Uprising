@@ -92,6 +92,8 @@ namespace Uprising.Players
             }
             item.player = playerControl.gameObject;
             if (index == selectedItem) SelectItem(index);
+            if (items[index] != null && index == 1)
+                playerControl.hud.GetComponent<HUD>().ChangeAmmo(items[index].durability);
         }
 
         public void SelectItem(int index)
@@ -142,7 +144,13 @@ namespace Uprising.Players
 
         public void UseSelectedItem()
         {
-            if(items[selectedItem] != null)
+
+            if(items[selectedItem] != null && selectedItem == 1)
+            {
+                items[selectedItem].Use();
+                playerControl.hud.GetComponent<HUD>().ChangeAmmo(items[selectedItem].durability);
+            }
+            else if(items[selectedItem] != null)
                 items[selectedItem].Use();
         }
 

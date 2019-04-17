@@ -32,10 +32,11 @@ namespace Uprising.Items
             {
                 player.GetComponent<PlayerControl>().hand.transform.Find("h_Minigun").GetComponent<belettegen>().shoot(durability, this.player.transform.forward, this);
                 fireratetime = 0;
+                durability--;
             }
             if (durability < 0)
             {
-                StopUsing();
+                player.SendMessage("ClearItem", this as Item);
             }
         }
     }
