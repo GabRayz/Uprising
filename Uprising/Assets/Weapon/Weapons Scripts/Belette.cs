@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Uprising.Players;
 using Photon.Pun;
+using Photon.Realtime;
 
 namespace Uprising.Items
 {
@@ -17,10 +18,10 @@ namespace Uprising.Items
         public GameObject player;
         public Weapon weapon;
 
-        public void InitBelette(Weapon weapon)
+        public void InitBelette(Weapon weapon, GameObject player)
         {
             this.weapon = weapon;
-            // this.player = player;
+            this.player = player;
         }
 
         // Update is called once per frame

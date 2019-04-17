@@ -96,6 +96,7 @@ namespace Uprising.Players
 
         public void SelectItem(int index)
         {
+
             // Limit selecting range
             if (index < 0) index = 3;
             if (index > 3) index = 0;

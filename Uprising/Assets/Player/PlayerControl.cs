@@ -26,6 +26,7 @@ namespace Uprising.Players
         public int jumpsLeft = 1;
         public int dashLeft;
         public int jump = 700;
+        private bool jumping = false;
         public float dash = 1200;
         private bool isDashing = false;
         public float dashTime = 0.3f;
@@ -79,9 +80,10 @@ namespace Uprising.Players
             if (photonView.IsMine)
             {
                 gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
-                gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
+                // gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
                 // gameManager.SetLocalPlayer(this.playerStats);
             }
+            gameManager.SetPlayerStat(this.playerStats);
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -267,6 +269,7 @@ namespace Uprising.Players
                 if(photonView.IsMine)
                     Eliminate("Tried to swim into lava");
             }
+
         }
 
         public void ModifySpeed(float modifier)
@@ -283,6 +286,7 @@ namespace Uprising.Players
         public void Eliminate(string deathMessage, bool stayAsASpectator = true)
         {
             playerStats.killer = lastHitter.photonView.Owner;
+            lastHitter.photonView.RPC("OnTargetKilled", RpcTarget.All);
             if(stayAsASpectator)
             {
                 GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
@@ -291,6 +295,16 @@ namespace Uprising.Players
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
             Debug.Log(deathMessage);
             Destroy(this.gameObject);
+        }
+
+        [PunRPC]
+        public void OnTargetKilled()
+        {
+            if(photonView.IsMine)
+            {
+                this.playerStats.kills += 1;
+                Debug.Log("Target killed !");
+            }
         }
 
         //public void ToggleSpectateMode()

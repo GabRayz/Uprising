@@ -2005,6 +2005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belette: {fileID: 2524543093918101731, guid: b6e96e774b418654d87f5c4d92c2280b, type: 3}
+  player: {fileID: 192}
 --- !u!114 &8307929854685020345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2018,6 +2019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belette: {fileID: 2524543093918101731, guid: 97014768ae199c042a487c04ed86723b, type: 3}
+  player: {fileID: 192}
 --- !u!1001 &698005623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2244,6 +2246,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 228.66899
       objectReference: {fileID: 0}
+    - target: {fileID: 4463912806605575165, guid: 8d43e76b346f2f8448846e9211629d15,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 192}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
 --- !u!4 &532806714597537331 stripped
