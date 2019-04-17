@@ -42,8 +42,8 @@ namespace Uprising.Players
 
         private readonly byte PlayerEliminationEvent = 0;
         public GameObject spectatorPrefab;
-        private bool aim = false;
-        private int counter = 0;
+        public bool aim = false;
+        public int counter = 0;
 
         private PlayerStats playerStats;
 
@@ -80,10 +80,9 @@ namespace Uprising.Players
             if (photonView.IsMine)
             {
                 gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
-                // gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
+                gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
                 // gameManager.SetLocalPlayer(this.playerStats);
             }
-            gameManager.SetPlayerStat(this.playerStats);
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -115,34 +114,18 @@ namespace Uprising.Players
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
                 if (inventory.items[inventory.GetSelectedItem()] != null)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    if (Input.GetKeyDown(KeyCode.Mouse1) && inventory.items[inventory.GetSelectedItem()] is Weapon)
                     {
                         aim = !aim;
                         counter = 6;
                     }
-                    if (aim)
-                    {
-                        if (counter > 0)
-                        {
-                            camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(0.5f, -0.3f, 2f), Time.deltaTime * 10f);
-                            counter--;
-                        }
-                    }
-                    else
-                    {
-                        if (counter > 0)
-                        {
-                            camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(-0.5f, 0.3f, -2f), Time.deltaTime * 10f);
-                            counter--;
-                        }
-                    }
+                    toggleaim();
                 }
                 else
                 {
                     if (aim)
                         aim = !aim;
                 }
-                
             }
         }
 
@@ -160,6 +143,7 @@ namespace Uprising.Players
                     {
                         this.transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
                         this.transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
+                        
                     }
 
 
@@ -195,7 +179,25 @@ namespace Uprising.Players
                 }
             }
         }
-
+        public void toggleaim()
+        {
+            if (aim)
+            {
+                if (counter > 0)
+                {
+                    camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + this.transform.forward, Time.deltaTime * 10f);
+                    counter--;
+                }
+            }
+            else
+            {
+                if (counter > 0)
+                {
+                    camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position - this.transform.forward, Time.deltaTime * 10f);
+                    counter--;
+                }
+            }
+        }
         [PunRPC]
         public void Hit(Belette belette)
         {
@@ -269,7 +271,6 @@ namespace Uprising.Players
                 if(photonView.IsMine)
                     Eliminate("Tried to swim into lava");
             }
-
         }
 
         public void ModifySpeed(float modifier)

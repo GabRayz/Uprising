@@ -96,7 +96,11 @@ namespace Uprising.Players
 
         public void SelectItem(int index)
         {
-
+            if (playerControl.aim)
+            {
+                playerControl.aim = false;
+                playerControl.toggleaim();
+            }
             // Limit selecting range
             if (index < 0) index = 3;
             if (index > 3) index = 0;
