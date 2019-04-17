@@ -403,6 +403,7 @@
           <e p="TestPlayerController.cs" t="Include" />
         </e>
         <e p="Player" t="Include">
+          <e p="IKControl.cs" t="Include" />
           <e p="InventoryManager.cs" t="Include" />
           <e p="PlayerControl.cs" t="Include" />
           <e p="PlayerStats.cs" t="Include" />
@@ -451,6 +452,7 @@
             <e p="DefaultGun.cs" t="Include" />
             <e p="Minigun.cs" t="Include" />
             <e p="ShotGun.cs" t="Include" />
+            <e p="Sniper.cs" t="Include" />
             <e p="Weapon.cs" t="Include" />
           </e>
         </e>
