@@ -28,6 +28,14 @@ MonoBehaviour:
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
-  RpcList: []
+  RpcList:
+  - DestroySpaceship
+  - EliminatePlayer
+  - Fire
+  - OnAllPlayersReady
+  - OnTargetKilled
+  - RespawnSpaceship
+  - SetReady
+  - ToggleInvisibility
   DisableAutoOpenWizard: 1
   ShowSettings: 0
