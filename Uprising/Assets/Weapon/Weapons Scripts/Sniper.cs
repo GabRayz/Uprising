@@ -5,12 +5,12 @@ using Uprising.Players;
 
 namespace Uprising.Items
 {
-    public class Minigun : Weapon
+    public class Sniper : Weapon
     {
 
-        public Minigun(int durability, float accuracy, float firerate, float knockback, GameObject player)
+        public Sniper(int durability, float accuracy, float firerate, float knockback, GameObject player)
         {
-            this.type = ItemType.Minigun;
+            this.type = ItemType.Sniper;
             this.durability = durability;
             this.accuracy = accuracy;
             this.firerate = firerate;
@@ -30,9 +30,8 @@ namespace Uprising.Items
         {
             if (fireratetime >= firerate)
             {
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_Minigun").GetComponent<belettegen>().shoot(durability, this.player.transform.forward, this);
+                player.GetComponent<PlayerControl>().hand.transform.Find("h_Sniper").GetComponent<belettegen>().shoot(durability, this.player.transform.forward, this);
                 fireratetime = 0;
-                durability--;
             }
             if (durability < 0)
             {

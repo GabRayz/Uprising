@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 972, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1092, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
       propertyPath: viewIdField
       value: 1

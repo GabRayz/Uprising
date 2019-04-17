@@ -26,6 +26,7 @@ namespace Uprising.Players
         public int jumpsLeft = 1;
         public int dashLeft;
         public int jump = 700;
+        private bool jumping = false;
         public float dash = 1200;
         private bool isDashing = false;
         public float dashTime = 0.3f;
@@ -41,8 +42,8 @@ namespace Uprising.Players
 
         private readonly byte PlayerEliminationEvent = 0;
         public GameObject spectatorPrefab;
-        private bool aim = false;
-        private int counter = 0;
+        public bool aim = false;
+        public int counter = 0;
 
         private PlayerStats playerStats;
 
@@ -116,11 +117,12 @@ namespace Uprising.Players
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
                 if (inventory.items[inventory.GetSelectedItem()] != null)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    if (Input.GetKeyDown(KeyCode.Mouse1) && inventory.items[inventory.GetSelectedItem()] is Weapon)
                     {
                         aim = !aim;
                         counter = 6;
                     }
+<<<<<<< HEAD
                     if (aim)
                     {
                         if (counter > 0)
@@ -138,13 +140,15 @@ namespace Uprising.Players
                             counter--;
                         }
                     }
+=======
+                    toggleaim();
+>>>>>>> 512c084d69d29d4c86ac97e5f387204df3ebbbca
                 }
                 else
                 {
                     if (aim)
                         aim = !aim;
                 }
-                
             }
         }
 
@@ -201,8 +205,26 @@ namespace Uprising.Players
                 }
             }
         }
+        public void toggleaim()
+        {
+            if (aim)
+            {
+                if (counter > 0)
+                {
+                    camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + this.transform.forward, Time.deltaTime * 10f);
+                    counter--;
+                }
+            }
+            else
+            {
+                if (counter > 0)
+                {
+                    camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position - this.transform.forward, Time.deltaTime * 10f);
+                    counter--;
+                }
+            }
+        }
 
-        [PunRPC]
         public void Hit(Belette belette)
         {
             Vector3 dir = belette.transform.forward;
@@ -291,6 +313,7 @@ namespace Uprising.Players
         public void Eliminate(string deathMessage, bool stayAsASpectator = true)
         {
             playerStats.killer = lastHitter.photonView.Owner;
+            lastHitter.photonView.RPC("OnTargetKilled", RpcTarget.All);
             if(stayAsASpectator)
             {
                 GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
@@ -299,6 +322,16 @@ namespace Uprising.Players
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
             Debug.Log(deathMessage);
             Destroy(this.gameObject);
+        }
+
+        [PunRPC]
+        public void OnTargetKilled()
+        {
+            if(photonView.IsMine)
+            {
+                this.playerStats.kills += 1;
+                Debug.Log("Target killed !");
+            }
         }
 
         //public void ToggleSpectateMode()
@@ -389,7 +422,7 @@ namespace Uprising.Players
             if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItem() - 1));
 
             // Use an item
-            if (Input.GetButtonDown("Use Item")) inventory.UseSelectedItem();
+            if (Input.GetButton("Use Item")) inventory.UseSelectedItem();
         }
 
         //void HandleGroundedMovement(float moveVertical, float moveHorizontal)

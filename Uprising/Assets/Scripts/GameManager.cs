@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameObject.Find("_network").GetComponent<NetworkManager>().LeaveToScoreBoard(scoreBoard, playerStats);
     }
 
-    [PunRPC]
+
     public void SetPlayerStat(PlayerStats playerStats)
     {
         this.playerStats.Add(playerStats);

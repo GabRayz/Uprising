@@ -23,6 +23,7 @@ namespace Uprising.Items
         // Display item, and apply passif effect
         public virtual void Select()
         {
+            Debug.Log(type.ToString());
             player.GetComponent<PlayerControl>().hand.transform.Find("h_"+type.ToString()).gameObject.SetActive(true);
         }
         public virtual void Unselect()
@@ -67,49 +68,4 @@ namespace Uprising.Items
             }
         }
     }
-
-    //public abstract class Weapon : Item
-    //{
-    //    //
-    //    public Weapon()
-    //    {
-
-    //    }
-
-    //    // Called every frame
-    //    public void Update()
-    //    {
-    //        if (this.durability <= 0)
-    //        {
-    //            this.StopUsing();
-    //        }
-    //    }
-
-    //    public override void Use() //shoot
-    //    {
-    //        if (!isCurrentlyUsed)
-    //        {
-    //            this.durability--;
-    //            // ici mettre le truc pour créer bullet
-    //            this.isCurrentlyUsed = true;
-    //        }
-    //    }
-
-    //    protected override void StopUsing()
-    //    {
-    //        this.isCurrentlyUsed = false;
-    //    }
-
-    //    public override void Select()
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public override void Unselect()
-    //    {
-    //        throw new System.NotImplementedException();
-    //    }
-
-    //    public abstract void Aim();
-    //}
 }
