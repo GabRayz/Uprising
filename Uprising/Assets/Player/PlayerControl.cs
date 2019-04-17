@@ -18,7 +18,7 @@ namespace Uprising.Players
         public GameObject hudBonus2;
         public GameObject menu;
         public PlayerControl lastHitter;
-        // public Animator animator;
+        public Animator animator;
         public new GameObject camera;
         public Camera cam;
         public GameObject hand;
@@ -50,6 +50,7 @@ namespace Uprising.Players
 
         void Start()
         {
+            animator = GetComponent<Animator>();
             playerStats = new PlayerStats(this);
             if (!debugMode)
                 gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
@@ -90,8 +91,9 @@ namespace Uprising.Players
 
         void Update()
         {
-            if(debugMode && contrallable || (photonView.IsMine && gameManager.isStarted))
+            if(debugMode && contrallable || photonView.IsMine && gameManager.isStarted)
             {
+                
                 if (Input.GetKeyDown(KeyCode.Space) && jump > 0)
                 {
                     if (jumpsLeft > 0 && isGrounded)
@@ -99,6 +101,7 @@ namespace Uprising.Players
                         Debug.Log("Jumping");
                         rb.AddForce(Vector3.up * jump);
                         jumpsLeft--;
+                        animator.SetTrigger("jump");
                     }
                     else if (dashLeft > 0 && !isGrounded && !isDashing)
                     {
@@ -124,6 +127,7 @@ namespace Uprising.Players
                         {
                             camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(0.5f, -0.3f, 2f), Time.deltaTime * 10f);
                             counter--;
+                            
                         }
                     }
                     else
@@ -153,13 +157,14 @@ namespace Uprising.Players
                     CheckGroundStatus();
                     float moveHorizontal = Input.GetAxis("Horizontal");
                     float moveVertical = Input.GetAxis("Vertical");
-
+                    
                     if(speedModifier > 0)
                     {
-                        this.transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
-                        this.transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
-                        
+                        transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
+                        transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
                     }
+                    
+                    animator.SetBool("Run", !(moveVertical == 0 && moveHorizontal == 0) && isGrounded);
 
 
                     // Player rotation
@@ -174,12 +179,14 @@ namespace Uprising.Players
                     // Apply rotation
                     camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
 
-
                     if (isGrounded)
                     {
                         jumpsLeft = 1;
+                        animator.SetBool("Jumping", false);
                     }
-
+                    else
+                        animator.SetBool("Jumping", true);
+                    
                     if (isDashing)
                     { 
                         if (dashTime < 0)
