@@ -7,7 +7,8 @@ namespace Uprising.Items
 {
     public class DefaultGun : Weapon
     {
-
+        public Camera cam;
+        private GameObject target;
         public DefaultGun(int durability, float accuracy, float firerate, float knockback, GameObject player)
         {
             this.type = ItemType.DefaultGun;
@@ -17,6 +18,8 @@ namespace Uprising.Items
             this.knockback = knockback;
             this.player = player;
 
+            target = player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").gameObject;
+            cam = player.GetComponent<Camera>();
             fireratetime = firerate;
         }
 
@@ -38,7 +41,7 @@ namespace Uprising.Items
             
             if (fireratetime >= firerate)
             {
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").GetComponent<belettegen>().shoot(durability, this.player.transform.forward, this);
+                player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").GetComponent<belettegen>().shoot(durability, this.target.transform.forward, this);
                 fireratetime = 0;
             }
             if(durability < 0)

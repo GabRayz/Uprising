@@ -75,6 +75,8 @@
         <e p="Photon" t="Include">
           <e p="PhotonChat" t="Include">
             <e p="Code" t="Include">
+              <e p="ChannelCreationOptions.cs" t="Include" />
+              <e p="ChannelWellKnownProperties.cs" t="Include" />
               <e p="ChatChannel.cs" t="Include" />
               <e p="ChatClient.cs" t="Include" />
               <e p="ChatDisconnectCause.cs" t="Include" />
@@ -105,6 +107,7 @@
             </e>
           </e>
           <e p="PhotonLibs" t="Include">
+            <e p="Photon3Unity3D.xml" t="Include" />
             <e p="release_history.txt" t="Include" />
             <e p="WebSocket" t="Include">
               <e p="PhotonWebSocket.asmdef" t="Include" />
@@ -342,6 +345,7 @@
                 </e>
               </e>
             </e>
+            <e p="link.xml" t="Include" />
             <e p="readme.txt" t="Include" />
             <e p="UtilityScripts" t="Include">
               <e p="Culling" t="Include">
