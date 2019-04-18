@@ -121,3 +121,4 @@ node_modules
 Web/client/dist
 *.xml
 Uprising/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll
+Web/config.json
