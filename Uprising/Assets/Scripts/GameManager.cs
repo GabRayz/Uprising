@@ -24,10 +24,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     List<PlayerStats> playerStats = new List<PlayerStats>();
     public float lavaLevel;
 
-    // Cooldown before starting the game
     public bool isStarted;
-    public float startCooldown = 5;
-    public bool isCooldownStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -53,20 +50,21 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             FinishGame();
         }
+    }
 
-        // Cooldown
-        if (isCooldownStarted && startCooldown > 0)
+    private IEnumerator StartCooldown()
+    {
+        topText.text = "";
+        float cooldown = 5;
+        while (cooldown > 0)
         {
-            startCooldown = startCooldown - Time.deltaTime;
-            topText.text = "Start in " + Mathf.Floor(startCooldown);
-            if(startCooldown <= 0)
-            {
-                Debug.Log("Begin!");
-                topText.text = "";
-                isCooldownStarted = false;
-                isStarted = true;
-            }
+            cooldown -= Time.deltaTime;
+            topText.text = "Start in " + Mathf.Floor(cooldown);
+            yield return null;
         }
+        Debug.Log("Begin!");
+        topText.text = "";
+        isStarted = true;
     }
 
     void FinishGame()
@@ -105,13 +103,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void OnAllPlayersReady()
     {
-        isCooldownStarted = true;
         Debug.Log("All players ready, starting cooldown");
         foreach(var player in PhotonNetwork.CurrentRoom.Players)
         {
             players[player.Value] = true;
         }
-        topText.text = "";
+        StartCooldown();
     }
 
     public void SpawnPlayers()

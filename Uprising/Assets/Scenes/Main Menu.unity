@@ -1758,12 +1758,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &804138786 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: ba165a9598db33147a4ffdb7a96a979e,
-    type: 3}
-  m_PrefabInstance: {fileID: 799091243318465726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &820976129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,8 +2770,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -252, y: 52.000004}
-  m_SizeDelta: {x: -80, y: -340}
+  m_AnchoredPosition: {x: -261.4, y: 48.5}
+  m_SizeDelta: {x: 63.3, y: -285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1316355845
 MonoBehaviour:
@@ -2800,7 +2794,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4a4df204c321f9c40b0dbfb1baaffb4c, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -4680,14 +4674,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2564908916743373806}
     m_Modifications:
-    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
-      propertyPath: m_Name
-      value: traingle
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -499
@@ -4744,6 +4730,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5184.861
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
+      propertyPath: m_Name
+      value: traingle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4762,6 +4756,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
+--- !u!4 &799091243318465727 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 799091243318465726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2564908915954118661
 Transform:
   m_ObjectHideFlags: 0
@@ -4972,7 +4971,7 @@ Transform:
   m_LocalPosition: {x: 399.47986, y: -2767, z: -633.28455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 804138786}
+  - {fileID: 799091243318465727}
   - {fileID: 2564908916364315156}
   - {fileID: 2564908915954118661}
   - {fileID: 1537872968}
