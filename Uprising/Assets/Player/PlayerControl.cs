@@ -35,6 +35,8 @@ namespace Uprising.Players
         private Vector3 move;
         private Vector3 dashvector;
         public bool contrallable = true;
+
+        public IKControl IkControl;
         
         public float speedModifier = 5;
         public PhotonView photonView;
@@ -57,6 +59,8 @@ namespace Uprising.Players
                 gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
 
             inventory = GetComponent<InventoryManager>();
+
+            IkControl = GetComponent<IKControl>();
 
             photonView = GetComponent<PhotonView>();
             cam = camera.GetComponent<Camera>();
@@ -404,7 +408,12 @@ namespace Uprising.Players
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0) inventory.SelectItem((inventory.GetSelectedItem() + 1) % 4);
             if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItem() - 1));
+            
+            IkControl.ikActive = inventory.items[inventory.GetSelectedItem()] is Weapon;
 
+            
+             
+            
             // Use an item
             if (Input.GetButton("Use Item")) inventory.UseSelectedItem();
         }
