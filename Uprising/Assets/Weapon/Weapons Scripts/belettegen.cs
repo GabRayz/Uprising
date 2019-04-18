@@ -13,6 +13,7 @@ public class belettegen : MonoBehaviour
     public void shoot(int durability,Vector3 direction, Item item)
     {
         this.item = item;
+        direction = direction * 2;
         GameObject NewBelette;
         if(PhotonNetwork.IsConnected)
             NewBelette = PhotonNetwork.Instantiate("belette_" + item.type.ToString(), gameObject.transform.position, gameObject.transform.rotation);
