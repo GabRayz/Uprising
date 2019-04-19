@@ -121,11 +121,11 @@ namespace Uprising.Players
 
                 ReadInventoryInputs();
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
-                if (inventory.items[inventory.GetSelectedItem()] != null)
+                if (inventory.GetSelectedItem() != null)
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse1) && inventory.items[inventory.GetSelectedItem()] is Weapon)
+                    if (Input.GetKeyDown(KeyCode.Mouse1) && inventory.GetSelectedItem() is Weapon)
                     {
-                        if(inventory.items[inventory.GetSelectedItem()] is Sniper)
+                        if(inventory.GetSelectedItem() is Sniper)
                         {
                             Scope.SetActive(!aim);
                         }
@@ -134,7 +134,7 @@ namespace Uprising.Players
                         toggleaim();
                     }
 
-                    if (!aim && !(inventory.items[inventory.GetSelectedItem()] is Sniper))
+                    if (!aim && !(inventory.GetSelectedItem() is Sniper))
                         Scope.SetActive(false);
                 }
                 else
@@ -356,14 +356,14 @@ namespace Uprising.Players
             if (Input.GetButtonDown("Select 3")) inventory.SelectItem(2);
             if (Input.GetButtonDown("Select 4")) inventory.SelectItem(3);
 
-            if (Input.GetAxis("Mouse ScrollWheel") > 0) inventory.SelectItem((inventory.GetSelectedItem() + 1) % 4);
-            if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItem() - 1));
-            
-            IkControl.ikActive = inventory.items[inventory.GetSelectedItem()] is Weapon;
+            if (Input.GetAxis("Mouse ScrollWheel") > 0) inventory.SelectItem((inventory.GetSelectedItemIndex() + 1) % 4);
+            if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItemIndex() - 1));
 
-            
-             
-            
+            IkControl.ikActive = inventory.GetSelectedItem() is Weapon;
+
+
+
+
             // Use an item
             if (Input.GetButton("Use Item")) inventory.UseSelectedItem();
         }

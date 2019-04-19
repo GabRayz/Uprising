@@ -44,9 +44,14 @@ namespace Uprising.Players
             }
         }
 
-        public int GetSelectedItem()
+        public int GetSelectedItemIndex()
         {
             return selectedItem;
+        }
+
+        public Item GetSelectedItem()
+        {
+            return items[selectedItem];
         }
 
         // Inventory Management
