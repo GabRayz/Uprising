@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             players[player.Value] = true;
         }
-        StartCooldown();
+        StartCoroutine("StartCooldown");
     }
 
     public void SpawnPlayers()
