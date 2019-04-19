@@ -1,6 +1,7 @@
 ﻿using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -46,6 +47,7 @@ namespace Uprising.Players
         public GameObject spectatorPrefab;
         public bool aim = false;
         public int counter = 0;
+        public GameObject Scope;
 
         private PlayerStats playerStats;
 
@@ -123,13 +125,21 @@ namespace Uprising.Players
                 {
                     if (Input.GetKeyDown(KeyCode.Mouse1) && inventory.items[inventory.GetSelectedItem()] is Weapon)
                     {
+                        if(inventory.items[inventory.GetSelectedItem()] is Sniper)
+                        {
+                            Scope.SetActive(!aim);
+                        }
                         aim = !aim;
                         counter = 6;
+                        toggleaim();
                     }
-                    toggleaim();
+
+                    if (!aim && !(inventory.items[inventory.GetSelectedItem()] is Sniper))
+                        Scope.SetActive(false);
                 }
                 else
                 {
+                    Scope.SetActive(false);
                     if (aim)
                         aim = !aim;
                 }
@@ -193,6 +203,14 @@ namespace Uprising.Players
         {
             if (aim)
             {
+                StartCoroutine("IncreaseFOV");
+                
+            }
+            else
+            {
+                StartCoroutine("DecreaseFOV");
+            }                
+                /*
                 if (counter > 0)
                 {
                     camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + this.transform.forward, Time.deltaTime * 10f);
@@ -205,10 +223,12 @@ namespace Uprising.Players
                 {
                     camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position - this.transform.forward, Time.deltaTime * 10f);
                     counter--;
-                }
-            }
+                }*/
+            
         }
 
+        private IEnumerator IncreaseFOV() { float fov = 60f; while (fov > 30) { fov-=3; cam.fieldOfView = fov; yield return null; } }
+        private IEnumerator DecreaseFOV() { float fov = 30f; while (fov < 60) { fov+=3; cam.fieldOfView = fov; yield return null; } }
         public void Hit(Belette belette)
         {
             Vector3 dir = belette.transform.forward;

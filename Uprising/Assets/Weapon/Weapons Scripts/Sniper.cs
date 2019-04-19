@@ -30,7 +30,8 @@ namespace Uprising.Items
         {
             if (fireratetime >= firerate)
             {
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_Sniper").GetComponent<belettegen>().shoot(durability, this.player.transform.forward, this);
+                player.GetComponent<PlayerControl>().hand.transform.Find("h_Sniper").GetComponent<belettegen>().shoot(durability, this.player.transform.forward*25, this);
+                durability--;
                 fireratetime = 0;
             }
             if (durability < 0)
