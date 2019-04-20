@@ -38,5 +38,6 @@ MonoBehaviour:
   - SetReady
   - ToggleInvisibility
   - OnTargetHit
+  - InitBelette
   DisableAutoOpenWizard: 1
   ShowSettings: 1

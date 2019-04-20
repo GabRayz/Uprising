@@ -229,17 +229,20 @@ namespace Uprising.Players
         public void Hit(Belette belette)
         {
             Debug.Log("Player hit!");
-            Vector3 dir = belette.transform.forward;
-            rb.AddForce(dir * belette.weapon.knockback / 2, ForceMode.Impulse);
-            lastHitter = belette.player.GetComponent<PlayerControl>();
+            rb.AddForce (belette.transform.forward * belette.power / 2, ForceMode.Impulse);
+            lastHitter = gameManager.players[belette.photonView.Owner].playerControl;
+            belette.gameObject.SetActive(false);
             Destroy(belette.gameObject);
         }
 
         [PunRPC]
         public void OnTargetHit()
         {
-            playerStats.hits += 1;
-            Debug.Log("Target hit !");
+            if (photonView.IsMine)
+            {
+                playerStats.hits += 1;
+                Debug.Log("Target hit !");
+            }
         }
 
         public void ToggleMenu()
@@ -293,19 +296,17 @@ namespace Uprising.Players
             {
                 other.gameObject.SendMessage("Collect", this.gameObject);
             }
-            if (other.gameObject.CompareTag("lava"))
+            if (other.gameObject.CompareTag("lava") && photonView.IsMine)
             {
-                // Send the elimination event to everyone
-                Debug.Log("Send Event: Player Elimination");
-                //this.photonView.RPC("Eliminate", RpcTarget.All, "Tried to swim into lava");
-                if(photonView.IsMine)
-                    Eliminate("Tried to swim into lava");
+                Eliminate("Tried to swim into lava");
             }
 
-            if (other.gameObject.CompareTag("belette"))
+            if (other.gameObject.CompareTag("belette") && photonView.IsMine)
             {
-                Hit(other.GetComponent<Belette>());
-                other.GetComponent<PhotonView>().RPC("OnTargetHit", RpcTarget.All);
+                Belette belette = other.GetComponent<Belette>();
+                Hit (belette);
+                PlayerControl enemy = gameManager.players[belette.photonView.Owner].playerControl;
+                enemy.photonView.RPC("OnTargetHit", RpcTarget.All);
             }
         }
 

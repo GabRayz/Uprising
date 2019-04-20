@@ -7,21 +7,24 @@ using Photon.Realtime;
 
 namespace Uprising.Items
 {
-    public class Belette : MonoBehaviour
+    public class Belette : MonoBehaviourPun
     {
         public float distance;
         public float range;
         public float firerate;
         public float fireratetime;
 
-        public GameObject belette;
-        public GameObject player;
-        public Weapon weapon;
+        //public GameObject belette;
+        //public GameObject player;
+        //public Weapon weapon;
 
-        public void InitBelette(Weapon weapon, GameObject player)
+        public float power;
+
+        [PunRPC]
+        public void InitBelette(float power)
         {
-            this.weapon = weapon;
-            this.player = player;
+
+            this.power = power;
         }
 
         // Update is called once per frame
@@ -31,7 +34,7 @@ namespace Uprising.Items
 
             if (distance > range)
             {
-                Destroy(belette);
+                Destroy(gameObject);
             }
 
             if (fireratetime < firerate)
