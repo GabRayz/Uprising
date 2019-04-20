@@ -51,6 +51,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Main menu loaded!");
         this.mainMenu = mainMenu;
+        mainMenu.matchMakingText.text = "";
     }
 
     public void PlayRandom()
@@ -111,7 +112,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Lobby joined");
         isInGame = false;
-        Debug.Log("Lobby's name : " + PhotonNetwork.CurrentLobby.Name);
     }
 
     private void Update()
