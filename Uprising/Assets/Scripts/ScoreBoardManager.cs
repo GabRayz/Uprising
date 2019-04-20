@@ -40,12 +40,11 @@ public class ScoreBoardManager : MonoBehaviour
         {
             Player player = scoreboard.Pop();
 
-            // this.scoreboard.text += i + ". Player " + player.ActorNumber + "\n";
             ligns[i].SetActive(true);
-            ligns[i].transform.Find("Name").GetComponent<Text>().text = player.NickName;
+            ligns[i].transform.Find("Name").GetComponent<Text>().text = (player.NickName == "") ? "Player " + player.ActorNumber : player.NickName;
             ligns[i].transform.Find("Kills").GetComponent<Text>().text = players[player].kills.ToString();
-            ligns[i].transform.Find("Time").GetComponent<Text>().text = "00:00";
-            ligns[i].transform.Find("Points").GetComponent<Text>().text = "0";
+            ligns[i].transform.Find("Time").GetComponent<Text>().text = GetTime((int)players[player].time);
+            ligns[i].transform.Find("Points").GetComponent<Text>().text = GetScore(players[player]).ToString();
             i++;
         }
 
@@ -55,5 +54,23 @@ public class ScoreBoardManager : MonoBehaviour
     public void Leave()
     {
         GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1);
+    }
+
+    private string GetTime(int time)
+    {
+        int min = time / 60;
+        string res = (min.ToString().Length < 2) ? "0" + min.ToString() : min.ToString();
+        int s = time % 60;
+        res += ":" + ((s.ToString().Length < 2) ? "0" + s.ToString() : s.ToString());
+        return res;
+    }
+
+    private int GetScore(PlayerStats player)
+    {
+        int score = (int)player.time;
+        score += player.kills * 100;
+        if(player.belettesShot != 0)
+            score += (player.hits / player.belettesShot) * player.belettesShot * 2;
+        return score;
     }
 }

@@ -13,7 +13,7 @@ namespace Uprising.Players
         public int belettesShot;
         public int hits;
         public int kills;
-        public int time;
+        public float time;
         public bool isActive;
 
         public PlayerStats(PlayerControl playerControl)

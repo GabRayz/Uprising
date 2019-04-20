@@ -139,6 +139,7 @@ namespace Uprising.Players
                     if (aim)
                         aim = !aim;
                 }
+                playerStats.time += Time.deltaTime;
             }
         }
 
