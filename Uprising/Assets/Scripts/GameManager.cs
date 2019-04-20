@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     PlayerStats localPlayer;
     List<PlayerStats> playerStats = new List<PlayerStats>();
     public Dictionary<Player, PlayerStats> players;
+    public Dictionary<Player, bool> playersReady;
     public float lavaLevel;
 
     public bool isStarted;
@@ -32,8 +33,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         photonView = GetComponent<PhotonView>();
         Debug.Log("Map 1 scene loaded !");
-        // players = new Dictionary<Player, bool>();
         players = new Dictionary<Player, PlayerStats>();
+        playersReady = new Dictionary<Player, bool>();
 
         // Get all possible spawn points
         spawnSpots = FindObjectsOfType<SpawnPlayers>();
@@ -73,9 +74,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     void FinishGame()
     {
         Debug.Log("Game over");
-        foreach (var playerStatus in players)
+        foreach (var playerStatus in playersReady)
         {
-            if (playerStatus.Value.isActive && !playerStatus.Key.IsInactive)
+            if (playerStatus.Value && !playerStatus.Key.IsInactive)
                 scoreBoard.Push(playerStatus.Key);
         }
 
@@ -90,11 +91,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void SetReady(Player player)
     {
-        players[player].isActive = true;
+        playersReady[player] = true;
         int readyCount = 0;
-        foreach(var playerReady in players)
+        foreach(var playerReady in playersReady)
         {
-            if (playerReady.Value.isActive) readyCount++;
+            if (playerReady.Value) readyCount++;
         }
 
         Debug.Log("Players ready : " + readyCount + "/" + playersCount);
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log("All players ready, starting cooldown");
         foreach(var player in PhotonNetwork.CurrentRoom.Players)
         {
-            players[player.Value].isActive = true;
+            playersReady[player.Value] = true;
         }
         StartCoroutine("StartCooldown");
     }
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("Spawn player " + player.Value.UserId);
             playersCount++;
+            playersReady.Add(player.Value, false);
             players.Add(player.Value, null);
             if (self.UserId == player.Value.UserId)
             {
@@ -135,9 +137,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public int EliminatePlayer(Player player)
     {
-        if(players[player].isActive)
+        if(playersReady[player])
         {
-            players[player].isActive = false;
+            playersReady[player] = false;
             playersCount--;
             scoreBoard.Push(player);
             Debug.LogFormat("Player {0} eliminated", player.ActorNumber);

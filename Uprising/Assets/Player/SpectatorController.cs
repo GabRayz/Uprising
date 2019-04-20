@@ -23,7 +23,7 @@ namespace Uprising.Players
         // Update is called once per frame
         void Update()
         {
-            playersRemainingText.text = "Players remaining : " + gameManager.playersCount + "/" + gameManager.players.Count;
+            playersRemainingText.text = "Players remaining : " + gameManager.playersCount + "/" + gameManager.playersReady.Count;
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1);
