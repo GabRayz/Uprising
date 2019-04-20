@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using ExitGames.Client.Photon;
 using Uprising.Players;
 using UnityEngine.UI;
+using Uprising.Items;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -66,9 +67,18 @@ public class GameManager : MonoBehaviourPunCallbacks
             topText.text = "Start in " + Mathf.Floor(cooldown);
             yield return null;
         }
+        StartGame();
+    }
+
+    void StartGame()
+    {
         Debug.Log("Begin!");
         topText.text = "";
         isStarted = true;
+        foreach(var player in players)
+        {
+            player.Value.playerControl.inventory.GiveItem(new DefaultGun(999, 100, 10, 20, player.Value.playerControl.gameObject));
+        }
     }
 
     void FinishGame()

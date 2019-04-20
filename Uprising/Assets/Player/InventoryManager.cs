@@ -16,6 +16,11 @@ namespace Uprising.Players
         public int selectedItem;
         private List<Item> appliedEffects;
         private PlayerControl playerControl;
+        public GameObject hud;
+        public GameObject hudWeapon1;
+        public GameObject hudWeapon2;
+        public GameObject hudBonus1;
+        public GameObject hudBonus2;
 
         // Start is called before the first frame update
         void Start()
@@ -24,10 +29,15 @@ namespace Uprising.Players
             items = new Item[4];
             playerControl = GetComponent<PlayerControl>();
 
-            // Give the default weapon
-            Item defaultGun = new DefaultGun(999, 100, 10, 20, this.gameObject);
-            GiveItem(defaultGun);
-            SelectItem(0);
+            if (playerControl.photonView.IsMine)
+            {
+                hud = Instantiate(hud);
+                hudWeapon1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot1 Weapon").gameObject;
+                hudWeapon2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot2 Weapon").gameObject;
+                hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
+                hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
+                SelectItem(0);
+            }
         }
 
         void FixedUpdate()
@@ -67,7 +77,8 @@ namespace Uprising.Players
                     if (items[0] != null)
                         ClearItem(items[0]); // Clear a slot
                     items[0] = item;
-                    playerControl.hudWeapon1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    if(playerControl.photonView.IsMine)
+                        hudWeapon1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                     index = 0;
                 }
                 else
@@ -75,7 +86,8 @@ namespace Uprising.Players
                     if (items[1] != null)
                         ClearItem(items[1]); // Clear a slot
                     items[1] = item;
-                    playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    if (playerControl.photonView.IsMine)
+                        hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                     index = 1;
                 }
 
@@ -85,20 +97,22 @@ namespace Uprising.Players
                 if(items[3] != null && selectedItem != 3)
                 {
                     items[2] = item;
-                    playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    if (playerControl.photonView.IsMine)
+                        hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                     index = 2;
                 }
                 else
                 {
                     items[3] = item;
-                    playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
+                    if (playerControl.photonView.IsMine)
+                        hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);
                     index = 3;
                 }
             }
             item.player = playerControl.gameObject;
             if (index == selectedItem) SelectItem(index);
-            if (items[index] != null && index == 1)
-                playerControl.hud.GetComponent<HUD>().ChangeAmmo(items[index].durability);
+            if (items[index] != null && index == 1 && playerControl.photonView.IsMine)
+                hud.GetComponent<HUD>().ChangeAmmo(items[index].durability);
         }
 
         public void SelectItem(int index)
@@ -118,10 +132,12 @@ namespace Uprising.Players
             {
                 items[selectedItem].Unselect();
             }
-            ChangeSlotColor(selectedItem, Color.white);
+            if (playerControl.photonView.IsMine)
+                ChangeSlotColor(selectedItem, Color.white);
 
             selectedItem = index;
-            ChangeSlotColor(selectedItem, Color.blue);
+            if (playerControl.photonView.IsMine)
+                ChangeSlotColor(selectedItem, Color.blue);
 
             if (items[index] != null) items[index].Select();
         }
@@ -131,16 +147,16 @@ namespace Uprising.Players
             switch (slot)
             {
                 case 0:
-                    playerControl.hudWeapon1.GetComponent<RawImage>().color = color;
+                    hudWeapon1.GetComponent<RawImage>().color = color;
                     break;
                 case 1:
-                    playerControl.hudWeapon2.GetComponent<RawImage>().color = color;
+                    hudWeapon2.GetComponent<RawImage>().color = color;
                     break;
                 case 2:
-                    playerControl.hudBonus1.GetComponent<RawImage>().color = color;
+                    hudBonus1.GetComponent<RawImage>().color = color;
                     break;
                 case 3:
-                    playerControl.hudBonus2.GetComponent<RawImage>().color = color;
+                    hudBonus2.GetComponent<RawImage>().color = color;
                     break;
             }
         }
@@ -151,7 +167,8 @@ namespace Uprising.Players
             if(items[selectedItem] != null && selectedItem == 1)
             {
                 items[selectedItem].Use();
-                playerControl.hud.GetComponent<HUD>().ChangeAmmo(items[selectedItem].durability);
+                if (playerControl.photonView.IsMine)
+                    hud.GetComponent<HUD>().ChangeAmmo(items[selectedItem].durability);
             }
             else if(items[selectedItem] != null)
                 items[selectedItem].Use();
@@ -215,9 +232,9 @@ namespace Uprising.Players
             {
                 if (items[i] == item)
                 {
-                    if (i == 1) playerControl.hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(false);
-                    if (i == 2) playerControl.hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(false);
-                    if (i == 3) playerControl.hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(false);
+                    if (i == 1 && playerControl.photonView.IsMine) hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(false);
+                    if (i == 2 && playerControl.photonView.IsMine) hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(false);
+                    if (i == 3 && playerControl.photonView.IsMine) hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(false);
                     if (i == selectedItem) items[i].Unselect();
                     items[i] = null;
                     return;

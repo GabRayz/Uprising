@@ -12,11 +12,6 @@ namespace Uprising.Players
     [RequireComponent(typeof(InventoryManager))]
     public class PlayerControl : MonoBehaviour
     {
-        public GameObject hud;
-        public GameObject hudWeapon1;
-        public GameObject hudWeapon2;
-        public GameObject hudBonus1;
-        public GameObject hudBonus2;
         public GameObject menu;
         public PlayerControl lastHitter;
         public Animator animator;
@@ -31,7 +26,7 @@ namespace Uprising.Players
         public float dash = 1200;
         private bool isDashing = false;
         public float dashTime = 0.3f;
-        InventoryManager inventory;
+        public InventoryManager inventory;
         public bool debugMode = false;
         private Vector3 move;
         private Vector3 dashvector;
@@ -79,11 +74,7 @@ namespace Uprising.Players
                 menu.SetActive(false);
                 menu.GetComponent<InGameMenuController>().SetOwner(this);
 
-                hud = Instantiate(hud);
-                hudWeapon1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot1 Weapon").gameObject;
-                hudWeapon2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot2 Weapon").gameObject;
-                hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
-                hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
+
             }
 
             // Player is ready
