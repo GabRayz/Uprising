@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // public Dictionary<Player, bool> players;
     Stack<Player> scoreBoard;
     PlayerStats localPlayer;
-    List<PlayerStats> playerStats = new List<PlayerStats>();
+    // List<PlayerStats> playerStats = new List<PlayerStats>();
     public Dictionary<Player, PlayerStats> players;
     public Dictionary<Player, bool> playersReady;
     public float lavaLevel;
@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(isStarted) // Raise lava
             lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
         lavaLevel = lava.transform.position.y;
+
         // Finish game
         if(playersCount <= 1 && !OfflineMode)
         {
@@ -90,7 +91,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 scoreBoard.Push(playerStatus.Key);
         }
 
-        GameObject.Find("_network").GetComponent<NetworkManager>().LeaveToScoreBoard(scoreBoard, playerStats);
+        GameObject.Find("_network").GetComponent<NetworkManager>().LeaveToScoreBoard(scoreBoard, players);
     }
 
     public void SetPlayerStat(PlayerStats playerStats)

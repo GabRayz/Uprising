@@ -17,7 +17,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Text StartingText;
     public MainMenu mainMenu;
     PlayerStats localPlayerGameStats;
-    List<PlayerStats> playerStats;
+    Dictionary<Player, PlayerStats> players;
     Stack<Player> scoreboard;
 
 
@@ -154,13 +154,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         StartingText.text = "";
     }
 
-    public void LeaveToScoreBoard(Stack<Player> scoreboard, List<PlayerStats> stats)
+    public void LeaveToScoreBoard(Stack<Player> scoreboard, Dictionary<Player, PlayerStats> players)
     {
         Debug.Log("Leaving to scoreBoard...");
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
         this.scoreboard = scoreboard;
         // this.localPlayerGameStats = stats;
-        this.playerStats = stats;
+        this.players = players;
         StartCoroutine("LoadScoreBoardScene");
     }
 
@@ -174,7 +174,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
 
         ScoreBoardManager scoreBoardManager = GameObject.Find("ScoreBoard").GetComponent<ScoreBoardManager>();
-        scoreBoardManager.SetStats(this.scoreboard, this.playerStats);
+        scoreBoardManager.SetStats(this.scoreboard, this.players);
     }
 
     public void QuitGame(bool isLastInRoom = false, bool isInScoreBoardScene = true)

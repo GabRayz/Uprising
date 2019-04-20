@@ -328,7 +328,6 @@ namespace Uprising.Players
                 playerStats.killer = lastHitter.photonView.Owner;
                 lastHitter.photonView.RPC("OnTargetKilled", RpcTarget.All);
             }
-            Debug.Log("Killed: " + lastHitter != null);
 
             if(stayAsASpectator)
             {

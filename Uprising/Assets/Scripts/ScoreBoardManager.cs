@@ -32,7 +32,7 @@ public class ScoreBoardManager : MonoBehaviour
         ligns = new GameObject[] { lign1, lign2, lign3, lign4, lign5, lign6, lign7, lign8, lign9, lign10 };
     }
 
-    public void SetStats(Stack<Player> scoreboard, List<PlayerStats> stats)
+    public void SetStats(Stack<Player> scoreboard, Dictionary<Player, PlayerStats> players)
     {
         int i = 0;
         Player winner;
@@ -43,7 +43,7 @@ public class ScoreBoardManager : MonoBehaviour
             // this.scoreboard.text += i + ". Player " + player.ActorNumber + "\n";
             ligns[i].SetActive(true);
             ligns[i].transform.Find("Name").GetComponent<Text>().text = player.NickName;
-            ligns[i].transform.Find("Kills").GetComponent<Text>().text = stats[i].kills.ToString();
+            ligns[i].transform.Find("Kills").GetComponent<Text>().text = players[player].kills.ToString();
             ligns[i].transform.Find("Time").GetComponent<Text>().text = "00:00";
             ligns[i].transform.Find("Points").GetComponent<Text>().text = "0";
             i++;
