@@ -57,7 +57,7 @@ namespace Uprising.Players
         // Inventory Management
         public void GiveItem(Item item)
         {
-            Debug.Log("Give item : " + item.type);
+
             // Add item to inventory
             int index = 0;
             if (item is Weapon)
@@ -112,7 +112,6 @@ namespace Uprising.Players
             if (index < 0) index = 3;
             if (index > 3) index = 0;
 
-            Debug.Log("Select item : " + items[index]);
 
             // Unselect previous item, then select new one
             if (items[selectedItem] != null)
@@ -125,7 +124,6 @@ namespace Uprising.Players
             ChangeSlotColor(selectedItem, Color.blue);
 
             if (items[index] != null) items[index].Select();
-            Debug.Log(items[index] != null);
         }
 
         public void ChangeSlotColor(int slot, Color color)

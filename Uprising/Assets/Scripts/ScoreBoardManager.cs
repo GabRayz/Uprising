@@ -34,19 +34,12 @@ public class ScoreBoardManager : MonoBehaviour
 
     public void SetStats(Stack<Player> scoreboard, List<PlayerStats> stats)
     {
-        this.scoreboard.text = "";
         int i = 0;
         Player winner;
         while(scoreboard.Count > 0)
         {
             Player player = scoreboard.Pop();
-            if (i == 0)
-            {
-                if (player.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
-                    result.text = "Victory !";
-                else
-                    result.text = "Defeat !";
-            }
+
             // this.scoreboard.text += i + ". Player " + player.ActorNumber + "\n";
             ligns[i].SetActive(true);
             ligns[i].transform.Find("Name").GetComponent<Text>().text = player.NickName;
@@ -61,6 +54,6 @@ public class ScoreBoardManager : MonoBehaviour
 
     public void Leave()
     {
-        GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount ==1);
+        GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1);
     }
 }

@@ -55,41 +55,46 @@ namespace Uprising.Players
 
         void Start()
         {
+            // Get Component
             animator = GetComponent<Animator>();
+            photonView = GetComponent<PhotonView>();
             playerStats = new PlayerStats(this);
             if (!debugMode)
                 gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
 
             inventory = GetComponent<InventoryManager>();
-
+            rb = GetComponent<Rigidbody>();
             IkControl = GetComponent<IKControl>();
 
-            photonView = GetComponent<PhotonView>();
+
             cam = camera.GetComponent<Camera>();
             if(!debugMode)
             {
                 cam.enabled = photonView.IsMine;
             }
 
-            menu = Instantiate(menu);
-            menu.SetActive(false);
-            menu.GetComponent<InGameMenuController>().SetOwner(this);
+            if(photonView.IsMine)
+            {
+                menu = Instantiate(menu);
+                menu.SetActive(false);
+                menu.GetComponent<InGameMenuController>().SetOwner(this);
 
-            hud = Instantiate(hud);
-            hudWeapon1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot1 Weapon").gameObject;
-            hudWeapon2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot2 Weapon").gameObject;
-            hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
-            hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
-
-            rb = GetComponent<Rigidbody>();
+                hud = Instantiate(hud);
+                hudWeapon1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot1 Weapon").gameObject;
+                hudWeapon2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot2 Weapon").gameObject;
+                hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
+                hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
+            }
 
             // Player is ready
+            gameManager.SetPlayerStat(this.playerStats);
             if (photonView.IsMine)
             {
                 gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
-                gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
+                // gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
                 // gameManager.SetLocalPlayer(this.playerStats);
             }
+
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -229,17 +234,21 @@ namespace Uprising.Players
 
         private IEnumerator IncreaseFOV() { float fov = 60f; while (fov > 30) { fov-=3; cam.fieldOfView = fov; yield return null; } }
         private IEnumerator DecreaseFOV() { float fov = 30f; while (fov < 60) { fov+=3; cam.fieldOfView = fov; yield return null; } }
+
         public void Hit(Belette belette)
         {
+            Debug.Log("Player hit!");
             Vector3 dir = belette.transform.forward;
             rb.AddForce(dir * belette.weapon.knockback / 2, ForceMode.Impulse);
             lastHitter = belette.player.GetComponent<PlayerControl>();
             Destroy(belette.gameObject);
         }
 
+        [PunRPC]
         public void OnTargetHit()
         {
             playerStats.hits += 1;
+            Debug.Log("Target hit !");
         }
 
         public void ToggleMenu()
@@ -301,6 +310,12 @@ namespace Uprising.Players
                 if(photonView.IsMine)
                     Eliminate("Tried to swim into lava");
             }
+
+            if (other.gameObject.CompareTag("belette"))
+            {
+                Hit(other.GetComponent<Belette>());
+                other.GetComponent<PhotonView>().RPC("OnTargetHit", RpcTarget.All);
+            }
         }
 
         public void ModifySpeed(float modifier)
@@ -321,6 +336,7 @@ namespace Uprising.Players
                 playerStats.killer = lastHitter.photonView.Owner;
                 lastHitter.photonView.RPC("OnTargetKilled", RpcTarget.All);
             }
+            Debug.Log("Killed: " + lastHitter != null);
 
             if(stayAsASpectator)
             {

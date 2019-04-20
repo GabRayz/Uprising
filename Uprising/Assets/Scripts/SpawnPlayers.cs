@@ -9,7 +9,7 @@ public class SpawnPlayers : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        PhotonNetwork.Instantiate("Player", new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", this.transform.position, this.transform.rotation);
         available = false;
         Debug.Log("Player " + PhotonNetwork.LocalPlayer.ActorNumber + " spawned");
     }

@@ -17,9 +17,10 @@ public class CollectibleController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        modelRB = model.GetComponent<Rigidbody>();
         switch (type)
         {
+
             case ItemType.SpeedBoost:
                 this.item = new SpeedBoost(5000, null);
                 break;
@@ -60,7 +61,6 @@ public class CollectibleController : MonoBehaviour {
         {
             rotation = new Vector3(60, 60, 60);
         }
-        modelRB = model.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()

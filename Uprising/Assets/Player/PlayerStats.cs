@@ -14,10 +14,12 @@ namespace Uprising.Players
         public int hits;
         public int kills;
         public int time;
+        public bool isActive;
 
         public PlayerStats(PlayerControl playerControl)
         {
             this.playerControl = playerControl;
+            this.owner = playerControl.photonView.Owner;
         }
     }
 }
