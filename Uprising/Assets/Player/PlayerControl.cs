@@ -66,25 +66,19 @@ namespace Uprising.Players
             if(!debugMode)
             {
                 cam.enabled = photonView.IsMine;
+                if (photonView.IsMine)
+                {
+                    menu = Instantiate(menu);
+                    menu.SetActive(false);
+                    menu.GetComponent<InGameMenuController>().SetOwner(this);
+                }
+
+                // Player is ready
+                gameManager.SetPlayerStat(this.playerStats);
+                if (photonView.IsMine)
+                    gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
             }
 
-            if(photonView.IsMine)
-            {
-                menu = Instantiate(menu);
-                menu.SetActive(false);
-                menu.GetComponent<InGameMenuController>().SetOwner(this);
-
-
-            }
-
-            // Player is ready
-            gameManager.SetPlayerStat(this.playerStats);
-            if (photonView.IsMine)
-            {
-                gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
-                // gameManager.photonView.RPC("SetPlayerStats", RpcTarget.All, this.playerStats);
-                // gameManager.SetLocalPlayer(this.playerStats);
-            }
 
 
             Cursor.lockState = CursorLockMode.Locked;

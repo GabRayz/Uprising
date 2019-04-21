@@ -29,7 +29,7 @@ namespace Uprising.Players
             items = new Item[4];
             playerControl = GetComponent<PlayerControl>();
 
-            if (playerControl.photonView.IsMine)
+            if (!playerControl.debugMode && playerControl.photonView.IsMine)
             {
                 hud = Instantiate(hud);
                 hudWeapon1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot1 Weapon").gameObject;
