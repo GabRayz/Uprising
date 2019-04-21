@@ -11,6 +11,7 @@ namespace Uprising.Items
         public bool isCurrentlyUsed = false;
         public GameObject player; // TODO : Set player as a PlayerControl instead of GameObject
         public GameObject gameObject;
+        public GameObject target;
 
         public int GetDurability()
         {
@@ -33,6 +34,12 @@ namespace Uprising.Items
         public virtual void Reload()
         {
             Debug.Log("reload");
+        }
+
+        public void SetPlayer(GameObject player)
+        {
+            this.player = player;
+            target = player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").gameObject;
         }
     }
 

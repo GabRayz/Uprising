@@ -63,15 +63,16 @@ namespace Uprising.Players
 
 
             cam = camera.GetComponent<Camera>();
-            if(!debugMode)
+            if (debugMode || photonView.IsMine)
+            {
+                menu = Instantiate(menu);
+                menu.SetActive(false);
+                menu.GetComponent<InGameMenuController>().SetOwner(this);
+            }
+            if (!debugMode)
             {
                 cam.enabled = photonView.IsMine;
-                if (photonView.IsMine)
-                {
-                    menu = Instantiate(menu);
-                    menu.SetActive(false);
-                    menu.GetComponent<InGameMenuController>().SetOwner(this);
-                }
+
 
                 // Player is ready
                 gameManager.SetPlayerStat(this.playerStats);

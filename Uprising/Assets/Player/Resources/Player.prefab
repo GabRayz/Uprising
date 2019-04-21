@@ -2234,7 +2234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55f341f42456b74792bd8e2ec79dc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  belette: {fileID: 2524543093918101731, guid: b6e96e774b418654d87f5c4d92c2280b, type: 3}
+  belette: {fileID: 272, guid: b6e96e774b418654d87f5c4d92c2280b, type: 3}
   player: {fileID: 221}
 --- !u!114 &1420
 MonoBehaviour:
@@ -2481,6 +2481,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 221}
+    - target: {fileID: 4463912806605575165, guid: 8d43e76b346f2f8448846e9211629d15,
+        type: 3}
+      propertyPath: belette
+      value: 
+      objectReference: {fileID: 481, guid: f47951d67efacb543b2eb66aa337f928, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
 --- !u!4 &532806714597537331 stripped
