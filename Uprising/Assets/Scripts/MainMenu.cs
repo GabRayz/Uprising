@@ -27,5 +27,6 @@ public class MainMenu : MonoBehaviour
     public void CancelPlay()
     {
         networkManager.CancelPlay();
+        matchMakingText.text = "Canceling...";
     }
 }

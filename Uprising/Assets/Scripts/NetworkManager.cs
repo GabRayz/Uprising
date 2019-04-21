@@ -56,7 +56,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void PlayRandom()
     {
-        if(PhotonNetwork.IsConnected)
+        if(PhotonNetwork.InLobby)
         {
             // Try to join a random room..
             PhotonNetwork.JoinRandomRoom();
@@ -65,7 +65,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         else
         {
             mainMenu.matchMakingText.text = "Connecting to server...";
-            PlayRandom();
         }
     }
 
@@ -111,6 +110,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Lobby joined");
+        mainMenu.matchMakingText.text = "";
         isInGame = false;
     }
 
