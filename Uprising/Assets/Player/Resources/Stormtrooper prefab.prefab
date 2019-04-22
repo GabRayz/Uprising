@@ -1040,7 +1040,7 @@ MonoBehaviour:
   - {fileID: 3563639754446980356}
   - {fileID: 3563639754446980603}
   - {fileID: 3563639754446980362}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &3563639754446980356
@@ -5475,7 +5475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55f341f42456b74792bd8e2ec79dc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  belette: {fileID: 2524543093918101731, guid: f47951d67efacb543b2eb66aa337f928, type: 3}
+  belette: {fileID: 481, guid: f47951d67efacb543b2eb66aa337f928, type: 3}
   player: {fileID: 221, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
 --- !u!1 &3985903392727704652
 GameObject:
