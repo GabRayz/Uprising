@@ -177,7 +177,7 @@ a[class="button"]:hover {
 /* F I R S T   S E C T I O N */
 
 #mainFrame {
-    background: url(../img/lava_background.png) center repeat-x;
+    background: url('/assets/img/lava_background.png') center repeat-x;
     background-size: auto 100%;
 }
 
@@ -199,7 +199,7 @@ a[class="button"]:hover {
 .playButton_bg {
     width: 400px;
     height: 170px;
-    background-image: url(../img/play.png);
+    background-image: url('/assets/img/play.png');
     background-size: 100%;
     background-repeat: no-repeat;
     display: flex;
