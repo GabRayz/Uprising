@@ -181,6 +181,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         if (isLastInRoom)
             PhotonNetwork.CurrentRoom.IsOpen = true;
+        PhotonNetwork.DestroyAll();
         isInGame = false;
         PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
 
