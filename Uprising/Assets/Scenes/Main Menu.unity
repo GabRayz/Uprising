@@ -4674,6 +4674,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2564908916743373806}
     m_Modifications:
+    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
+      propertyPath: m_Name
+      value: traingle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -499
@@ -4730,18 +4742,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5184.861
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
-      propertyPath: m_Name
-      value: traingle
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 66674c209223ffd44af5881b6f968fb4, type: 2}
+      objectReference: {fileID: 2100000, guid: ef1d2bd58e6a5534a8b5ac71b36f252d, type: 2}
     - target: {fileID: 2300000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
       propertyPath: m_DynamicOccludee
       value: 1
@@ -4758,7 +4762,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
 --- !u!4 &799091243318465727 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 400000, guid: ba165a9598db33147a4ffdb7a96a979e,
+    type: 3}
   m_PrefabInstance: {fileID: 799091243318465726}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2564908915954118661
@@ -4901,7 +4906,7 @@ Camera:
   m_GameObject: {fileID: 2564908916364315159}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.11320752, g: 0.06461372, b: 0.07306482, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
