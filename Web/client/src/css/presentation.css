@@ -1,0 +1,30 @@
+.frame:nth-child(2) {
+    background-image: url("/assets/img/lava_background_text.png");
+    background-size: 100%;
+}
+
+.frame:nth-child(3) {
+    background-color: rgb(40, 40, 40);
+}
+
+#memberList {
+    margin-top: 100px;
+}
+
+.member_box h4 {
+    color: #ff9292;
+}
+
+.member_box img {
+    margin-bottom: 20px;
+}
+
+.member_box:nth-child(1) img {
+    width: 200px;
+    margin-bottom: 50px;
+}
+
+.member_box:nth-child(3) img {
+    width: 110px;
+    margin-bottom: 30px;
+}

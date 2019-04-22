@@ -6,21 +6,24 @@ document.body.onscroll = e => {
     header.style.backgroundColor = 'rgba(40, 40, 40, ' + range + ')';
 };
 
-let playButton = document.getElementById('playButton');
+let playButton = document.getElementsByClassName("playButton")[0];
 
-playButton.addEventListener('mouseenter', e => {
-    document.getElementById('playButton_bg').style.backgroundImage =
-        'url(/assets/img/play_hover.png)';
-});
+playButton.addEventListener("mouseenter", function(e) {
+    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(../img/play_hover.png)";
+})
+playButton.addEventListener("mouseleave", function(e) {
+    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(../img/play.png)";
+})
+playButton.addEventListener("click", function(e) {
+    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(../img/play_clic.png)";
+})
 
-playButton.addEventListener('mouseleave', e => {
-    document.getElementById('playButton_bg').style.backgroundImage = 'url(/assets/img/play.png)';
-});
+let popup = document.getElementsByClassName("popup")[0];
 
-playButton.addEventListener('click', e => {
-    document.getElementById('playButton_bg').style.backgroundImage =
-        'url(/assets/img/play_clic.png)';
-});
+function displayLogin() {
+    console.log("display login");
+    popup.style.visibility = (popup.style.visibility == "visible") ? "hidden" : "visible";
+}
 
 playButton.onclick = e => {
     while (document.body.firstChild) {

@@ -1,0 +1,34 @@
+.frame {
+    background-color: rgb(40, 40, 40);
+    height: 92%;
+}
+
+.register_form {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.form_section {
+    width: 100%;
+}
+
+.input_div {
+    font-size: .7em;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.checkbox label {
+    width: 100%;
+}
+
+.checkbox input {
+    width: 10%;
+    padding: 10px;
+    height: 50px;
+}
+
+.checkbox input:checked {
+    background: #ff7a7a;
+}

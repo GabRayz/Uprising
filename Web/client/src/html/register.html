@@ -1,16 +1,85 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+    <title>Create an account</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="register.css">
 </head>
 <body>
-    <form action="/auth/register" method="POST">
-        <input type="text" name="username">
-        <input type="email" name="email">
-        <input type="password" name="password">
-        <input type="submit" value="Ok">
-    </form>
+    <header id="mainHeader">
+        <div id="header_align">
+            <div id="header_leftBlock">
+                <!-- Uprising img -->
+                <a href="index.html" id="title_link"><img src="../img/uprising.png"></a>
+            </div>
+            <div id="header_rightBlock">
+                <ul id="navBar">
+                    <li><a href="#aboutFrame">About</a></li>
+                    <li><a href="#teamFrame">Team</a></li>
+                    <li><a href="#contactFrame">Contact us</a></li>
+                    <li class="nav_login"><a href="#" class="nav_login">Login</a></li>
+                </ul>
+                <!-- Nav bar -->
+            </div>
+        </div>
+    </header>
+
+
+    <section class="frame">
+        <div class="section_center">
+            <header class="section_header">
+                <h2 class="section_title">REGISTER</h2>
+            </header>
+            <article class="section_article">
+                <form class="register_form">
+                    <div class="form_section">
+                        <div class="input_div">
+                            <label for="email">Email: </label>
+                            <input required type="email" id="email">
+                        </div>
+                        <div class="input_div">
+                            <label for="pseudo">Pseudo: </label>
+                            <input required type="text" id="pseudo">
+                        </div>
+                        <div class="input_div checkbox">
+                            <label for="pseudo">I accept the <a href="#">Conditions</a> </label>
+                            <!-- <input required type="text" id="pseudo"> -->
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                    <div class="form_section">
+                        <div class="input_div">
+                            <label for="password">Password: </label>
+                            <input required type="password" id="password">
+                        </div>
+                        <div class="input_div">
+                            <label for="password_confirm">Confirm Password: </label>
+                            <input required type="password" id="password_confirm">
+                        </div>
+                        <div class="input_div">
+                            <label></label>
+                            <input type="submit" value="Sign in" class="submit">
+                        </div>
+                    </div>
+                    
+                </form>
+            </article>
+        </div>
+    </section>
+
+
+    <footer id="mainFooter">
+        <div id="mainFooter_leftBlock">
+            2019 - Uprising - Les Croisillons
+        </div>
+        <div id="mainFooter_rightBlock">
+            <ul id="mainFooter_shareLinks">
+                <li><a><img src="../img/twitter.png"></a></li>
+                <li><a><img src="../img/instagram.png"></a></li>
+                <li><a><img src="../img/facebook.png"></a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 </html>

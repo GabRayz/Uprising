@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Presentation</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="presentation.css">
+</head>
+<body>
+    <!-- Bandeau en haut de page, avec liens de navigations -->
+    <header id="mainHeader">
+        <div id="header_align">
+            <div id="header_leftBlock">
+                <!-- Uprising img -->
+                <a href="#" id="title_link"><img src="../img/uprising.png"></a>
+            </div>
+            <div id="header_rightBlock">
+                <ul id="navBar">
+                    <li><a href="#aboutFrame">About</a></li>
+                    <li><a href="#teamFrame">Team</a></li>
+                    <li><a href="#contactFrame">Contact us</a></li>
+                    <li class="nav_login"><a href="#" class="nav_login" onclick="displayLogin()">Login</a></li>
+                </ul>
+                <!-- Nav bar -->
+            </div>
+        </div>
+    </header>
+
+
+    <section class="frame">
+
+    </section>
+    <section class="frame">
+        <div class="section_center">
+            <header class="section_header"></header>
+            <div id="membersList">
+                <div class="member_box">
+                    <img src="../img/items/Minigun.png">
+                    <h4>Weapons</h4>
+                    <article>Use all kind of weapons to push your enemies off their platforms</article>
+                </div>
+                <div class="member_box">
+                    <img src="../img/items/beartrap.png">
+                    <h4>Tools</h4>
+                    <article>Set traps in strategic points to make the map yours</article>
+                </div>
+                <div class="member_box">
+                    <img src="../img/items/Invisibility.png">
+                    <h4>Boosts</h4>
+                    <article>Collect consumables to get different boosts and take the advantage</article>
+                </div>
+            </div>
+            <article class="section_article"><strong>Collect</strong> weapons and bonuses to <strong>push</strong> your enemies in the lava and to help you <strong>rise</strong> to the top</article>
+        </div>
+    </section>
+
+
+    <footer id="mainFooter">
+        <div id="mainFooter_leftBlock">
+            2019 - Uprising - Les Croisillons
+        </div>
+        <div id="mainFooter_rightBlock">
+            <ul id="mainFooter_shareLinks">
+                <li><a><img src="../img/twitter.png"></a></li>
+                <li><a><img src="../img/instagram.png"></a></li>
+                <li><a><img src="../img/facebook.png"></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script type="text/javascript">
+let header = document.getElementById("mainHeader");
+let opacity = "start";
+
+$(window).scroll(function(event){
+    let range = $(document).scrollTop() / 400;
+    header.style.backgroundColor = "rgba(40, 40, 40, " + range + ")";
+});
+</script>
