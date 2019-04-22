@@ -39,7 +39,8 @@ namespace Uprising.Items
         public void SetPlayer(GameObject player)
         {
             this.player = player;
-            target = player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").gameObject;
+            // target = player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").gameObject;
+            target = player.GetComponent<PlayerControl>().camera.transform.parent.Find("target").gameObject;
         }
     }
 
