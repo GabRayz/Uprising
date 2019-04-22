@@ -266,16 +266,7 @@ namespace Uprising.Players
         {
             if (!debugMode)
             {
-                if(gameManager.playersCount <= 2)
-                {
-                    Eliminate("Client left the battle", false);
-                }
-                else
-                {
-                    Eliminate("Client left the battle", false);
-                    GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(PhotonNetwork.CurrentRoom.PlayerCount == 1, false);
-                }
-
+                Eliminate("Client left the battle", false);
             }
         }
 
@@ -343,6 +334,10 @@ namespace Uprising.Players
             {
                 GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
                 spec.SendMessage("SetPlayerStats", playerStats);
+            }
+            else
+            {
+                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(false, false);
             }
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
             Debug.Log(deathMessage);

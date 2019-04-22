@@ -184,9 +184,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         isInGame = false;
         PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
 
-        if(isInScoreBoardScene)
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(3));
-        else
+        if (!isInScoreBoardScene)
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(3));
     }
 }

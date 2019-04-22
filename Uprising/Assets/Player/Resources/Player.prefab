@@ -1170,6 +1170,8 @@ MonoBehaviour:
   inventory: {fileID: 0}
   debugMode: 0
   contrallable: 1
+  backwardSpeed: 3
+  runSpeed: 5
   IkControl: {fileID: 0}
   speedModifier: 6
   photonView: {fileID: 0}
