@@ -1,6 +1,6 @@
 .frame:nth-child(2) {
-    background-image: url("/assets/img/lava_background_text.png");
-    background-size: 100%;
+    background: url("../img/lava_background_text.png") center repeat-x;
+    background-size: auto 100%;
 }
 
 .frame:nth-child(3) {
@@ -27,4 +27,17 @@
 .member_box:nth-child(3) img {
     width: 110px;
     margin-bottom: 30px;
+}
+
+.frame:nth-child(4) {
+    background-color: #ff9292;
+}
+
+.frame:nth-child(4) article {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section_ul li {
+    margin: 50px 0;
 }
