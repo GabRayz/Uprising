@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Photon.Pun;
+using Uprising.Players;
 
 namespace Uprising.Items
 {
@@ -14,8 +15,8 @@ namespace Uprising.Items
 
         public override void Use()
         {
-            Debug.Log("Bear trap placed");
-            PhotonNetwork.InstantiateSceneObject("BearTrap", this.player.transform.position + this.player.transform.forward, this.player.transform.rotation);
+            PhotonNetwork.InstantiateSceneObject("PlacedBearTrap", this.player.transform.position + this.player.transform.forward / 2 + player.transform.up, this.player.transform.rotation);
+            PhotonNetwork.Instantiate("PlacedBearTrap", this.player.transform.position, this.player.transform.rotation);
             player.SendMessage("ClearItem", this as Item);
         }
 
