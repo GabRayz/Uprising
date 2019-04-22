@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
-
+using Uprising.Players;
+using Uprising.Items;
 [RequireComponent(typeof(Animator))] 
 
 public class IKControl : MonoBehaviour {
@@ -21,9 +22,11 @@ public class IKControl : MonoBehaviour {
     void OnAnimatorIK()
     {
         if(animator) {
-            
+            lookObj = GetComponent<InventoryManager>().GetSelectedItem().target.transform;
+            rightHandObj = GetComponent<InventoryManager>().GetSelectedItem().gameObject.transform;
+
             //if the IK is active, set the position and rotation directly to the goal. 
-            if(ikActive) {
+            if (ikActive) {
 
                 // Set the look target position, if one has been assigned
                 if(lookObj != null) {
