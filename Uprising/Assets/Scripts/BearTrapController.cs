@@ -10,6 +10,11 @@ public class BearTrapController : MonoBehaviour
     private float trapDuration = 5;
     private GameObject target;
 
+    private void Start()
+    {
+        Debug.Log("Bear trap placed");
+    }
+
     // Update is called once per frame
     void Update()
     {

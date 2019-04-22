@@ -142,8 +142,8 @@ namespace Uprising.Players
                     if (aim)
                         aim = !aim;
                 }
-                playerStats.time += Time.deltaTime;
             }
+            playerStats.time += Time.deltaTime;
         }
 
         void FixedUpdate()
@@ -253,11 +253,7 @@ namespace Uprising.Players
         [PunRPC]
         public void OnTargetHit()
         {
-            if (photonView.IsMine)
-            {
-                playerStats.hits += 1;
-                Debug.Log("Target hit !");
-            }
+            this.playerStats.hits += 1;
         }
 
         public void ToggleMenu()
