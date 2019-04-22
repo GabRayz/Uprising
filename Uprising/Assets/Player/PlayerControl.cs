@@ -32,6 +32,9 @@ namespace Uprising.Players
         private Vector3 dashvector;
         public bool contrallable = true;
 
+        public float backwardSpeed = 3;
+        public float runSpeed = 5;
+        
         public IKControl IkControl;
         
         public float speedModifier = 5;
@@ -153,13 +156,23 @@ namespace Uprising.Players
                     float moveHorizontal = Input.GetAxis("Horizontal");
                     float moveVertical = Input.GetAxis("Vertical");
                     
-                    if(speedModifier > 0)
+                    if(moveVertical > 0 || moveHorizontal != 0)
                     {
                         transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
                         transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
+                        
+                    }
+                    else
+                    {
+                        if (moveVertical < 0)
+                        {
+                            transform.Translate(Vector3.forward * moveVertical * backwardSpeed * Time.deltaTime);
+                            transform.Translate(Vector3.right * moveHorizontal * backwardSpeed * Time.deltaTime);
+                        }
                     }
                     
-                    animator.SetBool("Run", !(moveVertical == 0 && moveHorizontal == 0) && isGrounded);
+                    animator.SetBool("Run", (moveVertical > 0 || moveHorizontal != 0) && isGrounded);
+                    animator.SetBool("WalkBackward", moveVertical < 0 && isGrounded);
 
 
                     // Player rotation
