@@ -13,8 +13,12 @@ public class DestroyabePlatform : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.transform.tag == "belette")
+        if (other.gameObject.CompareTag("belette"))
+        {
+            Debug.Log("collision");
             life--;
+        }
+            
     }
     // Update is called once per frame
     void Update()
