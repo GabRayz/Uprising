@@ -63,7 +63,6 @@
             </e>
           </e>
         </e>
-        <e p="HUD.cs" t="Include" />
         <e p="Main menu" t="Include">
           <e p="Lava" t="Include">
             <e p="Waves.cs" t="Include" />
@@ -410,6 +409,11 @@
           <e p="PlayerControl.cs" t="Include" />
           <e p="PlayerStats.cs" t="Include" />
           <e p="SpectatorController.cs" t="Include" />
+        </e>
+        <e p="Prefabs" t="Include">
+          <e p="HUD" t="Include">
+            <e p="HUD.cs" t="Include" />
+          </e>
         </e>
         <e p="Raw Mocap Data" t="Include">
           <e p="Animations" t="Include">
