@@ -313,7 +313,10 @@ namespace Uprising.Players
                 enemy.photonView.RPC("OnTargetHit", RpcTarget.All);
             }
             if(other.gameObject.CompareTag("belette"))
-                Debug.Log("collicion with belette");
+            {
+                Debug.Log("collicion with belette. Owner: " + photonView.IsMine);
+            }
+
         }
 
         public void ModifySpeed(float modifier)
