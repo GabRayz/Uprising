@@ -27,9 +27,9 @@ app.set('trust proxy', 1);
 app.use(
     session({
         secret: 'distillerie',
-        resave: false,
+        resave: true,
         saveUninitialized: true,
-        cookie: { secure: true }
+        cookie: { secure: false }
     })
 );
 
@@ -113,7 +113,7 @@ app.post('/auth/login', async (req, res) => {
 });
 
 app.get('/amilogged', (req, res) => {
-    res.sendStatus(!!req.user);
+    res.send(req.user);
 });
 
 app.get('/presentation', (req, res) => {

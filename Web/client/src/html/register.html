@@ -30,15 +30,15 @@
                 <h2 class="section_title">REGISTER</h2>
             </header>
             <article class="section_article">
-                <form class="register_form">
+                <form class="register_form" method="POST">
                     <div class="form_section">
                         <div class="input_div">
                             <label for="email">Email: </label>
-                            <input required type="email" id="email">
+                            <input required type="email" id="email" name="email">
                         </div>
                         <div class="input_div">
                             <label for="pseudo">Pseudo: </label>
-                            <input required type="text" id="pseudo">
+                            <input required type="text" id="pseudo" name="username">
                         </div>
                         <div class="input_div checkbox">
                             <label for="pseudo">I accept the <a href="#">Conditions</a> </label>
@@ -49,7 +49,7 @@
                     <div class="form_section">
                         <div class="input_div">
                             <label for="password">Password: </label>
-                            <input required type="password" id="password">
+                            <input required type="password" id="password" name="password">
                         </div>
                         <div class="input_div">
                             <label for="password_confirm">Confirm Password: </label>
