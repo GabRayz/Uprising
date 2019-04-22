@@ -79,6 +79,11 @@ namespace Uprising.Players
                 if (photonView.IsMine)
                     gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
             }
+            else
+            {
+                cam.enabled = contrallable;
+            }
+
 
 
 
