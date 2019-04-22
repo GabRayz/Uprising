@@ -9,13 +9,13 @@ document.body.onscroll = e => {
 let playButton = document.getElementsByClassName("playButton")[0];
 
 playButton.addEventListener("mouseenter", function(e) {
-    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(../img/play_hover.png)";
+    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(/assets/img/play_hover.png)";
 })
 playButton.addEventListener("mouseleave", function(e) {
-    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(../img/play.png)";
+    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(/assets/img/play.png)";
 })
 playButton.addEventListener("click", function(e) {
-    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(../img/play_clic.png)";
+    document.getElementsByClassName("playButton_bg")[0].style.backgroundImage = "url(/assets/img/play_clic.png)";
 })
 
 let popup = document.getElementsByClassName("popup")[0];
