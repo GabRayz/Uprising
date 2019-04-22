@@ -20,7 +20,7 @@ namespace Uprising.Players
         public GameObject hand;
         private bool isGrounded = true;
         public int jumpsLeft = 1;
-        public int dashLeft = 1;
+        public int dashLeft;
         public int jump = 700;
         private bool jumping = false;
         public float dash = 1200;
@@ -191,7 +191,6 @@ namespace Uprising.Players
                     if (isGrounded)
                     {
                         jumpsLeft = 1;
-                        dashLeft = 1;
                         animator.SetBool("Jumping", false);
                     }
                     else
@@ -205,6 +204,7 @@ namespace Uprising.Players
                             isDashing = false;
                             dash = 800f;
                         }
+                        isDashing = false;
                         rb.AddForce(transform.forward*dash);
                         dashTime -= Time.deltaTime;
                     }
