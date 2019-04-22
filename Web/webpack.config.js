@@ -4,7 +4,10 @@ const path = require('path');
 
 const config = {
     entry: {
-        app: ['./client/src/js/index.js', './client/src/css/index.css']
+        global: ['./client/src/css/index.css'],
+        app: ['./client/src/js/index.js'],
+        register: ['./client/src/css/register.css'],
+        presentation: ['./client/src/css/presentation.css']
     },
     output: {
         filename: '[name].js',
@@ -36,8 +39,27 @@ const config = {
             minify: {
                 collapseWhitespace: true
             },
-            hash: true
-        })
+            hash: true,
+            chunks: ['global', 'app']
+        }),
+        new HtmlWebpackPlugin({
+            template: './client/src/html/register.html',
+            filename: 'register.html',
+            minify: {
+                collapseWhitespace: true
+            },
+            hash: true,
+            chunks: ['global', 'register']
+        }),
+        new HtmlWebpackPlugin({
+            template: './client/src/html/presentation.html',
+            filename: 'presentation.html',
+            minify: {
+                collapseWhitespace: true
+            },
+            hash: true,
+            chunks: ['global', 'presentation']
+        }),
     ]
 };
 

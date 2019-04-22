@@ -69,7 +69,7 @@ app.use('*', async (req, res, next) => {
 });
 
 app.get('/auth/register', (req, res) => {
-    res.sendFile(path.resolve('./client/src/html/register.html'));
+    res.sendFile(path.resolve('./client/dist/register.html'));
 });
 
 app.post('/auth/register', async (req, res) => {
@@ -115,6 +115,10 @@ app.post('/auth/login', async (req, res) => {
 app.get('/amilogged', (req, res) => {
     res.sendStatus(!!req.user);
 });
+
+app.get('/presentation', (req, res) => {
+    res.sendFile(path.resolve('./client/dist/presentation.html'));
+})
 
 async function main() {
     console.log('Connecting to database...');
