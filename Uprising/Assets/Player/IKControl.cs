@@ -23,7 +23,7 @@ public class IKControl : MonoBehaviour {
     {
         if(animator) {
             lookObj = GetComponent<InventoryManager>().GetSelectedItem().target.transform;
-            rightHandObj = GetComponent<InventoryManager>().GetSelectedItem().gameObject.transform;
+            rightHandObj = GetComponent<InventoryManager>().GetSelectedItem().target.transform;
 
             //if the IK is active, set the position and rotation directly to the goal. 
             if (ikActive) {
