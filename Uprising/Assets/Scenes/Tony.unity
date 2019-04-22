@@ -575,7 +575,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1259874461
 PrefabInstance:
@@ -875,14 +875,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1090, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
-      propertyPath: debugMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1092, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
-      propertyPath: viewIdField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4261242301758617080, guid: 5af47774f77b7473fa819bdaa775055f,
         type: 3}
       propertyPath: m_IsActive
@@ -892,6 +884,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: h_DefaultGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: viewIdField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1404, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
       propertyPath: debugMode
@@ -1378,7 +1378,7 @@ PrefabInstance:
     - target: {fileID: 3563639754446979806, guid: 551f7b320259a484797ab2313d72678f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3563639754446979806, guid: 551f7b320259a484797ab2313d72678f,
         type: 3}
