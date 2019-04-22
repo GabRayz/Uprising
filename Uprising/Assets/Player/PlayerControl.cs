@@ -304,13 +304,16 @@ namespace Uprising.Players
                 Eliminate("Tried to swim into lava");
             }
 
-            if (other.gameObject.CompareTag("belette") && photonView.IsMine)
+            if (other.gameObject.CompareTag("belette") && ((debugMode && !contrallable) || photonView.IsMine))
             {
+                Debug.Log("hit");
                 Belette belette = other.GetComponent<Belette>();
                 Hit (belette);
                 PlayerControl enemy = gameManager.players[belette.photonView.Owner].playerControl;
                 enemy.photonView.RPC("OnTargetHit", RpcTarget.All);
             }
+            if(other.gameObject.CompareTag("belette"))
+                Debug.Log("collicion with belette");
         }
 
         public void ModifySpeed(float modifier)
@@ -326,7 +329,8 @@ namespace Uprising.Players
 
         public void Eliminate(string deathMessage, bool stayAsASpectator = true)
         {
-            if(lastHitter != null)
+            Debug.Log(deathMessage);
+            if (lastHitter != null)
             {
                 playerStats.killer = lastHitter.photonView.Owner;
                 lastHitter.photonView.RPC("OnTargetKilled", RpcTarget.All);
@@ -342,7 +346,7 @@ namespace Uprising.Players
                 GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(false, false);
             }
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
-            Debug.Log(deathMessage);
+
             Destroy(this.gameObject);
         }
 

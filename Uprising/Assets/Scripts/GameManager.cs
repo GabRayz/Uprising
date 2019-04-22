@@ -52,8 +52,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         lavaLevel = lava.transform.position.y;
 
         // Finish game
-        if(playersCount <= 1 && !OfflineMode)
+        if(playersCount <= 1 && !OfflineMode && isStarted)
         {
+            isStarted = false;
             FinishGame();
         }
     }
