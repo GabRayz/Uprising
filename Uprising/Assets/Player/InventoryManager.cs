@@ -96,6 +96,8 @@ namespace Uprising.Players
             {
                 if(items[3] != null && selectedItem != 3)
                 {
+                    if (items[2] != null)
+                        ClearItem(items[2]);
                     items[2] = item;
                     if (playerControl.debugMode || playerControl.photonView.IsMine)
                         hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(true);
@@ -103,6 +105,8 @@ namespace Uprising.Players
                 }
                 else
                 {
+                    if (items[3] != null)
+                        ClearItem(items[3]);
                     items[3] = item;
                     if (playerControl.debugMode || playerControl.photonView.IsMine)
                         hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(true);

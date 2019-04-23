@@ -158,16 +158,16 @@ namespace Uprising.Players
                     
                     if (moveVertical < 0)
                     {
-                        transform.Translate(Vector3.forward * moveVertical * backwardSpeed * Time.deltaTime);
-                        transform.Translate(Vector3.right * moveHorizontal * backwardSpeed * Time.deltaTime);
+                        transform.Translate(Vector3.forward * moveVertical * (speedModifier > 0 ? speedModifier * (3/5): 0) * Time.deltaTime);
+                        transform.Translate(Vector3.right * moveHorizontal * (speedModifier > 0 ? speedModifier * (3 / 5) : 0) * Time.deltaTime);
                     }
                     
                     else
                     {
                         if(moveVertical > 0 || moveHorizontal != 0)
                         {
-                            transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
-                            transform.Translate(Vector3.right * moveHorizontal * speedModifier * Time.deltaTime);
+                            transform.Translate(Vector3.forward * moveVertical * (speedModifier > 0 ? speedModifier : 0) * Time.deltaTime);
+                            transform.Translate(Vector3.right * moveHorizontal * (speedModifier > 0 ? speedModifier : 0) * Time.deltaTime);
                         
                         }
                     }
