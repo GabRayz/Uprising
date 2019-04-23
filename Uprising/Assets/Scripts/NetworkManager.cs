@@ -134,8 +134,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void StartGame()
     {
         // Lock the room
-        // if (PhotonNetwork.LocalPlayer.IsMasterClient)
-           // PhotonNetwork.CurrentRoom.IsVisible = false;
+         //if (PhotonNetwork.LocalPlayer.IsMasterClient)
+            //PhotonNetwork.CurrentRoom.IsOpen = false;
+
 
         // Unload main menu, display loading time
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Main Menu"));
@@ -181,7 +182,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         if (isLastInRoom)
             PhotonNetwork.CurrentRoom.IsOpen = true;
-        PhotonNetwork.DestroyAll();
+        if(PhotonNetwork.LocalPlayer.IsMasterClient)
+            PhotonNetwork.DestroyAll();
         isInGame = false;
         PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
 

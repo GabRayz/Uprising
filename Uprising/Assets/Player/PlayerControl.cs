@@ -349,7 +349,7 @@ namespace Uprising.Players
                 GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(false, false);
             }
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
-
+            Destroy(this.inventory.hud);
             Destroy(this.gameObject);
         }
 

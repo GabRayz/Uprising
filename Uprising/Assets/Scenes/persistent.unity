@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inMatchMaking: 0
+  inMainMenu: 0
   matchMakingText: {fileID: 0}
   MaxPlayer: 2
   StartingText: {fileID: 2123218344}
