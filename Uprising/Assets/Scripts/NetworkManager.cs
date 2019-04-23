@@ -21,7 +21,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     PlayerStats localPlayerGameStats;
     Dictionary<Player, PlayerStats> players;
     Stack<Player> scoreboard;
-    
+    public bool debug = false;
+
 #if UNITY_WEBGL
     [DllImport("__Internal")]
     private static extern string GetUsername();
@@ -34,11 +35,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         StartingText.text = "Connection...";
 
 #if UNITY_WEBGL
-        Debug.Log("Trying to get username (WEBGL).");
-        Debug.Log(GetUsername());
-        PhotonNetwork.LocalPlayer.NickName = GetUsername();
-#else
-        // PhotonNetwork.LocalPlayer.NickName = "bite";
+        if(!debug)
+        {
+            Debug.Log("Trying to get username (WEBGL).");
+            Debug.Log(GetUsername());
+            PhotonNetwork.LocalPlayer.NickName = GetUsername();
+        }
 #endif
 
         PhotonNetwork.ConnectUsingSettings();

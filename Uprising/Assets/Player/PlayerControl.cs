@@ -13,7 +13,7 @@ namespace Uprising.Players
     public class PlayerControl : MonoBehaviour
     {
         public GameObject menu;
-        public PlayerControl lastHitter;
+        public Player lastHitter;
         public Animator animator;
         public new GameObject camera;
         public Camera cam;
@@ -242,14 +242,13 @@ namespace Uprising.Players
         private IEnumerator IncreaseFOV() { float fov = 60f; while (fov > 30) { fov-=3; cam.fieldOfView = fov; yield return null; } }
         private IEnumerator DecreaseFOV() { float fov = 30f; while (fov < 60) { fov+=3; cam.fieldOfView = fov; yield return null; } }
 
-        public void Hit(Belette belette)
+        [PunRPC]
+        public void Hit(Player hitter, Vector3 direction, float power)
         {
             Debug.Log("Player hit!");
-            rb.AddForce (belette.transform.forward * belette.power / 2, ForceMode.Impulse);
-            if(!debugMode)
-                lastHitter = gameManager.players[belette.photonView.Owner].playerControl;
-            belette.gameObject.SetActive(false);
-            Destroy(belette.gameObject);
+            rb.AddForce (direction * power / 2, ForceMode.Impulse);
+            if (!debugMode)
+                lastHitter = hitter;
         }
 
         [PunRPC]
@@ -309,11 +308,17 @@ namespace Uprising.Players
             {
                 Debug.Log("hit");
                 Belette belette = other.GetComponent<Belette>();
-                Hit (belette);
                 if(!debugMode)
                 {
                     PlayerControl enemy = gameManager.players[belette.photonView.Owner].playerControl;
                     enemy.photonView.RPC("OnTargetHit", RpcTarget.All);
+
+                    this.photonView.RPC("Hit", RpcTarget.All, belette.photonView.Owner, belette.transform.forward, belette.power);
+                    PhotonNetwork.Destroy(belette.photonView);
+                }
+                else
+                {
+                    Hit(null, belette.transform.forward, belette.power);
                 }
             }
         }
@@ -334,8 +339,8 @@ namespace Uprising.Players
             Debug.Log(deathMessage);
             if (lastHitter != null)
             {
-                playerStats.killer = lastHitter.photonView.Owner;
-                lastHitter.photonView.RPC("OnTargetKilled", RpcTarget.All);
+                playerStats.killer = lastHitter;
+                gameManager.players[lastHitter].playerControl.photonView.RPC("OnTargetKilled", RpcTarget.All);
             }
 
             if(stayAsASpectator)
@@ -348,16 +353,20 @@ namespace Uprising.Players
                 GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(false, false);
             }
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
+
             Destroy(this.inventory.hud);
-            Destroy(this.gameObject);
+            if (debugMode)
+                Destroy(this.gameObject);
+            else
+                PhotonNetwork.Destroy(this.photonView);
         }
 
         [PunRPC]
         public void OnTargetKilled()
         {
-            if(photonView.IsMine)
+            this.playerStats.kills += 1;
+            if (photonView.IsMine)
             {
-                this.playerStats.kills += 1;
                 Debug.Log("Target killed !");
             }
         }

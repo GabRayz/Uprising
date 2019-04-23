@@ -1160,7 +1160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 76131320254727907, guid: 3c0a4d7734119446b8df8164ab5cbc1b, type: 3}
-  lastHitter: {fileID: 0}
   animator: {fileID: 0}
   camera: {fileID: 233}
   cam: {fileID: 0}
