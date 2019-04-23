@@ -30,19 +30,5 @@ document.querySelector('#navBar > li.nav_login > a').onclick = e => {
 };
 
 playButton.onclick = e => {
-    while (document.body.firstChild) {
-        document.body.removeChild(document.body.firstChild);
-    }
-
-    const container = document.createElement('div');
-    container.id = 'container';
-    container.style.width = '100%';
-    container.style.height = '100%';
-    document.body.appendChild(container);
-
-    const instance = UnityLoader.instantiate('container', '/assets/game/Build/game.json', {
-        onProgress: UnityProgress
-    });
-
-    instance.SetFullscreen(1);
+    window.location = '/game';
 };

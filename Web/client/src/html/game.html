@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Uprising</title>
+    <link rel="shortcut icon" href="/assets/game/TemplateData/favicon.ico">
+    <script src="/assets/game/TemplateData/UnityProgress.js"></script>
+    <script src="/assets/game/Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "/assets/game/Build/game.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 100%; height: 100%"></div>
+    </div>
+  </body>
+</html>

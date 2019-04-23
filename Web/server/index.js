@@ -127,6 +127,13 @@ app.get('/presentation', (req, res) => {
     res.sendFile(path.resolve('./client/dist/presentation.html'));
 });
 
+app.get('/game', (req, res) => {
+    if (req.user)
+        res.sendFile(path.resolve('./client/dist/game.html'));
+    else
+        res.redirect('/auth/register');
+});
+
 async function main() {
     console.log('Connecting to database...');
     await db.authenticate();
