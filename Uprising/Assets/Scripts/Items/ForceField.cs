@@ -10,6 +10,7 @@ namespace Uprising.Items
         {
             this.player = player;
             this.durability = time;
+            this.type = ItemType.ForceField;
         }
 
         public override void Use()

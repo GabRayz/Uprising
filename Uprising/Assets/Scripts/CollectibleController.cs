@@ -48,6 +48,9 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.BearTrap:
                 this.item = new BearTrap(null);
                 break;
+            case ItemType.ForceField:
+                this.item = new ForceField(15000, null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;

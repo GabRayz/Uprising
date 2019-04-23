@@ -246,7 +246,8 @@ namespace Uprising.Players
         {
             Debug.Log("Player hit!");
             rb.AddForce (belette.transform.forward * belette.power / 2, ForceMode.Impulse);
-            lastHitter = gameManager.players[belette.photonView.Owner].playerControl;
+            if(!debugMode)
+                lastHitter = gameManager.players[belette.photonView.Owner].playerControl;
             belette.gameObject.SetActive(false);
             Destroy(belette.gameObject);
         }
@@ -309,8 +310,11 @@ namespace Uprising.Players
                 Debug.Log("hit");
                 Belette belette = other.GetComponent<Belette>();
                 Hit (belette);
-                PlayerControl enemy = gameManager.players[belette.photonView.Owner].playerControl;
-                enemy.photonView.RPC("OnTargetHit", RpcTarget.All);
+                if(!debugMode)
+                {
+                    PlayerControl enemy = gameManager.players[belette.photonView.Owner].playerControl;
+                    enemy.photonView.RPC("OnTargetHit", RpcTarget.All);
+                }
             }
         }
 
