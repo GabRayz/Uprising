@@ -17,12 +17,12 @@ public class belettegen : MonoBehaviour
         GameObject NewBelette;
         if(PhotonNetwork.IsConnected)
         {
-            NewBelette = PhotonNetwork.Instantiate("belette_" + item.type.ToString(), gameObject.transform.position, gameObject.transform.rotation);
+            NewBelette = PhotonNetwork.Instantiate("belette_" + item.type.ToString(), gameObject.transform.position + gameObject.transform.forward, gameObject.transform.rotation);
             NewBelette.GetComponent<Belette>().photonView.RPC("InitBelette", RpcTarget.All, (item as Weapon).knockback);
         }
         else
         {
-            NewBelette = Instantiate(belette, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            NewBelette = Instantiate(belette, this.gameObject.transform.position + gameObject.transform.forward, this.gameObject.transform.rotation);
             NewBelette.GetComponent<Belette>().InitBelette((item as Weapon).knockback);
         }
         NewBelette.GetComponent<Rigidbody>().AddForce((this.gameObject.transform.forward + direction) * 1000);

@@ -47,7 +47,7 @@ namespace Uprising.Players
         public int counter = 0;
         public GameObject Scope;
 
-        private PlayerStats playerStats;
+        public PlayerStats playerStats;
 
         GameManager gameManager;
 
@@ -246,7 +246,8 @@ namespace Uprising.Players
         {
             Debug.Log("Player hit!");
             rb.AddForce (belette.transform.forward * belette.power / 2, ForceMode.Impulse);
-            lastHitter = gameManager.players[belette.photonView.Owner].playerControl;
+            if(!debugMode)
+                lastHitter = gameManager.players[belette.photonView.Owner].playerControl;
             belette.gameObject.SetActive(false);
             Destroy(belette.gameObject);
         }
@@ -304,19 +305,17 @@ namespace Uprising.Players
                 Eliminate("Tried to swim into lava");
             }
 
-            if (other.gameObject.CompareTag("belette") && ((debugMode && !contrallable) || photonView.IsMine))
+            if (other.gameObject.CompareTag("belette") && ((debugMode && !contrallable) || (photonView.IsMine && this.photonView.Owner.ActorNumber == other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber)))
             {
                 Debug.Log("hit");
                 Belette belette = other.GetComponent<Belette>();
                 Hit (belette);
-                PlayerControl enemy = gameManager.players[belette.photonView.Owner].playerControl;
-                enemy.photonView.RPC("OnTargetHit", RpcTarget.All);
+                if(!debugMode)
+                {
+                    PlayerControl enemy = gameManager.players[belette.photonView.Owner].playerControl;
+                    enemy.photonView.RPC("OnTargetHit", RpcTarget.All);
+                }
             }
-            if(other.gameObject.CompareTag("belette"))
-            {
-                Debug.Log("collicion with belette. Owner: " + photonView.IsMine);
-            }
-
         }
 
         public void ModifySpeed(float modifier)

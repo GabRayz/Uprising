@@ -34,6 +34,9 @@ namespace Uprising.Items
                 player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0.3f, 0.2f, 0.4f) / 5, this);
                 player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(-0.3f, 0f, 0.3f) / 5, this);
                 player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0f, 0f, 0.2f) / 5, this);
+
+                if (playerControl.playerStats != null)
+                    playerControl.playerStats.belettesShot += 6;
                 durability--;
                 fireratetime = 0;
             }
