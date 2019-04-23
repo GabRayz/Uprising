@@ -7,7 +7,8 @@ const config = {
         global: ['./client/src/css/index.css'],
         app: ['./client/src/js/index.js'],
         register: ['./client/src/css/register.css'],
-        presentation: ['./client/src/css/presentation.css']
+        presentation: ['./client/src/css/presentation.css'],
+        load: ['./client/src/js/load.js']
     },
     output: {
         filename: '[name].js',
@@ -60,6 +61,15 @@ const config = {
             hash: true,
             chunks: ['global', 'presentation']
         }),
+        new HtmlWebpackPlugin({
+            template: './client/src/html/load.html',
+            filename: 'load.html',
+            minify: {
+                collapseWhitespace: true
+            },
+            hash: true,
+            chunks: ['load']
+        })
     ]
 };
 

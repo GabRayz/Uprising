@@ -106,19 +106,26 @@ app.post('/auth/login', async (req, res) => {
 
     if (same) {
         req.session.userId = user.id;
-        res.sendStatus(200);
+        res.redirect('/load');
     } else {
         res.sendStatus(403);
     }
 });
 
-app.get('/amilogged', (req, res) => {
-    res.send(req.user);
+app.get('/auth/data', (req, res) => {
+    res.send({
+        id: req.user.id,
+        username: req.user.username
+    });
+});
+
+app.get('/load', (req, res) => {
+    res.sendFile(path.resolve('./client/dist/load.html'));
 });
 
 app.get('/presentation', (req, res) => {
     res.sendFile(path.resolve('./client/dist/presentation.html'));
-})
+});
 
 async function main() {
     console.log('Connecting to database...');
