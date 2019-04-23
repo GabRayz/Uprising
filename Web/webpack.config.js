@@ -8,7 +8,8 @@ const config = {
         app: ['./client/src/js/index.js'],
         register: ['./client/src/css/register.css'],
         presentation: ['./client/src/css/presentation.css'],
-        load: ['./client/src/js/load.js']
+        load: ['./client/src/js/load.js'],
+        scroll: ['./client/src/js/scrolldown.js']
     },
     output: {
         filename: '[name].js',
@@ -59,7 +60,7 @@ const config = {
                 collapseWhitespace: true
             },
             hash: true,
-            chunks: ['global', 'presentation']
+            chunks: ['global', 'presentation', 'scroll']
         }),
         new HtmlWebpackPlugin({
             template: './client/src/html/load.html',

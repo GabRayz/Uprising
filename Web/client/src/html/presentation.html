@@ -10,13 +10,14 @@
         <div id="header_align">
             <div id="header_leftBlock">
                 <!-- Uprising img -->
-                <a href="#" id="title_link"><img src="/assets/img/uprising.png"></a>
+                <a href="/" id="title_link"><img src="/assets/img/uprising.png"></a>
             </div>
             <div id="header_rightBlock">
                 <ul id="navBar">
-                    <li><a href="#aboutFrame">About</a></li>
-                    <li><a href="#teamFrame">Team</a></li>
-                    <li><a href="#contactFrame">Contact us</a></li>
+                    <li><a href="#goalFrame">Goal</a></li>
+                    <li><a href="#itemsFrame">Items</a></li>
+                    <li><a href="#softwaresFrame">Softwares</a></li>
+                    <li><a href="#tasksFrame">Tasks division</a></li>
                     <li class="nav_login"><a href="#" class="nav_login" onclick="displayLogin()">Login</a></li>
                 </ul>
                 <!-- Nav bar -->
@@ -25,10 +26,10 @@
     </header>
 
 
-    <section class="frame">
+    <section class="frame" id="goalFrame">
 
     </section>
-    <section class="frame">
+    <section class="frame" id="itemsFrame">
         <div class="section_center">
             <header class="section_header"></header>
             <div id="membersList">
@@ -52,7 +53,7 @@
         </div>
     </section>
 
-    <section class="frame">
+    <section class="frame" id="softwaresFrame">
         <div class="section_center">
             <header class="section_header">
                 <h2 class="section_title">Software</h2>
@@ -77,7 +78,7 @@
         </div>
     </section>
 
-    <section class="frame">
+    <section class="frame" id="tasksFrame">
         <div class="section_center">
             <header class="section_header">
                 <h2 class="section_title">Task distribution</h2>
@@ -150,7 +151,7 @@
 </body>
 </html>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 let header = document.getElementById("mainHeader");
 let opacity = "start";
 
@@ -158,4 +159,4 @@ $(window).scroll(function(event){
     let range = $(document).scrollTop() / 400;
     header.style.backgroundColor = "rgba(40, 40, 40, " + range + ")";
 });
-</script>
+</script> -->
