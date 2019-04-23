@@ -155,6 +155,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             playersCount--;
             scoreBoard.Push(player);
             Debug.LogFormat("Player {0} eliminated", player.ActorNumber);
+
+            // Destroy gameobject
+            // Destroy(players[player].playerControl.gameObject);
         }
         return playersCount;
     }
