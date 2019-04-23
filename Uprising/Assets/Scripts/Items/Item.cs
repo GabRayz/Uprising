@@ -9,7 +9,8 @@ namespace Uprising.Items
         public ItemType type;
         public int durability;
         public bool isCurrentlyUsed = false;
-        public GameObject player; // TODO : Set player as a PlayerControl instead of GameObject
+        public GameObject player; 
+        public PlayerControl playerControl;
         public GameObject gameObject;
         public GameObject target;
 
@@ -39,6 +40,7 @@ namespace Uprising.Items
         public void SetPlayer(GameObject player)
         {
             this.player = player;
+            this.playerControl = player.GetComponent<PlayerControl>();
             // target = player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").gameObject;
             target = player.GetComponent<PlayerControl>().camera.transform.parent.Find("target").gameObject;
         }
