@@ -158,8 +158,8 @@ namespace Uprising.Players
                     
                     if (moveVertical < 0)
                     {
-                        transform.Translate(Vector3.forward * moveVertical * (speedModifier > 0 ? speedModifier * (3/5): 0) * Time.deltaTime);
-                        transform.Translate(Vector3.right * moveHorizontal * (speedModifier > 0 ? speedModifier * (3 / 5) : 0) * Time.deltaTime);
+                        if (speedModifier > 0)
+                            transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
                     }
                     
                     else
