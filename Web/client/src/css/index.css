@@ -99,6 +99,8 @@ html, body {
     transform: scaleX(0);
 }
 
+
+
 /* /////////////// */
 /* S E C T I O N S */
 
@@ -172,6 +174,7 @@ a[class="button"]:hover {
     background-color: #ff6262;
     color: white;
 }
+
 
 /* ///////////////////////// */
 /* F I R S T   S E C T I O N */
@@ -270,6 +273,7 @@ a[class="button"]:hover {
 
 .member_box img {
     width: 150px;
+	border-radius : 100%;
 }
 
 .member_box h4 {

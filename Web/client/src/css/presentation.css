@@ -41,3 +41,18 @@
 .section_ul li {
     margin: 50px 0;
 }
+.section_ul a {
+    margin: 50px 0;
+	text-decoration:none;
+	color:white;
+}
+
+.section_ul a:hover{
+	color: #ff7a7a;
+    transition: .3s;
+}
+
+.section_ul li:hover {
+    color:#ff7a7a;
+    transition: .3s;
+}
