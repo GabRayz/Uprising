@@ -41,7 +41,7 @@ public class ScoreBoardManager : MonoBehaviour
             Player player = scoreboard.Pop();
 
             ligns[i].SetActive(true);
-            ligns[i].transform.Find("Name").GetComponent<Text>().text = (player.NickName == "") ? "Player " + player.ActorNumber : player.NickName;
+            ligns[i].transform.Find("Name").GetComponent<Text>().text = string.IsNullOrEmpty(player.NickName) ? "Player " + player.ActorNumber : player.NickName;
             ligns[i].transform.Find("Kills").GetComponent<Text>().text = players[player].kills.ToString();
             ligns[i].transform.Find("Time").GetComponent<Text>().text = GetTime((int)players[player].time);
             ligns[i].transform.Find("Points").GetComponent<Text>().text = GetScore(players[player]).ToString();
