@@ -83,7 +83,7 @@ app.post('/auth/register', async (req, res) => {
         });
 
         req.session.userId = user.id;
-        res.sendStatus(200);
+        res.redirect('/load');
     } catch (e) {
         res.sendStatus(403);
     }
