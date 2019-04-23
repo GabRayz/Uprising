@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2987051149582192294, guid: a77bc9befd929498391248b9ff5f32a7,
         type: 3}
       propertyPath: m_Name
-      value: Belette_Minigun Variant
+      value: Belette_Minigun
       objectReference: {fileID: 0}
     - target: {fileID: 2987051149582192292, guid: a77bc9befd929498391248b9ff5f32a7,
         type: 3}

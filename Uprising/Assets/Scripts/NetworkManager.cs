@@ -32,11 +32,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     void Start()
     {
         StartingText.text = "Connection...";
-        
+
 #if UNITY_WEBGL
         Debug.Log("Trying to get username (WEBGL).");
         Debug.Log(GetUsername());
         PhotonNetwork.LocalPlayer.NickName = GetUsername();
+#else
+        // PhotonNetwork.LocalPlayer.NickName = "bite";
 #endif
 
         PhotonNetwork.ConnectUsingSettings();
@@ -65,7 +67,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Main menu loaded!");
         this.mainMenu = mainMenu;
-        mainMenu.matchMakingText.text = "";
+        mainMenu.matchMakingText.text = PhotonNetwork.LocalPlayer.NickName;
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName);
     }
 
     public void PlayRandom()
