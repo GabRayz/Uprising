@@ -305,7 +305,7 @@ namespace Uprising.Players
                 Eliminate("Tried to swim into lava");
             }
 
-            if (other.gameObject.CompareTag("belette") && ((debugMode && !contrallable) || (photonView.IsMine && this.photonView.Owner.ActorNumber == other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber)))
+            if (other.gameObject.CompareTag("belette") && ((debugMode && !contrallable) || (photonView.IsMine && this.photonView.Owner.ActorNumber != other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber)))
             {
                 Debug.Log("hit");
                 Belette belette = other.GetComponent<Belette>();

@@ -1,7 +1,8 @@
 mergeInto(LibraryManager.library, {
     GetUsername: function () {
-        var user = JSON.parse(localStorage.user);
-        return user.username;
         console.log("get username");
+        var user = JSON.parse(localStorage.user);
+        console.log("js : " + user.username);
+        return user.username;
     }
 });

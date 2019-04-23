@@ -35,9 +35,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         
 #if UNITY_WEBGL
         Debug.Log("Trying to get username (WEBGL).");
-        PhotonNetwork.NickName = GetUsername();
+        Debug.Log(GetUsername());
+        PhotonNetwork.LocalPlayer.NickName = GetUsername();
 #endif
-        
+
         PhotonNetwork.ConnectUsingSettings();
         // PhotonNetwork.ConnectToRegion("eu");
         PhotonNetwork.AutomaticallySyncScene = true;
