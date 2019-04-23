@@ -62,6 +62,14 @@
             </e>
           </e>
         </e>
+        <e p="ForceField" t="Include">
+          <e p="Script" t="Include">
+            <e p="RenderDepth.cs" t="Include" />
+          </e>
+          <e p="Shader" t="Include">
+            <e p="ForceField.shader" t="Include" />
+          </e>
+        </e>
         <e p="Main menu" t="Include">
           <e p="Lava" t="Include">
             <e p="Waves.cs" t="Include" />
@@ -425,11 +433,13 @@
           <e p="CollectibleController.cs" t="Include" />
           <e p="DestroyabePlatform.cs" t="Include" />
           <e p="DestroyingPlatform.cs" t="Include" />
+          <e p="ForceFieldController.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="InGameMenuController.cs" t="Include" />
           <e p="Items" t="Include">
             <e p="BearTrap.cs" t="Include" />
             <e p="Dash.cs" t="Include" />
+            <e p="ForceField.cs" t="Include" />
             <e p="Invisibility.cs" t="Include" />
             <e p="Item.cs" t="Include" />
             <e p="ItemType.cs" t="Include" />
