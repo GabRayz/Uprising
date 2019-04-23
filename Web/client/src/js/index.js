@@ -32,3 +32,12 @@ document.querySelector('#navBar > li.nav_login > a').onclick = e => {
 playButton.onclick = e => {
     window.location = '/game';
 };
+
+window.onload = async e => {
+    const res = await fetch('/auth/data').then(res => res.json());
+    if (res) {
+        console.log('logged');
+        const element = document.querySelector('.nav_login');
+        element.parentElement.removeChild(element);
+    }
+}

@@ -113,6 +113,9 @@ app.post('/auth/login', async (req, res) => {
 });
 
 app.get('/auth/data', (req, res) => {
+    if (!req.user)
+        return res.json(null);
+
     res.send({
         id: req.user.id,
         username: req.user.username
