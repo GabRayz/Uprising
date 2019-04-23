@@ -2506,6 +2506,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 819}
     m_Modifications:
+    - target: {fileID: 1294672646082164, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
+      propertyPath: m_Name
+      value: h_ShotGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1294672646082164, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4166463531722480, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.324
@@ -2550,14 +2558,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 276.425
       objectReference: {fileID: 0}
-    - target: {fileID: 1294672646082164, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
-      propertyPath: m_Name
-      value: h_ShotGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 1294672646082164, guid: 8d43e76b346f2f8448846e9211629d15, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4463912806605575165, guid: 8d43e76b346f2f8448846e9211629d15,
         type: 3}
       propertyPath: belette
@@ -2583,6 +2583,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 819}
     m_Modifications:
+    - target: {fileID: 1481417426184300, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
+      propertyPath: m_Name
+      value: h_Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481417426184300, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4944291180234768, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.2819
@@ -2626,14 +2634,6 @@ PrefabInstance:
     - target: {fileID: 4944291180234768, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.83399
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481417426184300, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
-      propertyPath: m_Name
-      value: h_Sniper
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481417426184300, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0460a539b95c36d43a61b9c176cdca57, type: 3}
@@ -2891,7 +2891,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1374600452982646, guid: 57bf5071e0a1c8947b8918a8f96184a6, type: 3}
       propertyPath: m_Name
-      value: h_MiniGun
+      value: h_Minigun
       objectReference: {fileID: 0}
     - target: {fileID: 1374600452982646, guid: 57bf5071e0a1c8947b8918a8f96184a6, type: 3}
       propertyPath: m_IsActive
@@ -2962,6 +2962,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 819}
     m_Modifications:
+    - target: {fileID: 849736581414878539, guid: 5ea0ad95f7373434e9cfd01460a5d5f3,
+        type: 3}
+      propertyPath: m_Name
+      value: h_Invisibility
+      objectReference: {fileID: 0}
     - target: {fileID: 6156779358957775569, guid: 5ea0ad95f7373434e9cfd01460a5d5f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3016,11 +3021,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 849736581414878539, guid: 5ea0ad95f7373434e9cfd01460a5d5f3,
-        type: 3}
-      propertyPath: m_Name
-      value: h_Invisibility
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ea0ad95f7373434e9cfd01460a5d5f3, type: 3}
