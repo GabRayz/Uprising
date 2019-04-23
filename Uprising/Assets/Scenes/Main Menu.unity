@@ -3372,7 +3372,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1537872967}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -4762,8 +4762,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ba165a9598db33147a4ffdb7a96a979e, type: 3}
 --- !u!4 &799091243318465727 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: ba165a9598db33147a4ffdb7a96a979e,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 799091243318465726}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2564908915954118661

@@ -3470,11 +3470,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6322655860294677136, guid: 141b87200df273f4c889ba76a773d00f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.04
-      objectReference: {fileID: 0}
     - target: {fileID: 250, guid: 141b87200df273f4c889ba76a773d00f, type: 3}
       propertyPath: m_Name
       value: Minigun (1)
@@ -3530,6 +3525,11 @@ PrefabInstance:
     - target: {fileID: 1989, guid: 141b87200df273f4c889ba76a773d00f, type: 3}
       propertyPath: InstantiationId
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322655860294677136, guid: 141b87200df273f4c889ba76a773d00f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141b87200df273f4c889ba76a773d00f, type: 3}
@@ -8380,7 +8380,7 @@ MeshRenderer:
   m_GameObject: {fileID: 2564908914714589146}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
