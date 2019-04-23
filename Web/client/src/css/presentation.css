@@ -82,3 +82,13 @@ table th {
 table td:nth-child(2), table td:nth-child(3) {
     font-style: italic;
 }
+
+/* ///////////////////////////////// */
+/* P L A N N I N G */
+
+.frame:nth-child(6) {
+    background-color: rgb(40, 40, 40);
+}
+.frame:nth-child(7) {
+    background-color: rgb(40, 40, 40);
+}
