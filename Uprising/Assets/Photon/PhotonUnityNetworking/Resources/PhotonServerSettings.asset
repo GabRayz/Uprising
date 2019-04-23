@@ -16,9 +16,9 @@ MonoBehaviour:
     AppIdRealtime: 34006489-8799-49d5-9ebe-1b066ce36604
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 1.0
+    AppVersion: 
     UseNameServer: 1
-    FixedRegion: eu
+    FixedRegion: 
     Server: 
     Port: 0
     Protocol: 0
@@ -32,12 +32,12 @@ MonoBehaviour:
   - DestroySpaceship
   - EliminatePlayer
   - Fire
+  - InitBelette
   - OnAllPlayersReady
+  - OnTargetHit
   - OnTargetKilled
   - RespawnSpaceship
   - SetReady
   - ToggleInvisibility
-  - OnTargetHit
-  - InitBelette
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
+  ShowSettings: 0

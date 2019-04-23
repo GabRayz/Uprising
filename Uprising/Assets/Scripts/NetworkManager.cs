@@ -7,6 +7,8 @@ using Uprising.Players;
 using Photon.Pun;
 using Photon.Realtime;
 
+using System.Runtime.InteropServices;
+
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public bool inMatchMaking = false;
@@ -19,12 +21,23 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     PlayerStats localPlayerGameStats;
     Dictionary<Player, PlayerStats> players;
     Stack<Player> scoreboard;
+    
+#if UNITY_WEBGL
+    [DllImport("__Internal")]
+    private static extern string GetUsername();
+#endif
 
 
     // Start is called before the first frame update
     void Start()
     {
         StartingText.text = "Connection...";
+        
+#if UNITY_WEBGL
+        Debug.Log("Trying to get username (WEBGL).");
+        PhotonNetwork.NickName = GetUsername();
+#endif
+        
         PhotonNetwork.ConnectUsingSettings();
         // PhotonNetwork.ConnectToRegion("eu");
         PhotonNetwork.AutomaticallySyncScene = true;
