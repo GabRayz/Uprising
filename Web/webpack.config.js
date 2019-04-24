@@ -9,7 +9,8 @@ const config = {
         register: ['./client/src/css/register.css'],
         presentation: ['./client/src/css/presentation.css'],
         load: ['./client/src/js/load.js'],
-        scroll: ['./client/src/js/scrolldown.js']
+        scroll: ['./client/src/js/scrolldown.js'],
+        game: ['./client/src/css/game.css']
     },
     output: {
         filename: '[name].js',
@@ -70,6 +71,15 @@ const config = {
             },
             hash: true,
             chunks: ['load']
+        }),
+        new HtmlWebpackPlugin({
+            template: './client/src/html/game.html',
+            filename: 'game.html',
+            minify: {
+                collapseWhitespace: true
+            },
+            hash: true,
+            chunks: ['game']
         })
     ]
 };

@@ -39,5 +39,6 @@ MonoBehaviour:
   - RespawnSpaceship
   - SetReady
   - ToggleInvisibility
+  - Hit
   DisableAutoOpenWizard: 1
   ShowSettings: 0

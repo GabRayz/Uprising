@@ -547,7 +547,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 1 Arm Static eapon
+  m_Name: Fall
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -658,6 +658,6 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -48, y: 48, z: 0}
   m_EntryPosition: {x: 48, y: 120, z: 0}
-  m_ExitPosition: {x: -156, y: -60, z: 0}
+  m_ExitPosition: {x: 624, y: -216, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102366907110574032}

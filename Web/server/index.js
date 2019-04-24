@@ -113,6 +113,9 @@ app.post('/auth/login', async (req, res) => {
 });
 
 app.get('/auth/data', (req, res) => {
+    if (!req.user)
+        return res.json(null);
+
     res.send({
         id: req.user.id,
         username: req.user.username
@@ -125,6 +128,13 @@ app.get('/load', (req, res) => {
 
 app.get('/presentation', (req, res) => {
     res.sendFile(path.resolve('./client/dist/presentation.html'));
+});
+
+app.get('/game', (req, res) => {
+    if (req.user)
+        res.sendFile(path.resolve('./client/dist/game.html'));
+    else
+        res.redirect('/auth/register');
 });
 
 async function main() {
