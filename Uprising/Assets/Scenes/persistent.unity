@@ -213,6 +213,7 @@ MonoBehaviour:
   MaxPlayer: 3
   StartingText: {fileID: 2123218344}
   mainMenu: {fileID: 0}
+  debug: 0
 --- !u!4 &384966904
 Transform:
   m_ObjectHideFlags: 0
