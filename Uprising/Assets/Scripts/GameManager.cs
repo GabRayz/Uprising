@@ -12,7 +12,7 @@ using Uprising.Items;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     SpawnPlayers[] spawnSpots;
-    GameObject lava;
+    public GameObject lava;
     public new PhotonView photonView;
     public Text topText;
     float lavaRisingSpeed = 0.1f;
