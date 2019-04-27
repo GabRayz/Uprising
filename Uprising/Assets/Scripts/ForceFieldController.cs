@@ -28,7 +28,9 @@ public class ForceFieldController : MonoBehaviour
         if (other.gameObject.CompareTag("belette"))
         {
             Debug.Log("You shall not pass!");
+            other.gameObject.SetActive(false);
             Destroy(other.gameObject);
         }
+        Debug.Log("test");
     }
 }

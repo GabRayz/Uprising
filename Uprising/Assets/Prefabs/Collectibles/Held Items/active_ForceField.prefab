@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5039430631271021450}
   - component: {fileID: 2511477721790380356}
   m_Layer: 10
-  m_Name: ForceField
+  m_Name: active_ForceField
   m_TagString: forcefield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4819376157499439370}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
