@@ -23,7 +23,7 @@ namespace Uprising.Players
         public int dashLeft;
         public int jump = 700;
         private bool jumping = false;
-        public float dash = 1200;
+        public float dash = 700;
         private bool isDashing = false;
         public float dashTime = 0.3f;
         public InventoryManager inventory;
@@ -389,6 +389,12 @@ namespace Uprising.Players
             if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItemIndex() - 1));
 
             IkControl.ikActive = inventory.GetSelectedItem() is Weapon;
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                gameManager.lava.transform.Translate(gameManager.lava.transform.up * -5);
+                //gameManager.lavaLevel = 0;
+            }
 
 
 
