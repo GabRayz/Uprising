@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 2979001466697733407}
   - component: {fileID: 2979001466697733406}
   m_Layer: 0
-  m_Name: Laser_DefaultGun
+  m_Name: Belette_DefaultGun
   m_TagString: belette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

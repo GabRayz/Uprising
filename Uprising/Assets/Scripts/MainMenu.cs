@@ -10,6 +10,10 @@ public class MainMenu : MonoBehaviour
 {
     public Text matchMakingText;
     private NetworkManager networkManager;
+    public RawImage avatar;
+    public Text pseudo;
+    public Text level;
+    public GameObject levelProgress;
 
     public void Start()
     {
