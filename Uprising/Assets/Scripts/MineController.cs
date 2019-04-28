@@ -35,11 +35,6 @@ public class MineController : MonoBehaviour
                 rb.AddExplosionForce(1000f, this.transform.position, 5f);
             }
         }
-
-        if (photonView != null)
-            PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
-        else
-            Destroy(this);
     }
 
     IEnumerator ExplosionTimer()
@@ -51,5 +46,10 @@ public class MineController : MonoBehaviour
             yield return null;
         }
         Destroy(explosionEffect);
+
+        if (photonView != null)
+            PhotonNetwork.Destroy(this.GetComponent<PhotonView>());
+        else
+            Destroy(this);
     }
 }
