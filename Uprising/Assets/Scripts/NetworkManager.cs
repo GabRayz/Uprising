@@ -204,6 +204,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void QuitGame(bool isLastInRoom = false, bool isInScoreBoardScene = true)
     {
+        // Update profile
+        localPlayerGameStats.OnGameEnd();
+
+        // Leave Room
         if (isLastInRoom)
             PhotonNetwork.CurrentRoom.IsOpen = true;
         if(PhotonNetwork.LocalPlayer.IsMasterClient)
@@ -211,6 +215,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         isInGame = false;
         PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
 
+        // Unload scenes
         if (!isInScoreBoardScene)
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(3));

@@ -7,6 +7,11 @@ namespace Uprising.Players
 {
     public class PlayerStats
     {
+        public string pseudo;
+        public int level;
+        public float levelProgress;
+        public int xp;
+
         public PlayerControl playerControl;
         public Player owner;
         public Player killer;
@@ -32,6 +37,25 @@ namespace Uprising.Players
             kills = 0;
             time = 0f;
             isActive = false;
+        }
+
+        public void OnGameEnd()
+        {
+            int earnedXP = ComputeXP();
+            xp += earnedXP;
+            if (xp > 100 * Math.Pow(2, level - 1))
+            {
+                level++;
+            }
+        }
+
+        public int ComputeXP()
+        {
+            int res = (int)time;
+            res += kills * 100;
+            if (belettesShot != 0)
+                res += (hits / belettesShot) * belettesShot * 2;
+            return res;
         }
     }
 }
