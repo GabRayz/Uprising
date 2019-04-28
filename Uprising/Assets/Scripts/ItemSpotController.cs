@@ -70,7 +70,7 @@ public class ItemSpotController : MonoBehaviour
         //itemRaretyPairs.Add(ItemType.PortalGun, GetRaretyInt(Rarety.Rare, y));
         itemRaretyPairs.Add(ItemType.ShotGun, GetRaretyInt(Rarety.Rare, y));
         //itemRaretyPairs.Add(ItemType.MachineGun, GetRaretyInt(Rarety.Rare, y));
-        //itemRaretyPairs.Add(ItemType.Mine, GetRaretyInt(Rarety.Rare, y));
+        itemRaretyPairs.Add(ItemType.Mine, GetRaretyInt(Rarety.Rare, y));
 
         itemRaretyPairs.Add(ItemType.Dash, GetRaretyInt(Rarety.Special, y));
         itemRaretyPairs.Add(ItemType.Sniper, GetRaretyInt(Rarety.Special, y));

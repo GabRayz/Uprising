@@ -16,7 +16,7 @@ namespace Uprising.Items
         public override void Use()
         {
             PhotonNetwork.InstantiateSceneObject("PlacedBearTrap", this.player.transform.position + this.player.transform.forward / 2 + player.transform.up, this.player.transform.rotation);
-            PhotonNetwork.Instantiate("PlacedBearTrap", this.player.transform.position, this.player.transform.rotation);
+            // PhotonNetwork.Instantiate("PlacedBearTrap", this.player.transform.position, this.player.transform.rotation);
             player.SendMessage("ClearItem", this as Item);
         }
 

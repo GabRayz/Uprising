@@ -42,4 +42,4 @@ MonoBehaviour:
   - Hit
   - SetPlayerInfo
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
