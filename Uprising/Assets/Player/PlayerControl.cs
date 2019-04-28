@@ -163,7 +163,8 @@ namespace Uprising.Players
                         aim = !aim;
                 }
             }
-            playerStats.time += Time.deltaTime;
+            if(!debugMode)
+                playerStats.time += Time.deltaTime;
         }
 
         void FixedUpdate()
