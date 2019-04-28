@@ -18,7 +18,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private bool isInGame = false;
     public Text StartingText;
     public MainMenu mainMenu;
-    PlayerStats localPlayerGameStats;
+    public PlayerStats localPlayerGameStats;
     Dictionary<Player, PlayerStats> players;
     Stack<Player> scoreboard;
     public bool debug = false;
@@ -42,10 +42,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             PhotonNetwork.LocalPlayer.NickName = GetUsername();
         }
 #endif
-
+        InitLocalPlayer();
         PhotonNetwork.ConnectUsingSettings();
         // PhotonNetwork.ConnectToRegion("eu");
         PhotonNetwork.AutomaticallySyncScene = true;
+    }
+
+    void InitLocalPlayer()
+    {
+        this.localPlayerGameStats = new PlayerStats(null);
     }
 
     public override void OnConnectedToMaster()

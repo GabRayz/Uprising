@@ -10287,6 +10287,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBoost (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1158, guid: 460a2f60038f14e528dc91bb307a289b, type: 3}
+      propertyPath: viewIdField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158, guid: 460a2f60038f14e528dc91bb307a289b, type: 3}
+      propertyPath: InstantiationId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 674, guid: 460a2f60038f14e528dc91bb307a289b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.23919547
@@ -10330,14 +10338,6 @@ PrefabInstance:
     - target: {fileID: 674, guid: 460a2f60038f14e528dc91bb307a289b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1158, guid: 460a2f60038f14e528dc91bb307a289b, type: 3}
-      propertyPath: viewIdField
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1158, guid: 460a2f60038f14e528dc91bb307a289b, type: 3}
-      propertyPath: InstantiationId
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 460a2f60038f14e528dc91bb307a289b, type: 3}
@@ -11928,6 +11928,7 @@ GameObject:
   - component: {fileID: 2564908914714589127}
   - component: {fileID: 2564908914714589144}
   - component: {fileID: 2564908914714589145}
+  - component: {fileID: 2564908914714589147}
   m_Layer: 0
   m_Name: Lava
   m_TagString: lava
@@ -11935,6 +11936,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
   m_IsActive: 1
+--- !u!65 &2564908914714589147
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564908914714589146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &3182574851672254153
 CapsuleCollider:
   m_ObjectHideFlags: 0

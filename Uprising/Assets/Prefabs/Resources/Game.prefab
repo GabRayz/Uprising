@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71668890fc27c41d8a02ccb9776aaf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  network: {fileID: 0}
   lava: {fileID: 0}
   photonView: {fileID: 0}
   topText: {fileID: 2003}

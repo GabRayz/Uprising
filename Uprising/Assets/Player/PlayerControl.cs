@@ -56,9 +56,21 @@ namespace Uprising.Players
             // Get Component
             animator = GetComponent<Animator>();
             photonView = GetComponent<PhotonView>();
-            playerStats = new PlayerStats(this);
+
             if (!debugMode)
                 gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
+
+            if (!debugMode && photonView.IsMine)
+            {
+                playerStats = gameManager.localPlayer;
+                playerStats.playerControl = this;
+                playerStats.owner = PhotonNetwork.LocalPlayer;
+            }
+            else if (!debugMode && playerStats == null)
+                playerStats = new PlayerStats(this);
+
+
+
 
             inventory = GetComponent<InventoryManager>();
             rb = GetComponent<Rigidbody>();
@@ -80,7 +92,10 @@ namespace Uprising.Players
                 // Player is ready
                 gameManager.SetPlayerStat(this.playerStats);
                 if (photonView.IsMine)
+                {
                     gameManager.gameObject.GetPhotonView().RPC("SetReady", RpcTarget.MasterClient, this.photonView.Owner);
+                    this.photonView.RPC("SetPlayerInfo", RpcTarget.OthersBuffered);
+                }
             }
             else
             {
@@ -94,6 +109,11 @@ namespace Uprising.Players
             Cursor.visible = false;
         }
 
+        [PunRPC]
+        public void SetPlayerInfo()
+        {
+            // Fill info on playerStats
+        }
 
         void Update()
         {
@@ -301,6 +321,7 @@ namespace Uprising.Players
             }
             if (other.gameObject.CompareTag("lava") && photonView.IsMine)
             {
+                Debug.Log("lava");
                 Eliminate("Tried to swim into lava");
             }
 

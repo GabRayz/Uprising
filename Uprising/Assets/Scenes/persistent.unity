@@ -210,7 +210,7 @@ MonoBehaviour:
   inMatchMaking: 0
   inMainMenu: 0
   matchMakingText: {fileID: 0}
-  MaxPlayer: 3
+  MaxPlayer: 2
   StartingText: {fileID: 2123218344}
   mainMenu: {fileID: 0}
   debug: 0

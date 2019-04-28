@@ -11,6 +11,7 @@ using Uprising.Items;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public NetworkManager network;
     SpawnPlayers[] spawnSpots;
     public GameObject lava;
     public new PhotonView photonView;
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public int playersCount;
     // public Dictionary<Player, bool> players;
     Stack<Player> scoreBoard;
-    PlayerStats localPlayer;
+    public PlayerStats localPlayer;
     // List<PlayerStats> playerStats = new List<PlayerStats>();
     public Dictionary<Player, PlayerStats> players;
     public Dictionary<Player, bool> playersReady;
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        network = GameObject.Find("_network").GetComponent<NetworkManager>();
+        localPlayer = network.localPlayerGameStats;
+        localPlayer.Reset();
+
         photonView = GetComponent<PhotonView>();
         Debug.Log("Map 1 scene loaded !");
         players = new Dictionary<Player, PlayerStats>();

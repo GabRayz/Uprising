@@ -18,8 +18,20 @@ namespace Uprising.Players
 
         public PlayerStats(PlayerControl playerControl)
         {
+            if (playerControl == null) return;
             this.playerControl = playerControl;
             this.owner = playerControl.photonView.Owner;
+        }
+
+        public void Reset()
+        {
+            playerControl = null;
+            killer = null;
+            belettesShot = 0;
+            hits = 0;
+            kills = 0;
+            time = 0f;
+            isActive = false;
         }
     }
 }
