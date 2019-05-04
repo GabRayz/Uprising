@@ -11,6 +11,7 @@ namespace Uprising.Items
         {
             this.durability = time;
             this.player = player;
+            this.type = ItemType.Mine;
         }
 
         public override void Use()

@@ -6,16 +6,18 @@ public class MineController : MonoBehaviour
 {
     public GameObject explosionEffect;
     public PhotonView photonView;
+    bool isReady;
 
     // Use this for initialization
     void Start()
     {
         photonView = GetComponent<PhotonView>();
+        ReadyTimer();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("player") && isReady)
         {
             Explode();
         }
@@ -35,6 +37,17 @@ public class MineController : MonoBehaviour
                 rb.AddExplosionForce(1000f, this.transform.position, 5f);
             }
         }
+    }
+
+    IEnumerator ReadyTimer()
+    {
+        float time = 1f;
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        isReady = true;
     }
 
     IEnumerator ExplosionTimer()
