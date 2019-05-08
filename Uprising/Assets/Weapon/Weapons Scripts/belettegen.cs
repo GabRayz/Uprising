@@ -9,9 +9,16 @@ public class belettegen : MonoBehaviour
     public GameObject belette;
     public GameObject player;
     public Item item;
+    public AudioSource sound;
+
+    private void Start()
+    {
+        this.sound = GetComponent<AudioSource>();
+    }
 
     public void shoot(int durability, Vector3 direction, Item item)
     {
+        sound.Play();
         this.item = item;
         direction = direction * 2;
         GameObject NewBelette;
