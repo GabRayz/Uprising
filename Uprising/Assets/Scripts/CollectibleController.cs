@@ -54,6 +54,9 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.Mine:
                 this.item = new Mine(0, null);
                 break;
+            case ItemType.Grapnel:
+                this.item = new Grapnel(0, null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;

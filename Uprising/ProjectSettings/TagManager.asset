@@ -11,6 +11,7 @@ TagManager:
   - belette
   - lava
   - forcefield
+  - platform
   layers:
   - Default
   - TransparentFX

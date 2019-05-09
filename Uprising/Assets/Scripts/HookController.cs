@@ -1,0 +1,52 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HookController : MonoBehaviour
+{
+    public float maxDist;
+    public GrapnelController grapnel;
+    public int speed;
+    Rigidbody rb;
+    public bool isFlying;
+    public bool isAttached;
+    LineRenderer lineRenderer;
+
+    public void Init(GameObject grapnel)
+    {
+        this.grapnel = grapnel.GetComponent<GrapnelController>();
+        rb = GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * speed, ForceMode.Force);
+        isFlying = true;
+        lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isFlying)
+        {
+            float dist = (grapnel.transform.position - this.transform.position).magnitude;
+            if (dist > maxDist)
+                Destroy(this.gameObject);
+
+            lineRenderer.SetPosition(0, this.transform.position);
+            lineRenderer.SetPosition(1, grapnel.transform.position);
+        }
+        if(isAttached)
+        {
+            grapnel.player.GetComponent<Rigidbody>().AddForce((transform.position - grapnel.player.transform.position) * speed, ForceMode.Force);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("platform"))
+        {
+            isFlying = false;
+            rb.isKinematic = true;
+            isAttached = true;
+            rb.ResetInertiaTensor();
+        }
+    }
+}
