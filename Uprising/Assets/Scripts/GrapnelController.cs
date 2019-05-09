@@ -1,23 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Uprising.Items;
 
 public class GrapnelController : MonoBehaviour
 {
     public GameObject hook;
     public GameObject flyingHook;
     public GameObject player;
+    public Grapnel grapnel;
 
-    public void Shoot()
+    public void Shoot(Grapnel grapnel)
     {
-        Debug.Log("Hook shot");
+        this.grapnel = grapnel;
         flyingHook = Instantiate(hook, transform.position, transform.rotation);
         flyingHook.GetComponent<HookController>().Init(gameObject);
     }
 
-    private void Update()
+    public void Detach()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-            Shoot();
+        Destroy(flyingHook);
+        flyingHook = null;
     }
 }

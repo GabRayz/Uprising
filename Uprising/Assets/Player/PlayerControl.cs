@@ -410,7 +410,7 @@ namespace Uprising.Players
             if (Input.GetAxis("Mouse ScrollWheel") > 0) inventory.SelectItem((inventory.GetSelectedItemIndex() + 1) % 4);
             if (Input.GetAxis("Mouse ScrollWheel") < 0) inventory.SelectItem((inventory.GetSelectedItemIndex() - 1));
 
-            IkControl.ikActive = inventory.GetSelectedItem() is Weapon;
+            IkControl.ikActive = inventory.GetSelectedItem() is Weapon || inventory.GetSelectedItem() is Grapnel;
 
             if (Input.GetKeyDown(KeyCode.L))
             {

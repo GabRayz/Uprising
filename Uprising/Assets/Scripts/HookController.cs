@@ -24,25 +24,37 @@ public class HookController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isFlying || isAttached)
+        {
+            lineRenderer.SetPosition(0, this.transform.position);
+            lineRenderer.SetPosition(1, grapnel.transform.position);
+        }
+
         if (isFlying)
         {
             float dist = (grapnel.transform.position - this.transform.position).magnitude;
             if (dist > maxDist)
-                Destroy(this.gameObject);
-
-            lineRenderer.SetPosition(0, this.transform.position);
-            lineRenderer.SetPosition(1, grapnel.transform.position);
+                grapnel.grapnel.Detach();
         }
+
         if(isAttached)
         {
-            grapnel.player.GetComponent<Rigidbody>().AddForce((transform.position - grapnel.player.transform.position) * speed, ForceMode.Force);
+            float dist = (grapnel.transform.position - this.transform.position).magnitude;
+            if (dist < 2)
+            {
+                grapnel.grapnel.Detach();
+            }
+
+            Vector3 dir = (transform.position - grapnel.player.transform.position).normalized * 25;
+            grapnel.player.GetComponent<Rigidbody>().velocity = dir;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("platform"))
+        if (other.CompareTag("platform") && !isAttached)
         {
+            Debug.Log("hit");
             isFlying = false;
             rb.isKinematic = true;
             isAttached = true;

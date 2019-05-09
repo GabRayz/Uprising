@@ -94,7 +94,7 @@ namespace Uprising.Players
             }
             else
             {
-                if(items[3] != null && selectedItem != 3)
+                if((selectedItem == 2 && items[3] != null) || items[2] == null)
                 {
                     if (items[2] != null)
                         ClearItem(items[2]);
