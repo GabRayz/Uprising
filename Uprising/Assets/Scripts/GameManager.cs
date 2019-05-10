@@ -60,7 +60,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(playersCount <= 1 && !OfflineMode && isStarted)
         {
             isStarted = false;
-            FinishGame();
+            // if (GameObject.Find("_network").GetComponent<NetworkManager>().isInGame)
+                FinishGame();
         }
     }
 

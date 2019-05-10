@@ -365,22 +365,28 @@ namespace Uprising.Players
                 gameManager.players[lastHitter].playerControl.photonView.RPC("OnTargetKilled", RpcTarget.All);
             }
 
-            if(stayAsASpectator)
+            gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
+
+            if (stayAsASpectator)
             {
                 GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
                 spec.SendMessage("SetPlayerStats", playerStats);
             }
-            else
-            {
-                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(false, false);
-            }
-            gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
 
+            Debug.Log("Destroying player objects");
             Destroy(this.inventory.hud);
+            gameObject.SetActive(false);
             if (debugMode)
                 Destroy(this.gameObject);
             else
+            {
+                Destroy(this.gameObject);
                 PhotonNetwork.Destroy(this.photonView);
+            }
+            Debug.Log("Player destroyed");
+
+            if (!stayAsASpectator)
+                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(false, false);
         }
 
         [PunRPC]

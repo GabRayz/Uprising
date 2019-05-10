@@ -15,7 +15,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public bool inMainMenu = false;
     public Text matchMakingText;
     public int MaxPlayer = 2;
-    private bool isInGame = false;
+    public bool isInGame = false;
     public Text StartingText;
     public MainMenu mainMenu;
     public PlayerStats localPlayerGameStats;
@@ -181,6 +181,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void LeaveToScoreBoard(Stack<Player> scoreboard, Dictionary<Player, PlayerStats> players)
     {
+        if (!isInGame) return;
         Debug.Log("Leaving to scoreBoard...");
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
         this.scoreboard = scoreboard;
@@ -204,6 +205,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void QuitGame(bool isLastInRoom = false, bool isInScoreBoardScene = true)
     {
+        Debug.Log("Quit game");
         // Update profile
         localPlayerGameStats.OnGameEnd();
 
@@ -213,11 +215,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if(PhotonNetwork.LocalPlayer.IsMasterClient)
             PhotonNetwork.DestroyAll();
         isInGame = false;
-        PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
+
+        Scene scoreScene = SceneManager.GetSceneByName("Scoreboard");
+        if (scoreScene.IsValid())
+            SceneManager.UnloadSceneAsync(scoreScene);
 
         // Unload scenes
         if (!isInScoreBoardScene)
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(2));
-        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(3));
+
+        PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
+        Debug.Log("room left");
     }
 }
