@@ -83,6 +83,12 @@ namespace Uprising.Players
                 menu = Instantiate(menu);
                 menu.SetActive(false);
                 menu.GetComponent<InGameMenuController>().SetOwner(this);
+
+                camera.GetComponent<AudioListener>().enabled = true;
+            }
+            else
+            {
+                camera.GetComponent<AudioListener>().enabled = false;
             }
             if (!debugMode)
             {

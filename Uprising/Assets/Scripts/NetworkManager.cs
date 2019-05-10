@@ -112,7 +112,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             StartingText.text = "Connection...";
             PhotonNetwork.ConnectUsingSettings();
-            PhotonNetwork.AutomaticallySyncScene = true;
         }
     }
 
