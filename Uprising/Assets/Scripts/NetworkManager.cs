@@ -45,7 +45,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         InitLocalPlayer();
         PhotonNetwork.ConnectUsingSettings();
         // PhotonNetwork.ConnectToRegion("eu");
-        PhotonNetwork.AutomaticallySyncScene = true;
+        // PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     void InitLocalPlayer()
@@ -158,8 +158,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void StartGame()
     {
         // Lock the room
-         //if (PhotonNetwork.LocalPlayer.IsMasterClient)
-            //PhotonNetwork.CurrentRoom.IsOpen = false;
+         if (PhotonNetwork.LocalPlayer.IsMasterClient)
+            PhotonNetwork.CurrentRoom.IsOpen = false;
 
 
         // Unload main menu, display loading time
