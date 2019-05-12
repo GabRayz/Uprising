@@ -13,7 +13,7 @@ Material:
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -28,9 +28,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DistortStrength: 0.5
-    - _DistortTimeFactor: 0.195
-    - _IntersectPower: 1.88
-    - _RimStrength: 1.34
+    - _DistortStrength: 0.474
+    - _DistortTimeFactor: 0.279
+    - _IntersectPower: 1.92
+    - _RimStrength: 1.38
     m_Colors:
     - _Color: {r: 0.2580558, g: 0.44666216, b: 0.8161765, a: 1}
