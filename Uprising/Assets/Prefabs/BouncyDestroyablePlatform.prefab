@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 3383683186289539145}
   m_Layer: 0
   m_Name: BouncyDestroyablePlatform
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

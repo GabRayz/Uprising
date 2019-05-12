@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4826456971398554614}
   m_Layer: 0
   m_Name: DestructiblePlatform
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
