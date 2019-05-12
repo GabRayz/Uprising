@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5017454498885366006}
   - component: {fileID: 5017454498885366007}
   - component: {fileID: 5017454498885366004}
+  - component: {fileID: 8943767265799628665}
   m_Layer: 0
   m_Name: PlacedMine
   m_TagString: Untagged
@@ -119,6 +120,21 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &8943767265799628665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017454498885366003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf4659c217e8419a84045f3201aa4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 3641260261427234710, guid: be7f52e75d33a4a369b76f19c6f4ed91,
+    type: 3}
+  photonView: {fileID: 0}
 --- !u!1001 &5017454498676874328
 PrefabInstance:
   m_ObjectHideFlags: 0

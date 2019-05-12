@@ -10,8 +10,18 @@ PrefabInstance:
     - target: {fileID: 1495440023707448350, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
       propertyPath: m_Name
-      value: Grapnel Variant
+      value: Grapnel
       objectReference: {fileID: 0}
+    - target: {fileID: 5123739578276363501, guid: f782128b067eb446689f85d46dfd4556,
+        type: 3}
+      propertyPath: type
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123739578276363501, guid: f782128b067eb446689f85d46dfd4556,
+        type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 6079471139401464114}
     - target: {fileID: 5366960452372407172, guid: f782128b067eb446689f85d46dfd4556,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -87,16 +97,6 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[1]
       value: 
       objectReference: {fileID: 5396126876739160378}
-    - target: {fileID: 5123739578276363501, guid: f782128b067eb446689f85d46dfd4556,
-        type: 3}
-      propertyPath: type
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5123739578276363501, guid: f782128b067eb446689f85d46dfd4556,
-        type: 3}
-      propertyPath: model
-      value: 
-      objectReference: {fileID: 6079471139401464114}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f782128b067eb446689f85d46dfd4556, type: 3}
 --- !u!114 &2343338577878571448 stripped

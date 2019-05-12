@@ -12,13 +12,15 @@ public class MineController : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        ReadyTimer();
+        StartCoroutine("ReadyTimer");
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(isReady);
         if (other.CompareTag("player") && isReady)
         {
+            Debug.Log("Explosion");
             Explode();
         }
     }

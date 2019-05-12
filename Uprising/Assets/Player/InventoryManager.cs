@@ -173,7 +173,13 @@ namespace Uprising.Players
             {
                 items[selectedItem].Use();
                 if (playerControl.debugMode || playerControl.photonView.IsMine)
-                    hud.GetComponent<HUD>().ChangeAmmo(items[selectedItem].durability);
+                {
+                    if(items[selectedItem] != null)
+                        hud.GetComponent<HUD>().ChangeAmmo(items[selectedItem].durability);
+                    else
+                        hud.GetComponent<HUD>().ChangeAmmo(0);
+                }
+
             }
             else if(items[selectedItem] != null)
                 items[selectedItem].Use();
