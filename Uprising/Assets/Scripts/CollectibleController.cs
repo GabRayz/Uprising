@@ -60,6 +60,12 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.RocketLauncher:
                 this.item = new RocketLauncher(1, null);
                 break;
+            case ItemType.Rifle:
+                this.item = new Rifle(50, 100, 30, 50, null);
+                break;
+            case ItemType.AssaultRifle:
+                this.item = new Rifle(50, 100, 15, 40, null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;

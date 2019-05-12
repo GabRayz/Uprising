@@ -61,7 +61,7 @@ public class ItemSpotController : MonoBehaviour
         itemRaretyPairs.Add(ItemType.Grapnel, GetRaretyInt(Rarety.Common, y));
         itemRaretyPairs.Add(ItemType.RocketLauncher, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.Shield, GetRaretyInt(Rarety.Common, y));
-        //itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y));
+        itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y));
         itemRaretyPairs.Add(ItemType.BearTrap, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.SlimeGun, GetRaretyInt(Rarety.Common, y));
 
@@ -76,7 +76,7 @@ public class ItemSpotController : MonoBehaviour
         itemRaretyPairs.Add(ItemType.Sniper, GetRaretyInt(Rarety.Special, y));
         itemRaretyPairs.Add(ItemType.Invisibility, GetRaretyInt(Rarety.Special, y));
         //itemRaretyPairs.Add(ItemType.GuidedMissile, GetRaretyInt(Rarety.Special, y));
-        //itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y));
+        itemRaretyPairs.Add(ItemType.AssaultRifle, GetRaretyInt(Rarety.Special, y));
         //itemRaretyPairs.Add(ItemType.Blackout, GetRaretyInt(Rarety.Special, y));
 
 
