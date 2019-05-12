@@ -57,6 +57,9 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.Grapnel:
                 this.item = new Grapnel(2, null);
                 break;
+            case ItemType.RocketLauncher:
+                this.item = new RocketLauncher(1, null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;
