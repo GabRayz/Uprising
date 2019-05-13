@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         isStarted = true;
         foreach(var player in players)
         {
-            player.Value.playerControl.inventory.GiveItem(new DefaultGun(999, 100, 10, 20, player.Value.playerControl.gameObject));
+            player.Value.playerControl.inventory.GiveItem(new DefaultGun(999, 100, 20, 20, player.Value.playerControl.gameObject));
         }
     }
 

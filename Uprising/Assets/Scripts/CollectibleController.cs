@@ -66,6 +66,9 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.AssaultRifle:
                 this.item = new Rifle(50, 100, 15, 40, null);
                 break;
+            case ItemType.MachineGun:
+                this.item = new MachineGun(75, 100, 10, 7, null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;
