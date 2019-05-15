@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             i++;
         }
+        localPlayer.playerControl.inventory.hud.GetComponent<HUD>().ChangeRemain(playersCount);
     }
 
     [PunRPC]
@@ -165,6 +166,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             // Destroy gameobject
             // Destroy(players[player].playerControl.gameObject);
         }
+        localPlayer.playerControl.inventory.hud.GetComponent<HUD>().ChangeRemain(playersCount);
         return playersCount;
     }
 
