@@ -4839,7 +4839,7 @@ PrefabInstance:
         type: 3}
       propertyPath: hook
       value: 
-      objectReference: {fileID: 3292107043845819330, guid: 8c1855054763646f189ba3af73dd644a,
+      objectReference: {fileID: 3717151547960128434, guid: 820bb282b68e6483d9a1ea91a8d2de68,
         type: 3}
     - target: {fileID: 821454307494653096, guid: 52ef2c7ceca654294ac0019717058efe,
         type: 3}
