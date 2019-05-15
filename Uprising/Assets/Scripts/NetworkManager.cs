@@ -207,6 +207,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Quit game");
         // Update profile
         localPlayerGameStats.OnGameEnd();
+        
+        // If master client, sync each player's xp with server 
 
         // Leave Room
         if (isLastInRoom)

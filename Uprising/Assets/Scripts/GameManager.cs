@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Dictionary<Player, bool> playersReady;
     public float lavaLevel;
 
+    public float lavaLevelMax = 100;
+    public float lavaLevelMin = 0;
+
     public bool isStarted;
 
     // Start is called before the first frame update
@@ -56,8 +59,17 @@ public class GameManager : MonoBehaviourPunCallbacks
             lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
         lavaLevel = lava.transform.position.y;
 
+        for (int i = 9; i > 0; i--)
+        {
+            if (lavaLevel <= lavaLevelMax * (i + 1) / 10 && lavaLevel >= lavaLevelMax * i / 10)
+            {
+                localPlayer.playerControl.inventory.hud.transform.Find("Canvas").Find("HUD Left").Find("Maplevel").Find(i.ToString()).gameObject.SetActive(true);
+            }
+        }
+
+
         // Finish game
-        if(playersCount <= 1 && !OfflineMode && isStarted)
+        if (playersCount <= 1 && !OfflineMode && isStarted)
         {
             isStarted = false;
             // if (GameObject.Find("_network").GetComponent<NetworkManager>().isInGame)
@@ -150,6 +162,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             i++;
         }
+        localPlayer.playerControl.inventory.hud.GetComponent<HUD>().ChangeRemain(playersCount);
     }
 
     [PunRPC]
@@ -165,6 +178,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             // Destroy gameobject
             // Destroy(players[player].playerControl.gameObject);
         }
+        localPlayer.playerControl.inventory.hud.GetComponent<HUD>().ChangeRemain(playersCount);
         return playersCount;
     }
 

@@ -58,6 +58,10 @@ const User = db.define('user', {
             isEmail: true
         }
     },
+    xp: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
     password: {
         type: Sequelize.STRING
     }
@@ -135,6 +139,32 @@ app.get('/game', (req, res) => {
         res.sendFile(path.resolve('./client/dist/game.html'));
     else
         res.redirect('/auth/register');
+});
+
+app.post('/game/xp', async (req, res) => {
+    req.body.players.forEach(player => {
+        const user = User.findOne({
+            where: {
+                username: player.username
+            }
+        });
+
+        user.xp += player.xp;
+        user.save();
+    });
+
+    res.sendStatus(200);
+});
+
+app.get('/game/xp/:username', async (req, res) => {
+    const user = User.findOne({
+        where: {
+            username: req.params.username
+        },
+        attributes: ['username', 'xp']
+    });
+
+    res.sendJson(user);
 });
 
 async function main() {
