@@ -22,6 +22,7 @@ public class belettegen : MonoBehaviour
         this.item = item;
         direction = direction * 2;
         GameObject NewBelette;
+        Vector3 dir = item.target.transform.position - transform.position;
         if(PhotonNetwork.IsConnected)
         {
             NewBelette = PhotonNetwork.Instantiate("belette_" + item.type.ToString(), gameObject.transform.position + gameObject.transform.forward, gameObject.transform.rotation);
@@ -32,6 +33,6 @@ public class belettegen : MonoBehaviour
             NewBelette = Instantiate(belette, this.gameObject.transform.position + gameObject.transform.forward, this.gameObject.transform.rotation);
             NewBelette.GetComponent<Belette>().InitBelette((item as Weapon).knockback);
         }
-        NewBelette.GetComponent<Rigidbody>().AddForce((this.gameObject.transform.forward + direction) * 1000);
+        NewBelette.GetComponent<Rigidbody>().AddForce((direction.normalized) * 1000);
     }
 }
