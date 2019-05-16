@@ -64,7 +64,7 @@ public class CollectibleController : MonoBehaviour {
                 this.item = new Rifle(50, 100, 30, 50, null);
                 break;
             case ItemType.AssaultRifle:
-                this.item = new Rifle(50, 100, 15, 40, null);
+                this.item = new AssaultRifle(50, 100, 15, 40, null);
                 break;
             case ItemType.MachineGun:
                 this.item = new MachineGun(75, 100, 10, 7, null);
