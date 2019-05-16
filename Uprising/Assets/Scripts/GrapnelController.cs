@@ -14,7 +14,8 @@ public class GrapnelController : MonoBehaviour
     {
         this.grapnel = grapnel;
         flyingHook = Instantiate(hook, transform.position, transform.rotation);
-        flyingHook.GetComponent<HookController>().Init(gameObject);
+        Vector3 direction = grapnel.target.transform.position - transform.position;
+        flyingHook.GetComponent<HookController>().Init(gameObject, direction.normalized);
     }
 
     public void Detach()

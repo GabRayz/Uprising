@@ -12,11 +12,11 @@ public class HookController : MonoBehaviour
     public bool isAttached;
     LineRenderer lineRenderer;
 
-    public void Init(GameObject grapnel)
+    public void Init(GameObject grapnel, Vector3 direction)
     {
         this.grapnel = grapnel.GetComponent<GrapnelController>();
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * speed, ForceMode.Force);
+        rb.AddForce(direction * speed, ForceMode.Force);
         isFlying = true;
         lineRenderer = GetComponent<LineRenderer>();
     }
@@ -33,7 +33,6 @@ public class HookController : MonoBehaviour
         if (isFlying)
         {
             float dist = (grapnel.transform.position - this.transform.position).magnitude;
-            Debug.Log(dist);
             if (dist > maxDist)
                 grapnel.grapnel.Detach();
         }
