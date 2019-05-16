@@ -33,6 +33,7 @@ public class HookController : MonoBehaviour
         if (isFlying)
         {
             float dist = (grapnel.transform.position - this.transform.position).magnitude;
+            Debug.Log(dist);
             if (dist > maxDist)
                 grapnel.grapnel.Detach();
         }

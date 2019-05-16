@@ -42,7 +42,7 @@ namespace Uprising.Items
 
         public void Detach()
         {
-            if (grapnel != null && grapnel.flyingHook != null && grapnel.flyingHook.GetComponent<HookController>().isAttached)
+            if (grapnel != null && grapnel.flyingHook != null)
             {
                 grapnel.Detach();
 
