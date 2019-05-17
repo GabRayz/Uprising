@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Uprising.Items;
+using Uprising.Players;
 
 public class belettegen : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class belettegen : MonoBehaviour
 
     public void shoot(int durability, Vector3 direction, Item item)
     {
-        sound.Play();
+        player.GetComponent<AudioManager>().PlaySound(item.type.ToString());
+
         this.item = item;
         direction = direction * 2;
         GameObject NewBelette;
