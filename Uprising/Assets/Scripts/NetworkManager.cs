@@ -96,8 +96,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("No available room found. Creating a new one...");
         RoomOptions roomOptions = new RoomOptions();
+
+        Hashtable property = new Hashtable();
+        property.Add("size", 3);
+        roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+        roomOptions.CustomRoomProperties.Add("s", 3);
+
         roomOptions.MaxPlayers = (byte)MaxPlayer;
         roomOptions.PublishUserId = true;
+
+
+
         bool success = PhotonNetwork.CreateRoom(null, roomOptions);
         if(!success)
         {
@@ -117,6 +126,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        Dictionary<object, object> prop = PhotonNetwork.CurrentRoom.CustomProperties;
+        Debug.Log(prop.Count);
+        foreach (var p in prop)
+        {
+            Debug.Log(p + " : " + prop);
+        }
         inMatchMaking = true;
         Debug.Log("Room joined");
     }
