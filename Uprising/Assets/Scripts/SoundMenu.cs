@@ -18,13 +18,19 @@ public class SoundMenu : MonoBehaviour
         mixer.GetFloat("MasterVolume", out masterVolume);
         master.value = masterVolume;
 
-        float effectVolume;
-        mixer.GetFloat("EffectVolume", out effectVolume);
-        effect.value = effectVolume;
+        if (effect != null)
+        {
+            float effectVolume;
+            mixer.GetFloat("EffectVolume", out effectVolume);
+            effect.value = effectVolume;
+        }
 
-        float musicVolume;
-        mixer.GetFloat("MusicVolume", out musicVolume);
-        music.value = musicVolume;
+        if (music != null)
+        {
+            float musicVolume;
+            mixer.GetFloat("MusicVolume", out musicVolume);
+            music.value = musicVolume;
+        }
     }
 
     public void SetMasterVolume(float volume)
