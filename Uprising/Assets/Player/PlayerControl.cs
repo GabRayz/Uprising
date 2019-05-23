@@ -127,7 +127,7 @@ namespace Uprising.Players
             if(debugMode && contrallable || photonView.IsMine && gameManager.isStarted)
             {
                 
-                if (Input.GetKeyDown(KeyCode.Space) && jump > 0)
+                if (Input.GetKeyDown(KeyCode.Space) && jump > 0 && !menu.activeSelf)
                 {
                     if (jumpsLeft > 0 && isGrounded)
                     {
@@ -145,7 +145,9 @@ namespace Uprising.Players
                     }
                 }
 
-                ReadInventoryInputs();
+                if(!menu.activeSelf)
+                    ReadInventoryInputs();
+
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
                 if (inventory.GetSelectedItem() != null)
                 {
