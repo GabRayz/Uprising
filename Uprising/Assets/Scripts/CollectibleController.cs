@@ -72,6 +72,9 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.Drugs:
                 this.item = new Drugs(10000, null);
                 break;
+            case ItemType.Shield:
+                this.item = new Shield(200, null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;
