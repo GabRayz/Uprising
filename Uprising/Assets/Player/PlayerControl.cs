@@ -34,6 +34,7 @@ namespace Uprising.Players
 
         public float backwardSpeed = 3;
         public float runSpeed = 5;
+        public float firerateModifier = 1;
         
         public IKControl IkControl;
         

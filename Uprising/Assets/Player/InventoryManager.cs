@@ -203,6 +203,9 @@ namespace Uprising.Players
                     case ItemType.JumpBoost:
                         this.playerControl.ModifyJumpHeight(900);
                         break;
+                    case ItemType.Drugs:
+                        playerControl.firerateModifier += .5f;
+                        break;
                     default:
                         break;
                 }
@@ -230,6 +233,9 @@ namespace Uprising.Players
                         break;
                     case ItemType.JumpBoost:
                         this.playerControl.ModifyJumpHeight(-900);
+                        break;
+                    case ItemType.Drugs:
+                        playerControl.firerateModifier -= .5f;
                         break;
                     default:
                         break;

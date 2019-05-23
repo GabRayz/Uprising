@@ -15,10 +15,6 @@ namespace Uprising.Items
 
         public abstract void Aim(); //Aim
 
-        void Update()
-        {
-        }
-
         protected override void StopUsing()
         {
             //Destroy(this);
@@ -27,7 +23,7 @@ namespace Uprising.Items
 
         public override void Reload()
         {
-            fireratetime++;
+            fireratetime += playerControl.firerateModifier;
         }
     }
 }

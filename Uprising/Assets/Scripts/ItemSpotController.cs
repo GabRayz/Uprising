@@ -57,7 +57,7 @@ public class ItemSpotController : MonoBehaviour
         itemRaretyPairs.Add(ItemType.SpeedBoost, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.DefaultGun, GetRaretyInt(Rarety.Common, y)); USELESS
         itemRaretyPairs.Add(ItemType.Minigun, GetRaretyInt(Rarety.Common, y));
-        //itemRaretyPairs.Add(ItemType.Drugs, GetRaretyInt(Rarety.Common, y));
+        itemRaretyPairs.Add(ItemType.Drugs, GetRaretyInt(Rarety.Common, y));
         itemRaretyPairs.Add(ItemType.Grapnel, GetRaretyInt(Rarety.Common, y));
         itemRaretyPairs.Add(ItemType.RocketLauncher, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.Shield, GetRaretyInt(Rarety.Common, y));
