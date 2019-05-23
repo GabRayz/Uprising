@@ -474,6 +474,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3362381589919262309, guid: 5af47774f77b7473fa819bdaa775055f,
+        type: 3}
+      propertyPath: precision
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5456757209419264512, guid: 5af47774f77b7473fa819bdaa775055f,
         type: 3}
       propertyPath: viewIdField

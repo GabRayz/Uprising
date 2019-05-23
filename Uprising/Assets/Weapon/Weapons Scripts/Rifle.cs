@@ -29,9 +29,8 @@ namespace Uprising.Items
         //{
         //    if (fireratetime >= firerate)
         //    {
-        //        player.GetComponent<PlayerControl>().hand.transform.Find("h_Rifle").GetComponent<belettegen>().shoot(durability, this.target.transform.forward, this);
-        //        if (player.GetComponent<PlayerControl>().playerStats != null)
-        //            player.GetComponent<PlayerControl>().playerStats.belettesShot += 1;
+
+
         //        fireratetime = 0;
         //        durability--;
         //    }
