@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 using Uprising.Items;
 
 namespace Uprising.Players
@@ -9,6 +10,7 @@ namespace Uprising.Players
     public class AudioManager : MonoBehaviour
     {
         public Sound[] sounds;
+        public AudioMixerGroup mixer;
 
         // Start is called before the first frame update
         void Awake()
@@ -18,6 +20,7 @@ namespace Uprising.Players
                 sound.source = gameObject.AddComponent<AudioSource>();
                 sound.source.clip = sound.clip;
                 sound.source.volume = sound.volume;
+                sound.source.outputAudioMixerGroup = mixer;
             }
         }
 

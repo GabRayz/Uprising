@@ -1360,6 +1360,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4f3d5c59f67834f859194d2eff1ceb24, type: 3}
     volume: 0.81
     source: {fileID: 0}
+  mixer: {fileID: 243744502636747464, guid: d1318412ae14f4446a2c05a224f48b22, type: 2}
 --- !u!1 &224
 GameObject:
   m_ObjectHideFlags: 0
