@@ -17,14 +17,14 @@ public class belettegen : MonoBehaviour
         this.sound = GetComponent<AudioSource>();
     }
 
-    public void shoot(int durability, Vector3 direction, Item item)
+    public void shoot(Item item)
     {
         player.GetComponent<AudioManager>().PlaySound(item.type.ToString());
-
         this.item = item;
-        direction = direction * 2;
+
         GameObject NewBelette;
-        Vector3 dir = item.target.transform.position - transform.position;
+        Vector3 dir = GetDirection(item, (item as Weapon).accuracy);
+
         if(PhotonNetwork.IsConnected)
         {
             NewBelette = PhotonNetwork.Instantiate("belette_" + item.type.ToString(), gameObject.transform.position + gameObject.transform.forward, gameObject.transform.rotation);
@@ -35,6 +35,15 @@ public class belettegen : MonoBehaviour
             NewBelette = Instantiate(belette, this.gameObject.transform.position + gameObject.transform.forward, this.gameObject.transform.rotation);
             NewBelette.GetComponent<Belette>().InitBelette((item as Weapon).knockback);
         }
-        NewBelette.GetComponent<Rigidbody>().AddForce((dir.normalized) * 1000);
+        NewBelette.GetComponent<Rigidbody>().AddForce(dir * 1000);
+    }
+
+    Vector3 GetDirection(Item item, float accuracy)
+    {
+        Vector3 dir = (item.target.transform.position - transform.position).normalized;
+        Vector3 deviation_y = transform.up * (Random.Range(-1f, 1f) / accuracy);
+        Vector3 deviation_x = transform.right * (Random.Range(-1f, 1f) / accuracy);
+        dir = (dir + deviation_x + deviation_y).normalized;
+        return dir;
     }
 }

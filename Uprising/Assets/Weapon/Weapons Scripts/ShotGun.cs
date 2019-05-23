@@ -28,20 +28,16 @@ namespace Uprising.Items
         {
             if (fireratetime >= firerate)
             {
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, this.target.transform.forward, this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(-0.3f, 0.2f, 0.4f) / 5, this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0.3f, 0.1f, 0.4f) / 5, this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0.3f, 0.2f, 0.4f) / 5, this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(-0.3f, 0f, 0.3f) / 5, this);
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_ShotGun").GetComponent<belettegen>().shoot(durability, new Vector3(0f, 0f, 0.2f) / 5, this);
+                for (var i = 0; i < 6; i++)
+                {
+                    Shoot();
+                }
 
-                if (playerControl.playerStats != null)
-                    playerControl.playerStats.belettesShot += 6;
-                durability--;
                 fireratetime = 0;
+                durability--;
             }
 
-            if (durability < 0)
+            if (durability <= 0)
             {
                 player.SendMessage("ClearItem", this as Item);
             }
