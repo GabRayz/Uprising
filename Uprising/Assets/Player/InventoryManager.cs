@@ -37,6 +37,8 @@ namespace Uprising.Players
                 hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
                 hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
                 SelectItem(0);
+
+                hud.GetComponent<HUD>().ChangeRemain(playerControl.gameManager.playersCount);
             }
         }
 

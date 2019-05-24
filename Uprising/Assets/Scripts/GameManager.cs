@@ -162,7 +162,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             i++;
         }
-        localPlayer.playerControl.inventory.hud.GetComponent<HUD>().ChangeRemain(playersCount);
     }
 
     [PunRPC]
