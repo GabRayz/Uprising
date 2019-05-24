@@ -1361,6 +1361,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4f3d5c59f67834f859194d2eff1ceb24, type: 3}
     volume: 0.81
     source: {fileID: 0}
+  - name: Draw
+    clip: {fileID: 8300000, guid: 108ffea10c0bc4bc3b7c0de576df11de, type: 3}
+    volume: 0.81
+    source: {fileID: 0}
+  - name: Grapnel
+    clip: {fileID: 8300000, guid: 14201b6b3b7b44c5da295e1ab36f9923, type: 3}
+    volume: 0.81
+    source: {fileID: 0}
   mixer: {fileID: 243744502636747464, guid: d1318412ae14f4446a2c05a224f48b22, type: 2}
 --- !u!1 &448
 GameObject:

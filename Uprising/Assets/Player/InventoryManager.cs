@@ -150,6 +150,7 @@ namespace Uprising.Players
                 ChangeSlotColor(selectedItem, Color.blue);
 
             if (items[index] != null) items[index].Select();
+            if (items[index] != null) GetComponent<AudioManager>().PlaySound("Draw");
         }
 
         public void ChangeSlotColor(int slot, Color color)
