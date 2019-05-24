@@ -50,7 +50,13 @@ namespace Uprising.Players
 
         public PlayerStats playerStats;
 
-        GameManager gameManager;
+        public GameManager gameManager;
+
+        private void Awake()
+        {
+            if (!debugMode)
+                gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
+        }
 
         void Start()
         {
@@ -58,8 +64,7 @@ namespace Uprising.Players
             animator = GetComponent<Animator>();
             photonView = GetComponent<PhotonView>();
 
-            if (!debugMode)
-                gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
+
 
             if (!debugMode && photonView.IsMine)
             {
