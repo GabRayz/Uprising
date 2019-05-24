@@ -11,17 +11,16 @@ public class DestroyabePlatform : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("belette"))
         {
-            Debug.Log("collision");
             life--;
         }
             
     }
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (life <= 0)
             Destroy(this.transform.gameObject);
