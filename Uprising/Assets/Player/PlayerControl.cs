@@ -134,20 +134,24 @@ namespace Uprising.Players
         {
             if(debugMode && contrallable || photonView.IsMine && gameManager.isStarted)
             {
-                moveHorizontal = Input.GetAxis("Horizontal");
-                moveVertical = Input.GetAxis("Vertical");
+                if (!menu.activeSelf)
+                {
+                    moveHorizontal = Input.GetAxis("Horizontal");
+                    moveVertical = Input.GetAxis("Vertical");
 
-                // Player rotation
-                transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
-                // Camera rotation
-                float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
+                    // Player rotation
+                    transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
+                    // Camera rotation
+                    float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
 
-                //Limit head rotation (up and bottom)
-                if (rotationX > 180)
-                    rotationX -= 360;
-                rotationX = Mathf.Clamp(rotationX, -90, 90);
-                // Apply rotation
-                camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
+                    //Limit head rotation (up and bottom)
+                    if (rotationX > 180)
+                        rotationX -= 360;
+                    rotationX = Mathf.Clamp(rotationX, -90, 90);
+                    // Apply rotation
+                    camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
+                }
+
 
                 if (Input.GetKeyDown(KeyCode.Space) && jump > 0 && !menu.activeSelf)
                 {
