@@ -25,21 +25,5 @@ namespace Uprising.Items
             Debug.Log("Aimed.");
 
         }
-
-        public override void Use()
-        {
-            if (fireratetime >= firerate)
-            {
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_Sniper").GetComponent<belettegen>().shoot(durability, this.target.transform.forward*2, this);
-                if (playerControl.playerStats != null)
-                    playerControl.playerStats.belettesShot += 1;
-                durability--;
-                fireratetime = 0;
-            }
-            if (durability < 0)
-            {
-                player.SendMessage("ClearItem", this as Item);
-            }
-        }
     }
 }

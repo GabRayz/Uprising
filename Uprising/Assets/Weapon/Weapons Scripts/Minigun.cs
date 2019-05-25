@@ -25,21 +25,5 @@ namespace Uprising.Items
             Debug.Log("Aimed.");
 
         }
-
-        public override void Use()
-        {
-            if (fireratetime >= firerate)
-            {
-                playerControl.hand.transform.Find("h_Minigun").GetComponent<belettegen>().shoot(durability, this.target.transform.forward, this);
-                if(playerControl.playerStats != null)
-                    playerControl.playerStats.belettesShot += 1;
-                fireratetime = 0;
-                durability--;
-            }
-            if (durability < 0)
-            {
-                player.SendMessage("ClearItem", this as Item);
-            }
-        }
     }
 }

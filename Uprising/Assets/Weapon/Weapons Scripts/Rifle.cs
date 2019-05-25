@@ -25,38 +25,37 @@ namespace Uprising.Items
 
         }
 
-        public override void Use()
-        {
-            if (fireratetime >= firerate)
-            {
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_Rifle").GetComponent<belettegen>().shoot(durability, this.target.transform.forward, this);
-                if (player.GetComponent<PlayerControl>().playerStats != null)
-                    player.GetComponent<PlayerControl>().playerStats.belettesShot += 1;
-                fireratetime = 0;
-                durability--;
-            }
-            if (durability < 0)
-            {
-                player.SendMessage("ClearItem", this as Item);
-            }
-        }
+        //public override void Use()
+        //{
+        //    if (fireratetime >= firerate)
+        //    {
 
-        IEnumerator ShootSeries()
-        {
-            float time = 0;
-            for (var i = 0; i < 2; i++)
-            {
-                while (time < 0.3)
-                {
-                    time += Time.deltaTime;
-                    yield return null;
-                }
 
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_Rifle").GetComponent<belettegen>().shoot(durability, this.target.transform.forward, this);
-                if (player.GetComponent<PlayerControl>().playerStats != null)
-                    player.GetComponent<PlayerControl>().playerStats.belettesShot += 1;
-                durability--;
-            }
-        }
+        //        fireratetime = 0;
+        //        durability--;
+        //    }
+        //    if (durability < 0)
+        //    {
+        //        player.SendMessage("ClearItem", this as Item);
+        //    }
+        //}
+
+        //IEnumerator ShootSeries()
+        //{
+        //    float time = 0;
+        //    for (var i = 0; i < 2; i++)
+        //    {
+        //        while (time < 0.3)
+        //        {
+        //            time += Time.deltaTime;
+        //            yield return null;
+        //        }
+
+        //        player.GetComponent<PlayerControl>().hand.transform.Find("h_Rifle").GetComponent<belettegen>().shoot(durability, this.target.transform.forward, this);
+        //        if (player.GetComponent<PlayerControl>().playerStats != null)
+        //            player.GetComponent<PlayerControl>().playerStats.belettesShot += 1;
+        //        durability--;
+        //    }
+        //}
     }
 }

@@ -38,6 +38,11 @@ namespace Uprising.Players
                 hudBonus2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot4 Item").gameObject;
                 SelectItem(0);
             }
+
+            if(!playerControl.debugMode && playerControl.photonView.IsMine)
+            {
+                hud.GetComponent<HUD>().ChangeRemain(playerControl.gameManager.playersCount);
+            }
         }
 
         void FixedUpdate()
@@ -145,6 +150,7 @@ namespace Uprising.Players
                 ChangeSlotColor(selectedItem, Color.blue);
 
             if (items[index] != null) items[index].Select();
+            if (items[index] != null) GetComponent<AudioManager>().PlaySound("Draw");
         }
 
         public void ChangeSlotColor(int slot, Color color)
@@ -203,6 +209,9 @@ namespace Uprising.Players
                     case ItemType.JumpBoost:
                         this.playerControl.ModifyJumpHeight(900);
                         break;
+                    case ItemType.Drugs:
+                        playerControl.firerateModifier += .5f;
+                        break;
                     default:
                         break;
                 }
@@ -230,6 +239,9 @@ namespace Uprising.Players
                         break;
                     case ItemType.JumpBoost:
                         this.playerControl.ModifyJumpHeight(-900);
+                        break;
+                    case ItemType.Drugs:
+                        playerControl.firerateModifier -= .5f;
                         break;
                     default:
                         break;

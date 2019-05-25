@@ -34,6 +34,7 @@ namespace Uprising.Players
 
         public float backwardSpeed = 3;
         public float runSpeed = 5;
+        public float firerateModifier = 1;
         
         public IKControl IkControl;
         
@@ -49,7 +50,13 @@ namespace Uprising.Players
 
         public PlayerStats playerStats;
 
-        GameManager gameManager;
+        public GameManager gameManager;
+
+        private void Awake()
+        {
+            if (!debugMode)
+                gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
+        }
 
         void Start()
         {
@@ -57,8 +64,7 @@ namespace Uprising.Players
             animator = GetComponent<Animator>();
             photonView = GetComponent<PhotonView>();
 
-            if (!debugMode)
-                gameManager = GameObject.Find("Game(Clone)").GetComponent<GameManager>();
+
 
             if (!debugMode && photonView.IsMine)
             {
@@ -126,7 +132,7 @@ namespace Uprising.Players
             if(debugMode && contrallable || photonView.IsMine && gameManager.isStarted)
             {
                 
-                if (Input.GetKeyDown(KeyCode.Space) && jump > 0)
+                if (Input.GetKeyDown(KeyCode.Space) && jump > 0 && !menu.activeSelf)
                 {
                     if (jumpsLeft > 0 && isGrounded)
                     {
@@ -144,7 +150,9 @@ namespace Uprising.Players
                     }
                 }
 
-                ReadInventoryInputs();
+                if(!menu.activeSelf)
+                    ReadInventoryInputs();
+
                 if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
                 if (inventory.GetSelectedItem() != null)
                 {

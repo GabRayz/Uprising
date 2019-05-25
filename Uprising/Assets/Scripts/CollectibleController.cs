@@ -25,16 +25,16 @@ public class CollectibleController : MonoBehaviour {
                 this.item = new SpeedBoost(5000, null);
                 break;
             case ItemType.DefaultGun:
-                this.item = new DefaultGun(100,100,10, 20, null);
+                this.item = new DefaultGun(100, 60, 20, 20, null);
                 break;
             case ItemType.ShotGun:
-                this.item = new ShotGun(10, 100, 50, 95, null);
+                this.item = new ShotGun(10, 7, 70, 95, null);
                 break;
             case ItemType.Minigun:
-                this.item = new Minigun(100, 100, 5, 5, null);
+                this.item = new Minigun(100, 50, 5, 5, null);
                 break;
             case ItemType.Sniper:
-                this.item = new Sniper(30, 100, 50, 95, null);
+                this.item = new Sniper(30, 200, 60, 95, null);
                 break;
             case ItemType.Invisibility:
                 this.item = new Invisibility(10000, null);
@@ -61,13 +61,19 @@ public class CollectibleController : MonoBehaviour {
                 this.item = new RocketLauncher(1, null);
                 break;
             case ItemType.Rifle:
-                this.item = new Rifle(50, 100, 30, 50, null);
+                this.item = new Rifle(50, 120, 35, 50, null);
                 break;
             case ItemType.AssaultRifle:
                 this.item = new AssaultRifle(50, 100, 15, 40, null);
                 break;
             case ItemType.MachineGun:
-                this.item = new MachineGun(75, 100, 10, 7, null);
+                this.item = new MachineGun(75, 60, 10, 7, null);
+                break;
+            case ItemType.Drugs:
+                this.item = new Drugs(10000, null);
+                break;
+            case ItemType.Shield:
+                this.item = new Shield(200, null);
                 break;
             case ItemType.GuidedMissile:
                 this.item = new GuidedMissile(1, null);

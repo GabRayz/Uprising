@@ -57,10 +57,10 @@ public class ItemSpotController : MonoBehaviour
         itemRaretyPairs.Add(ItemType.SpeedBoost, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.DefaultGun, GetRaretyInt(Rarety.Common, y)); USELESS
         itemRaretyPairs.Add(ItemType.Minigun, GetRaretyInt(Rarety.Common, y));
-        //itemRaretyPairs.Add(ItemType.Drugs, GetRaretyInt(Rarety.Common, y));
+        itemRaretyPairs.Add(ItemType.Drugs, GetRaretyInt(Rarety.Common, y));
         itemRaretyPairs.Add(ItemType.Grapnel, GetRaretyInt(Rarety.Common, y));
         itemRaretyPairs.Add(ItemType.RocketLauncher, GetRaretyInt(Rarety.Common, y));
-        //itemRaretyPairs.Add(ItemType.Shield, GetRaretyInt(Rarety.Common, y));
+        itemRaretyPairs.Add(ItemType.Shield, GetRaretyInt(Rarety.Common, y));
         itemRaretyPairs.Add(ItemType.Rifle, GetRaretyInt(Rarety.Common, y));
         itemRaretyPairs.Add(ItemType.BearTrap, GetRaretyInt(Rarety.Common, y));
         //itemRaretyPairs.Add(ItemType.SlimeGun, GetRaretyInt(Rarety.Common, y));
@@ -89,7 +89,7 @@ public class ItemSpotController : MonoBehaviour
         GameObject newItem;
         try
         {
-            newItem = PhotonNetwork.InstantiateSceneObject(type.ToString(), this.transform.position, this.transform.rotation);
+            newItem = PhotonNetwork.InstantiateSceneObject(type.ToString(), this.transform.position + this.transform.up/2, this.transform.rotation);
 
             newItem.SendMessage("SetSpot", this.gameObject);
         }catch(Exception e)

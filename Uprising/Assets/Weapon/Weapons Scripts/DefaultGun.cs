@@ -28,19 +28,21 @@ namespace Uprising.Items
             
         }
 
-        public override void Use()
-        {
-            if (fireratetime >= firerate)
-            {
-                player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").GetComponent<belettegen>().shoot(durability, this.target.transform.forward, this);
-                if(player.GetComponent<PlayerControl>().playerStats != null)
-                    player.GetComponent<PlayerControl>().playerStats.belettesShot += 1;
-                fireratetime = 0;
-            }
-            if(durability < 0)
-            {
-                StopUsing();
-            }
-        }
+        //public override void Use()
+        //{
+        //    if (fireratetime >= firerate)
+        //    {
+        //        if (belettegen == null)
+        //            belettegen = player.GetComponent<PlayerControl>().hand.transform.Find("h_DefaultGun").GetComponent<belettegen>();
+        //        belettegen.shoot(this);
+        //        if(player.GetComponent<PlayerControl>().playerStats != null)
+        //            player.GetComponent<PlayerControl>().playerStats.belettesShot += 1;
+        //        fireratetime = 0;
+        //    }
+        //    if(durability < 0)
+        //    {
+        //        StopUsing();
+        //    }
+        //}
     }
 }
