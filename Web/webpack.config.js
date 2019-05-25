@@ -55,6 +55,15 @@ const config = {
             chunks: ['global', 'register']
         }),
         new HtmlWebpackPlugin({
+            template: './client/src/html/login.html',
+            filename: 'login.html',
+            minify: {
+                collapseWhitespace: true
+            },
+            hash: true,
+            chunks: ['global', 'register']
+        }),
+        new HtmlWebpackPlugin({
             template: './client/src/html/presentation.html',
             filename: 'presentation.html',
             minify: {

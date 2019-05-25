@@ -24,10 +24,10 @@ playButton.addEventListener('click', e => {
 
 let popup = document.querySelector('.popup');
 
-document.querySelector('#navBar > li.nav_login > a').onclick = e => {
-    console.log('display login');
-    popup.style.visibility = popup.style.visibility == 'visible' ? 'hidden' : 'visible';
-};
+// document.querySelector('#navBar > li.nav_login > a').onclick = e => {
+//     console.log('display login');
+//     popup.style.visibility = popup.style.visibility == 'visible' ? 'hidden' : 'visible';
+// };
 
 playButton.onclick = e => {
     window.location = '/game';
