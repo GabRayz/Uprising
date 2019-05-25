@@ -33,8 +33,13 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public bool isStarted;
 
+    public void Awake()
+    {
+        App.gameManager = this;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         network = GameObject.Find("_network").GetComponent<NetworkManager>();
         localPlayer = network.localPlayerGameStats;

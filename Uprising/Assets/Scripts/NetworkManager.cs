@@ -29,8 +29,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 #endif
 
 
+    public void Awake()
+    {
+        App.networkManager = this;
+        App.debug = debug;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         StartingText.text = "Connection...";
 
@@ -51,6 +57,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     void InitLocalPlayer()
     {
         this.localPlayerGameStats = new PlayerStats(null);
+        App.localPlayer = localPlayerGameStats;
     }
 
     public override void OnConnectedToMaster()

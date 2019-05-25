@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq.Expressions;
@@ -11,26 +10,27 @@ public class ItemSpotController : MonoBehaviour
     public int averageCoolDown;
     public Dictionary<ItemType, int> itemRaretyPairs;
     private int cooldown;
-    private UnityEngine.Random random;
+
+    [SerializeField]
+    GameObject[] prefabs;
+
 
     private bool isPickedUp = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        random = new UnityEngine.Random();
         this.itemRaretyPairs = InitItemRaretyPairs();
-        if (PhotonNetwork.IsMasterClient) // Only the master client instatiates the items
+        if (App.debug || PhotonNetwork.IsMasterClient) // Only the master client instatiates the items
         {
-            // CreateNewItem(ChooseItem());
-            cooldown = averageCoolDown;
+            cooldown = averageCoolDown + UnityEngine.Random.Range((int)-0.2 * averageCoolDown, (int)0.2 * averageCoolDown);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isPickedUp && PhotonNetwork.IsMasterClient)
+        if(isPickedUp && (App.debug || PhotonNetwork.IsMasterClient))
         {
             cooldown -= (int)(Time.deltaTime * 1000);
             if (cooldown <= 0)
@@ -87,16 +87,17 @@ public class ItemSpotController : MonoBehaviour
     private void CreateNewItem(ItemType type)
     {
         GameObject newItem;
-        try
+        if(App.debug)
         {
-            newItem = PhotonNetwork.InstantiateSceneObject(type.ToString(), this.transform.position + this.transform.up/2, this.transform.rotation);
-
-            newItem.SendMessage("SetSpot", this.gameObject);
-        }catch(Exception e)
+            newItem = Instantiate(prefabs[(int)type], this.transform.position + transform.up / 2, this.transform.rotation);
+        }else
         {
-            Debug.LogError(e);
+            newItem = PhotonNetwork.InstantiateSceneObject(type.ToString(), this.transform.position + this.transform.up / 2, this.transform.rotation);
         }
 
+
+        newItem.SendMessage("SetSpot", this.gameObject);
+       
     }
 
     private ItemType ChooseItem()

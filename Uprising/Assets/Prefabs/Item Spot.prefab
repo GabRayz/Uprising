@@ -136,3 +136,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   averageCoolDown: 5000
+  prefabs:
+  - {fileID: 254, guid: d04b9ebfb218b4e66b3ce2db1cc16462, type: 3}
+  - {fileID: 455, guid: 460a2f60038f14e528dc91bb307a289b, type: 3}
+  - {fileID: 401, guid: bf93f0bfc3a714248b32dbd8c396bc6d, type: 3}
+  - {fileID: 867877644073851509, guid: dfea59e3ad24f4b7a8b98918182028ec, type: 3}
+  - {fileID: 1799943997878902725, guid: f9f8b6df4db2346a4b8d9247394bad9a, type: 3}
+  - {fileID: 6407577506822172220, guid: 39ea6dac9ac714f5480b024e1e8b1fd6, type: 3}
+  - {fileID: 9059431739461451374, guid: c5cda1d1e7fcc4577b92423e505f5fbb, type: 3}
+  - {fileID: 250, guid: 141b87200df273f4c889ba76a773d00f, type: 3}
+  - {fileID: 4303963005143299639, guid: dad656aad14494a7d90ffd8f19dffc7a, type: 3}
+  - {fileID: 5577397833304812017, guid: 7104f4800ce634c52ac159f59ae13759, type: 3}
+  - {fileID: 397, guid: a0f04686a8837a24c9195dcd65c4bf77, type: 3}
+  - {fileID: 6372043978586329088, guid: 316739743a48c44e296e1212fc42dd93, type: 3}
+  - {fileID: 4395969334958661858, guid: 1a1e25f511af74400b06f7783cd936a7, type: 3}
+  - {fileID: 251, guid: 867a3f10eed2acc4e9fb91aab8c6f532, type: 3}
+  - {fileID: 4972151352191955911, guid: e419521a3b07c448f8e41bc60bddc205, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 581312673291038757, guid: 2027ec694597545bfa80432375897d5e, type: 3}
+  - {fileID: 253, guid: ca8e270d1790a4601990bce5e225c2ca, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 4665061390548115328, guid: cd015944bbcc14f4289fffda8c29f9ac, type: 3}
