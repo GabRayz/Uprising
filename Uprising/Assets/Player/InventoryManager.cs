@@ -207,7 +207,7 @@ namespace Uprising.Players
                         this.playerControl.photonView.RPC("ToggleInvisibility", RpcTarget.Others);
                         break;
                     case ItemType.JumpBoost:
-                        this.playerControl.ModifyJumpHeight(900);
+                        this.playerControl.ModifyJumpHeight(500);
                         break;
                     case ItemType.Drugs:
                         playerControl.firerateModifier += .5f;
@@ -238,7 +238,7 @@ namespace Uprising.Players
                         this.playerControl.photonView.RPC("ToggleInvisibility", RpcTarget.Others);
                         break;
                     case ItemType.JumpBoost:
-                        this.playerControl.ModifyJumpHeight(-900);
+                        this.playerControl.ModifyJumpHeight(-500);
                         break;
                     case ItemType.Drugs:
                         playerControl.firerateModifier -= .5f;
