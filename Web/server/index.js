@@ -94,7 +94,7 @@ app.post('/auth/register', async (req, res) => {
 });
 
 app.get('/auth/login', (req, res) => {
-    res.sendFile(path.resolve('./client/src/html/login.html'));
+    res.sendFile(path.resolve('./client/dist/login.html'));
 });
 
 app.post('/auth/login', async (req, res) => {
