@@ -35,7 +35,10 @@ namespace Uprising.Players
         public float backwardSpeed = 3;
         public float runSpeed = 5;
         public float firerateModifier = 1;
-        
+        float moveHorizontal;
+        float moveVertical;
+
+
         public IKControl IkControl;
         
         public float speedModifier = 5;
@@ -131,7 +134,21 @@ namespace Uprising.Players
         {
             if(debugMode && contrallable || photonView.IsMine && gameManager.isStarted)
             {
-                
+                moveHorizontal = Input.GetAxis("Horizontal");
+                moveVertical = Input.GetAxis("Vertical");
+
+                // Player rotation
+                transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
+                // Camera rotation
+                float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
+
+                //Limit head rotation (up and bottom)
+                if (rotationX > 180)
+                    rotationX -= 360;
+                rotationX = Mathf.Clamp(rotationX, -90, 90);
+                // Apply rotation
+                camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
+
                 if (Input.GetKeyDown(KeyCode.Space) && jump > 0 && !menu.activeSelf)
                 {
                     if (jumpsLeft > 0 && isGrounded)
@@ -188,8 +205,6 @@ namespace Uprising.Players
                 if (!menu.activeSelf)
                 {
                     CheckGroundStatus();
-                    float moveHorizontal = Input.GetAxis("Horizontal");
-                    float moveVertical = Input.GetAxis("Vertical");
                     
                     if (moveVertical < 0)
                     {
@@ -211,17 +226,7 @@ namespace Uprising.Players
                     animator.SetBool("WalkBackward", moveVertical < 0 && isGrounded);
 
 
-                    // Player rotation
-                    transform.Rotate(transform.up * Input.GetAxis("Mouse X") * 3);
-                    // Camera rotation
-                    float rotationX = camera.transform.parent.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * 2;
 
-                    //Limit head rotation (up and bottom)
-                    if (rotationX > 180)
-                        rotationX -= 360;
-                    rotationX = Mathf.Clamp(rotationX, -90, 90);
-                    // Apply rotation
-                    camera.transform.parent.transform.rotation = Quaternion.Euler(rotationX, camera.transform.parent.transform.eulerAngles.y, 0);
 
                     if (isGrounded)
                     {
