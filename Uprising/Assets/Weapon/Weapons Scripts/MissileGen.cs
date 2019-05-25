@@ -6,8 +6,8 @@ using Photon.Pun;
 
 public class MissileGen : MonoBehaviour
 {
-    public GameObject rocket;
-    public GameObject rocketPrefab;
+    public GameObject missile;
+    public GameObject missilePrefab;
     public GameObject player;
     public Item item;
     public AudioSource sound;
@@ -23,13 +23,13 @@ public class MissileGen : MonoBehaviour
         Vector3 direction = launcher.target.transform.forward;
         if (PhotonNetwork.IsConnected)
         {
-            rocket = PhotonNetwork.Instantiate("Rocket", this.transform.position + transform.forward, this.transform.rotation);
-            rocket.transform.rotation = launcher.target.transform.rotation;
+            missile = PhotonNetwork.Instantiate("Missile", this.transform.position + transform.forward, this.transform.rotation);
+            missile.transform.rotation = launcher.target.transform.rotation;
         }
         else
         {
-            rocket = Instantiate(rocketPrefab, transform.position + transform.forward, transform.rotation);
-            rocket.transform.rotation = launcher.target.transform.rotation;
+            missile = Instantiate(missilePrefab, transform.position + transform.forward, transform.rotation);
+            missile.transform.rotation = launcher.target.transform.rotation;
         }
     }
 }
