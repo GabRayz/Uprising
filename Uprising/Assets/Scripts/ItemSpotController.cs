@@ -89,7 +89,7 @@ public class ItemSpotController : MonoBehaviour
         GameObject newItem;
         try
         {
-            newItem = PhotonNetwork.InstantiateSceneObject(type.ToString(), this.transform.position, this.transform.rotation);
+            newItem = PhotonNetwork.InstantiateSceneObject(type.ToString(), this.transform.position + this.transform.up/2, this.transform.rotation);
 
             newItem.SendMessage("SetSpot", this.gameObject);
         }catch(Exception e)

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110353474078353548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.094, z: 0}
+  m_LocalPosition: {x: 0, y: 0.414, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110353474726071746}
@@ -135,8 +135,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b256e579ce5341daa41ef09eb0a0bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedBoostPrefab: {fileID: 4285216452239954089, guid: 460a2f60038f14e528dc91bb307a289b,
-    type: 3}
-  DefaultGunPrefab: {fileID: 2377627481622142320, guid: d04b9ebfb218b4e66b3ce2db1cc16462,
-    type: 3}
   averageCoolDown: 5000
