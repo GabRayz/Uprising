@@ -6,6 +6,19 @@ html, body {
     color: rgba(240, 240, 240, 0.9);
     scroll-behavior: smooth;
 }
+
+hl {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: rgba(240, 240, 240, 0.9);
+    margin: 20px 0;
+}
+
+.inline_link {
+    color: #ff6262;
+}
+
 /* /////////// */
 /* H E A D E R */
 
@@ -218,10 +231,47 @@ a[class="button"]:hover {
 }
 
 /* /////////////////////////// */
+/* N E W   S E C O N D   S E C T I O N */
+
+#rankingFrame {
+    background-color: rgb(40, 40, 40);
+}
+
+.section_article {
+    margin-top: 40px;
+    padding: 50px;
+    padding-left: 100px;
+    letter-spacing: .3em;
+    line-height: 1.3em;
+    font-size: 2em;
+    text-align: justify;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: .9em;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.table td {
+    
+    padding: 3px;
+    border: 2px solid rgba(240, 240, 240, 0.9);
+}
+
+.table th {
+    background-color: rgba(240, 240, 240, 0.9);
+    border: 2px solid #ff6262;
+    color: #ff6262;
+}
+
+/* /////////////////////////// */
 /* S E C O N D   S E C T I O N */
 
 #aboutFrame {
-    background-color: rgb(40, 40, 40);
+    background-color: rgb(80, 80, 80);
 }
 
 .section_article {
