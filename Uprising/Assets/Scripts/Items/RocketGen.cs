@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Uprising.Items;
 using Photon.Pun;
+using Uprising.Players;
 
 public class RocketGen : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class RocketGen : MonoBehaviour
 
     public void Shoot(Item launcher)
     {
+        player.GetComponent<AudioManager>().PlaySound("Launcher");
+
         Vector3 direction = launcher.target.transform.forward;
         if (PhotonNetwork.IsConnected)
         {

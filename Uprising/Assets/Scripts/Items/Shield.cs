@@ -31,6 +31,11 @@ namespace Uprising.Items
 
         public override void Unselect()
         {
+            if (shieldControl == null)
+            {
+                this.shieldControl = player.transform.Find("Shield").GetComponent<ShieldControl>();
+                shieldControl.Init(durability, this);
+            }
             shieldControl.gameObject.SetActive(false);
             playerControl.ModifySpeed(2.5f);
             playerControl.ModifyJumpHeight(400);
