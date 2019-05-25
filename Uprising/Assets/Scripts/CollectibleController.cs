@@ -75,6 +75,9 @@ public class CollectibleController : MonoBehaviour {
             case ItemType.Shield:
                 this.item = new Shield(200, null);
                 break;
+            case ItemType.GuidedMissile:
+                this.item = new GuidedMissile(1, null);
+                break;
             default:
                 Debug.LogError("This item type is not related to a class");
                 break;
