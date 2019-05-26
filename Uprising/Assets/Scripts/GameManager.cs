@@ -90,8 +90,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         float cooldown = 5;
         while (cooldown > 0)
         {
-            cooldown -= Time.deltaTime;
             topText.text = "Start in " + Mathf.Floor(cooldown);
+            cooldown -= Time.deltaTime;
             yield return null;
         }
         StartGame();
