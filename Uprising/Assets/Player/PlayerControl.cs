@@ -132,7 +132,7 @@ namespace Uprising.Players
 
         void Update()
         {
-            if (!App.networkManager.isInGame) return;
+            // if (!App.networkManager.isInGame) return;
             if ((debugMode && contrallable) || (photonView.IsMine && gameManager.isStarted))
             {
                 if (!menu.activeSelf)
@@ -205,7 +205,7 @@ namespace Uprising.Players
 
         void FixedUpdate()
         {
-            if (!App.networkManager.isInGame) return;
+            // if (!App.networkManager.isInGame) return;
             if ((debugMode && contrallable) || (photonView.IsMine && gameManager.isStarted))
             {
                 if (!menu.activeSelf)
