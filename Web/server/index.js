@@ -133,8 +133,7 @@ app.post('/auth/login', async (req, res) => {
 });
 
 app.get('/auth/data', (req, res) => {
-    if (!req.user)
-        return res.json(null);
+    if (!req.user) return res.json(null);
 
     res.send({
         id: req.user.id,
@@ -151,10 +150,8 @@ app.get('/presentation', (req, res) => {
 });
 
 app.get('/game', (req, res) => {
-    if (req.user)
-        res.sendFile(path.resolve('./client/dist/game.html'));
-    else
-        res.redirect('/auth/register');
+    if (req.user) res.sendFile(path.resolve('./client/dist/game.html'));
+    else res.redirect('/auth/register');
 });
 
 app.post('/game/xp', async (req, res) => {
@@ -188,7 +185,7 @@ async function main() {
     await db.authenticate();
 
     console.log('Connected to database. Synchronizing models...');
-    await db.sync();
+    await db.sync({ alter: true });
     console.log('Models synchronized.');
 
     server.listen(port, () => {

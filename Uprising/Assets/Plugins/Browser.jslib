@@ -6,5 +6,14 @@ mergeInto(LibraryManager.library, {
         var buffer = _malloc(lengthBytesUTF8(username) + 1);
         writeStringToMemory(username, buffer);
         return buffer;
+    },
+    GetCookie: function () {
+        console.log("get cookie");
+
+        var cookie = document.cookie;
+
+        var buffer = _malloc(lengthBytesUTF8(cookie) + 1);
+        writeStringToMemory(cookie, buffer);
+        return buffer;
     }
 });
