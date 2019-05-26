@@ -64,6 +64,22 @@ const User = db.define('user', {
     },
     password: {
         type: Sequelize.STRING
+    },
+    winCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
+    gameCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
+    shotCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
+    accurateShotCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
     }
 });
 
