@@ -8,6 +8,18 @@ using Photon.Pun;
 using Photon.Realtime;
 
 using System.Runtime.InteropServices;
+using UnityEngine.Networking;
+
+public class PlayerInfo
+{
+    public string username;
+    public int xp;
+
+    public static PlayerInfo CreateFromJSON(string jsonString)
+    {
+        return JsonUtility.FromJson<PlayerInfo>(jsonString);
+    }
+}
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -26,6 +38,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 #if UNITY_WEBGL
     [DllImport("__Internal")]
     private static extern string GetUsername();
+
+    [DllImport("__Internal")]
+    private static extern string GetCookie();
 #endif
 
 
@@ -46,12 +61,34 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             Debug.Log("Trying to get username (WEBGL).");
             Debug.Log(GetUsername());
             PhotonNetwork.LocalPlayer.NickName = GetUsername();
+            StartCoroutine(Authenticate());
         }
 #endif
         InitLocalPlayer();
         PhotonNetwork.ConnectUsingSettings();
         // PhotonNetwork.ConnectToRegion("eu");
         // PhotonNetwork.AutomaticallySyncScene = true;
+    }
+
+    IEnumerator Authenticate()
+    {
+        var cookie = GetCookie();
+        var www = UnityWebRequest.Get("/auth/data");
+        //www.SetRequestHeader("Cookie", cookie);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log("Server response");
+            Debug.Log(www.downloadHandler.text);
+            var info = PlayerInfo.CreateFromJSON(www.downloadHandler.text);
+            Debug.Log("Username : " + info.username);
+        }
     }
 
     void InitLocalPlayer()
