@@ -18,12 +18,14 @@ public class MovingVerticalPlatform : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        other.collider.transform.SetParent(transform);
+        if (other.gameObject.CompareTag("player"))
+            other.collider.transform.SetParent(transform);
     }
 
     private void OnCollisionExit(Collision other)
     {
-        other.collider.transform.SetParent(null);
+        if (other.gameObject.CompareTag("player"))
+            other.collider.transform.SetParent(null);
     }
 
     // Update is called once per frame
