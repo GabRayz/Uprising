@@ -235,7 +235,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // Leave Room
         if (isLastInRoom)
             PhotonNetwork.CurrentRoom.IsOpen = true;
-        if(PhotonNetwork.LocalPlayer.IsMasterClient)
+        if(isLastInRoom && PhotonNetwork.LocalPlayer.IsMasterClient)
             PhotonNetwork.DestroyAll();
         isInGame = false;
 

@@ -132,7 +132,8 @@ namespace Uprising.Players
 
         void Update()
         {
-            if(debugMode && contrallable || photonView.IsMine && gameManager.isStarted)
+            if (!App.networkManager.isInGame) return;
+            if ((debugMode && contrallable) || (photonView.IsMine && gameManager.isStarted))
             {
                 if (!menu.activeSelf)
                 {
@@ -204,7 +205,8 @@ namespace Uprising.Players
 
         void FixedUpdate()
         {
-            if (debugMode && contrallable || (photonView.IsMine && gameManager.isStarted))
+            if (!App.networkManager.isInGame) return;
+            if ((debugMode && contrallable) || (photonView.IsMine && gameManager.isStarted))
             {
                 if (!menu.activeSelf)
                 {
@@ -390,26 +392,23 @@ namespace Uprising.Players
 
             gameManager.photonView.RPC("EliminatePlayer", RpcTarget.All, GetComponent<PhotonView>().Owner);
 
-            if (stayAsASpectator)
-            {
-                GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
-                spec.SendMessage("SetPlayerStats", playerStats);
-            }
+            GameObject spec = Instantiate(spectatorPrefab, new Vector3(0, 15, -40), Quaternion.identity);
+            spec.SendMessage("SetPlayerStats", playerStats);
 
             Debug.Log("Destroying player objects");
             Destroy(this.inventory.hud);
             gameObject.SetActive(false);
-            if (debugMode)
-                Destroy(this.gameObject);
-            else
+            Destroy(this.gameObject);
+
+            if(PhotonNetwork.IsConnected)
             {
-                Destroy(this.gameObject);
-                PhotonNetwork.Destroy(this.photonView);
+                // Destroy(this.gameObject);
+                 PhotonNetwork.Destroy(this.gameObject);
             }
             Debug.Log("Player destroyed");
 
-            if (!stayAsASpectator)
-                GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(false, false);
+            //if (!stayAsASpectator)
+                //GameObject.Find("_network").GetComponent<NetworkManager>().QuitGame(false, false);
         }
 
         [PunRPC]

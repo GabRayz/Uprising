@@ -52,6 +52,8 @@ MonoBehaviour:
   OfflineMode: 0
   playersCount: 0
   lavaLevel: 0
+  lavaLevelMax: 100
+  lavaLevelMin: 0
   isStarted: 0
 --- !u!114 &2001
 MonoBehaviour:

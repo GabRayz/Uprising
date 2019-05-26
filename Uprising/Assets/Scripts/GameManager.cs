@@ -60,25 +60,27 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if(isStarted) // Raise lava
-            lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
-        lavaLevel = lava.transform.position.y;
-
-        for (int i = 9; i > 0; i--)
-        {
-            if (lavaLevel <= lavaLevelMax * (i + 1) / 10 && lavaLevel >= lavaLevelMax * i / 10)
-            {
-                localPlayer.playerControl.inventory.hud.transform.Find("Canvas").Find("HUD Left").Find("Maplevel").Find(i.ToString()).gameObject.SetActive(true);
-            }
-        }
-
-
         // Finish game
         if (playersCount <= 1 && !OfflineMode && isStarted)
         {
             isStarted = false;
             // if (GameObject.Find("_network").GetComponent<NetworkManager>().isInGame)
-                FinishGame();
+            FinishGame();
+        }
+
+        // Raise lava
+        if (isStarted)
+        {
+            lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
+            lavaLevel = lava.transform.position.y;
+
+            for (int i = 9; i > 0; i--)
+            {
+                if (lavaLevel <= lavaLevelMax * (i + 1) / 10 && lavaLevel >= lavaLevelMax * i / 10)
+                {
+                    localPlayer.playerControl.inventory.hud.transform.Find("Canvas").Find("HUD Left").Find("Maplevel").Find(i.ToString()).gameObject.SetActive(true);
+                }
+            }
         }
     }
 
@@ -111,6 +113,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log("Game over");
         foreach (var playerStatus in playersReady)
         {
+            Debug.Log(playerStatus.Key.NickName);
             if (playerStatus.Value && !playerStatus.Key.IsInactive)
                 scoreBoard.Push(playerStatus.Key);
         }

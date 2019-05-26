@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 18
-  model: {fileID: 0}
+  model: {fileID: 9006540330401986562}
   modelRB: {fileID: 0}
 --- !u!65 &1789
 BoxCollider:
@@ -205,6 +205,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!54 &4161267956172078760
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006540330401986562}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &8553139919403470326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,6 +305,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfda3e04e732e4711801a5f53555cdc1, type: 3}
+--- !u!1 &9006540330401986562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 742939760105305588, guid: cfda3e04e732e4711801a5f53555cdc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8553139919403470326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5816427249893980490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2741217405477123260, guid: cfda3e04e732e4711801a5f53555cdc1,
