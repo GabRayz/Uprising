@@ -21,7 +21,7 @@ namespace Uprising.Players
         private bool isGrounded = true;
         public int jumpsLeft = 1;
         public int dashLeft;
-        public int jump = 700;
+        public int jump = 720;
         private bool jumping = false;
         public float dash = 700;
         private bool isDashing = false;
