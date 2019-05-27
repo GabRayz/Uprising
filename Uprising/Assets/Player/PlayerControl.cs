@@ -19,7 +19,7 @@ namespace Uprising.Players
         public Camera cam;
         public GameObject hand;
         private bool isGrounded = true;
-        public int jumpsLeft = 1;
+        public int jumpsLeft = 2;
         public int dashLeft;
         public int jump = 700;
         private bool jumping = false;
@@ -156,7 +156,7 @@ namespace Uprising.Players
 
                 if (Input.GetKeyDown(KeyCode.Space) && jump > 0 && !menu.activeSelf)
                 {
-                    if (jumpsLeft > 0 && isGrounded)
+                    if (jumpsLeft > 0)
                     {
                         Debug.Log("Jumping");
                         rb.AddForce(Vector3.up * jump);
@@ -243,7 +243,7 @@ namespace Uprising.Players
 
                     if (isGrounded)
                     {
-                        jumpsLeft = 1;
+                        jumpsLeft = 2;
                         animator.SetBool("Jumping", false);
                     }
                     else
