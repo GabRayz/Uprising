@@ -19,15 +19,6 @@
     margin-bottom: 20px;
 }
 
-.member_box:nth-child(1) img {
-    width: 200px;
-    margin-bottom: 50px;
-}
-
-.member_box:nth-child(3) img {
-    width: 110px;
-    margin-bottom: 30px;
-}
 
 .frame:nth-child(4) {
     background-color: #ff9292;
@@ -61,7 +52,7 @@
 /* T A S K   D I S T R I B U T I O N */
 
 .frame:nth-child(5) {
-    background-color: #d85757;
+    background-color: rgb(40, 40, 40);
 }
 
 table {
@@ -87,8 +78,47 @@ table td:nth-child(2), table td:nth-child(3) {
 /* P L A N N I N G */
 
 .frame:nth-child(6) {
-    background-color: rgb(40, 40, 40);
+    background-color: #d85757;
 }
 .frame:nth-child(7) {
+    background-color: #d85757;
+}
+
+.frame:nth-child(8) {
     background-color: rgb(40, 40, 40);
+}
+
+.frame:nth-child(9) {
+    background-color: rgb(40, 40, 40);
+}
+.frame:nth-child(10) {
+    background-color: #ff9292;
+}
+.frame:nth-child(11) {
+    background-color: #ff9292;
+}
+.frame:nth-child(12) {
+    background-color: #d85757;
+}
+
+.cc h4{
+	text-align :center;
+	color: white;
+}
+
+p {
+	font-size: 5.6rem;
+    text-align: center;
+    line-height: 1;
+    animation: neon .08s ease-in-out infinite alternate;
+    color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #fff,
+    0 0 80px #fff,
+    0 0 90px #fff,
+    0 0 100px #fff,
+    0 0 150px #fff;
 }

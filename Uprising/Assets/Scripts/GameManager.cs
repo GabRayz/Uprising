@@ -68,13 +68,12 @@ public class GameManager : MonoBehaviourPunCallbacks
             // if (GameObject.Find("_network").GetComponent<NetworkManager>().isInGame)
             FinishGame();
         }
-
         // Raise lava
         if (isStarted)
         {
             lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
             lavaLevel = lava.transform.position.y;
-
+            
             int tmp = (int)((10 * lavaLevel) / lavaLevelMax);
             if (tmp > levelFloor)
             {
