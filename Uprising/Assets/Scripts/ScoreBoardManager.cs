@@ -39,6 +39,8 @@ public class ScoreBoardManager : MonoBehaviour
         while(scoreboard.Count > 0)
         {
             Player player = scoreboard.Pop();
+            if (i == 0)
+                players[player].winner = true;
 
             ligns[i].SetActive(true);
             ligns[i].transform.Find("Name").GetComponent<Text>().text = string.IsNullOrEmpty(player.NickName) ? "Player " + player.ActorNumber : player.NickName;

@@ -16,8 +16,8 @@ public class DestroyabePlatform : MonoBehaviour
         if (other.gameObject.CompareTag("belette"))
         {
             life--;
-        }
-            
+            Destroy(other.gameObject);
+        }   
     }
     // Update is called once per frame
     public void Update()

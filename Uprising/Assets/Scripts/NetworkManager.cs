@@ -110,6 +110,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         this.mainMenu = mainMenu;
         mainMenu.matchMakingText.text = PhotonNetwork.LocalPlayer.NickName;
         Debug.Log(PhotonNetwork.LocalPlayer.NickName);
+        mainMenu.SetPlayerInfo();
     }
 
     public void PlayRandom()
@@ -205,6 +206,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void StartGame()
     {
+
+        Random.InitState((int)Time.realtimeSinceStartup);
+
+        localPlayerGameStats.winner = false;
+
         // Lock the room
          if (PhotonNetwork.LocalPlayer.IsMasterClient)
             PhotonNetwork.CurrentRoom.IsOpen = false;
