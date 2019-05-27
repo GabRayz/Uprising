@@ -137,7 +137,8 @@ app.get('/auth/data', (req, res) => {
 
     res.send({
         id: req.user.id,
-        username: req.user.username
+        username: req.user.username,
+        xp: req.user.xp
     });
 });
 
@@ -154,30 +155,14 @@ app.get('/game', (req, res) => {
     else res.redirect('/auth/register');
 });
 
-app.post('/game/xp', async (req, res) => {
-    req.body.players.forEach(player => {
-        const user = User.findOne({
-            where: {
-                username: player.username
-            }
-        });
-
-        user.xp += player.xp;
-        user.save();
-    });
+app.post('/game', async (req, res) => {
+    req.user.xp += req.body.xp;
+    req.user.gameCount++;
+    req.user.shotCount += req.body.shotCount;
+    req.user.accurateShotCount += req.body.accurateShotCount;
+    if (req.body.winner) req.user.winner++;
 
     res.sendStatus(200);
-});
-
-app.get('/game/xp/:username', async (req, res) => {
-    const user = User.findOne({
-        where: {
-            username: req.params.username
-        },
-        attributes: ['username', 'xp']
-    });
-
-    res.sendJson(user);
 });
 
 async function main() {

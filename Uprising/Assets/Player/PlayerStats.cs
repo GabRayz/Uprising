@@ -21,6 +21,8 @@ namespace Uprising.Players
         public float time;
         public bool isActive;
 
+        public bool winner;
+
         public PlayerStats(PlayerControl playerControl)
         {
             if (playerControl == null) return;
@@ -57,5 +59,14 @@ namespace Uprising.Players
                 res += (hits / belettesShot) * belettesShot * 2;
             return res;
         }
+    }
+
+    [Serializable]
+    public class PlayerStatsJson
+    {
+        public int xp;
+        public bool winner;
+        public int shotCount;
+        public int accurateShotCount;
     }
 }

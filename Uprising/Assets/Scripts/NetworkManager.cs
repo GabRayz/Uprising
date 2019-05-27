@@ -35,15 +35,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     Stack<Player> scoreboard;
     public bool debug = false;
 
-#if UNITY_WEBGL
-    [DllImport("__Internal")]
-    private static extern string GetUsername();
-
-    [DllImport("__Internal")]
-    private static extern string GetCookie();
-#endif
-
-
     public void Awake()
     {
         App.networkManager = this;
@@ -54,44 +45,41 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void Start()
     {
         StartingText.text = "Connection...";
-
-#if UNITY_WEBGL
-        if(!debug)
-        {
-            Debug.Log("Trying to get username (WEBGL).");
-            Debug.Log(GetUsername());
-            PhotonNetwork.LocalPlayer.NickName = GetUsername();
-            StartCoroutine(Authenticate());
-        }
-#endif
-        InitLocalPlayer();
-        PhotonNetwork.ConnectUsingSettings();
+        
+        StartCoroutine(Authenticate());
         // PhotonNetwork.ConnectToRegion("eu");
         // PhotonNetwork.AutomaticallySyncScene = true;
     }
 
-#if UNITY_WEBGL
     IEnumerator Authenticate()
     {
-        var cookie = GetCookie();
-        var www = UnityWebRequest.Get("/auth/data");
-        //www.SetRequestHeader("Cookie", cookie);
-
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError || www.isHttpError)
+        InitLocalPlayer();
+        
+#if UNITY_WEBGL
+        if (!debug)
         {
-            Debug.Log(www.error);
+            var www = UnityWebRequest.Get("/auth/data");
+
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Server response");
+                Debug.Log(www.downloadHandler.text);
+                var info = PlayerInfo.CreateFromJSON(www.downloadHandler.text);
+
+                PhotonNetwork.LocalPlayer.NickName = info.username;
+                localPlayerGameStats.xp = info.xp;
+            }
         }
-        else
-        {
-            Debug.Log("Server response");
-            Debug.Log(www.downloadHandler.text);
-            var info = PlayerInfo.CreateFromJSON(www.downloadHandler.text);
-            Debug.Log("Username : " + info.username);
-        }
-    }
 #endif
+
+        PhotonNetwork.ConnectUsingSettings();
+    }
 
     void InitLocalPlayer()
     {
@@ -122,6 +110,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         this.mainMenu = mainMenu;
         mainMenu.matchMakingText.text = PhotonNetwork.LocalPlayer.NickName;
         Debug.Log(PhotonNetwork.LocalPlayer.NickName);
+        mainMenu.SetPlayerInfo();
     }
 
     public void PlayRandom()
@@ -217,6 +206,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void StartGame()
     {
+
+        Random.InitState((int)Time.realtimeSinceStartup);
+
+        localPlayerGameStats.winner = false;
+
         // Lock the room
          if (PhotonNetwork.LocalPlayer.IsMasterClient)
             PhotonNetwork.CurrentRoom.IsOpen = false;
@@ -268,8 +262,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Quit game");
         // Update profile
         localPlayerGameStats.OnGameEnd();
-        
-        // If master client, sync each player's xp with server 
+
+        // Send player's stats to server
+        SendStats();
 
         // Leave Room
         if (isLastInRoom)
@@ -288,5 +283,26 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.LeaveRoom(); // Leaving the room will automatically re-join the server, and then call OnConnected()
         Debug.Log("room left");
+    }
+
+    void SendStats()
+    {
+#if UNITY_WEBGL
+        if (!debug)
+        {
+            var stats = new PlayerStatsJson();
+
+            stats.xp = localPlayerGameStats.xp;
+            stats.winner = localPlayerGameStats.pseudo == "Vardiak";
+            stats.shotCount = localPlayerGameStats.belettesShot;
+            stats.accurateShotCount = localPlayerGameStats.hits;
+
+            var json = JsonUtility.ToJson(stats);
+            
+            var www = UnityWebRequest.Post("/game", json);
+
+            www.SendWebRequest();
+        }
+#endif
     }
 }
