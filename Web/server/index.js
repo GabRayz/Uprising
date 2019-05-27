@@ -156,6 +156,8 @@ app.get('/game', (req, res) => {
 });
 
 app.post('/game', async (req, res) => {
+    console.log(req.body);
+
     req.user.xp += req.body.xp;
     req.user.gameCount++;
     req.user.shotCount += req.body.shotCount;
