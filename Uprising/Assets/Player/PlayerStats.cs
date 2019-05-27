@@ -21,6 +21,8 @@ namespace Uprising.Players
         public float time;
         public bool isActive;
 
+        public bool winner;
+
         public PlayerStats(PlayerControl playerControl)
         {
             if (playerControl == null) return;

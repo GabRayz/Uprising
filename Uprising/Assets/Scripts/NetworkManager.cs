@@ -217,6 +217,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void StartGame()
     {
+        localPlayerGameStats.winner = false;
+
         // Lock the room
          if (PhotonNetwork.LocalPlayer.IsMasterClient)
             PhotonNetwork.CurrentRoom.IsOpen = false;
