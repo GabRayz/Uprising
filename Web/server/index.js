@@ -162,6 +162,8 @@ app.post('/game', async (req, res) => {
     req.user.accurateShotCount += req.body.accurateShotCount;
     if (req.body.winner) req.user.winner++;
 
+    req.user.save();
+
     res.sendStatus(200);
 });
 
