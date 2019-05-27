@@ -25,6 +25,10 @@ namespace Uprising.Players
 
         public PlayerStats(PlayerControl playerControl)
         {
+            this.pseudo = "";
+            level = 0;
+            levelProgress = 0;
+            xp = 0;
             if (playerControl == null) return;
             this.playerControl = playerControl;
             this.owner = playerControl.photonView.Owner;
