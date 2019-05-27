@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Nathan\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Nathan\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Uprising.-1029066963.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Nathan\dev\EPITA\Projet-S2\Uprising" t="IncludeRecursive">
+    <e p="C:\Users\Marius\.Rider2018.3\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\Marius\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Marius\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Uprising.-121432102.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Marius\Projet-S2\Uprising" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -59,6 +60,35 @@
               <e p="UnlitLine.shader" t="Include" />
               <e p="VertexColorUnlit.shader" t="Include" />
               <e p="WiresOnly.shader" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="EffectExamples" t="Include">
+          <e p="Editor" t="Include">
+            <e p="PackageManagerAssembly" t="Include">
+              <e p="PackageImportList.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Shared" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="DecalDestroyer.cs" t="Include" />
+              <e p="ExtinguishableFire.cs" t="Include" />
+              <e p="GunAim.cs" t="Include" />
+              <e p="GunShoot.cs" t="Include" />
+              <e p="ParticleCollision.cs" t="Include" />
+              <e p="ParticleExamples.cs" t="Include" />
+              <e p="ParticleMenu.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="SurfaceShader_VC.shader" t="Include" />
+            </e>
+          </e>
+          <e p="TutorialInfo" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Editor" t="Include">
+                <e p="ReadmeEditor.cs" t="Include" />
+              </e>
+              <e p="Readme.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -428,6 +458,8 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="App.cs" t="Include" />
+          <e p="AudioManager.cs" t="Include" />
           <e p="BearTrapController.cs" t="Include" />
           <e p="BouncingPlatform.cs" t="Include" />
           <e p="CollectibleController.cs" t="Include" />
@@ -435,26 +467,39 @@
           <e p="DestroyingPlatform.cs" t="Include" />
           <e p="ForceFieldController.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="GrapnelController.cs" t="Include" />
+          <e p="HookController.cs" t="Include" />
           <e p="InGameMenuController.cs" t="Include" />
           <e p="Items" t="Include">
             <e p="BearTrap.cs" t="Include" />
             <e p="Dash.cs" t="Include" />
+            <e p="Drugs.cs" t="Include" />
             <e p="ForceField.cs" t="Include" />
+            <e p="Grapnel.cs" t="Include" />
             <e p="Invisibility.cs" t="Include" />
             <e p="Item.cs" t="Include" />
             <e p="ItemType.cs" t="Include" />
             <e p="JumpBoost.cs" t="Include" />
+            <e p="Mine.cs" t="Include" />
             <e p="RaretyEnum.cs" t="Include" />
+            <e p="RocketController.cs" t="Include" />
+            <e p="RocketGen.cs" t="Include" />
+            <e p="RocketLauncher.cs" t="Include" />
+            <e p="Shield.cs" t="Include" />
             <e p="SpeedBoost.cs" t="Include" />
           </e>
           <e p="ItemSpotController.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
+          <e p="MineController.cs" t="Include" />
           <e p="MovingHorizontalPlatform.cs" t="Include" />
           <e p="MovingVerticalPlatform.cs" t="Include" />
           <e p="NetworkManager.cs" t="Include" />
           <e p="PlayAnimOnKeyUp.cs" t="Include" />
           <e p="PlayGroundManager.cs" t="Include" />
           <e p="ScoreBoardManager.cs" t="Include" />
+          <e p="ShieldControl.cs" t="Include" />
+          <e p="Sound.cs" t="Include" />
+          <e p="SoundMenu.cs" t="Include" />
           <e p="SpawnPlayers.cs" t="Include" />
         </e>
         <e p="Shader" t="Include">
@@ -462,10 +507,16 @@
         </e>
         <e p="Weapon" t="Include">
           <e p="Weapons Scripts" t="Include">
+            <e p="AssaultRifle.cs" t="Include" />
             <e p="Belette.cs" t="Include" />
             <e p="belettegen.cs" t="Include" />
             <e p="DefaultGun.cs" t="Include" />
+            <e p="GuidedMissile.cs" t="Include" />
+            <e p="MachineGun.cs" t="Include" />
             <e p="Minigun.cs" t="Include" />
+            <e p="MissileController.cs" t="Include" />
+            <e p="MissileGen.cs" t="Include" />
+            <e p="Rifle.cs" t="Include" />
             <e p="ShotGun.cs" t="Include" />
             <e p="Sniper.cs" t="Include" />
             <e p="Weapon.cs" t="Include" />
