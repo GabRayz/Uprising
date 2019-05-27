@@ -20,6 +20,7 @@ namespace Uprising.Items
             {
                 this.isCurrentlyUsed = true;
                 this.player.GetComponent<PlayerControl>().dashLeft = durability;
+                playerControl.inventory.hudControl.DisplayBonus("Dash", durability);
                 player.SendMessage("ClearItem", this as Item);
             }
         }

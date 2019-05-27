@@ -169,6 +169,10 @@ namespace Uprising.Players
                         //rb.AddForce(400, 0, 0);
                         dashLeft--;
                         isDashing = true;
+                        if (dashLeft > 0)
+                            inventory.hudControl.ChangeDurability("Dash", dashLeft);
+                        else
+                            inventory.hudControl.HideBonus("Dash");
                     }
                 }
 
@@ -215,7 +219,10 @@ namespace Uprising.Players
                     if (moveVertical < 0)
                     {
                         if (speedModifier > 0)
+                        {
                             transform.Translate(Vector3.forward * moveVertical * speedModifier * Time.deltaTime);
+                            transform.Translate(Vector3.right * moveHorizontal * (speedModifier > 0 ? speedModifier : 0) * Time.deltaTime);
+                        }
                     }
                     
                     else

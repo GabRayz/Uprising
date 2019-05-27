@@ -43,7 +43,7 @@ public class CollectibleController : MonoBehaviour {
                 this.item = new Dash(5, null);
                 break;
             case ItemType.JumpBoost:
-                this.item = new JumpBoost(10000, null);
+                this.item = new JumpBoost(4000, null);
                 break;
             case ItemType.BearTrap:
                 this.item = new BearTrap(null);

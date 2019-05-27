@@ -19,6 +19,7 @@ namespace Uprising.Items
             {
                 isCurrentlyUsed = true;
                 this.player.transform.Find("active_ForceField").gameObject.SetActive(true);
+                playerControl.inventory.hudControl.DisplayBonus("ForceField", (int)(durability/1000));
                 player.SendMessage("ClearItem", this as Item);
             }
         }

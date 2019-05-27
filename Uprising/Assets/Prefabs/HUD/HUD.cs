@@ -40,7 +40,7 @@ public class HUD : MonoBehaviour
             return;
         }
         bonus.transform.Find("RawImage").GetComponent<RawImage>().color = new Color(255, 255, 255, .4f);
-        bonus.transform.Find("Text").GetComponent<Text>().text = "";
+        bonus.transform.Find("Text").GetComponent<Text>().text = " ";
     }
 
     public void ChangeDurability(string name, int durability)
