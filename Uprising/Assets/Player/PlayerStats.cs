@@ -58,4 +58,13 @@ namespace Uprising.Players
             return res;
         }
     }
+
+    [Serializable]
+    public class PlayerStatsJson
+    {
+        public int xp;
+        public bool winner;
+        public int shotCount;
+        public int accurateShotCount;
+    }
 }
