@@ -137,7 +137,8 @@ app.get('/auth/data', (req, res) => {
 
     res.send({
         id: req.user.id,
-        username: req.user.username
+        username: req.user.username,
+        xp: req.user.xp
     });
 });
 
@@ -159,8 +160,7 @@ app.post('/game', async (req, res) => {
     req.user.gameCount++;
     req.user.shotCount += req.body.shotCount;
     req.user.accurateShotCount += req.body.accurateShotCount;
-    if (req.body.winner)
-        req.user.winner++;
+    if (req.body.winner) req.user.winner++;
 
     res.sendStatus(200);
 });
