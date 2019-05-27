@@ -8,6 +8,7 @@ public class HUD : MonoBehaviour
     public Text Ammo;
     public Text Remain;
     public List<GameObject> bonuses;
+    public RawImage[] levels;
 
     public void ChangeAmmo(int durability)
     {

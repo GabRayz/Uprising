@@ -234,7 +234,7 @@ namespace Uprising.Players
                         
                         }
                     }
-                    
+
                     animator.SetBool("Run", (moveVertical > 0 || moveHorizontal != 0 && moveVertical == 0) && isGrounded);
                     animator.SetBool("WalkBackward", moveVertical < 0 && isGrounded);
 

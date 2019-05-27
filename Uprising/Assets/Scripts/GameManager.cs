@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public float lavaLevelMax = 100;
     public float lavaLevelMin = 0;
+    int levelFloor = 0;
 
     public bool isStarted;
 
@@ -74,12 +75,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
             lavaLevel = lava.transform.position.y;
 
-            for (int i = 9; i > 0; i--)
+            int tmp = (int)((10 * lavaLevel) / lavaLevelMax);
+            if (tmp > levelFloor)
             {
-                if (lavaLevel <= lavaLevelMax * (i + 1) / 10 && lavaLevel >= lavaLevelMax * i / 10)
-                {
-                    localPlayer.playerControl.inventory.hud.transform.Find("Canvas").Find("HUD Left").Find("Maplevel").Find(i.ToString()).gameObject.SetActive(true);
-                }
+                localPlayer.playerControl.inventory.hudControl.levels[levelFloor].gameObject.SetActive(true);
+                levelFloor = tmp;
             }
         }
     }
