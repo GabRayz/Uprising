@@ -501,6 +501,7 @@
           <e p="Sound.cs" t="Include" />
           <e p="SoundMenu.cs" t="Include" />
           <e p="SpawnPlayers.cs" t="Include" />
+          <e p="Turret.cs" t="Include" />
         </e>
         <e p="Shader" t="Include">
           <e p="Additive_Base.shader" t="Include" />

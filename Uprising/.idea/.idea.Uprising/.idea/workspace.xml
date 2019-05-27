@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a75f7fc-7611-459c-9906-4603cc025168" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Uprising/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Uprising/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EffectExamples/Editor/PackageManagerAssembly/PackageManagerAssembly.dll.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Imported/Graplin_nocked.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Imported/Graplin_nocked.blend.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Imported/Hook.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Imported/Hook.blend.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Imported/Shield.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Imported/Shield.blend.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NathanTest/Resources.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Resources/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="7a75f7fc-7611-459c-9906-4603cc025168" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +16,12 @@
             <state relative-caret-position="120">
               <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
               <folding>
-                <marker date="1558952680860" expanded="false" signature="6:78" ph="..." />
-                <marker date="1558952680860" expanded="true" signature="127:560" ph="{...}" />
-                <marker date="1558952680860" expanded="true" signature="225:246" ph="{...}" />
-                <marker date="1558952680860" expanded="true" signature="294:411" ph="{...}" />
-                <marker date="1558952680860" expanded="true" signature="352:392" ph="{...}" />
-                <marker date="1558952680860" expanded="true" signature="475:558" ph="{...}" />
+                <marker date="1558964966078" expanded="false" signature="6:78" ph="..." />
+                <marker date="1558964966078" expanded="true" signature="127:589" ph="{...}" />
+                <marker date="1558964966078" expanded="true" signature="225:246" ph="{...}" />
+                <marker date="1558964966078" expanded="true" signature="294:440" ph="{...}" />
+                <marker date="1558964966078" expanded="true" signature="352:431" ph="{...}" />
+                <marker date="1558964966078" expanded="true" signature="504:587" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -874,12 +864,12 @@
         <state relative-caret-position="120">
           <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
           <folding>
-            <marker date="1558952680860" expanded="false" signature="6:78" ph="..." />
-            <marker date="1558952680860" expanded="true" signature="127:560" ph="{...}" />
-            <marker date="1558952680860" expanded="true" signature="225:246" ph="{...}" />
-            <marker date="1558952680860" expanded="true" signature="294:411" ph="{...}" />
-            <marker date="1558952680860" expanded="true" signature="352:392" ph="{...}" />
-            <marker date="1558952680860" expanded="true" signature="475:558" ph="{...}" />
+            <marker date="1558964966078" expanded="false" signature="6:78" ph="..." />
+            <marker date="1558964966078" expanded="true" signature="127:589" ph="{...}" />
+            <marker date="1558964966078" expanded="true" signature="225:246" ph="{...}" />
+            <marker date="1558964966078" expanded="true" signature="294:440" ph="{...}" />
+            <marker date="1558964966078" expanded="true" signature="352:431" ph="{...}" />
+            <marker date="1558964966078" expanded="true" signature="504:587" ph="{...}" />
           </folding>
         </state>
       </provider>
