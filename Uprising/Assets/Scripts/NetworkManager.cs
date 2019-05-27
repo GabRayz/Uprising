@@ -70,6 +70,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // PhotonNetwork.AutomaticallySyncScene = true;
     }
 
+#if UNITY_WEBGL
     IEnumerator Authenticate()
     {
         var cookie = GetCookie();
@@ -90,6 +91,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             Debug.Log("Username : " + info.username);
         }
     }
+#endif
 
     void InitLocalPlayer()
     {
