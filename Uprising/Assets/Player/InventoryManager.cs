@@ -17,6 +17,7 @@ namespace Uprising.Players
         private List<Item> appliedEffects;
         private PlayerControl playerControl;
         public GameObject hud;
+        public HUD hudControl;
         public GameObject hudWeapon1;
         public GameObject hudWeapon2;
         public GameObject hudBonus1;
@@ -32,6 +33,7 @@ namespace Uprising.Players
             if (playerControl.debugMode || playerControl.photonView.IsMine)
             {
                 hud = Instantiate(hud);
+                hudControl = hud.GetComponent<HUD>();
                 hudWeapon1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot1 Weapon").gameObject;
                 hudWeapon2 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot2 Weapon").gameObject;
                 hudBonus1 = hud.transform.Find("Canvas").Find("HUD right").Find("Slot3 Item").gameObject;
@@ -51,6 +53,7 @@ namespace Uprising.Players
             foreach (Item effect in appliedEffects.ToList())
             {
                 (effect as Effect).Update();
+                hudControl.ChangeDurability(effect.type.ToString(), (int)(effect.durability/1000));
             }
 
             if(items[selectedItem] is Weapon)
@@ -215,6 +218,8 @@ namespace Uprising.Players
                     default:
                         break;
                 }
+
+                hudControl.DisplayBonus(effectToApply.type.ToString(), (int)(effectToApply.durability/1000));
             }
             else
             {
@@ -246,6 +251,7 @@ namespace Uprising.Players
                     default:
                         break;
                 }
+                hudControl.HideBonus(effectToDisable.type.ToString());
             }
         }
 
