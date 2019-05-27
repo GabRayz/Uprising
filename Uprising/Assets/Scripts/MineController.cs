@@ -43,7 +43,7 @@ public class MineController : MonoBehaviour
 
     IEnumerator ReadyTimer()
     {
-        float time = 1f;
+        float time = 3f;
         while (time > 0)
         {
             time -= Time.deltaTime;
