@@ -303,7 +303,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             
             var form = new WWWForm();
             form.AddField("xp", localPlayerGameStats.xp);
-            form.AddField("winner", localPlayerGameStats.pseudo == "Vardiak" ? 1 : 0);
+            form.AddField("winner", localPlayerGameStats.winner ? 1 : 0);
             form.AddField("shotCount", localPlayerGameStats.belettesShot);
             form.AddField("accurateShotCount", localPlayerGameStats.hits);
             
