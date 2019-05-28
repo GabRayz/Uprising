@@ -75,6 +75,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 PhotonNetwork.LocalPlayer.NickName = info.username;
                 localPlayerGameStats.xp = info.xp;
                 localPlayerGameStats.pseudo = info.username;
+
+                int level = 1;
+                while (localPlayerGameStats.xp > 100 * Mathf.Pow(2, level -1 ))
+                {
+                    level++;
+                }
+                localPlayerGameStats.level = level;
             }
         }
 #else
