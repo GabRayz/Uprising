@@ -40,4 +40,30 @@ window.onload = async e => {
         const element = document.querySelector('.nav_login');
         element.parentElement.removeChild(element);
     }
-}
+
+    const leaderboard = await fetch('/leaderboard').then(res => res.json());
+
+    if (!leaderboard) return;
+
+    const parent = document.querySelector('#rankingFrame > div > article > table > tbody');
+
+    leaderboard.forEach(player => {
+        const main = document.createElement('tr');
+
+        const appendStat = stat => {
+            const td = document.createElement('td');
+            td.textContent = stat;
+            main.appendChild(td);
+        };
+
+        appendStat(player.rank);
+        appendStat(player.username);
+        appendStat(0);
+        appendStat(player.xp);
+        appendStat(player.gameCount);
+        appendStat(player.winCount);
+        appendStat(Math.floor(player.accuracy * 100) + ' %');
+
+        parent.appendChild(main);
+    });
+};
