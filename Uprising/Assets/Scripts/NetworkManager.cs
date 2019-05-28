@@ -291,16 +291,24 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 #if UNITY_WEBGL
         if (!debug)
         {
-            var stats = new PlayerStatsJson();
+            /*var stats = new PlayerStatsJson();
 
             stats.xp = localPlayerGameStats.xp;
             stats.winner = localPlayerGameStats.pseudo == "Vardiak";
             stats.shotCount = localPlayerGameStats.belettesShot;
             stats.accurateShotCount = localPlayerGameStats.hits;
 
-            var json = JsonUtility.ToJson(stats);
+            var json = JsonUtility.ToJson(stats);*/
             
-            var www = UnityWebRequest.Post("/game", json);
+            
+            var form = new WWWForm();
+            form.AddField("xp", localPlayerGameStats.xp);
+            form.AddField("winner", localPlayerGameStats.pseudo == "Vardiak" ? 1 : 0);
+            form.AddField("shotCount", localPlayerGameStats.belettesShot);
+            form.AddField("accurateShotCount", localPlayerGameStats.hits);
+            
+            
+            var www = UnityWebRequest.Post("/game", form);
 
             www.SendWebRequest();
         }

@@ -156,11 +156,15 @@ app.get('/game', (req, res) => {
 });
 
 app.post('/game', async (req, res) => {
-    req.user.xp += req.body.xp;
+    console.log(req.body);
+
+    req.user.xp = req.body.xp;
     req.user.gameCount++;
     req.user.shotCount += req.body.shotCount;
     req.user.accurateShotCount += req.body.accurateShotCount;
     if (req.body.winner) req.user.winner++;
+
+    req.user.save();
 
     res.sendStatus(200);
 });
