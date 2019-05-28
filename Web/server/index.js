@@ -9,7 +9,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 const db = new Sequelize(
@@ -167,6 +167,22 @@ app.post('/game', async (req, res) => {
     req.user.save();
 
     res.sendStatus(200);
+});
+
+app.get('/leaderboard', async (req, res) => {
+    const users = await User.findAll({
+        order: [['xp', 'DESC']],
+        limit: 10
+    });
+
+    res.json(users.map((user, i) => ({
+        rank: i + 1,
+        username: user.username,
+        xp: user.xp,
+        gameCount: user.gameCount,
+        winCount: user.winCount,
+        accuracy: user.accurateShotCount / user.shotCount
+    })));
 });
 
 async function main() {
