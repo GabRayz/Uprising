@@ -160,8 +160,8 @@ app.post('/game', async (req, res) => {
 
     req.user.xp = Number(req.body.xp);
     req.user.gameCount++;
-    req.user.shotCount += req.body.shotCount;
-    req.user.accurateShotCount += req.body.accurateShotCount;
+    req.user.shotCount += Number(req.body.shotCount);
+    req.user.accurateShotCount += Number(req.body.accurateShotCount);
     if (req.body.winner) req.user.winner++;
 
     req.user.save();
