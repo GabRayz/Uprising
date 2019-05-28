@@ -389,6 +389,7 @@ namespace Uprising.Players
                 {
                     Hit(null, belette.transform.forward, belette.power);
                 }
+                belette.gameObject.SetActive(false);
             }
         }
 
