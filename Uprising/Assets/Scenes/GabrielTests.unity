@@ -610,6 +610,10 @@ PrefabInstance:
       propertyPath: jump
       value: 900
       objectReference: {fileID: 0}
+    - target: {fileID: 2018, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2020, guid: 5af47774f77b7473fa819bdaa775055f, type: 3}
       propertyPath: viewIdField
       value: 12
