@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Uprising.Players;
+using Photon.Pun;
 
 namespace Uprising.Items
 {
@@ -40,8 +41,8 @@ namespace Uprising.Items
             belettegen.shoot(this);
 
             // Update statistics
-            if (player.GetComponent<PlayerControl>().playerStats != null)
-                player.GetComponent<PlayerControl>().playerStats.belettesShot += 1;
+            if (PhotonNetwork.IsConnected)
+                player.GetComponent<PlayerControl>().photonView.RPC("OnShoot", RpcTarget.All, 1);
         }
 
         protected override void StopUsing()

@@ -41,5 +41,6 @@ MonoBehaviour:
   - ToggleInvisibility
   - Hit
   - SetPlayerInfo
+  - OnShoot
   DisableAutoOpenWizard: 1
   ShowSettings: 1

@@ -320,6 +320,12 @@ namespace Uprising.Players
         }
 
         [PunRPC]
+        public void OnShoot(int times = 1)
+        {
+            this.playerStats.belettesShot += times;
+        }
+
+        [PunRPC]
         public void OnTargetHit()
         {
             Debug.Log("Target hit !");

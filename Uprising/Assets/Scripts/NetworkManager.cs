@@ -263,11 +263,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void QuitGame(bool isLastInRoom = false, bool isInScoreBoardScene = true)
     {
         Debug.Log("Quit game");
+        Debug.Log("Shots : " + localPlayerGameStats.belettesShot);
         // Update profile
         localPlayerGameStats.OnGameEnd();
 
         // Send player's stats to server
         SendStats();
+
 
         // Leave Room
         if (isLastInRoom)
@@ -290,7 +292,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void SendStats()
     {
-        Debug.Log("Shots : " + localPlayerGameStats.hits);
+        Debug.Log("Shots : " + localPlayerGameStats.belettesShot);
 #if UNITY_WEBGL
         if (!debug)
         {
