@@ -211,6 +211,7 @@ MonoBehaviour:
   inMainMenu: 0
   matchMakingText: {fileID: 0}
   MaxPlayer: 2
+  isInGame: 0
   StartingText: {fileID: 2123218344}
   mainMenu: {fileID: 0}
   debug: 0

@@ -19,11 +19,11 @@ namespace Uprising.Players
         public Camera cam;
         public GameObject hand;
         private bool isGrounded = true;
-        public int jumpsLeft = 1;
+        public int jumpsLeft;
         public int dashLeft;
-        public int jump = 720;
+        public int jump;
         private bool jumping = false;
-        public float dash = 700;
+        public float dash;
         private bool isDashing = false;
         public float dashTime = 0.3f;
         public InventoryManager inventory;
@@ -156,12 +156,15 @@ namespace Uprising.Players
 
                 if (Input.GetKeyDown(KeyCode.Space) && jump > 0 && !menu.activeSelf)
                 {
-                    if (jumpsLeft > 0 && isGrounded)
+                    if (jumpsLeft > 0)
                     {
-                        Debug.Log("Jumping");
+                        rb.velocity = Vector3.zero;
                         rb.AddForce(Vector3.up * jump);
                         jumpsLeft--;
                         animator.SetTrigger("jump");
+                        isGrounded = false;
+                        jumping = true;
+                        StartCoroutine("JumpTimer");
                     }
                     else if (dashLeft > 0 && !isGrounded && !isDashing)
                     {
@@ -207,15 +210,26 @@ namespace Uprising.Players
                 playerStats.time += Time.deltaTime;
         }
 
+        IEnumerator JumpTimer()
+        {
+            float time = 1f;
+            while (time > 0)
+            {
+                time -= Time.deltaTime;
+                yield return null;
+            }
+
+            jumping = false;
+        }
+
         void FixedUpdate()
         {
             // if (!App.networkManager.isInGame) return;
             if ((debugMode && contrallable) || (photonView.IsMine && gameManager.isStarted))
             {
+                CheckGroundStatus();
                 if (!menu.activeSelf)
                 {
-                    CheckGroundStatus();
-                    
                     if (moveVertical < 0)
                     {
                         if (speedModifier > 0)
@@ -241,9 +255,9 @@ namespace Uprising.Players
 
 
 
-                    if (isGrounded)
+                    if (isGrounded && !jumping)
                     {
-                        jumpsLeft = 1;
+                        jumpsLeft = 2;
                         animator.SetBool("Jumping", false);
                     }
                     else
@@ -330,11 +344,11 @@ namespace Uprising.Players
             RaycastHit hitInfo;
 #if UNITY_EDITOR
             // helper to visualise the ground check ray in the scene view
-            Debug.DrawLine(transform.position + (Vector3.up * 0.2f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.15f), Color.white);
+            Debug.DrawLine(transform.position + (Vector3.up * 0.2f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * 0.1f), Color.white);
 #endif
             // 0.1f is a small offset to start the ray from inside the character
             // it is also good to note that the transform position in the sample assets is at the base of the character
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.15f))
+            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, 0.1f))
             {
                 // m_GroundNormal = hitInfo.normal;
                 isGrounded = true;
