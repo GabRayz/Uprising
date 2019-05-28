@@ -35,7 +35,7 @@ public class belettegen : MonoBehaviour
             NewBelette = Instantiate(belette, this.gameObject.transform.position + gameObject.transform.forward, this.gameObject.transform.rotation);
             NewBelette.GetComponent<Belette>().InitBelette((item as Weapon).knockback);
         }
-        NewBelette.GetComponent<Rigidbody>().AddForce(dir * 1000);
+        NewBelette.GetComponent<Rigidbody>().AddForce(dir * 3000);
     }
 
     Vector3 GetDirection(Item item, float accuracy)
