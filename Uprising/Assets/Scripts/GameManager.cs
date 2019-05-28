@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -28,8 +28,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Dictionary<Player, bool> playersReady;
     public float lavaLevel;
 
-    public float lavaLevelMax = 100;
-    public float lavaLevelMin = 0;
+    public float lavaLevelMax = 46;
     int levelFloor = 0;
 
     public bool isStarted;
@@ -74,10 +73,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             lava.transform.Translate(Vector3.up * lavaRisingSpeed * Time.deltaTime);
             lavaLevel = lava.transform.position.y;
             
-            int tmp = (int)((10 * lavaLevel) / lavaLevelMax);
+            int tmp = (int)(((100 * (lavaLevel+16)) / lavaLevelMax)/10);
             if (tmp > levelFloor)
             {
-                localPlayer.playerControl.inventory.hudControl.levels[levelFloor].gameObject.SetActive(true);
+                localPlayer.playerControl.inventory.hudControl.levels[tmp].gameObject.SetActive(true);
                 levelFloor = tmp;
             }
         }
