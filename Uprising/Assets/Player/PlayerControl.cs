@@ -158,7 +158,8 @@ namespace Uprising.Players
                 {
                     if (jumpsLeft > 0)
                     {
-                        rb.velocity = Vector3.zero;
+                        // rb.velocity = Vector3.zero;
+                        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                         rb.AddForce(Vector3.up * jump);
                         jumpsLeft--;
                         animator.SetTrigger("jump");
