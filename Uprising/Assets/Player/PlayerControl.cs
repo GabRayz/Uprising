@@ -322,6 +322,7 @@ namespace Uprising.Players
         [PunRPC]
         public void OnTargetHit()
         {
+            Debug.Log("Target hit !");
             this.playerStats.hits += 1;
         }
 
@@ -375,7 +376,6 @@ namespace Uprising.Players
 
             if (other.gameObject.CompareTag("belette") && ((debugMode && !contrallable) || (photonView.IsMine && this.photonView.Owner.ActorNumber != other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber)))
             {
-                Debug.Log("hit");
                 Belette belette = other.GetComponent<Belette>();
                 if(!debugMode)
                 {
@@ -389,7 +389,6 @@ namespace Uprising.Players
                 {
                     Hit(null, belette.transform.forward, belette.power);
                 }
-                belette.gameObject.SetActive(false);
             }
         }
 

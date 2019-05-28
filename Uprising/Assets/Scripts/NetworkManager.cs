@@ -290,6 +290,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void SendStats()
     {
+        Debug.Log("Shots : " + localPlayerGameStats.hits);
 #if UNITY_WEBGL
         if (!debug)
         {

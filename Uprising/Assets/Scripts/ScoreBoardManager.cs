@@ -48,6 +48,8 @@ public class ScoreBoardManager : MonoBehaviour
             ligns[i].transform.Find("Time").GetComponent<Text>().text = GetTime((int)players[player].time);
             ligns[i].transform.Find("Points").GetComponent<Text>().text = GetScore(players[player]).ToString();
             i++;
+
+            Debug.Log("Shots : " + players[player].belettesShot + "; hits : " + players[player].hits);
         }
 
         Debug.Log("ScoreBoard filled");
