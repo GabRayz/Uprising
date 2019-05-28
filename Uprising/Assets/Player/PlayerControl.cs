@@ -307,8 +307,8 @@ namespace Uprising.Players
             
         }
 
-        private IEnumerator IncreaseFOV() { float fov = 60f; while (fov > 30) { fov-=3; cam.fieldOfView = fov; yield return null; } }
-        private IEnumerator DecreaseFOV() { float fov = 30f; while (fov < 60) { fov+=3; cam.fieldOfView = fov; yield return null; } }
+        private IEnumerator IncreaseFOV() { float fov = 80f; while (fov > 30) { fov-=3; cam.fieldOfView = fov; yield return null; } }
+        private IEnumerator DecreaseFOV() { float fov = 30f; while (fov < 80) { fov+=3; cam.fieldOfView = fov; yield return null; } }
 
         [PunRPC]
         public void Hit(Player hitter, Vector3 direction, float power)

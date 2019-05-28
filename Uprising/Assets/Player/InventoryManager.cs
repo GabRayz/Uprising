@@ -261,6 +261,8 @@ namespace Uprising.Players
             {
                 if (items[i] == item)
                 {
+                    if (playerControl.aim)
+                        playerControl.toggleaim();
                     if (i == 1 && (playerControl.debugMode || playerControl.photonView.IsMine)) hudWeapon2.transform.Find(item.type.ToString()).gameObject.SetActive(false);
                     if (i == 2 && (playerControl.debugMode || playerControl.photonView.IsMine)) hudBonus1.transform.Find(item.type.ToString()).gameObject.SetActive(false);
                     if (i == 3 && (playerControl.debugMode || playerControl.photonView.IsMine)) hudBonus2.transform.Find(item.type.ToString()).gameObject.SetActive(false);
