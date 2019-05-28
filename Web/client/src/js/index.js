@@ -58,7 +58,7 @@ window.onload = async e => {
 
         appendStat(player.rank);
         appendStat(player.username);
-        appendStat(0);
+        appendStat(ComputeLevel(player.xp));
         appendStat(player.xp);
         appendStat(player.gameCount);
         appendStat(player.winCount);
@@ -67,3 +67,12 @@ window.onload = async e => {
         parent.appendChild(main);
     });
 };
+
+function ComputeLevel(xp) {
+    let level = 1;
+    while (xp > 100 * Math.pow(2, level - 1)) {
+        level++;
+    }
+
+    return level;
+}
