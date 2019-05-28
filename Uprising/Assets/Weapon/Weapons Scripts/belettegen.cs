@@ -25,7 +25,7 @@ public class belettegen : MonoBehaviour
         GameObject NewBelette;
         Vector3 dir = GetDirection(item, (item as Weapon).accuracy);
 
-        if(PhotonNetwork.IsConnected)
+        if(PhotonNetwork.IsConnected && player.GetComponent<PhotonView>().IsMine)
         {
             NewBelette = PhotonNetwork.Instantiate("belette_" + item.type.ToString(), gameObject.transform.position + gameObject.transform.forward, gameObject.transform.rotation);
             NewBelette.GetComponent<Belette>().photonView.RPC("InitBelette", RpcTarget.All, (item as Weapon).knockback);

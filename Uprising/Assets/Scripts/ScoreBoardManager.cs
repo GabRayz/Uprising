@@ -73,8 +73,11 @@ public class ScoreBoardManager : MonoBehaviour
     {
         int score = (int)player.time;
         score += player.kills * 100;
+        Debug.Log("score : " + score);
         if(player.belettesShot != 0)
-            score += (player.hits / player.belettesShot) * player.belettesShot * 2;
+            score += player.hits * 5;
+        Debug.Log("score with ratio : " + score);
+        Debug.Log("Shots : " + player.belettesShot + "; hits : " + player.hits);
         return score;
     }
 }
