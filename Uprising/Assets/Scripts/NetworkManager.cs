@@ -35,6 +35,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     Stack<Player> scoreboard;
     public bool debug = false;
 
+#if UNITY_WEBGL
+    [DllImport("__Internal")]
+    private static extern void Quit();
+
+    public void QuitApp()
+    {
+        Quit();
+    }
+#endif
+
+
     public void Awake()
     {
         App.networkManager = this;

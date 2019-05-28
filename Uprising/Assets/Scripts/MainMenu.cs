@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +15,13 @@ public class MainMenu : MonoBehaviour
     public Text pseudo;
     public Text level;
     public Slider levelProgress;
+
+    public string[] resolutions;
+    public Dropdown resDD;
+    public Toggle fullscreenToggle;
+    int width;
+    int height;
+    bool fullscreen;
 
     public void Start()
     {
@@ -44,5 +51,27 @@ public class MainMenu : MonoBehaviour
         this.levelProgress.minValue = stats.level > 1 ? 100 * Mathf.Pow(2, stats.level - 2) : 0;
         levelProgress.maxValue = 100 * Mathf.Pow(2, stats.level - 1);
         levelProgress.value = stats.xp;
+    }
+
+#if UNITY_WEBGL
+    public void Quit()
+    {
+        Debug.Log("Quit Uprising");
+
+        networkManager.QuitApp();
+    }
+#endif
+
+    public void ApplyPref()
+    {
+        Debug.Log("Apply settings");
+
+        string res = resolutions[resDD.value];
+        fullscreen = fullscreenToggle.isOn;
+        string[] resSplit = res.Split('x');
+        width = Int32.Parse(resSplit[0]);
+        height = Int32.Parse(resSplit[1]);
+
+        Screen.SetResolution(width, height, fullscreen);
     }
 }

@@ -15,5 +15,9 @@ mergeInto(LibraryManager.library, {
         var buffer = _malloc(lengthBytesUTF8(cookie) + 1);
         writeStringToMemory(cookie, buffer);
         return buffer;
+    },
+    Quit: function() {
+        window.location = "/";
     }
+
 });

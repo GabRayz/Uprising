@@ -344,20 +344,20 @@ a[class="button"]:hover {
 /* /////////////////////////// */
 /* F O U R T H   S E C T I O N */
 
-#contactFrame {
+#downloadFrame {
     background-color: #ffdddd;
     height: 90%;
 }
 
-#contactFrame .section_header {
+#downloadFrame .section_header {
     justify-content: center;
 }
 
-#contactFrame .section_title {
+#downloadFrame .section_title {
     color: #ff9292;
 }
 
-#contactFrame .section_title:before {
+#downloadFrame .section_title:before {
     background-color: #ff9292;
 }
 
